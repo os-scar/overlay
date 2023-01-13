@@ -1,0 +1,56 @@
+{
+  "name": "overlay",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/os-scar/overlay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/os-scar/overlay/issues",
+    "email": "contact@os-scar.com"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/chrome": "^0.0.206",
+    "addons-linter": "^5.27.0",
+    "argparse": "^2.0.1",
+    "del": "^7.0.0",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-zip": "^5.1.0",
+    "husky": "^8.0.3",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
+    "js-yaml": "^4.1.0",
+    "lockfile-lint": "^4.10.0",
+    "node-fetch": "^2.0.0",
+    "prettier": "2.8.3",
+    "rollup": "^3.9.1",
+    "web-ext": "^7.5.0"
+  },
+  "scripts": {
+    "postinstall": "husky install",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
+    "build": "gulp build",
+    "lint": "eslint src tests",
+    "lint:fix": "yarn lint --fix",
+    "lint:lockfile": "lockfile-lint --path yarn.lock --allowed-hosts npm yarn --validate-https --validate-package-names --validate-integrity --empty-hostname false",
+    "lint:mozilla": "yarn build && addons-linter dist/v2",
+    "start:firefox": "web-ext run --source-dir ./dist/firefox"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "lint-staged": "^13.1.0",
+    "semver": "^7.3.8"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "{src,tests}/**/*.js": "eslint --fix"
+  }
+}

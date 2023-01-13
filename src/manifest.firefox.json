@@ -1,0 +1,30 @@
+{
+  "name": "Overlay",
+  "version": "{{EXTENSION_VERSION}}",
+  "description": "{{EXTENSION_DESCRIPTION}}",
+  "permissions": [
+    "https://deps.dev/*",
+    "https://debricked.com/*",
+    "https://socket.dev/*",
+    "https://snyk.io/*",
+    "https://openbase.com/*"
+  ],
+  "icons": {
+    "48": "icons/icon_48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://stackoverflow.com/*"],
+      "js": ["content.stackoverflow.js"],
+      "css": ["tooltip.css"]
+    },
+    {
+      "matches": ["*://www.npmjs.com/package/*"],
+      "js": ["content.npm.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "manifest_version": 2
+}

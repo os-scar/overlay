@@ -1,0 +1,7 @@
+.tooltip {
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+    padding: 1px 6px;
+    white-space: pre;
+}
