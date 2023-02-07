@@ -1,1 +1,3 @@
-project description
+This is a browser extension provides developers with an overlay that displays useful insights related to open source packages. It gathers data from various sources, including Snyk Advisor, Debricked, Openbase, Socket.dev, and Deps.dev, allowing developers to gain a better understanding of the dependencies they are using, and making it easier to find and use the right packages for their projects. 
+
+With this extension, developers can quickly identify potential issues, get up-to-date information on packages, and ensure they are using the most reliable and secure packages available. It is designed to make it easier than ever for developers to stay informed about the packages they are using, and help them make the best decisions for their projects. With the insights and data provided by this extension, developers can stay ahead of the curve and ensure the success of their projects.
