@@ -1,0 +1,9 @@
+<svg width="12" height="17" viewBox="0 0 12 17" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 7.84934C0 11.7441 2.49909 15.0579 5.9957 16.2895C7.73938 15.677 9.24161 14.5395 10.304 13.0724C11.3729 11.6007 12 9.79934 12 7.84934V2.65395L5.99768 0.5L0.00198446 2.65395V7.84934H0ZM4.95585 3.84276H7.73938L6.88672 6.73026H8.40284L4.2593 12.9447L5.24293 8.4329H3.59649L4.95651 3.84276H4.95585Z" fill="url(#socket_grad)"/>
+    <defs>
+        <linearGradient id="socket_grad" x1="0" y1="8.39474" x2="12" y2="8.39474" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FB14B3"/>
+            <stop offset="1" stop-color="#9663FD"/>
+        </linearGradient>
+    </defs>
+</svg>
