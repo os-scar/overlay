@@ -15,8 +15,10 @@
   "content_scripts": [
     {
       "matches": ["*://stackoverflow.com/*"],
-      "js": ["content.stackoverflow.js"],
-      "css": ["tooltip.css"]
+      "js": [
+        "custom-elements.js",
+        "content.stackoverflow.js"
+      ]
     },
     {
       "matches": ["*://www.npmjs.com/package/*"],

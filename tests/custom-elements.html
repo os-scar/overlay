@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>test</title>
+    <script src="../dist/custom-elements.js"></script>
+</head>
+<body>
+<overlay-indicator>text 123 123</overlay-indicator>
+<script type="module">
+    let tooltip = document.querySelector('overlay-indicator');
+    tooltip.setAttribute(
+        'package-metadata',
+        JSON.stringify({
+            name: 'react',
+            version: '17.0.2',
+            type: 'npm',
+            stars: '259k',
+        }));
+    tooltip.setAttribute('vendors',
+        JSON.stringify(
+            [
+                {
+                    "deps.dev": {}
+                },
+                {
+                    "snyk": {
+                        "Health Score": [22, 100],
+                        "Security": true,
+                        "Popularity": true,
+                        "Maintenance": true,
+                        "Community": true
+                    }
+                },
+                {
+                    "socket": {
+                        "Supply-Chain": [100, 100],
+                        "Quality": [74, 100],
+                        "Maintenance": [78, 100],
+                        "Vulnerabilities": [100, 100],
+                        "License": [88, 100]
+                    }
+                },
+                {
+                    "debricked": {
+                        "Contributors": [77, 100],
+                        "Popularity": [82, 100],
+                        "Security": [59, 100]
+                    }
+                },
+                {
+                    "openbase": {
+                        "User Rating": [4.8, 5],
+                        "Easy to use": true,
+                        "Great Documentation": true,
+                        "Performant": true,
+                        "Bleeding Edge": true,
+                        "Highly Customizable": true,
+                        "Responsive Maintainers": true
+                    }
+                }
+            ]
+        ));
+</script>
+</body>
+</html>

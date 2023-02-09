@@ -3,24 +3,43 @@ import zip from 'gulp-zip';
 import replace from 'gulp-replace';
 import rename from 'gulp-rename';
 import {rollup} from 'rollup';
+import * as vite from 'vite'
+import svgLoader from 'vite-svg-loader'
+import vue from '@vitejs/plugin-vue'
 
 import commonjs from '@rollup/plugin-commonjs';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import * as path from 'path';
 import * as url from 'url';
 import * as del from 'del';
-import * as argparse from 'argparse';
 
-const parser = new argparse.ArgumentParser()
-parser.add_argument('-v', '--version', {action: 'version'})
-parser.parse_known_args();
-
-const DEFAULT_VERSION = '0.0.2';
+const DEV_VERSION = '0.0.1';
 
 let scriptFilePath = url.fileURLToPath(import.meta.url);
 let scriptDirPath = path.dirname(scriptFilePath);
 let srcDirPath = path.resolve(scriptDirPath, 'src');
 let distDirPath = path.resolve(scriptDirPath, 'dist');
+
+async function buildCustomElements(outputDirPath){
+
+    await vite.build({
+        build: {
+            emptyOutDir: false,
+            outDir: outputDirPath,
+            lib: {
+                entry: path.join(srcDirPath, 'custom-elements', 'index.js'),
+                name: 'custom-elements',
+                formats: ['es'],
+                fileName: 'custom-elements',
+            },
+        },
+        define: {
+            'process.env': {}
+        },
+        plugins: [vue({customElement: true}), svgLoader()]
+    });
+
+}
 
 async function buildBrowserExtension(browserName, version, fileExtension = 'zip') {
     let outputDirPath = path.join(distDirPath, browserName);
@@ -31,8 +50,8 @@ async function buildBrowserExtension(browserName, version, fileExtension = 'zip'
         .pipe(gulp.dest(path.join(outputDirPath, 'icons')))
 
     // --------------
-    // tooltip.css
-    await gulp.src(path.join(srcDirPath, 'tooltip.css'))
+    // custom elements
+    await gulp.src(path.join(distDirPath, 'custom-elements.js'))
         .pipe(gulp.dest(path.join(outputDirPath)))
 
     // --------------
@@ -82,8 +101,10 @@ async function buildBrowserExtension(browserName, version, fileExtension = 'zip'
         .pipe(gulp.dest(distDirPath))
 }
 
-gulp.task('build', async () => {
-    let version = parser.version ?? DEFAULT_VERSION;
+gulp.task('compile', async () => {
+    let version = process.env['BUILD_VERSION'] || DEV_VERSION;
+    console.log(`compiling version ${version}`)
+    await buildCustomElements(distDirPath)
     await buildBrowserExtension('chrome', version);
     await buildBrowserExtension('firefox', version, "xpi");
 });
@@ -91,4 +112,11 @@ gulp.task('build', async () => {
 gulp.task('clean', async () => {
     await del.deleteAsync(distDirPath)
 })
-gulp.task('default', gulp.series('clean', 'build'));
+
+gulp.task('build', gulp.series('clean', 'compile'));
+
+gulp.task('watch', function() {
+    gulp.watch('./src/**/*', gulp.series('build'));
+})
+
+gulp.task('default', gulp.series('build'));
