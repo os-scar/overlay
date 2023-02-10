@@ -14,6 +14,11 @@ import * as url from 'url';
 import * as del from 'del';
 
 const DEV_VERSION = '0.0.1';
+const FILE_EXTENSION_ZIP = 'zip';
+const FILE_EXTENSION_XPI = "xpi";
+
+const BROWSER_TYPE_CHROME = 'chrome';
+const BROWSER_TYPE_FIREFOX = 'firefox';
 
 let scriptFilePath = url.fileURLToPath(import.meta.url);
 let scriptDirPath = path.dirname(scriptFilePath);
@@ -41,8 +46,8 @@ async function buildCustomElements(outputDirPath){
 
 }
 
-async function buildBrowserExtension(browserName, version, fileExtension = 'zip') {
-    let outputDirPath = path.join(distDirPath, browserName);
+async function buildBrowserExtension(browserType, version, fileExtension) {
+    let outputDirPath = path.join(distDirPath, browserType);
 
     // --------------
     // icons dir
@@ -50,13 +55,13 @@ async function buildBrowserExtension(browserName, version, fileExtension = 'zip'
         .pipe(gulp.dest(path.join(outputDirPath, 'icons')))
 
     // --------------
-    // custom elements
+    // custom-elements.js
     await gulp.src(path.join(distDirPath, 'custom-elements.js'))
         .pipe(gulp.dest(path.join(outputDirPath)))
 
     // --------------
     // manifest.json
-    let manifestFilename = `manifest.${browserName}.json`;
+    let manifestFilename = `manifest.${browserType}.json`;
     await gulp.src(path.join(srcDirPath, manifestFilename))
         .pipe(rename('manifest.json'))
         .pipe(replace('{{EXTENSION_VERSION}}', version))
@@ -97,16 +102,16 @@ async function buildBrowserExtension(browserName, version, fileExtension = 'zip'
     // --------------
     // Zip {browserName}.zip
     await gulp.src(path.join(outputDirPath, '**', '*'))
-        .pipe(zip(`${browserName}.${fileExtension}`))
+        .pipe(zip(`${browserType}_${version}.${fileExtension}`))
         .pipe(gulp.dest(distDirPath))
 }
-
 gulp.task('compile', async () => {
     let version = process.env['BUILD_VERSION'] || DEV_VERSION;
     console.log(`compiling version ${version}`)
+
     await buildCustomElements(distDirPath)
-    await buildBrowserExtension('chrome', version);
-    await buildBrowserExtension('firefox', version, "xpi");
+    await buildBrowserExtension(BROWSER_TYPE_CHROME, version, FILE_EXTENSION_ZIP);
+    await buildBrowserExtension(BROWSER_TYPE_FIREFOX, version, FILE_EXTENSION_XPI);
 });
 
 gulp.task('clean', async () => {
@@ -115,7 +120,7 @@ gulp.task('clean', async () => {
 
 gulp.task('build', gulp.series('clean', 'compile'));
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch('./src/**/*', gulp.series('build'));
 })
 
