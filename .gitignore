@@ -45,3 +45,6 @@ dist
 .fusebox/
 .dynamodb/
 .tern-port
+
+# Snapshots cache
+tests/real-examples/snapshots/

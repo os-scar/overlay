@@ -1,0 +1,1087 @@
+https://stackoverflow.com/questions/29461831:
+  comment: high scored
+  post: question
+  registry: npm
+  results:
+    - range: <a href="https://www.npmjs.com/package/node-sass#install">npmjs.com</a>
+      type: npm
+      name: node-sass
+    - range: <code>npm i node-sass</code>
+      type: npm
+      name: node-sass
+    - range: |-
+        <code>npm uninstall --save-dev gulp-sass
+        npm install --save-dev gulp-sass@2
+        </code>
+      type: npm
+      name: gulp-sass
+      version: '2'
+    - range: |-
+        <code>npm install node-sass
+        </code>
+      type: npm
+      name: node-sass
+    - range: |-
+        <code>npm uninstall node-sass
+        npm install node-sass
+        </code>
+      type: npm
+      name: node-sass
+    - range: |-
+        <code>sudo npm install -g n
+        sudo n 0.12.7
+        npm install node-sass@2
+        sudo npm -g install node-gyp@3
+        npm rebuild node-sass
+        </code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>sudo npm install -g n
+        sudo n 0.12.7
+        npm install node-sass@2
+        sudo npm -g install node-gyp@3
+        npm rebuild node-sass
+        </code>
+      type: npm
+      name: node-sass
+      version: '2'
+    - range: |-
+        <code>sudo npm install -g n
+        sudo n 0.12.7
+        npm install node-sass@2
+        sudo npm -g install node-gyp@3
+        npm rebuild node-sass
+        </code>
+      type: npm
+      name: node-gyp
+      version: '3'
+    - range: |-
+        <code>npm install -g n
+        rm -R node_modules/ 
+        npm install node-sass@3.3.3 
+        npm -g install node-gyp@3
+        npm uninstall gulp-sass
+        npm install gulp-sass@2 
+        npm rebuild node-sass 
+        ionic setup sass 
+        </code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>npm install -g n
+        rm -R node_modules/ 
+        npm install node-sass@3.3.3 
+        npm -g install node-gyp@3
+        npm uninstall gulp-sass
+        npm install gulp-sass@2 
+        npm rebuild node-sass 
+        ionic setup sass 
+        </code>
+      type: npm
+      name: node-sass
+      version: 3.3.3
+    - range: |-
+        <code>npm install -g n
+        rm -R node_modules/ 
+        npm install node-sass@3.3.3 
+        npm -g install node-gyp@3
+        npm uninstall gulp-sass
+        npm install gulp-sass@2 
+        npm rebuild node-sass 
+        ionic setup sass 
+        </code>
+      type: npm
+      name: node-gyp
+      version: '3'
+    - range: |-
+        <code>npm install -g n
+        rm -R node_modules/ 
+        npm install node-sass@3.3.3 
+        npm -g install node-gyp@3
+        npm uninstall gulp-sass
+        npm install gulp-sass@2 
+        npm rebuild node-sass 
+        ionic setup sass 
+        </code>
+      type: npm
+      name: gulp-sass
+      version: '2'
+    - range: |-
+        <code>sudo npm uninstall --save gulp-sass
+        npm install --save gulp-sass@2
+        npm update
+        npm rebuild node-sass
+        </code>
+      type: npm
+      name: gulp-sass
+      version: '2'
+    - range: |-
+        <code> `npm install node-sass`
+        </code>
+      type: npm
+      name: node-sass
+https://stackoverflow.com/questions/9629682:
+  comment: many links, npm.org without www
+  post: answer
+  registry: npm
+  results:
+    - range: >-
+        <a href="https://npmjs.org/package/railway"
+        rel="noreferrer">RailwayJS</a>
+      type: npm
+      name: railway
+    - range: >-
+        <a href="https://www.npmjs.com/package/minimist"
+        rel="noreferrer">minimist</a>
+      type: npm
+      name: minimist
+https://stackoverflow.com/questions/12147804:
+  comment: link with anchor
+  post: answer
+  registry: npm
+  results:
+    - range: >-
+        <a href="https://www.npmjs.com/package/ttab" rel="noreferrer">npm
+        registry</a>
+      type: npm
+      name: ttab
+    - range: >-
+        <a href="https://www.npmjs.com/package/ttab#manual-installation"
+        rel="noreferrer">these instructions</a>
+      type: npm
+      name: ttab
+    - range: |-
+        <code>npm install -g ttab
+        </code>
+      type: npm
+      name: ttab
+https://stackoverflow.com/questions/9023672:
+  comment: ignore npm install local package
+  post: question
+  registry: npm
+  results:
+    - range: >-
+        <a href="https://www.npmjs.com/package/live-server" rel="nofollow
+        noreferrer">v1.2.1</a>
+      type: npm
+      name: live-server
+    - range: |-
+        <code>npm install --save module_name
+        </code>
+      type: npm
+      name: module_name
+    - range: <code>npm install --save form-data</code>
+      type: npm
+      name: form-data
+    - range: |-
+        <code>npm install @types/node --save-dev
+        </code>
+      type: npm
+      name: '@types/node'
+    - range: |-
+        <code>npm install redux --save
+        </code>
+      type: npm
+      name: redux
+    - range: <code>npm i -g npm@7.3.0</code>
+      type: npm
+      name: npm
+      version: 7.3.0
+    - range: |-
+        <code>npm install -D tslib @types/node
+        </code>
+      type: npm
+      name: tslib
+    - range: |-
+        <code>npm install -D tslib @types/node
+        </code>
+      type: npm
+      name: '@types/node'
+    - range: <code>npm install module-name</code>
+      type: npm
+      name: module-name
+https://stackoverflow.com/questions/3944507:
+  comment: <pre-code> npm install -g node-inspector. with 'trepanjs' in comment
+  post: answer
+  registry: npm
+  results:
+    - range: >-
+        <a href="https://www.npmjs.com/package/scribbles"
+        rel="noreferrer">scribbles</a>
+      type: npm
+      name: scribbles
+    - range: >-
+        <a href="https://www.npmjs.com/package/debug"
+        rel="noreferrer">Visionmedia's debug</a>
+      type: npm
+      name: debug
+    - range: >-
+        <a href="https://www.npmjs.com/package/node-inspector"
+        rel="noreferrer">node-inspector</a>
+      type: npm
+      name: node-inspector
+    - range: >-
+        <a href="https://www.npmjs.com/package/longjohn"
+        rel="noreferrer">longjohn</a>
+      type: npm
+      name: longjohn
+    - range: >-
+        <a href="https://www.npmjs.com/package/heapdump"
+        rel="noreferrer">heapdump</a>
+      type: npm
+      name: heapdump
+    - range: |-
+        <code>npm install -g node-inspector
+        </code>
+      type: npm
+      name: node-inspector
+    - range: <code>npm install iron-node -g;</code>
+      type: npm
+      name: iron-node
+https://stackoverflow.com/questions/28989476:
+  comment: <code> npm i imports-loader --save-dev
+  post: answer
+  registry: npm
+  results:
+    - range: <code>npm i imports-loader --save-dev</code>
+      type: npm
+      name: imports-loader
+    - range: |-
+        <code>$ npm i jquery --save
+        </code>
+      type: npm
+      name: jquery
+    - range: |-
+        <code>npm install --save jquery@3.2.1
+        </code>
+      type: npm
+      name: jquery
+      version: 3.2.1
+    - range: |-
+        <code>npm install expose-loader --save-dev
+        </code>
+      type: npm
+      name: expose-loader
+    - range: |-
+        <code>$ npm i jquery --save
+        </code>
+      type: npm
+      name: jquery
+https://stackoverflow.com/questions/33527883:
+  comment: npm i -D babel-core babel-polyfill...
+  post: answer
+  registry: npm
+  results:
+    - range: >-
+        <code>npm i -D babel-core babel-polyfill babel-preset-es2015
+        babel-preset-stage-0 babel-loader
+
+        </code>
+      type: npm
+      name: babel-core
+    - range: >-
+        <code>npm i -D babel-core babel-polyfill babel-preset-es2015
+        babel-preset-stage-0 babel-loader
+
+        </code>
+      type: npm
+      name: babel-polyfill
+    - range: >-
+        <code>npm i -D babel-core babel-polyfill babel-preset-es2015
+        babel-preset-stage-0 babel-loader
+
+        </code>
+      type: npm
+      name: babel-preset-es2015
+    - range: >-
+        <code>npm i -D babel-core babel-polyfill babel-preset-es2015
+        babel-preset-stage-0 babel-loader
+
+        </code>
+      type: npm
+      name: babel-preset-stage-0
+    - range: >-
+        <code>npm i -D babel-core babel-polyfill babel-preset-es2015
+        babel-preset-stage-0 babel-loader
+
+        </code>
+      type: npm
+      name: babel-loader
+    - range: |-
+        <code>$ npm install --save-dev babel-plugin-transform-runtime
+        </code>
+      type: npm
+      name: babel-plugin-transform-runtime
+    - range: |-
+        <code>npm install --save @babel/runtime 
+        npm install --save-dev @babel/plugin-transform-runtime
+        </code>
+      type: npm
+      name: '@babel/runtime'
+    - range: |-
+        <code>npm install --save @babel/runtime 
+        npm install --save-dev @babel/plugin-transform-runtime
+        </code>
+      type: npm
+      name: '@babel/plugin-transform-runtime'
+    - range: |-
+        <code>yarn add --dev babel-preset-env
+        </code>
+      type: npm
+      name: babel-preset-env
+    - range: |-
+        <code>npm i --save regenerator-runtime core-js
+        </code>
+      type: npm
+      name: regenerator-runtime
+    - range: |-
+        <code>npm i --save regenerator-runtime core-js
+        </code>
+      type: npm
+      name: core-js
+    - range: |-
+        <code>npm i -D @babel/plugin-transform-runtime
+        npm i @babel/runtime
+        </code>
+      type: npm
+      name: '@babel/plugin-transform-runtime'
+    - range: |-
+        <code>npm i -D @babel/plugin-transform-runtime
+        npm i @babel/runtime
+        </code>
+      type: npm
+      name: '@babel/runtime'
+    - range: <code>npm i -D babel-regenerator-runtime</code>
+      type: npm
+      name: babel-regenerator-runtime
+    - range: |-
+        <code>npm install --save-dev babel-plugin-transform-runtime
+        npm install --save-dev babel-plugin-transform-async-to-generator
+        </code>
+      type: npm
+      name: babel-plugin-transform-runtime
+    - range: |-
+        <code>npm install --save-dev babel-plugin-transform-runtime
+        npm install --save-dev babel-plugin-transform-async-to-generator
+        </code>
+      type: npm
+      name: babel-plugin-transform-async-to-generator
+    - range: |-
+        <code>npm install --save-dev @babel/plugin-transform-runtime
+        </code>
+      type: npm
+      name: '@babel/plugin-transform-runtime'
+    - range: |-
+        <code>npm i -D regenerator-runtime
+        </code>
+      type: npm
+      name: regenerator-runtime
+    - range: |-
+        <code>npm i regenerator-runtime
+        </code>
+      type: npm
+      name: regenerator-runtime
+    - range: |-
+        <code>npm install --save-dev regenerator-runtime
+        </code>
+      type: npm
+      name: regenerator-runtime
+    - range: <code>npm install --save babel-preset-es2016</code>
+      type: npm
+      name: babel-preset-es2016
+    - range: |-
+        <code>npm install babel-polyfill --save
+        </code>
+      type: npm
+      name: babel-polyfill
+    - range: >-
+        <code>npm i @babel/core babel-loader @babel/preset-env
+        @babel/preset-react react react-dom @babel/plugin-transform-runtime
+        --save-dev
+
+        </code>
+      type: npm
+      name: '@babel/core'
+    - range: >-
+        <code>npm i @babel/core babel-loader @babel/preset-env
+        @babel/preset-react react react-dom @babel/plugin-transform-runtime
+        --save-dev
+
+        </code>
+      type: npm
+      name: babel-loader
+    - range: >-
+        <code>npm i @babel/core babel-loader @babel/preset-env
+        @babel/preset-react react react-dom @babel/plugin-transform-runtime
+        --save-dev
+
+        </code>
+      type: npm
+      name: '@babel/preset-env'
+    - range: >-
+        <code>npm i @babel/core babel-loader @babel/preset-env
+        @babel/preset-react react react-dom @babel/plugin-transform-runtime
+        --save-dev
+
+        </code>
+      type: npm
+      name: '@babel/preset-react'
+    - range: >-
+        <code>npm i @babel/core babel-loader @babel/preset-env
+        @babel/preset-react react react-dom @babel/plugin-transform-runtime
+        --save-dev
+
+        </code>
+      type: npm
+      name: react
+    - range: >-
+        <code>npm i @babel/core babel-loader @babel/preset-env
+        @babel/preset-react react react-dom @babel/plugin-transform-runtime
+        --save-dev
+
+        </code>
+      type: npm
+      name: react-dom
+    - range: >-
+        <code>npm i @babel/core babel-loader @babel/preset-env
+        @babel/preset-react react react-dom @babel/plugin-transform-runtime
+        --save-dev
+
+        </code>
+      type: npm
+      name: '@babel/plugin-transform-runtime'
+    - range: |-
+        <code>// other stuff
+        module.exports = {
+        // other stuff
+
+           module: {
+           rules: [
+          
+           {
+            test: /\.m?js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env',"@babel/preset-react"],
+                plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-transform-runtime'],
+                //npm install --save-dev @babel/plugin-transform-runtime
+                  }
+                }
+              },
+            ],
+          },
+
+        };
+        </code>
+      type: npm
+      name: '@babel/plugin-transform-runtime'
+    - range: |-
+        <code>npm i regenerator-runtime
+        </code>
+      type: npm
+      name: regenerator-runtime
+    - range: >-
+        <code>npm install babel-plugin-transform-async-to-module-method
+        babel-polyfill bluebird babel-preset-es2015 babel-core
+
+        </code>
+      type: npm
+      name: babel-plugin-transform-async-to-module-method
+    - range: >-
+        <code>npm install babel-plugin-transform-async-to-module-method
+        babel-polyfill bluebird babel-preset-es2015 babel-core
+
+        </code>
+      type: npm
+      name: babel-polyfill
+    - range: >-
+        <code>npm install babel-plugin-transform-async-to-module-method
+        babel-polyfill bluebird babel-preset-es2015 babel-core
+
+        </code>
+      type: npm
+      name: bluebird
+    - range: >-
+        <code>npm install babel-plugin-transform-async-to-module-method
+        babel-polyfill bluebird babel-preset-es2015 babel-core
+
+        </code>
+      type: npm
+      name: babel-preset-es2015
+    - range: >-
+        <code>npm install babel-plugin-transform-async-to-module-method
+        babel-polyfill bluebird babel-preset-es2015 babel-core
+
+        </code>
+      type: npm
+      name: babel-core
+    - range: <code>npm i -D @babel/polyfill</code>
+      type: npm
+      name: '@babel/polyfill'
+    - range: |-
+        <code>npm i @babel/runtime-corejs2
+        npm i --save-dev @babel/plugin-transform-runtime @babel/core
+        </code>
+      type: npm
+      name: '@babel/runtime-corejs2'
+    - range: |-
+        <code>npm i @babel/runtime-corejs2
+        npm i --save-dev @babel/plugin-transform-runtime @babel/core
+        </code>
+      type: npm
+      name: '@babel/plugin-transform-runtime'
+    - range: |-
+        <code>npm i @babel/runtime-corejs2
+        npm i --save-dev @babel/plugin-transform-runtime @babel/core
+        </code>
+      type: npm
+      name: '@babel/core'
+https://stackoverflow.com/questions/3608384:
+  comment: ignore 'npm install -d' & find '/usr/local/bin/npm install jade'
+  post: answer
+  registry: npm
+  results:
+    - range: |-
+        <code>/usr/local/bin/npm install jade
+        </code>
+      type: npm
+      name: jade
+    - range: |-
+        <code>sudo /usr/local/bin/npm install jade
+        </code>
+      type: npm
+      name: jade
+    - range: |-
+        <code>curl http://npmjs.org/install.sh | sudo sh
+        ln -s /usr/lib/node ~/.node_modules
+        sudo npm install jade
+        node ./build.js
+        </code>
+      type: npm
+      name: jade
+https://stackoverflow.com/questions/12008719:
+  comment: npm install --save
+  post: answer
+  registry: npm
+  results:
+    - range: <a href="https://www.npmjs.org/package/body-parser">from npm</a>
+      type: npm
+      name: body-parser
+    - range: |-
+        <code>$ npm install --save body-parser
+        </code>
+      type: npm
+      name: body-parser
+    - range: |-
+        <code>$ npm install multer
+        </code>
+      type: npm
+      name: multer
+https://stackoverflow.com/questions/6237400:
+  comment: npm update -g npm, npm.org
+  post: answer
+  registry: npm
+  results:
+    - range: >-
+        <a href="https://www.npmjs.com/package/n"
+        rel="noreferrer"><code>n</code></a>
+      type: npm
+      name: 'n'
+    - range: >-
+        <a href="https://www.npmjs.org/package/n" rel="noreferrer">npm
+        module</a>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>npm update -g npm
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install -g npm
+        </code>
+      type: npm
+      name: npm
+    - range: <code>sudo npm install -g npm</code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>sudo npm cache clean -f
+        sudo npm install -g n
+        sudo n stable
+        </code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>npm install npm@latest -g
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>$ npm install -g n
+        </code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>npm i -g npm
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm i -g npm@5.0.3
+        </code>
+      type: npm
+      name: npm
+      version: 5.0.3
+    - range: |-
+        <code>npm install --global --production npm-windows-upgrade
+        npm-windows-upgrade
+        </code>
+      type: npm
+      name: npm-windows-upgrade
+    - range: <code>npm install -g npm@next</code>
+      type: npm
+      name: npm
+    - range: <code>npm install -g node@next</code>
+      type: npm
+      name: node
+    - range: <code>npm install -g n@next</code>
+      type: npm
+      name: 'n'
+    - range: <code>npm install -g node@latest</code>
+      type: npm
+      name: node
+    - range: <code>npm install -g node</code>
+      type: npm
+      name: node
+    - range: |-
+        <code>npm i -g npm
+        </code>
+      type: npm
+      name: npm
+    - range: <code>npm update npm -g</code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install -g npm@latest
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install -g npm@next
+        </code>
+      type: npm
+      name: npm
+    - range: <code>npm -g install npm@&lt;version&gt;</code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>$ npm install -g npm stable
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>$ npm install -g npm stable
+        </code>
+      type: npm
+      name: stable
+    - range: <code>sudo npm install n -g</code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>sudo npm install npm@latest
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>&gt; npm install -g npm
+        </code>
+      type: npm
+      name: npm
+    - range: <code>npm install -g npm@latest</code>
+      type: npm
+      name: npm
+    - range: <code>npm install -g npm@next</code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm i -g n
+        n stable
+        npm update -g npm
+        </code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>npm i -g n
+        n stable
+        npm update -g npm
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install npm@{version} -g
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install npm@latest -g
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>sudo npm cache clean -f
+        sudo npm install -g n
+        sudo n stable
+        </code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>
+        npm install npm -g
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install update
+        </code>
+      type: npm
+      name: update
+    - range: <code>npm install npm@latest -g</code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>sudo npm cache clean -f
+        sudo npm install -g n
+        sudo n stable
+        </code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>npm install -g npm@latest
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm i npm
+        </code>
+      type: npm
+      name: npm
+    - range: >-
+        <code>$ npm install -g npm stable
+
+        [ . . .]
+
+        $ npm 
+
+        C:\Users\me\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js:85
+              let notifier = require('update-notifier')({pkg})
+              ^^^
+
+        SyntaxError: Block-scoped declarations (let, const, function, class) not
+        yet supporte
+
+        d outside strict mode
+            at exports.runInThisContext (vm.js:53:16)
+            at Module._compile (module.js:373:25)
+            at Object.Module._extensions..js (module.js:416:10)
+            at Module.load (module.js:343:32)
+            at Function.Module._load (module.js:300:12)
+            at Function.Module.runMain (module.js:441:10)
+            at startup (node.js:139:18)
+            at node.js:974:3
+        </code>
+      type: npm
+      name: npm
+    - range: >-
+        <code>$ npm install -g npm stable
+
+        [ . . .]
+
+        $ npm 
+
+        C:\Users\me\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js:85
+              let notifier = require('update-notifier')({pkg})
+              ^^^
+
+        SyntaxError: Block-scoped declarations (let, const, function, class) not
+        yet supporte
+
+        d outside strict mode
+            at exports.runInThisContext (vm.js:53:16)
+            at Module._compile (module.js:373:25)
+            at Object.Module._extensions..js (module.js:416:10)
+            at Module.load (module.js:343:32)
+            at Function.Module._load (module.js:300:12)
+            at Function.Module.runMain (module.js:441:10)
+            at startup (node.js:139:18)
+            at node.js:974:3
+        </code>
+      type: npm
+      name: stable
+    - range: |-
+        <code>npm install -g npm@latest
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>sudo npm cache clean -f
+        sudo npm install -g n
+        sudo n &lt;specific version&gt;
+        </code>
+      type: npm
+      name: 'n'
+https://stackoverflow.com/questions/22004559:
+  comment: ignore 'npm install "$package"' 'npm install --production'
+  post: answer
+  registry: npm
+  results:
+    - range: "<code>mod-a\n  dev-dependents:\n    - mod-b\n  dependents:\n    - mod-c\n\nmod-d\n\uFEFF  dev-dependents:\n    - mod-e\n  dependents:\n    - mod-a\n\n----\n\nnpm install mod-d\n\ninstalled modules:\n  - mod-d\n  - mod-a\n  - mod-c\n\n----\n\ncheckout the mod-d code repository\n\nnpm install\n\ninstalled modules:\n  - mod-a\n  - mod-c\n  - mod-e\n</code>"
+      type: npm
+      name: mod-d
+    - range: "<code># For dependent modules\n\uFEFFnpm install dependent-module --save\n\n\uFEFF# For dev-dependent modules\nnp\uFEFFm install development-module --save-dev\n</code>"
+      type: npm
+      name: dependent-module
+https://stackoverflow.com/questions/15892076:
+  comment: npm install express@3.0.0, comments
+  post: answer
+  registry: npm
+  results:
+    - range: >-
+        <a href="https://www.npmjs.com/package/npm-check-updates" rel="nofollow
+        noreferrer">https://www.npmjs.com/package/npm-check-updates</a>
+      type: npm
+      name: npm-check-updates
+    - range: |-
+        <code>npm install express -g
+        </code>
+      type: npm
+      name: express
+    - range: <code>npm install express@3.0.0</code>
+      type: npm
+      name: express
+      version: 3.0.0
+    - range: |-
+        <code>npm install -g npm@4.6.1
+        </code>
+      type: npm
+      name: npm
+      version: 4.6.1
+    - range: |-
+        <code>npm install -g npm@latest    // For the last stable version
+        npm install -g npm@next      // For the most recent release
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install -g npm@latest    // For the last stable version
+        npm install -g npm@next      // For the most recent release
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install express@3.X
+        </code>
+      type: npm
+      name: express
+      version: '3'
+    - range: |-
+        <code>npm install express@4.X
+        </code>
+      type: npm
+      name: express
+      version: '4'
+    - range: |-
+        <code>npm install -g npm@latest    // For the last stable version
+        npm install -g npm@next      // For the most recent release
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install -g npm@latest    // For the last stable version
+        npm install -g npm@next      // For the most recent release
+        </code>
+      type: npm
+      name: npm
+    - range: <code>$ npm install -g npm@latest-3</code>
+      type: npm
+      name: npm
+    - range: <code>npm install yargs@12.0.2</code>
+      type: npm
+      name: yargs
+      version: 12.0.2
+    - range: |-
+        <code>npm install packagename@version
+        </code>
+      type: npm
+      name: packagename
+https://stackoverflow.com/questions/24347442:
+  comment: install command inside a quote
+  post: answer
+  registry: npm
+  results:
+    - range: |-
+        <code>npm install serve-static
+        </code>
+      type: npm
+      name: serve-static
+https://stackoverflow.com/questions/23440080:
+  comment: npm install -g express-generator@3
+  post: answer
+  registry: npm
+  results:
+    - range: |-
+        <code>npm install -g express-generator@3
+        </code>
+      type: npm
+      name: express-generator
+      version: '3'
+    - range: |-
+        <code>npm install express-generator -g
+        </code>
+      type: npm
+      name: express-generator
+    - range: |-
+        <code>npm install express-generator -g
+        </code>
+      type: npm
+      name: express-generator
+    - range: |-
+        <code>npm install -g express
+        </code>
+      type: npm
+      name: express
+    - range: |-
+        <code> npm install -g express-generator
+        </code>
+      type: npm
+      name: express-generator
+    - range: |-
+        <code>npm install express-generator -g
+        </code>
+      type: npm
+      name: express-generator
+    - range: |-
+        <code>npm install express-generator -g
+        </code>
+      type: npm
+      name: express-generator
+    - range: |-
+        <code>npm install express-generator -g
+        </code>
+      type: npm
+      name: express-generator
+    - range: |-
+        <code>npm install -g express
+        npm install -g express-generator
+        </code>
+      type: npm
+      name: express
+    - range: |-
+        <code>npm install -g express
+        npm install -g express-generator
+        </code>
+      type: npm
+      name: express-generator
+    - range: |-
+        <code> npm install -g --force express-generator
+        </code>
+      type: npm
+      name: express-generator
+https://stackoverflow.com/questions/11233365:
+  comment: may be false positive
+  post: answer
+  registry: npm
+  results:
+    - range: |-
+        <code>npm install git://github.com/user-c/dep-2#node0.8.0
+        </code>
+      type: npm
+      name: git
+    - range: |-
+        <code>npm install lib-a
+        </code>
+      type: npm
+      name: lib-a
+    - range: >-
+        <code>npm install lib-a --overrides
+        dep-2:git://github.com/user-c/dep-2#node0.8.0
+
+        </code>
+      type: npm
+      name: lib-a
+    - range: |-
+        <code>npm install module@0.0.2
+        </code>
+      type: npm
+      name: module
+      version: 0.0.2
+https://stackoverflow.com/questions/59188624:
+  comment: npx
+  post: question
+  registry: npm
+  results:
+    - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install create-react-app@latest
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm update -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install create-react-app@latest
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm i -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install create-react-app@latest
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install create-react-app</code>
+      type: npm
+      name: create-react-app
+https://stackoverflow.com/questions/22563281:
+  comment: with semver ~
+  post: answer
+  registry: npm
+  results:
+    - range: |-
+        <code>npm uninstall -g ios-sim
+        brew uninstall ios-sim
+        npm install -g ios-sim@~1.8
+        </code>
+      type: npm
+      name: ios-sim
+      version: ~1.8
+https://stackoverflow.com/questions/2817869:
+  comment: high scored
+  post: question
+  registry: pypi
+  results: []
+https://stackoverflow.com/questions/36932:
+  comment: most viewed
+  post: answer
+  registry: pypi
+  results: []
