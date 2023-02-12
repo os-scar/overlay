@@ -7,8 +7,63 @@
     <script src="../dist/custom-elements.js"></script>
 </head>
 <body>
-<overlay-indicator>text 123 123</overlay-indicator>
+
+npm install react
+->
+npm install
+<overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="react">react</overlay-indicator>
+
 <script type="module">
+
+    window.__overlay_extension
+    let data = {
+        "npm/react": [
+            {
+                name: "checkmarx",
+                loading: true,
+            },
+            {
+                name: "socket.dev",
+                issues: 3,
+                data: {
+                    "supplyChain": 100,
+                    "quality": 74,
+                    "maintenance": 78,
+                    "vulnerabilities": 100,
+                    "license": 88
+                }
+            },
+            {
+                name: "socket.dev",
+                data: {
+                    "userRating": 4.8,
+                    "userFeedback": [
+                        {name: "Easy to use", positive: true},
+                        {name: "Great Documentation", positive: true},
+                        {name: "Performant", positive: true},
+                        {name: "Bleeding Edge", positive: false},
+                        {name: "Highly Customizable", positive: false},
+                        {name: "Responsive Maintainers", positive: false},
+                    ]
+                }
+            },
+            {
+                name: "scorecards",
+                data: {
+                    "score": 7.5,
+                    "checks": [
+                        {"description": "Using protected branches", score: 3.2},
+                        {"description": "signed commits", score: 5.2},
+                        // ...
+                    ],
+                }
+            },
+            {
+                name: "debricked",
+                error: true,
+            }]
+    };
+
     let tooltip = document.querySelector('overlay-indicator');
     tooltip.setAttribute(
         'package-metadata',
@@ -18,6 +73,8 @@
             type: 'npm',
             stars: '259k',
         }));
+
+
     tooltip.setAttribute('vendors',
         JSON.stringify(
             [
@@ -62,6 +119,7 @@
                 }
             ]
         ));
+
 </script>
 </body>
 </html>
