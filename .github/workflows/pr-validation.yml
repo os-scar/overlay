@@ -23,7 +23,7 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn lint:lockfile
-      - run: yarn lint:mozilla
+      - run: yarn lint:firefox
 
   test:
     strategy:
