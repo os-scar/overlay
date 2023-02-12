@@ -1,0 +1,44 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches:
+      - master
+  # As long as we push directly to master
+  push:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: 'Deps: show dependencies metadata'
+        uses: lirantal/github-action-new-dependencies-advisor@v1.1.1
+        if: github.event_name == 'pull_request'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: yarn
+      - run: yarn lint
+      - run: yarn lint:lockfile
+      - run: yarn lint:mozilla
+
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18.x]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+      - run: yarn
+      - run: yarn test
