@@ -19,7 +19,7 @@
     "lint": "eslint src tests",
     "lint:fix": "yarn lint --fix",
     "lint:lockfile": "lockfile-lint --path yarn.lock --allowed-hosts npm yarn --validate-https --validate-package-names --validate-integrity --empty-hostname false",
-    "lint:firefox": "yarn build && addons-linter dist/firefox",
+    "lint:firefox": "yarn build && web-ext lint --source-dir ./dist/firefox",
     "__start": "web-ext run --devtools --start-url https://stackoverflow.com/questions/33527653",
     "start:chrome": "yarn __start --source-dir ./dist/chrome --target chromium",
     "start:firefox": "yarn __start --source-dir ./dist/firefox"
@@ -29,7 +29,6 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/chrome": "^0.0.206",
     "@vitejs/plugin-vue": "^3.2.0",
-    "addons-linter": "^5.27.0",
     "del": "^7.0.0",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
