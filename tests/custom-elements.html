@@ -5,120 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>test</title>
     <script src="../dist/custom-elements.js"></script>
+
+    <style>
+        html, body {
+            margin: 0;
+        }
+
+        body {
+            padding: 10px;
+        }
+
+        .question {
+            background: #eee;
+            padding: 20px;
+
+        }
+    </style>
 </head>
 <body>
 
-npm install react
-->
-npm install
-<overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="react">react</overlay-indicator>
+<div class="question">
+    npm install react
+    ->
+    npm install
+    <overlay-indicator overlay-indicator-package-type="npm" overlay-indicator-package-name="react">react</overlay-indicator>
 
-<script type="module">
 
-    window.__overlay_extension
-    let data = {
-        "npm/react": [
-            {
-                name: "checkmarx",
-                loading: true,
-            },
-            {
-                name: "socket.dev",
-                issues: 3,
-                data: {
-                    "supplyChain": 100,
-                    "quality": 74,
-                    "maintenance": 78,
-                    "vulnerabilities": 100,
-                    "license": 88
-                }
-            },
-            {
-                name: "socket.dev",
-                data: {
-                    "userRating": 4.8,
-                    "userFeedback": [
-                        {name: "Easy to use", positive: true},
-                        {name: "Great Documentation", positive: true},
-                        {name: "Performant", positive: true},
-                        {name: "Bleeding Edge", positive: false},
-                        {name: "Highly Customizable", positive: false},
-                        {name: "Responsive Maintainers", positive: false},
-                    ]
-                }
-            },
-            {
-                name: "scorecards",
-                data: {
-                    "score": 7.5,
-                    "checks": [
-                        {"description": "Using protected branches", score: 3.2},
-                        {"description": "signed commits", score: 5.2},
-                        // ...
-                    ],
-                }
-            },
-            {
-                name: "debricked",
-                error: true,
-            }]
-    };
+    <button onclick="loadData()">reload</button>
 
-    let tooltip = document.querySelector('overlay-indicator');
-    tooltip.setAttribute(
-        'package-metadata',
-        JSON.stringify({
+</div>
+
+<script>
+
+    const store = window.__overlay_global_store;
+
+    function loadData() {
+        store.packages["npm/react"] = {
             name: 'react',
-            version: '17.0.2',
+            issues: 8,
             type: 'npm',
-            stars: '259k',
-        }));
-
-
-    tooltip.setAttribute('vendors',
-        JSON.stringify(
-            [
+            created: new Date(),
+            stars: 50000,
+            sources: [
                 {
-                    "deps.dev": {}
+                    name: "checkmarx",
+                    loading: true,
                 },
                 {
-                    "snyk": {
-                        "Health Score": [22, 100],
-                        "Security": true,
-                        "Popularity": true,
-                        "Maintenance": true,
-                        "Community": true
+                    name: "socket.dev",
+                    issues: 3,
+                    data: {
+                        "supplyChain": 100,
+                        "quality": 74,
+                        "maintenance": 78,
+                        "vulnerabilities": 100,
+                        "license": 88
                     }
                 },
                 {
-                    "socket": {
-                        "Supply-Chain": [100, 100],
-                        "Quality": [74, 100],
-                        "Maintenance": [78, 100],
-                        "Vulnerabilities": [100, 100],
-                        "License": [88, 100]
+                    name: "openbase",
+                    data: {
+                        "userRating": 4.8,
+                        "userFeedback": [
+                            {name: "Easy to use", positive: true},
+                            {name: "Great Documentation", positive: true},
+                            {name: "Performant", positive: true},
+                            {name: "Bleeding Edge", positive: false},
+                            {name: "Highly Customizable", positive: false},
+                            {name: "Responsive Maintainers", positive: false},
+                        ]
                     }
                 },
                 {
-                    "debricked": {
-                        "Contributors": [77, 100],
-                        "Popularity": [82, 100],
-                        "Security": [59, 100]
+                    name: "scorecards",
+                    data: {
+                        "score": 7.5,
+                        "checks": [
+                            {"description": "Using protected branches", score: 3.2},
+                            {"description": "signed commits", score: 5.2},
+                            // ...
+                        ],
                     }
                 },
                 {
-                    "openbase": {
-                        "User Rating": [4.8, 5],
-                        "Easy to use": true,
-                        "Great Documentation": true,
-                        "Performant": true,
-                        "Bleeding Edge": true,
-                        "Highly Customizable": true,
-                        "Responsive Maintainers": true
+                    name: "debricked",
+                    error: true,
+                },
+                {
+                    name: "debricked",
+                    data: {
+                        "contributors": 77,
+                        "popularity": 82,
+                        "security": 59
                     }
                 }
             ]
-        ));
+        }
+    }
 
 </script>
 </body>

@@ -1,11 +1,8 @@
 <template>
-  <div class="overlay-indicator" ref="overlay">
-    <slot></slot>
-    <div class="overlay-indicator__tooltip" ref="">
-      {{ package.name }}
-      <div class="overlay-indicator__tooltip__item" v-for="source in package.sources">
-        {{ source }}
-      </div>
+  <div class="overlay-indicator" :class="{'overlay-indicator--issues': package.issues??length}">
+    <div class="overlay-indicator__icon">{{ package.issues }}</div>
+    <div class="overlay-indicator__text">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -13,66 +10,26 @@
 <script>
 export default {
   name: 'overlay-indicator',
-  props: [
-    'overlayIndicatorPackageType',
-    'overlayIndicatorPackageName'
-  ],
+  props: {
+    'overlayIndicatorPackageType': {
+      type: String
+    },
+    'overlayIndicatorPackageName': {
+      type: String
+    },
+  },
   data() {
     return {}
   },
   computed: {
+    store() {
+      return window.__overlay_global_store || {}
+    },
+    packageId() {
+      return `${this.overlayIndicatorPackageType}/${this.overlayIndicatorPackageName}`
+    },
     package() {
-      return {
-        name: "react",
-        type: "npm",
-        created: new Date(),
-        stars: 50000,
-        sources: [
-          {
-            name: "checkmarx",
-            loading: true,
-          },
-          {
-            name: "socket.dev",
-            issues: 3,
-            data: {
-              "supplyChain": 100,
-              "quality": 74,
-              "maintenance": 78,
-              "vulnerabilities": 100,
-              "license": 88
-            }
-          },
-          {
-            name: "socket.dev",
-            data: {
-              "userRating": 4.8,
-              "userFeedback": [
-                {name: "Easy to use", positive: true},
-                {name: "Great Documentation", positive: true},
-                {name: "Performant", positive: true},
-                {name: "Bleeding Edge", positive: false},
-                {name: "Highly Customizable", positive: false},
-                {name: "Responsive Maintainers", positive: false},
-              ]
-            }
-          },
-          {
-            name: "scorecards",
-            data: {
-              "score": 7.5,
-              "checks": [
-                {"description": "Using protected branches", score: 3.2},
-                {"description": "signed commits", score: 5.2},
-              ],
-            }
-          },
-          {
-            name: "debricked",
-            error: true,
-          }
-        ]
-      }
+      return this.store.packages[this.packageId] || {};
     }
   },
   methods: {}
@@ -93,20 +50,55 @@ $padding: 8px;
 $border-radius: 6px;
 
 
-$color-red: #FF4D4D;
-$color-green: #4CDB62;
-
-$border-all-black: 0 0 0 1px #000;
-$border-all-red: 0 0 0 1px $color-red;
-$border-all-green: 0 0 0 1px $color-green;
+$color-black: #000;
+$color-red: #ff0000;
+$color-green: #14ce00;
+$color-white: #fff;
 
 div {
   box-sizing: border-box;
 }
 
-.overlay-indicator {
+$indicator-height: 24px;
 
-  &__tooltip{
+.overlay-indicator {
+  display: inline-flex;
+  flex-direction: row;
+  height: $indicator-height;
+  overflow: hidden;
+  border-radius: 4px;
+  align-items: center;
+  box-shadow: 0 0 0 1px $color-black;
+
+  $class-name: &;
+
+  &#{$class-name}--issues {
+
+    box-shadow: 0 0 0 1px $color-red;
+
+    #{$class-name}__icon {
+      background: $color-red;
+      color: $color-white;
+    }
+  }
+
+  $icon-size: 24px;
+
+  &__icon {
+    width: $icon-size;
+    height: $icon-size;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    padding: $padding-l1;
+
+  }
+
+  &__tooltip {
     padding: 20px;
     background: #eee;
   }
