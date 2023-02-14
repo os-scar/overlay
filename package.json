@@ -50,6 +50,7 @@
     "start:firefox": "web-ext run --source-dir ./dist/firefox"
   },
   "dependencies": {
+    "@webcomponents/custom-elements": "^1.5.1",
     "cheerio": "^1.0.0-rc.12",
     "lint-staged": "^13.1.0",
     "semver": "^7.3.8"
