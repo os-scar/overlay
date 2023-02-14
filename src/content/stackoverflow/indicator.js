@@ -1,4 +1,3 @@
-/// <reference path="../../types.js" />
 import { getPackageInfo } from '../bridge';
 
 const levels = {
@@ -18,7 +17,6 @@ const levels = {
   </svg>`,
 };
 
-/** @param {ReturnType<getPackageInfo>} advisories */
 const indicatorStatus = (advisories) => {
   if (advisories === null || advisories === undefined) return 'loading';
 
@@ -30,16 +28,11 @@ const indicatorStatus = (advisories) => {
   return 'good';
 };
 
-/**
- * @param {Range} range
- * @param {Node} newParent
- */
 const surroundContents = (range, newParent) => {
   newParent.appendChild(range.extractContents());
   range.insertNode(newParent);
 };
 
-/** @param {ElementFindings} param0 */
 export const addIndicator = async ({ range, ...packageID }) => {
   console.debug('Adding indicator for', packageID);
 

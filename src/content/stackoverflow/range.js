@@ -1,8 +1,3 @@
-/**
- * @param {Node} node
- * @param {number} position
- * @returns {{ node: Node, position: number }}
- */
 const findPositionInsideTree = (node, position) => {
   if (node.nodeType === Node.TEXT_NODE) {
     return { node, position };

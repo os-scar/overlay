@@ -10,22 +10,10 @@ const realExamplesFile = join(__dirname, 'real-examples.yaml');
 const webpageSnapshotsFolder = join(__dirname, 'snapshots', 'webpages');
 const realExamplesResults = join(__dirname, 'real-examples-results.yaml');
 
-/**
- * @typedef {{
- *   comment: string,
- *   post: 'question' | 'answer',
- *   registry: 'npm' | 'pypi'
- * }} ExampleDetails
- *
- * @typedef {Record<string, ExampleDetails>} LinksList
- */
-
-/** @param {ExampleDetails} example */
 const webpageSnapshotFile = (example) =>
   join(webpageSnapshotsFolder, cleanupFilename(`${example.registry}_${example.comment}`).substring(0, 35) + '.html');
 
 const loadExamples = async () => {
-  /** @type {{ links: LinksList }} */
   const { links } = yaml.load(await fs.readFile(realExamplesFile));
   return Object.entries(links).map(([link, details]) => ({
     ...details,

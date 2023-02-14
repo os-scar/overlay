@@ -1,4 +1,3 @@
-// @ts-check
 import { mountContentScript } from './content';
 import { findRanges } from './content/stackoverflow/finder';
 import { addIndicator } from './content/stackoverflow/indicator';

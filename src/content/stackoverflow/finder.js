@@ -1,4 +1,3 @@
-/// <reference path="../../types.js" />
 import * as npm from '../registry/npm';
 import { getRangeOfPositions } from './range';
 
@@ -14,7 +13,6 @@ const validURL = (href) => {
   return false;
 };
 
-/** @type {Record<string, (url: URL) => PackageID>} */
 const urlParsers = {
   'npmjs.com': npm.urlParser,
   'npmjs.org': npm.urlParser,
@@ -22,9 +20,7 @@ const urlParsers = {
   // 'pypi.python.org': python.urlParser,
 };
 
-/** @param {HTMLElement} body */
 export const findRanges = (body) => {
-  /** @type {ElementFindings[]} */
   const links = Array.from(body.querySelectorAll(`${POST_SELECTOR} a`))
     .map((element) => {
       const url = validURL(element.getAttribute('href'));

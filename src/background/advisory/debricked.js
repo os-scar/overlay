@@ -1,4 +1,3 @@
-// @ts-check
 import cache from '../cache';
 /**
  * @typedef {{ dependencyId: number }} DependencyIdResponse
@@ -74,7 +73,7 @@ export default async ({ type, name }) => {
       level,
     };
     return acc;
-  }, /** @type {Record<string, { description: string, score: number, level: Level }>} */ ({}));
+  }, {});
 
   return {
     isBad,

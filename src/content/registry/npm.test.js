@@ -8,10 +8,6 @@ const packageResult = (p) => ({
   ...p,
 });
 
-/**
- * @param {string[]} strings
- * @param  {...string} values
- */
 const cli = (strings, ...values) => {
   let command = strings[0];
   const positions = [];

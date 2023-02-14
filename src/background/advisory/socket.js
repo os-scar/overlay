@@ -1,5 +1,3 @@
-/// <reference path="../../types.js" />
-// @ts-check
 import cache from '../cache';
 
 /**
@@ -42,7 +40,7 @@ export default async ({ type, name }) => {
 
       acc[scoreName] = { score: roundedScore, level };
       return acc;
-    }, /** @type {Record<string, {score: number, level: Level}>} */ ({}));
+    }, {});
 
   return {
     isBad,

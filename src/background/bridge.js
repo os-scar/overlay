@@ -1,8 +1,6 @@
-/// <reference path="../types.js" />
 import { PACKAGE_INFO_ACTION } from '../bridge-sync';
 import advisory from './advisory/index';
 
-/** @param {PackageID} packageID */
 const getPackageInfo = async (packageID) => {
   const packageInfo = await advisory(packageID);
 

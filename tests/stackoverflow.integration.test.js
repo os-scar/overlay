@@ -39,7 +39,7 @@ describe('Real Pages', () => {
     const resultsByLink = results.reduce((acc, { link, ...current }) => {
       acc[link] = current;
       return acc;
-    }, /** @type {Record<string, Omit<typeof results[number], 'link'>>} */ ({}));
+    }, {});
 
     const snapshotFilePath = await writeResultsSnapshot(resultsByLink);
     expect(snapshotFilePath).not.toBeChangedByGit();

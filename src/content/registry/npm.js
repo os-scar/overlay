@@ -10,7 +10,6 @@ const whiteSpace = / +/;
 
 const NPM_COMMAND_REGEX = new RegExp(`${npmAndArgs}${repeatedPackages}`.replaceAll(' ', whiteSpace.source), 'g');
 
-/** @param {string} str */
 const parsePackageString = (str) => {
   const match = str.match(fullPackage);
   return (
@@ -32,7 +31,6 @@ export const parseCommand = (command = '') => {
     if (!packagesPart) return [];
 
     const packages = packagesPart.split(' ');
-    /** @type { (PackageID & { startIndex: number, endIndex: number })[]} */
     let packagesInfo = [];
     packages.forEach((packageStr) => {
       const startIndex = command.indexOf(packageStr, currentIndex);
@@ -50,7 +48,6 @@ export const parseCommand = (command = '') => {
   return results;
 };
 
-/** @param {URL} param0 */
 export const urlParser = ({ pathname }) => {
   if (!pathname.startsWith('/package/')) return;
   const [name, version] = pathname.replace('/package/', '').split('/v/');
