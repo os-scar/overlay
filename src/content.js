@@ -1,9 +1,9 @@
 export const mountContentScript = (contentScript) => {
   window.addEventListener('load', async () => {
-    console.log('SCS TBD is running');
+    console.log('Overlay is running');
 
     await contentScript();
 
-    console.log('SCS TBD is finished');
+    console.log('Overlay is finished');
   });
 };
