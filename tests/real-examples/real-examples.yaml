@@ -1,0 +1,79 @@
+links:
+  https://stackoverflow.com/questions/29461831:
+    comment: high scored
+    post: question
+    registry: npm
+  https://stackoverflow.com/questions/9629682:
+    comment: many links, npm.org without www
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/12147804:
+    comment: link with anchor
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/9023672:
+    comment: ignore npm install local package
+    post: question
+    registry: npm
+  https://stackoverflow.com/questions/3944507:
+    comment: <pre-code> npm install -g node-inspector. with 'trepanjs' in comment
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/28989476:
+    comment: <code> npm i imports-loader --save-dev
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/33527883:
+    comment: npm i -D babel-core babel-polyfill...
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/3608384:
+    comment: ignore 'npm install -d' & find '/usr/local/bin/npm install jade'
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/12008719:
+    comment: npm install --save
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/6237400:
+    comment: npm update -g npm, npm.org
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/22004559:
+    comment: ignore 'npm install "$package"' 'npm install --production'
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/15892076:
+    comment: npm install express@3.0.0, comments
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/24347442:
+    # I don't think we need to support this. The answer should be edited
+    comment: install command inside a quote
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/23440080:
+    comment: npm install -g express-generator@3
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/11233365:
+    comment: may be false positive
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/59188624:
+    comment: npx
+    post: question
+    registry: npm
+  https://stackoverflow.com/questions/22563281:
+    comment: with semver ~
+    post: answer
+    registry: npm
+
+  https://stackoverflow.com/questions/2817869:
+    comment: high scored
+    post: question
+    registry: pypi
+  https://stackoverflow.com/questions/36932:
+    comment: most viewed
+    post: answer
+    registry: pypi

@@ -24,8 +24,8 @@ jobs:
       - name: Build
         if: ${{ steps.semantic_release_info.outputs.git_tag }}
         run: |
-          npm ci
-          npm run build
+          yarn
+          yarn build
         env:
           BUILD_VERSION: ${{ steps.semantic_release_info.outputs.version }}
       
