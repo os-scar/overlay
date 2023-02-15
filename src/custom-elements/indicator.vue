@@ -7,10 +7,17 @@
       tooltipOpen = true;
     "
     @mouseleave="tooltipOpen = false"
+    ref="overlay"
   >
     <div class="overlay-indicator__icon">{{ package.issues }}</div>
     <div class="overlay-indicator__text">
       <slot></slot>
+    </div>
+    <div class="overlay-indicator__tooltip" ref="overlayTooltip" v-show="tooltipOpen">
+      {{ package.name }}
+      <div class="overlay-indicator__tooltip__item" v-for="source in package.sources">
+        {{ source }}
+      </div>
     </div>
   </div>
 </template>
@@ -62,8 +69,6 @@ export default {
       let baseElement = this.$refs.overlay,
         tooltipElement = this.$refs.overlayTooltip,
         tooltipPosition = TOOLTIP_POSITION.BOTTOM;
-      let parent = baseElement.getRootNode().host;
-      parent.style.position = 'absolute';
       this.placeTooltip(baseElement, tooltipElement, tooltipPosition);
     },
     placeTooltip(baseElement, tooltipElement, tooltipPosition) {
@@ -77,6 +82,8 @@ export default {
         tooltipPosition = this.getOppositePosition(tooltipPosition);
         targetPosition = this.getPosition(baseRect, tooltipRect, tooltipPosition);
       }
+      console.debug(baseElement);
+      console.debug('targetPosition', targetPosition);
 
       tooltipElement.style.left = targetPosition.left + 'px';
       tooltipElement.style.top = targetPosition.top + 'px';
@@ -88,43 +95,49 @@ export default {
       switch (tooltipPosition) {
         case TOOLTIP_POSITION.TOP_START:
           return {
-            top: basePadding - tooltipRect.height,
+            top: baseRect.top - basePadding - tooltipRect.height,
             left: baseRect.left,
           };
         case TOOLTIP_POSITION.TOP_END:
           return {
-            top: basePadding - tooltipRect.height,
+            top: baseRect.top - basePadding - tooltipRect.height,
             left: baseRect.left + baseRect.width - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.TOP:
           return {
-            top: 0 - tooltipRect.height,
-            left: baseRect.width / 2 - tooltipRect.width / 2,
+            top: baseRect.top - tooltipRect.height,
+            left: baseRect.left + baseRect.width / 2 - tooltipRect.width / 2,
           };
         case TOOLTIP_POSITION.BOTTOM_START:
           return {
-            top: baseRect.height + basePadding,
-            left: baseRect.left,
+            top: baseRect.top + baseRect.height + basePadding,
+            left: baseRect.left + basePadding,
           };
         case TOOLTIP_POSITION.BOTTOM_END:
           return {
-            top: baseRect.height + basePadding,
-            left: baseRect.width - tooltipRect.width - basePadding,
+            top: baseRect.top + baseRect.height + baseRect.height + basePadding,
+            left: baseRect.left - baseRect.width - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.BOTTOM:
+          if (baseRect.left + baseRect.width / 2 - tooltipRect.width / 2 < 0) {
+            return {
+              top: baseRect.top + baseRect.height + basePadding,
+              left: baseRect.left + baseRect.width / 2,
+            };
+          }
           return {
-            top: baseRect.height + basePadding,
-            left: baseRect.width / 2 - tooltipRect.width / 2,
+            top: baseRect.top + baseRect.height + basePadding,
+            left: baseRect.left + baseRect.width / 2 - tooltipRect.width / 2,
           };
         case TOOLTIP_POSITION.LEFT_START:
           return {
-            top: basePadding,
-            left: tooltipRect.width - basePadding,
+            top: basePadding + baseRect.top,
+            left: baseRect.left - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.LEFT_END:
           return {
-            top: baseRect.height - tooltipRect.height - basePadding,
-            left: tooltipRect.width - basePadding,
+            top: baseRect.top - baseRect.height - tooltipRect.height - basePadding,
+            left: baseRect.left - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.LEFT:
           return {
@@ -202,29 +215,23 @@ export default {
       tooltipRect.height = tooltipRect.height || 440;
       switch (position) {
         case TOOLTIP_POSITION.TOP_START:
-          return targetPosition.top > boundaryRect.top;
+        case TOOLTIP_POSITION.TOP_END:
         case TOOLTIP_POSITION.TOP:
           return targetPosition.top > boundaryRect.top;
-        case TOOLTIP_POSITION.TOP_END:
-          return targetPosition.top > boundaryRect.top;
         case TOOLTIP_POSITION.BOTTOM_START:
-          return targetPosition.top + tooltipRect.height > boundaryRect.bottom;
+        case TOOLTIP_POSITION.BOTTOM_END:
         case TOOLTIP_POSITION.BOTTOM:
           return targetPosition.top + tooltipRect.height < boundaryRect.bottom;
-        case TOOLTIP_POSITION.BOTTOM_END:
-          return targetPosition.top + tooltipRect.height < boundaryRect.bottom;
         case TOOLTIP_POSITION.LEFT_START:
-          return targetPosition.left > boundaryRect.left;
+        case TOOLTIP_POSITION.LEFT_END:
         case TOOLTIP_POSITION.LEFT:
           return targetPosition.left > boundaryRect.left;
-        case TOOLTIP_POSITION.LEFT_END:
-          return targetPosition.left > boundaryRect.left;
         case TOOLTIP_POSITION.RIGHT_START:
-          return targetPosition.left + tooltipRect.width < boundaryRect.right;
+        case TOOLTIP_POSITION.RIGHT_END:
         case TOOLTIP_POSITION.RIGHT:
           return targetPosition.left + tooltipRect.width < boundaryRect.right;
-        case TOOLTIP_POSITION.RIGHT_END:
-          return targetPosition.left + tooltipRect.width < boundaryRect.right;
+        default:
+          return false;
       }
     },
   },
@@ -264,7 +271,6 @@ $indicator-height: 24px;
   border-radius: 4px;
   align-items: center;
   box-shadow: 0 0 0 1px $color-black;
-
   $class-name: &;
 
   &#{$class-name}--issues {
