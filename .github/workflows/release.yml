@@ -1,7 +1,7 @@
 name: Build and Release
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -10,25 +10,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      
+
       - name: Gets release info
         id: semantic_release_info
         uses: jossef/action-semantic-release-info@v2.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Build
         if: ${{ steps.semantic_release_info.outputs.git_tag }}
         run: |
-          npm ci
-          npm run build
+          yarn
+          yarn build
         env:
           BUILD_VERSION: ${{ steps.semantic_release_info.outputs.version }}
-      
+
       - name: Upload Release Artifacts
         if: ${{ steps.semantic_release_info.outputs.git_tag }}
         uses: softprops/action-gh-release@v0.1.15
