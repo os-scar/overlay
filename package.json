@@ -52,6 +52,7 @@
     "web-ext": "^7.5.0"
   },
   "dependencies": {
+    "@webcomponents/custom-elements": "^1.5.1",
     "cheerio": "^1.0.0-rc.12"
   },
   "lint-staged": {

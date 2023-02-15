@@ -16,10 +16,8 @@ export const createElement = (html) => {
   return { body, element };
 };
 
-export const createRealAnswer = (answer) =>
-  createElement(answerTemplate.replace('$$$ANSWER$$$', answer));
-export const createRealComment = (comment) =>
-  createElement(answerTemplate.replace('$$$COMMENT$$$', comment));
+export const createRealAnswer = (answer) => createElement(answerTemplate.replace('$$$ANSWER$$$', answer));
+export const createRealComment = (comment) => createElement(answerTemplate.replace('$$$COMMENT$$$', comment));
 
 const createManualAnswer = (content) => {
   const { element, ...rest } = createElement(`

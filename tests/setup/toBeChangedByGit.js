@@ -7,10 +7,7 @@ expect.extend({
     const isNewFile = lsFilesOut.stdout.trim() === '';
     if (isNewFile)
       return {
-        message: () =>
-          `expected file "${received}" ${
-            isChanged ? 'not ' : ''
-          }to be changed by Git\n\nGit diff:\n${result.stdout}`,
+        message: () => `expected file "${received}" ${isChanged ? 'not ' : ''}to be changed by Git\n\nGit diff:\n${result.stdout}`,
         pass: false,
       };
 
@@ -22,10 +19,7 @@ expect.extend({
 
     // Return the negated result of the matcher
     return {
-      message: () =>
-        `expected file "${received}" ${isChanged ? 'not ' : ''}to be changed by Git\n\nGit diff:\n${
-          result.stdout
-        }`,
+      message: () => `expected file "${received}" ${isChanged ? 'not ' : ''}to be changed by Git\n\nGit diff:\n${result.stdout}`,
       pass: isChanged,
     };
   },

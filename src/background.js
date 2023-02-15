@@ -1,3 +1,3 @@
-import { listen } from "./background/bridge";
+import { listen } from './background/bridge';
 
-listen()
+listen();
