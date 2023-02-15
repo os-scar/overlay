@@ -217,19 +217,19 @@ export default {
         case TOOLTIP_POSITION.TOP_START:
         case TOOLTIP_POSITION.TOP_END:
         case TOOLTIP_POSITION.TOP:
-          return targetPosition.top > boundaryRect.top;
+          return targetPosition.top < boundaryRect.top;
         case TOOLTIP_POSITION.BOTTOM_START:
         case TOOLTIP_POSITION.BOTTOM_END:
         case TOOLTIP_POSITION.BOTTOM:
-          return targetPosition.top + tooltipRect.height < boundaryRect.bottom;
+          return targetPosition.top + tooltipRect.height > boundaryRect.bottom;
         case TOOLTIP_POSITION.LEFT_START:
         case TOOLTIP_POSITION.LEFT_END:
         case TOOLTIP_POSITION.LEFT:
-          return targetPosition.left > boundaryRect.left;
+          return targetPosition.left < boundaryRect.left;
         case TOOLTIP_POSITION.RIGHT_START:
         case TOOLTIP_POSITION.RIGHT_END:
         case TOOLTIP_POSITION.RIGHT:
-          return targetPosition.left + tooltipRect.width < boundaryRect.right;
+          return targetPosition.left + tooltipRect.width > boundaryRect.right;
         default:
           return false;
       }
