@@ -29,29 +29,29 @@ const indicatorStatus = (advisories) => {
 };
 
 const surroundContents = (range, newParent) => {
-  newParent.appendChild(range.extractContents());
-  range.insertNode(newParent);
+  // newParent.appendChild(range.extractContents());
+  const elem = range.startContainer;
+  elem.parentElement.insertBefore(newParent, elem);
 };
 
 export const addIndicator = async ({ range, ...packageID }) => {
   console.debug('Adding indicator for', packageID);
 
-  const indicator = document.createElement('span');
-  indicator.innerHTML = levels.loading;
-  range.insertNode(indicator);
+  const indicator = document.createElement('overlay-indicator');
+  indicator.setAttribute('overlay-indicator-package-type', packageID.type);
+  indicator.setAttribute('overlay-indicator-package-name', packageID.name);
+  // range.surroundContents(indicator)
+  indicator.appendChild(range.extractContents());
+  // range.insertNode(indicator);
+  surroundContents(range, indicator);
 
-  const indicatorContainer = document.createElement('span');
-  indicatorContainer.classList.add('indicator-container', 'indicator-loading');
-  surroundContents(range, indicatorContainer);
+  // const info = await getPackageInfo(packageID);
+  // if (!info) {
+  //   console.error(`Didn't received info`, range, packageID);
+  //   return;
+  // }
 
-  const info = await getPackageInfo(packageID);
-  if (!info) {
-    console.error(`Didn't received info`, range, packageID);
-    return;
-  }
-
-  const level = indicatorStatus(info);
-  console.debug(`level: ${level}`, info);
-  indicator.innerHTML = levels[level];
-  indicatorContainer?.classList.replace('indicator-loading', `indicator-${level}`);
+  // const level = indicatorStatus(info);
+  // console.debug(`level: ${level}`, info);
+  // indicator.innerHTML = levels[level];
 };
