@@ -13,12 +13,14 @@
     <div class="overlay-indicator__text">
       <slot></slot>
     </div>
-    <div class="overlay-indicator__tooltip" ref="overlayTooltip" v-show="tooltipOpen">
-      {{ package.name }}
-      <div class="overlay-indicator__tooltip__item" v-for="source in package.sources">
-        {{ source }}
+    <teleport to="body">
+      <div class="overlay-indicator__tooltip" :style="tooltipStyle" ref="overlayTooltip" v-show="tooltipOpen">
+        {{ package.name }}
+        <div class="overlay-indicator__tooltip__item" v-for="source in package.sources">
+          {{ source }}
+        </div>
       </div>
-    </div>
+    </teleport>
   </div>
 </template>
 
@@ -63,12 +65,24 @@ export default {
     package() {
       return this.store.packages[this.packageId] || {};
     },
+    tooltipStyle() {
+      return {
+        position: 'absolute',
+        padding: '20px',
+        zIndex: '1000',
+        background: '#e12d33',
+        width: '260px',
+        height: '400px',
+        overflow: 'scroll',
+      };
+    },
   },
   methods: {
     initTooltipPosition() {
       let baseElement = this.$refs.overlay,
         tooltipElement = this.$refs.overlayTooltip,
         tooltipPosition = TOOLTIP_POSITION.BOTTOM;
+      let baseParent = baseElement.getRootNode().host || document;
       this.placeTooltip(baseElement, tooltipElement, tooltipPosition);
     },
     placeTooltip(baseElement, tooltipElement, tooltipPosition) {
@@ -78,11 +92,9 @@ export default {
       let targetPosition = this.getPosition(baseRect, tooltipRect, tooltipPosition);
       const parentRect = parent === document ? this.getDocumentBoundingRect() : parent.getBoundingClientRect();
       if (this.shouldFlip(targetPosition, tooltipRect, parentRect, tooltipPosition)) {
-        console.debug('Flipping tooltip position');
         tooltipPosition = this.getOppositePosition(tooltipPosition);
         targetPosition = this.getPosition(baseRect, tooltipRect, tooltipPosition);
       }
-
       tooltipElement.style.left = targetPosition.left + 'px';
       tooltipElement.style.top = targetPosition.top + 'px';
     },
@@ -90,77 +102,78 @@ export default {
       const basePadding = 4;
       tooltipRect.width = tooltipRect.width || 260;
       tooltipRect.height = tooltipRect.height || 400;
+      let pageOffset = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
       switch (tooltipPosition) {
         case TOOLTIP_POSITION.TOP_START:
           return {
-            top: baseRect.top - basePadding - tooltipRect.height,
+            top: pageOffset + baseRect.top - basePadding - tooltipRect.height,
             left: baseRect.left,
           };
         case TOOLTIP_POSITION.TOP_END:
           return {
-            top: baseRect.top - basePadding - tooltipRect.height,
-            left: baseRect.left + baseRect.width - tooltipRect.width - basePadding,
+            top: pageOffset + baseRect.top - basePadding - tooltipRect.height,
+            left: baseRect.left - baseRect.width - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.TOP:
           return {
-            top: baseRect.top - tooltipRect.height,
+            top: pageOffset + baseRect.top - tooltipRect.height,
             left: baseRect.left + baseRect.width / 2 - tooltipRect.width / 2,
           };
         case TOOLTIP_POSITION.BOTTOM_START:
           return {
-            top: baseRect.top + baseRect.height + basePadding,
+            top: pageOffset + baseRect.top + baseRect.height + basePadding,
             left: baseRect.left + basePadding,
           };
         case TOOLTIP_POSITION.BOTTOM_END:
           return {
-            top: baseRect.top + baseRect.height + baseRect.height + basePadding,
+            top: pageOffset + baseRect.top + baseRect.height + baseRect.height + basePadding,
             left: baseRect.left - baseRect.width - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.BOTTOM:
           if (baseRect.left + baseRect.width / 2 - tooltipRect.width / 2 < 0) {
             return {
-              top: baseRect.top + baseRect.height + basePadding,
+              top: pageOffset + baseRect.top + baseRect.height + basePadding,
               left: baseRect.left + baseRect.width / 2,
             };
           }
           return {
-            top: baseRect.top + baseRect.height + basePadding,
+            top: pageOffset + baseRect.top + baseRect.height + basePadding,
             left: baseRect.left + baseRect.width / 2 - tooltipRect.width / 2,
           };
         case TOOLTIP_POSITION.LEFT_START:
           return {
-            top: basePadding + baseRect.top,
+            top: pageOffset + baseRect.top + basePadding,
             left: baseRect.left - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.LEFT_END:
           return {
-            top: baseRect.top - baseRect.height - tooltipRect.height - basePadding,
+            top: pageOffset + baseRect.top - baseRect.height - tooltipRect.height - basePadding,
             left: baseRect.left - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.LEFT:
           return {
-            top: baseRect.top + baseRect.height / 2 - tooltipRect.height / 2,
+            top: pageOffset + baseRect.top + baseRect.height / 2 - tooltipRect.height / 2,
             left: baseRect.left - tooltipRect.width - basePadding,
           };
         case TOOLTIP_POSITION.RIGHT_START:
           return {
-            top: baseRect.top,
-            left: baseRect.width + basePadding,
+            top: pageOffset + baseRect.top,
+            left: baseRect.left + baseRect.width + basePadding,
           };
         case TOOLTIP_POSITION.RIGHT_END:
           return {
-            top: baseRect.height - tooltipRect.height - basePadding,
+            top: pageOffset + baseRect.top - baseRect.height - tooltipRect.height - basePadding,
             left: baseRect.left + baseRect.width,
           };
         case TOOLTIP_POSITION.RIGHT:
           return {
-            top: baseRect.height / 2 - tooltipRect.height / 2,
-            left: baseRect.width + basePadding,
+            top: pageOffset + baseRect.top + baseRect.height / 2 - tooltipRect.height / 2,
+            left: baseRect.left + baseRect.width + basePadding,
           };
         default:
           console.error('Unknown tooltip position', tooltipPosition);
           return {
-            top: baseRect.height + basePadding,
+            top: pageOffset + baseRect.top + baseRect.height + basePadding,
             left: baseRect.left + baseRect.width + basePadding,
           };
       }
@@ -211,15 +224,17 @@ export default {
     shouldFlip(targetPosition, tooltipRect, boundaryRect, position) {
       tooltipRect.width = tooltipRect.width || 260;
       tooltipRect.height = tooltipRect.height || 440;
+      let pageOffset = window.scrollY || document.documentElement.scrollTop;
+      let pageBoundaryBottom = pageOffset + window.innerHeight;
       switch (position) {
         case TOOLTIP_POSITION.TOP_START:
         case TOOLTIP_POSITION.TOP_END:
         case TOOLTIP_POSITION.TOP:
-          return targetPosition.top > boundaryRect.top;
+          return pageOffset + targetPosition.top > pageOffset.top;
         case TOOLTIP_POSITION.BOTTOM_START:
         case TOOLTIP_POSITION.BOTTOM_END:
         case TOOLTIP_POSITION.BOTTOM:
-          return targetPosition.top + tooltipRect.height < boundaryRect.bottom;
+          return pageBoundaryBottom < targetPosition.top + tooltipRect.height;
         case TOOLTIP_POSITION.LEFT_START:
         case TOOLTIP_POSITION.LEFT_END:
         case TOOLTIP_POSITION.LEFT:
@@ -264,10 +279,12 @@ $indicator-height: 24px;
 .overlay-indicator {
   display: inline-flex;
   flex-direction: row;
+  position: relative;
   height: $indicator-height;
   overflow: hidden;
   border-radius: 4px;
   align-items: center;
+  z-index: 10;
   box-shadow: 0 0 0 1px $color-black;
   $class-name: &;
 
@@ -299,7 +316,7 @@ $indicator-height: 24px;
     position: absolute;
     padding: 20px;
     z-index: 1000;
-    background: #eee;
+    background: #e12d33;
     width: 260px;
     height: 400px;
     overflow: scroll;
