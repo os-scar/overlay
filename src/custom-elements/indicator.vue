@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay-indicator" :class="{'overlay-indicator--issues': package.issues??length}">
+  <div class="overlay-indicator" :class="{ 'overlay-indicator--issues': package.issues ?? length }">
     <div class="overlay-indicator__icon">{{ package.issues }}</div>
     <div class="overlay-indicator__text">
       <slot></slot>
@@ -11,35 +11,33 @@
 export default {
   name: 'overlay-indicator',
   props: {
-    'overlayIndicatorPackageType': {
-      type: String
+    overlayIndicatorPackageType: {
+      type: String,
     },
-    'overlayIndicatorPackageName': {
-      type: String
+    overlayIndicatorPackageName: {
+      type: String,
     },
   },
   data() {
-    return {}
+    return {};
   },
   computed: {
     store() {
-      return window.__overlay_global_store || {}
+      return window.__overlay_global_store || {};
     },
     packageId() {
-      return `${this.overlayIndicatorPackageType}/${this.overlayIndicatorPackageName}`
+      return `${this.overlayIndicatorPackageType}/${this.overlayIndicatorPackageName}`;
     },
     package() {
-      return this.store.packages[this.packageId] || {};
-    }
+      return this.store.packages?.[this.packageId] || {};
+    },
   },
-  methods: {}
-}
-
+  methods: {},
+};
 </script>
 
 <style lang="scss" scoped>
-
-$font-family: "Lexend", sans-serif;
+$font-family: 'Lexend', sans-serif;
 $font-size-title: 12px;
 $font-size-score-value: 10px;
 $font-size-score-name: 8px;
@@ -48,7 +46,6 @@ $padding-l1: 4px;
 $padding-l2: 8px;
 $padding: 8px;
 $border-radius: 6px;
-
 
 $color-black: #000;
 $color-red: #ff0000;
@@ -73,7 +70,6 @@ $indicator-height: 24px;
   $class-name: &;
 
   &#{$class-name}--issues {
-
     box-shadow: 0 0 0 1px $color-red;
 
     #{$class-name}__icon {
@@ -95,7 +91,6 @@ $indicator-height: 24px;
 
   &__text {
     padding: $padding-l1;
-
   }
 
   &__tooltip {
@@ -103,5 +98,4 @@ $indicator-height: 24px;
     background: #eee;
   }
 }
-
 </style>

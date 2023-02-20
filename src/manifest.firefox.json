@@ -2,23 +2,14 @@
   "name": "Overlay",
   "version": "{{EXTENSION_VERSION}}",
   "description": "{{EXTENSION_DESCRIPTION}}",
-  "permissions": [
-    "https://deps.dev/*",
-    "https://debricked.com/*",
-    "https://socket.dev/*",
-    "https://snyk.io/*",
-    "https://openbase.com/*"
-  ],
+  "permissions": ["https://deps.dev/*", "https://debricked.com/*", "https://socket.dev/*", "https://snyk.io/*", "https://openbase.com/*"],
   "icons": {
     "48": "icons/icon_48.png"
   },
   "content_scripts": [
     {
       "matches": ["*://stackoverflow.com/*"],
-      "js": [
-        "custom-elements.js",
-        "content.stackoverflow.js"
-      ]
+      "js": ["content.stackoverflow.js"]
     },
     {
       "matches": ["*://www.npmjs.com/package/*"],
@@ -28,5 +19,6 @@
   "background": {
     "scripts": ["background.js"]
   },
+  "web_accessible_resources": ["custom-elements.js"],
   "manifest_version": 2
 }

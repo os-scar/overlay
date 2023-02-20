@@ -15,10 +15,7 @@
   "content_scripts": [
     {
       "matches": ["*://stackoverflow.com/*"],
-      "js": [
-        "custom-elements.js",
-        "content.stackoverflow.js"
-      ]
+      "js": ["content.stackoverflow.js"]
     },
     {
       "matches": ["*://www.npmjs.com/package/*"],
@@ -28,5 +25,11 @@
   "background": {
     "service_worker": "background.js"
   },
+  "web_accessible_resources": [
+    {
+      "resources": ["custom-elements.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "manifest_version": 3
 }
