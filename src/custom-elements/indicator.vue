@@ -1,39 +1,27 @@
 <template>
-  <div class="overlay-indicator" :class="{ 'overlay-indicator--issues': package.issues ?? length }">
-    <div class="overlay-indicator__icon">{{ package.issues }}</div>
+  <div class="overlay-indicator" :class="{ 'overlay-indicator--issues': packageInfo.issues ?? 0 }">
+    <div class="overlay-indicator__icon">{{ packageInfo.issues }}</div>
     <div class="overlay-indicator__text">
       <slot></slot>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'overlay-indicator',
-  props: {
-    overlayIndicatorPackageType: {
-      type: String,
-    },
-    overlayIndicatorPackageName: {
-      type: String,
-    },
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  overlayIndicatorPackageType: {
+    type: String,
   },
-  data() {
-    return {};
+  overlayIndicatorPackageName: {
+    type: String,
   },
-  computed: {
-    store() {
-      return window.__overlay_global_store || {};
-    },
-    packageId() {
-      return `${this.overlayIndicatorPackageType}/${this.overlayIndicatorPackageName}`;
-    },
-    package() {
-      return this.store.packages?.[this.packageId] || {};
-    },
-  },
-  methods: {},
-};
+});
+
+const store = window.__overlay_global_store || {};
+const packageId = computed(() => `${props.overlayIndicatorPackageType}/${props.overlayIndicatorPackageName}`);
+const packageInfo = computed(() => store.packages?.[packageId.value] || {});
 </script>
 
 <style lang="scss" scoped>
