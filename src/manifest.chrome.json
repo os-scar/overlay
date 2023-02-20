@@ -31,5 +31,8 @@
       "matches": ["<all_urls>"]
     }
   ],
+  "externally_connectable": {
+    "matches": ["*://stackoverflow.com/*"]
+  },
   "manifest_version": 3
 }

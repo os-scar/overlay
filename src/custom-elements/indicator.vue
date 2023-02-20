@@ -1,6 +1,12 @@
 <template>
-  <div class="overlay-indicator" :class="{ 'overlay-indicator--issues': packageInfo.issues ?? 0 }">
-    <div class="overlay-indicator__icon">{{ packageInfo.issues }}</div>
+  <div v-if="packageInfo" class="overlay-indicator" :class="{ 'overlay-indicator--issues': issues }">
+    <div class="overlay-indicator__icon">{{ issues }}</div>
+    <div class="overlay-indicator__text">
+      <slot></slot>
+    </div>
+  </div>
+  <div v-else class="overlay-indicator">
+    <div class="overlay-indicator__icon">X</div>
     <div class="overlay-indicator__text">
       <slot></slot>
     </div>
@@ -8,7 +14,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, defineProps, ref } from 'vue';
+import { getPackageInfo } from '../content/bridge';
 
 const props = defineProps({
   overlayIndicatorPackageType: {
@@ -19,9 +26,18 @@ const props = defineProps({
   },
 });
 
-const store = window.__overlay_global_store || {};
-const packageId = computed(() => `${props.overlayIndicatorPackageType}/${props.overlayIndicatorPackageName}`);
-const packageInfo = computed(() => store.packages?.[packageId.value] || {});
+const packageId = computed(() => ({
+  type: props.overlayIndicatorPackageType,
+  name: props.overlayIndicatorPackageName,
+}));
+
+const packageInfo = ref({});
+getPackageInfo(packageId.value).then((info) => {
+  packageInfo.value = info;
+})
+
+const sum = (arr) => arr.reduce((acc, val) => acc + val, 0);
+const issues = computed(() => packageInfo && sum(Object.values(packageInfo.value).filter((advisory) => advisory.issues).map((advisory) => advisory.issues)))
 </script>
 
 <style lang="scss" scoped>

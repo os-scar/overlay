@@ -18,8 +18,11 @@ const listeners = {
 };
 
 export const listen = () => {
-  chrome.runtime.onMessage.addListener(({ action, data }, _sender, sendResponse) => {
+  const listener = ({ action, data }, _sender, sendResponse) => {
     Promise.resolve(listeners[action](data)).then(sendResponse);
     return true;
-  });
+  };
+
+  chrome.runtime.onMessage.addListener(listener);
+  chrome.runtime.onMessageExternal.addListener(listener);
 };
