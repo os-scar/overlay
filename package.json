@@ -15,7 +15,7 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
     "build": "gulp build",
-    "build:watch": "gulp watch",
+    "build:watch": "gulp --series build watch",
     "lint": "eslint src tests",
     "lint:fix": "yarn lint --fix",
     "lint:lockfile": "lockfile-lint --path yarn.lock --allowed-hosts npm yarn --validate-https --validate-package-names --validate-integrity --empty-hostname false",
