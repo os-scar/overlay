@@ -256,10 +256,6 @@ $color-red: #ff0000;
 $color-green: #14ce00;
 $color-white: #fff;
 
-div {
-  box-sizing: border-box;
-}
-
 $indicator-height: 24px;
 
 .overlay-indicator {
@@ -306,6 +302,10 @@ $indicator-height: 24px;
     width: 260px;
     height: 200px;
     overflow: scroll;
+  }
+
+  div {
+    box-sizing: border-box;
   }
 }
 </style>

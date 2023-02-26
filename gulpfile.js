@@ -3,12 +3,11 @@ import zip from 'gulp-zip';
 import replace from 'gulp-replace';
 import rename from 'gulp-rename';
 
-import vitePluginStyleExtractor from './src/custom-elements/exportCss.js';
-
 import { rollup } from 'rollup';
 import * as vite from 'vite';
 import svgLoader from 'vite-svg-loader';
 import vue from '@vitejs/plugin-vue';
+import { promises as fs } from 'fs';
 
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -46,21 +45,32 @@ async function buildCustomElements(outputDirPath) {
     },
     plugins: [vue({ customElement: true }), svgLoader()],
   });
-}
 
-async function compileSass(outputDirPath) {
-  await vite.build({
+  // --------------
+  // Recompile without customElement: true to extract css
+  let results = await vite.build({
     build: {
       emptyOutDir: false,
-      outDir: outputDirPath,
+      write: false,
       lib: {
-        entry: path.join(srcDirPath, 'custom-elements', 'indicator.vue'),
+        entry: path.join(srcDirPath, 'custom-elements', 'index.js'),
         name: 'custom-elements',
         fileName: 'custom-elements',
       },
     },
-    plugins: [vitePluginStyleExtractor({ isSass: true, outputDirPath: outputDirPath })],
+    plugins: [vue(), svgLoader()],
   });
+
+  let customElementsCssOutputFilePath = path.join(distDirPath, 'custom-elements.css');
+
+  let files = results[0].output;
+  for (const file of files) {
+    if (file.name !== 'style.css') {
+      continue;
+    }
+    let cssFileContent = file.source;
+    await fs.writeFile(customElementsCssOutputFilePath, cssFileContent, 'utf8');
+  }
 }
 
 async function buildBrowserExtension(browserType, version, fileExtension) {
@@ -71,8 +81,9 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
   await gulp.src(path.join(scriptDirPath, 'icons', '**', '*')).pipe(gulp.dest(path.join(outputDirPath, 'icons')));
 
   // --------------
-  // custom-elements.js
+  // custom-elements.js + css
   await gulp.src(path.join(distDirPath, 'custom-elements.js')).pipe(gulp.dest(path.join(outputDirPath)));
+  await gulp.src(path.join(distDirPath, 'custom-elements.css')).pipe(gulp.dest(path.join(outputDirPath)));
 
   // --------------
   // manifest.json
@@ -122,12 +133,12 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
     .pipe(zip(`${browserType}_${version}.${fileExtension}`))
     .pipe(gulp.dest(distDirPath));
 }
+
 gulp.task('compile', async () => {
   let version = process.env['BUILD_VERSION'] || DEV_VERSION;
   console.log(`compiling version ${version}`);
 
   await buildCustomElements(distDirPath);
-  await compileSass(distDirPath);
   await buildBrowserExtension(BROWSER_TYPE_CHROME, version, FILE_EXTENSION_ZIP);
   await buildBrowserExtension(BROWSER_TYPE_FIREFOX, version, FILE_EXTENSION_XPI);
 });
