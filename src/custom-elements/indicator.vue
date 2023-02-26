@@ -1,30 +1,10 @@
 <template>
-  <div
-    class="overlay-indicator"
-    :class="{ 'overlay-indicator--issues': package.issues ?? length }"
-    @mouseenter="
-      initTooltipPosition();
-      tooltipOpen = true;
-    "
-    @mouseleave="tooltipOpen = false"
-    ref="overlay"
-  >
-    <div class="overlay-indicator__icon">{{ package.issues }}</div>
-    <div class="overlay-indicator__text">
-      <slot></slot>
-    </div>
-    <teleport to="body">
-      <div class="overlay-indicator__tooltip" :style="tooltipStyle" ref="overlayTooltip" v-show="tooltipOpen">
-        {{ package.name }}
-        <div class="overlay-indicator__tooltip__item" v-for="source in package.sources">
-          {{ source }}
-        </div>
-      </div>
-    </teleport>
-  </div>
+  <div></div>
 </template>
 
 <script>
+import npm_logo from './assets/npm_logo.svg?component';
+
 const TOOLTIP_POSITION = {
   TOP_START: 'top_start',
   TOP_END: 'top_end',
@@ -43,16 +23,18 @@ const TOOLTIP_POSITION = {
 export default {
   name: 'overlay-indicator',
   props: {
-    overlayIndicatorPackageType: {
+    overlayindicatorpackagetype: {
       type: String,
     },
-    overlayIndicatorPackageName: {
+    overlayindicatorpackagename: {
       type: String,
     },
   },
   data() {
     return {
-      tooltipOpen: false,
+      tooltipOpen: true,
+      overTooltip: false,
+      overIndicator: false,
     };
   },
   computed: {
@@ -60,21 +42,10 @@ export default {
       return window.__overlay_global_store || {};
     },
     packageId() {
-      return `${this.overlayIndicatorPackageType}/${this.overlayIndicatorPackageName}`;
+      return `${this.overlayindicatorpackagetype}/${this.overlayindicatorpackagename}`;
     },
     package() {
       return this.store.packages[this.packageId] || {};
-    },
-    tooltipStyle() {
-      return {
-        position: 'absolute',
-        padding: '20px',
-        zIndex: '1000',
-        background: '#e12d33',
-        width: '260px',
-        height: '400px',
-        overflow: 'scroll',
-      };
     },
   },
   methods: {
@@ -82,12 +53,11 @@ export default {
       let baseElement = this.$refs.overlay,
         tooltipElement = this.$refs.overlayTooltip,
         tooltipPosition = TOOLTIP_POSITION.BOTTOM;
-      let baseParent = baseElement.getRootNode().host || document;
       this.placeTooltip(baseElement, tooltipElement, tooltipPosition);
     },
     placeTooltip(baseElement, tooltipElement, tooltipPosition) {
       const baseRect = baseElement.getBoundingClientRect();
-      const tooltipRect = tooltipElement.getBoundingClientRect();
+      const tooltipRect = tooltipElement.getBoundingClientRect() || {};
       const parent = baseElement.getRootNode().host || document;
       let targetPosition = this.getPosition(baseRect, tooltipRect, tooltipPosition);
       const parentRect = parent === document ? this.getDocumentBoundingRect() : parent.getBoundingClientRect();
@@ -101,7 +71,7 @@ export default {
     getPosition(baseRect, tooltipRect, tooltipPosition) {
       const basePadding = 4;
       tooltipRect.width = tooltipRect.width || 260;
-      tooltipRect.height = tooltipRect.height || 400;
+      tooltipRect.height = tooltipRect.height || 200;
       let pageOffset = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
       switch (tooltipPosition) {
         case TOOLTIP_POSITION.TOP_START:
@@ -171,7 +141,6 @@ export default {
             left: baseRect.left + baseRect.width + basePadding,
           };
         default:
-          console.error('Unknown tooltip position', tooltipPosition);
           return {
             top: pageOffset + baseRect.top + baseRect.height + basePadding,
             left: baseRect.left + baseRect.width + basePadding,
@@ -247,14 +216,31 @@ export default {
           return false;
       }
     },
+    shouldCloseTooltip() {
+      setTimeout(() => {
+        if (!this.overTooltip && !this.overIndicator) {
+          this.tooltipOpen = false;
+        }
+      }, 300);
+    },
+    shortenStarsCount(number) {
+      if (number < 1e3) return number;
+      if (number >= 1e3 && number < 1e6) return +(number / 1e3).toFixed(1) + 'K';
+      if (number >= 1e6 && number < 1e9) return +(number / 1e6).toFixed(1) + 'M';
+      if (number >= 1e9 && number < 1e12) return +(number / 1e9).toFixed(1) + 'B';
+      if (number >= 1e12) return +(number / 1e12).toFixed(1) + 'T';
+    },
   },
   mounted() {
     this.initTooltipPosition();
   },
+  components: {
+    npm_logo,
+  },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $font-family: 'Lexend', sans-serif;
 $font-size-title: 12px;
 $font-size-score-value: 10px;
@@ -318,7 +304,7 @@ $indicator-height: 24px;
     z-index: 1000;
     background: #e12d33;
     width: 260px;
-    height: 400px;
+    height: 200px;
     overflow: scroll;
   }
 }

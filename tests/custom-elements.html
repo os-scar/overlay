@@ -198,7 +198,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>test</title>
     <script src="../dist/custom-elements.js"></script>
-
     <title>node.js - libsass bindings not found when using node-sass in nodejs - Stack Overflow</title>
     <script
       type="text/javascript"
@@ -418,6 +417,70 @@
     <script>
       StackExchange.init();
     </script>
+    <script>
+      let store = window.__overlay_global_store;
+
+      function loadNodeIpc(store) {
+        store.packages['npm/node-sass'] = {
+          name: 'node-sass',
+          issues: 4,
+          type: 'npm',
+          created: new Date(),
+          stars: 50000,
+          sources: [
+            {
+              name: 'checkmarx',
+              loading: true,
+            },
+            {
+              name: 'socket.dev',
+              issues: 3,
+              data: {
+                supplyChain: 100,
+                quality: 74,
+                maintenance: 78,
+                vulnerabilities: 100,
+                license: 88,
+              },
+            },
+            {
+              name: 'openbase',
+              data: {
+                userRating: 4.8,
+                userFeedback: [
+                  { name: 'Easy to use', positive: true },
+                  { name: 'Great Documentation', positive: true },
+                  { name: 'Performant', positive: true },
+                  { name: 'Bleeding Edge', positive: false },
+                  { name: 'Highly Customizable', positive: false },
+                  { name: 'Responsive Maintainers', positive: false },
+                ],
+              },
+            },
+            {
+              name: 'scorecards',
+              data: {
+                score: 7.5,
+                checks: [
+                  { description: 'Using protected branches', score: 3.2 },
+                  { description: 'signed commits', score: 5.2 },
+                ],
+              },
+            },
+            {
+              name: 'debricked',
+              error: true,
+            },
+            {
+              name: 'snyk',
+              loading: true,
+            },
+          ],
+        };
+      }
+
+      loadNodeIpc(store);
+    </script>
 
     <script>
       StackExchange.using.setCacheBreakers({
@@ -458,6 +521,7 @@
         transform: translate(0, 0);
         position: relative;
       }
+
       * {
         box-sizing: border-box;
       }
@@ -1440,10 +1504,8 @@
                         I executed
                         <code
                           >npm i
-                          <span position="relative"
-                            ><overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="node-sass"
-                              >node-sass</overlay-indicator
-                            ></span
+                          <overlay-indicator overlayIndicatorPackageType="npm" overlayIndicatorPackageName="node-sass"
+                            >node-sass</overlay-indicator
                           ></code
                         >
                         to install the module, no errors so far.<br />
@@ -1751,8 +1813,11 @@
                                 >I ran into this within my Ionic project after I updated to the lated NodeJS release -- the out put
                                 instructs to run a
                                 <code
-                                  >npm rebuild
-                                  <overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="node-sass" class="oi-wrapper"
+                                  >npm rebuild blahblahblahbla hblahlbalhahlblahalhlalalallaall alalalalalasl
+                                  <overlay-indicator
+                                    overlayIndicatorPackageType="npm"
+                                    overlayIndicatorPackageName="node-sass"
+                                    class="oi-wrapper"
                                     >node-sass</overlay-indicator
                                   ></code
                                 >, which got rid of the error for me/my environment.</span
@@ -2555,13 +2620,13 @@ npm install --save-dev gulp-sass@2
                       <div class="s-prose js-post-body" itemprop="text">
                         <p>You’ve probably tried to reinstall node-sass while using</p>
 
-                        <pre><code>npm install <overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
+                        <pre><code>npm install <overlay-indicator overlayIndicatorPackageType="npm" overlayIndicatorPackageName="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
 </code></pre>
 
                         <p>or</p>
 
                         <pre><code>npm uninstall node-sass
-npm install <overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
+npm install <overlay-indicator overlayIndicatorPackageType="npm" overlayIndicatorPackageName="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
 </code></pre>
 
                         <p>
@@ -2569,7 +2634,7 @@ npm install <overlay-indicator overlay-indicator-type="npm" overlay-indicator-pa
                           <a href="https://docs.npmjs.com/cli/rebuild">npm rebuild</a>:
                         </p>
 
-                        <pre><code>npm rebuild <overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
+                        <pre><code>npm rebuild <overlay-indicator overlayIndicatorPackageType="npm" overlayIndicatorPackageName="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
 </code></pre>
                       </div>
                       <div class="mt24">
@@ -3016,9 +3081,9 @@ npm install <overlay-indicator overlay-indicator-type="npm" overlay-indicator-pa
                         <p>Combining the two answers above worked for me, plus additions:</p>
 
                         <pre><code>sudo npm uninstall --save gulp-sass
-npm install --save <overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
+npm install --save <overlay-indicator overlayIndicatorPackageType="npm" overlayIndicatorPackageName="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
 npm update
-npm rebuild <overlay-indicator overlay-indicator-type="npm" overlay-indicator-pacakge="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
+npm rebuild <overlay-indicator overlayIndicatorPackageType="npm" overlayIndicatorPackageName="node-sass" class="oi-wrapper">node-sass</overlay-indicator>
 </code></pre>
                       </div>
                       <div class="mt24">
