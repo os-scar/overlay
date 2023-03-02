@@ -1,196 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8" />-->
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
-<!--  <title>test</title>-->
-<!--  <script src="../dist/custom-elements.js"></script>-->
-
-<!--  <style>-->
-<!--      html,-->
-<!--      body {-->
-<!--          margin: 0;-->
-<!--      }-->
-
-<!--      body {-->
-<!--          padding: 10px;-->
-<!--      }-->
-
-<!--      .question {-->
-<!--          background: #eee;-->
-<!--          padding: 20px;-->
-<!--          overflow: hidden;-->
-<!--      }-->
-<!--      overlay-indicator {-->
-<!--                    display: inline-flex;-->
-<!--                    transform: translate(0, 0);-->
-<!--                    position: relative;-->
-<!--                }-->
-<!--  </style>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="question">-->
-<!--  npm install react -> npm install-->
-<!--  <overlay-indicator overlay-indicator-package-type="npm" overlay-indicator-package-name="react">react</overlay-indicator>-->
-
-<!--  <br /><br />-->
-
-<!--  <br /><br />-->
-
-<!--  npm install-->
-<!--  <overlay-indicator overlay-indicator-package-type="npm" overlay-indicator-package-name="react">react</overlay-indicator>-->
-
-<!--  <br /><br />-->
-
-<!--  <br /><br />-->
-
-<!--  or you can install-->
-<!--  <overlay-indicator overlay-indicator-package-type="npm" overlay-indicator-package-name="node-ipc"-->
-<!--  ><a href="https://github.com">node-ipc</a></overlay-indicator-->
-<!--  >-->
-
-<!--  <br />-->
-<!--  <br />-->
-<!--  <br />-->
-
-<!--  <button onclick="loadNodeIpc()">set data node ipc</button>-->
-<!--  <button onclick="loadReact()">set data react</button>-->
-<!--</div>-->
-
-<!--<script>-->
-<!--  const store = window.__overlay_global_store;-->
-
-<!--  function loadNodeIpc() {-->
-<!--    store.packages["npm/node-ipc"] = {-->
-<!--      name: "node-ipc",-->
-<!--      issues: 4,-->
-<!--      type: "npm",-->
-<!--      created: new Date(),-->
-<!--      stars: 50000,-->
-<!--      sources: [-->
-<!--        {-->
-<!--          name: "checkmarx",-->
-<!--          loading: true-->
-<!--        },-->
-<!--        {-->
-<!--          name: "socket.dev",-->
-<!--          issues: 3,-->
-<!--          data: {-->
-<!--            supplyChain: 100,-->
-<!--            quality: 74,-->
-<!--            maintenance: 78,-->
-<!--            vulnerabilities: 100,-->
-<!--            license: 88-->
-<!--          }-->
-<!--        },-->
-<!--        {-->
-<!--          name: "openbase",-->
-<!--          data: {-->
-<!--            userRating: 4.8,-->
-<!--            userFeedback: [-->
-<!--              { name: "Easy to use", positive: true },-->
-<!--              { name: "Great Documentation", positive: true },-->
-<!--              { name: "Performant", positive: true },-->
-<!--              { name: "Bleeding Edge", positive: false },-->
-<!--              { name: "Highly Customizable", positive: false },-->
-<!--              { name: "Responsive Maintainers", positive: false }-->
-<!--            ]-->
-<!--          }-->
-<!--        },-->
-<!--        {-->
-<!--          name: "scorecards",-->
-<!--          data: {-->
-<!--            score: 7.5,-->
-<!--            checks: [-->
-<!--              { description: "Using protected branches", score: 3.2 },-->
-<!--              { description: "signed commits", score: 5.2 }-->
-<!--              // ...-->
-<!--            ]-->
-<!--          }-->
-<!--        },-->
-<!--        {-->
-<!--          name: "debricked",-->
-<!--          error: true-->
-<!--        },-->
-<!--        {-->
-<!--          name: "debricked",-->
-<!--          data: {-->
-<!--            contributors: 77,-->
-<!--            popularity: 82,-->
-<!--            security: 59-->
-<!--          }-->
-<!--        }-->
-<!--      ]-->
-<!--    };-->
-<!--  }-->
-
-<!--  function loadReact() {-->
-<!--    store.packages["npm/react"] = {-->
-<!--      name: "react",-->
-<!--      issues: 8,-->
-<!--      type: "npm",-->
-<!--      created: new Date(),-->
-<!--      stars: 50000,-->
-<!--      sources: [-->
-<!--        {-->
-<!--          name: "checkmarx",-->
-<!--          loading: true-->
-<!--        },-->
-<!--        {-->
-<!--          name: "socket.dev",-->
-<!--          issues: 3,-->
-<!--          data: {-->
-<!--            supplyChain: 100,-->
-<!--            quality: 74,-->
-<!--            maintenance: 78,-->
-<!--            vulnerabilities: 100,-->
-<!--            license: 88-->
-<!--          }-->
-<!--        },-->
-<!--        {-->
-<!--          name: "openbase",-->
-<!--          data: {-->
-<!--            userRating: 4.8,-->
-<!--            userFeedback: [-->
-<!--              { name: "Easy to use", positive: true },-->
-<!--              { name: "Great Documentation", positive: true },-->
-<!--              { name: "Performant", positive: true },-->
-<!--              { name: "Bleeding Edge", positive: false },-->
-<!--              { name: "Highly Customizable", positive: false },-->
-<!--              { name: "Responsive Maintainers", positive: false }-->
-<!--            ]-->
-<!--          }-->
-<!--        },-->
-<!--        {-->
-<!--          name: "scorecards",-->
-<!--          data: {-->
-<!--            score: 7.5,-->
-<!--            checks: [-->
-<!--              { description: "Using protected branches", score: 3.2 },-->
-<!--              { description: "signed commits", score: 5.2 }-->
-<!--              // ...-->
-<!--            ]-->
-<!--          }-->
-<!--        },-->
-<!--        {-->
-<!--          name: "debricked",-->
-<!--          error: true-->
-<!--        },-->
-<!--        {-->
-<!--          name: "debricked",-->
-<!--          data: {-->
-<!--            contributors: 77,-->
-<!--            popularity: 82,-->
-<!--            security: 59-->
-<!--          }-->
-<!--        }-->
-<!--      ]-->
-<!--    };-->
-<!--  }-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -244,7 +51,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Shared/stacks.css?v=549572c32c99" />
     <link rel="stylesheet" type="text/css" href="https://cdn.sstatic.net/Sites/stackoverflow/primary.css?v=b44b2f2b0c35" />
-
+    <link rel="stylesheet" href="../dist/custom-elements.css" />
     <link
       rel="alternate"
       type="application/atom+xml"
@@ -481,7 +288,6 @@
 
       loadNodeIpc(store);
     </script>
-
     <script>
       StackExchange.using.setCacheBreakers({
         'Js/adops.en.js': '6da43f5e0a84',
@@ -531,15 +337,8 @@
         padding: 0;
       }
     </style>
-    <noscript id="noscript-css">
-      <style>
-        body,
-        .s-topbar {
-          margin-top: 1.9em;
-        }
-      </style>
-    </noscript>
   </head>
+
   <body class="question-page unified-theme">
     <div id="notify-container"></div>
     <div id="custom-header"></div>
@@ -1506,8 +1305,8 @@
                           >npm i
                           <overlay-indicator overlayIndicatorPackageType="npm" overlayIndicatorPackageName="node-sass"
                             >node-sass</overlay-indicator
-                          ></code
-                        >
+                          >
+                        </code>
                         to install the module, no errors so far.<br />
                       </p>
 
