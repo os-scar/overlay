@@ -28,67 +28,14 @@
         "
         ref="overlayTooltip"
       >
-        <div class="overlay-indicator__tooltip__header">
-          <div class="overlay-indicator__tooltip__header__metadata">
-            <div class="overlay-indicator__tooltip__header__metadata__package_name">{{ package.name }}</div>
-            <component :is="`${package.type}_logo`" class="overlay-indicator__tooltip__header__metadata__package_type"></component>
-            <div class="overlay-indicator__tooltip__header__metadata__package_stars">{{ shortenStarsCount(package.stars) }}</div>
-          </div>
-          <div class="overlay-indicator__tooltip__header__expand"></div>
-        </div>
-        <div class="overlay-indicator__tooltip__item" v-for="source in package.sources">
-          <div class="overlay-indicator__tooltip__item__openssf" v-if="source.name === 'scorecards' && !source.error">
-            <div class="overlay-indicator__tooltip__item__openssf__metadata">
-              <div class="overlay-indicator__tooltip__item__openssf__metadata__logo"></div>
-              <div class="overlay-indicator__tooltip__item__openssf__metadata__name">OpenSSF</div>
-            </div>
-            <div class="overlay-indicator__tooltip__item__openssf__score">
-              <div class="overlay-indicator__tooltip__item__openssf__score__value">{{ source.data.score }} / 10</div>
-              <div class="overlay-indicator__tooltip__item__openssf__score__name">Scorecard</div>
-            </div>
-          </div>
-          <div class="overlay-indicator__tooltip__item__openbase" v-if="source.name === 'openbase' && !source.error">
-            <div class="overlay-indicator__toltip__item__openbase__metadata">
-              <div class="overlay-indicator__tooltip__item__openbase__metadata__logo"></div>
-              <div class="overlay-indicator__tooltip__item__openbase__metadata__name">OpenBase</div>
-            </div>
-            <div class="overlay-indicator__tooltip__item__openbase__score">
-              <div class="overlay-indicator__tooltip__item__openbase__score__value">{{ source.data['userRating'] }} / 5</div>
-              <div class="overlay-indicator__tooltip__item__openbase__score__name">user rating</div>
-            </div>
-          </div>
-          <div class="overlay-indicator__tooltip__item__debricked" v-if="source.name === 'debricked' && !source.error">
-            <div class="overlay-indicator__tooltip__item__debricked__metadata">
-              <div class="overlay-indicator__tooltip__item__debricked__metadata__logo"></div>
-              <div class="overlay-indicator__tooltip__item__debricked__metadata__name">Debricked</div>
-            </div>
-            <div class="overlay-indicator__tooltip__item__debricked__score">{{ source.score }}</div>
-          </div>
-          <div class="overlay-indicator__tooltip__item__socket" v-if="source.name === 'socket.dev' && !source.error">
-            <div class="overlay-indicator__tooltip__item__socket__metadata">
-              <div class="overlay-indicator__tooltip__item__socket__metadata__logo"></div>
-              <div class="overlay-indicator__tooltip__item__socket__metadata__name">Socket</div>
-            </div>
-            <div class="overlay-indicator__tooltip__item__socket__score">
-              <div class="overlay-indicator__tooltip__item__socket__score__value">{{ source.data['supplyChain'] }} / 100</div>
-              <div class="overlay-indicator__tooltip__item__socket__score__name">Supply Chain</div>
-            </div>
-          </div>
-          <div class="overlay-indicator__tooltip__item__checkmarx" v-if="source.name === 'checkmarx' && !source.error">
-            <div class="overlay-indicator__tooltip__item__checkmarx__metadata">
-              <div class="overlay-indicator__tooltip__item__checkmarx__metadata__logo"></div>
-              <div class="overlay-indicator__tooltip__item__checkmarx__metadata__name">Checkmarx</div>
-            </div>
-            <div class="overlay-indicator__tooltip__item__checkmarx__score">{{ source.score }}</div>
-          </div>
-          <div class="overlay-indicator__tooltip__item__snyk" v-if="source.name === 'snyk' && !source.error">
-            <div class="overlay-indicator__tooltip__item__snyk__metadata">
-              <div class="overlay-indicator__tooltip__item__snyk__metadata__logo"></div>
-              <div class="overlay-indicator__tooltip__item__snyk__metadata__name">Snyk</div>
-            </div>
-            <div class="overlay-indicator__tooltip__item__snyk__score">{{ source.score }}</div>
-          </div>
-        </div>
+        <!-- test to open url in new page svg-->
+        <a target="_blank" :href="`https://www.npmjs.com/package/${package.name}`">{{ package.name }}</a>
+
+        <!-- test to load svg-->
+        <component :is="`${package.type}_logo`"></component>
+
+        <!-- just show all package json at the moment-->
+        <div>{{ package }}</div>
       </div>
     </teleport>
   </div>
@@ -115,10 +62,10 @@ const TOOLTIP_POSITION = {
 export default {
   name: 'overlay-indicator',
   props: {
-    overlayindicatorpackagetype: {
+    overlayIndicatorPackageType: {
       type: String,
     },
-    overlayindicatorpackagename: {
+    overlayIndicatorPackageName: {
       type: String,
     },
   },
@@ -134,7 +81,7 @@ export default {
       return window.__overlay_global_store || {};
     },
     packageId() {
-      return `${this.overlayindicatorpackagetype}/${this.overlayindicatorpackagename}`;
+      return `${this.overlayIndicatorPackageType}/${this.overlayIndicatorPackageName}`;
     },
     package() {
       return this.store.packages[this.packageId] || {};
@@ -314,13 +261,6 @@ export default {
           this.tooltipOpen = false;
         }
       }, 300);
-    },
-    shortenStarsCount(number) {
-      if (number < 1e3) return number;
-      if (number >= 1e3 && number < 1e6) return +(number / 1e3).toFixed(1) + 'K';
-      if (number >= 1e6 && number < 1e9) return +(number / 1e6).toFixed(1) + 'M';
-      if (number >= 1e9 && number < 1e12) return +(number / 1e9).toFixed(1) + 'B';
-      if (number >= 1e12) return +(number / 1e12).toFixed(1) + 'T';
     },
   },
   mounted() {

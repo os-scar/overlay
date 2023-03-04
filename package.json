@@ -49,6 +49,7 @@
     "vite": "^3.2.3",
     "vite-svg-loader": "^4.0.0",
     "vue": "^3.2.41",
+    "@webcomponents/custom-elements": "^1.5.1",
     "web-ext": "^7.5.0"
   },
   "dependencies": {
