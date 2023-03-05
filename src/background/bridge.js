@@ -4,12 +4,14 @@ import advisory from './advisory/index';
 const getPackageInfo = async (packageID) => {
   const packageInfo = await advisory(packageID);
 
+  const { latestVersion, license, stars } = packageInfo.depsDev.data;
+
   return {
-    id: {
-      ...packageID,
-      latestVersion: packageInfo.depsDev?.latestVersion,
-    },
-    ...packageInfo,
+    ...packageID,
+    latest: latestVersion,
+    license,
+    stars,
+    sources: packageInfo,
   };
 };
 
