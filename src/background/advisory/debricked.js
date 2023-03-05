@@ -60,13 +60,13 @@ export default async ({ type, name }) => {
   const { dependencyId } = await getDependencyId(type, name);
   const { metrics: packageMetrics } = await getOshData(dependencyId);
 
-  let isBad = false;
+  let issues = 0;
 
   const badges = Object.values(packageMetrics).reduce((acc, { score, metric_type_id }) => {
     const { name, description } = model[metric_type_id];
     const roundedScore = Math.round(score / 10);
     const level = getLevel(roundedScore);
-    if (level === 'BAD') isBad = true;
+    if (level === 'BAD') issues++;
     acc[name] = {
       description,
       score: roundedScore,
@@ -76,7 +76,7 @@ export default async ({ type, name }) => {
   }, {});
 
   return {
-    isBad,
-    badges,
+    issues,
+    data: badges,
   };
 };

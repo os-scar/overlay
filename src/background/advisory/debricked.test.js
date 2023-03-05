@@ -6,8 +6,8 @@ describe('debricked', () => {
     const res = await debricked({ type: 'npm', name: 'react' });
 
     expect(res).toStrictEqual({
-      isBad: expect.any(Boolean),
-      badges: {
+      issues: expect.any(Number),
+      data: {
         Contributors: {
           description: expect.any(String),
           score: expect.any(Number),

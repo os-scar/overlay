@@ -73,12 +73,14 @@ const typeMap = {
 export default async ({ type, name }) => {
   const { starRating, starRatingCount, badges } = await getOpenbasePackage(name, typeMap[type]);
   const top5badges = badges.nodes.sort((a, b) => b.voteCount - a.voteCount).slice(0, 5);
-  const isBad = top5badges.some(({ isPositive }) => !isPositive);
+  const issues = top5badges.filter(({ isPositive }) => !isPositive).length;
 
   return {
-    isBad,
-    starRating,
-    starRatingCount,
-    badges: top5badges,
+    issues,
+    data: {
+      starRating,
+      starRatingCount,
+      badges: top5badges,
+    },
   };
 };
