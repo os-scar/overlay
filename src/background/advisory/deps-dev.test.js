@@ -6,17 +6,19 @@ describe('deps-dev', () => {
     const res = await depsDev({ type: 'npm', name: 'react' });
 
     expect(res).toStrictEqual({
-      isBad: expect.any(Boolean),
-      latestVersion: '18.2.0',
-      repo: 'https://github.com/facebook/react',
-      scorecard: {
-        score: 6.1,
-        metrics: expect.objectContaining({
-          'Binary-Artifacts': 10,
-        }),
+      issues: expect.any(Number),
+      data: {
+        latestVersion: '18.2.0',
+        repo: 'https://github.com/facebook/react',
+        scorecard: {
+          score: 6.1,
+          metrics: expect.objectContaining({
+            'Binary-Artifacts': 10,
+          }),
+        },
+        licenses: ['MIT'],
+        stars: expect.any(Number),
       },
-      licenses: ['MIT'],
-      stars: expect.any(Number),
     });
   });
 });

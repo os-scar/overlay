@@ -30,20 +30,20 @@ const getPackageDetails = (type, name) =>
 export default async ({ type, name }) => {
   const { score: scoresList } = await getPackageDetails(type, name);
 
-  let isBad = false;
+  let issues = 0;
   const scores = Object.entries(scoresList)
     .filter(([scoreName, { score }]) => scoreName !== 'miscellaneous' && typeof score === 'number')
     .reduce((acc, [scoreName, { score }]) => {
       const roundedScore = Math.ceil(score * 100);
       const level = getLevel(roundedScore);
-      if (level === 'BAD') isBad = true;
+      if (level === 'BAD') issues++;
 
       acc[scoreName] = { score: roundedScore, level };
       return acc;
     }, {});
 
   return {
-    isBad,
-    scores,
+    issues,
+    data: scores,
   };
 };

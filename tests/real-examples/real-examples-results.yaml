@@ -595,6 +595,11 @@ https://stackoverflow.com/questions/6237400:
         module</a>
       type: npm
       name: 'n'
+    - range: >-
+        <a href="https://www.npmjs.com/package/n?activeTab=readme"
+        rel="noreferrer">click here</a>
+      type: npm
+      name: 'n'
     - range: |-
         <code>npm update -g npm
         </code>
@@ -760,11 +765,6 @@ https://stackoverflow.com/questions/6237400:
       type: npm
       name: 'n'
     - range: |-
-        <code>npm install -g npm@latest
-        </code>
-      type: npm
-      name: npm
-    - range: |-
         <code>npm i npm
         </code>
       type: npm
@@ -830,6 +830,11 @@ https://stackoverflow.com/questions/6237400:
         <code>sudo npm cache clean -f
         sudo npm install -g n
         sudo n &lt;specific version&gt;
+        </code>
+      type: npm
+      name: 'n'
+    - range: |-
+        <code>npm install -g n
         </code>
       type: npm
       name: 'n'
