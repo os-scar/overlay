@@ -10,8 +10,8 @@ describe('socket', () => {
       level: expect.stringMatching(/^GOOD|WARNING|BAD$/),
     });
     expect(res).toStrictEqual({
-      isBad: expect.any(Boolean),
-      scores: {
+      issues: expect.any(Number),
+      data: {
         license: expectScore,
         maintenance: expectScore,
         quality: expectScore,
@@ -20,13 +20,13 @@ describe('socket', () => {
       },
     });
 
-    expect(res.isBad).toBe(Object.values(res.scores).some(({ level }) => level === 'BAD'));
+    expect(res.issues).toBe(Object.values(res.data).filter(({ level }) => level === 'BAD').length);
   });
 
   it('should return scores between 0-100', async () => {
     const res = await socket({ type: 'npm', name: 'react' });
 
-    Object.values(res.scores).forEach(({ score }) => {
+    Object.values(res.data).forEach(({ score }) => {
       expect(score).toBeGreaterThanOrEqual(0);
       expect(score).toBeLessThanOrEqual(100);
     });

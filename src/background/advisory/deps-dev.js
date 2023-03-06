@@ -56,14 +56,16 @@ export default async ({ type, name }) => {
   }, /** @type {Record<string, number>} */ ({}));
 
   return {
-    isBad: false,
-    latestVersion: version,
-    repo: links.repo,
-    licenses,
-    scorecard: {
-      score: project?.scorecardV2.score,
-      metrics,
+    issues: 0,
+    data: {
+      latestVersion: version,
+      repo: links.repo,
+      licenses,
+      scorecard: {
+        score: project?.scorecardV2.score,
+        metrics,
+      },
+      stars: project?.stars,
     },
-    stars: project?.stars,
   };
 };

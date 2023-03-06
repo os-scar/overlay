@@ -7,24 +7,27 @@ describe('openbase', () => {
     const res = await openbase({ type: 'npm', name: 'react' });
 
     expect(res).toStrictEqual({
-      isBad: expect.any(Boolean),
-      starRating: expect.any(Number),
-      starRatingCount: expect.any(Number),
-      badges: expect.arrayContaining([
-        {
-          name: expect.any(String),
-          urlSlug: expect.any(String),
-          isPositive: expect.any(Boolean),
-          voteCount: expect.any(Number),
-        },
-      ]),
+      issues: expect.any(Number),
+      data: {
+        starRating: expect.any(Number),
+        starRatingCount: expect.any(Number),
+        badges: expect.arrayContaining([
+          {
+            name: expect.any(String),
+            urlSlug: expect.any(String),
+            isPositive: expect.any(Boolean),
+            voteCount: expect.any(Number),
+          },
+        ]),
+      },
     });
 
-    expect(res.badges).toHaveLength(expectedBadgesCount);
+    const badges = res.data.badges;
+    expect(badges).toHaveLength(expectedBadgesCount);
 
-    for (let i = 1; i < res.badges.length; i++) {
-      const prev = res.badges[i - 1];
-      const current = res.badges[i];
+    for (let i = 1; i < badges.length; i++) {
+      const prev = badges[i - 1];
+      const current = badges[i];
       expect(prev.voteCount).toBeGreaterThanOrEqual(current.voteCount);
     }
   });

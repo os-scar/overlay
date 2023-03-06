@@ -36,6 +36,7 @@ const scrapeScoreFromSnyk = (registry, packageName) =>
     const [score, maxScore] = scoreTxt?.split('/').map((n) => Number.parseInt(n.trim())) || [];
     const level = barLevelToLevel[$(SNYK_SCORE_BAR_SELECTOR).attr()['data-level']];
 
+    let issues = 0;
     const badges = $(SNYK_SECURITY_SCORE_SELECTOR)
       .toArray()
       .reduce((acc, li) => {
@@ -44,11 +45,21 @@ const scrapeScoreFromSnyk = (registry, packageName) =>
         const level = getLevelFromClassList(border);
         const description = border.text();
 
+        if (level === 'BAD') issues++;
+
         acc[category] = { level, description };
         return acc;
       }, {});
 
-    return { isBad: level === 'BAD', score, maxScore, level, badges };
+    return {
+      issues,
+      data: {
+        score,
+        maxScore,
+        level,
+        badges,
+      },
+    };
   });
 
 const typesMap = {
