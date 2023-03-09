@@ -82,7 +82,10 @@ export default {
   },
   computed: {
     issues() {
-      return this.packageInfo ? sum(Object.values(this.packageInfo.sources).map(({ issues }) => issues)) : 0;
+      if (!this.packageInfo?.sources) return 0;
+
+      const sources = Object.values(this.packageInfo.sources).filter((s) => s);
+      return sum(sources.map(({ issues }) => issues));
     },
   },
   methods: {
