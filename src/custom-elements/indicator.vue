@@ -1,7 +1,7 @@
 <template>
   <div
     class="overlay-indicator"
-    :class="{ 'overlay-indicator--issues': package.issues ?? length }"
+    :class="{ 'overlay-indicator--issues': issues }"
     @mouseenter="
       initTooltipPosition();
       this.overIndicator = true;
@@ -13,7 +13,7 @@
     "
     ref="overlay"
   >
-    <div class="overlay-indicator__icon">{{ package.issues }}</div>
+    <div class="overlay-indicator__icon">{{ issues }}</div>
     <div class="overlay-indicator__text">
       <slot></slot>
     </div>
@@ -29,20 +29,23 @@
         ref="overlayTooltip"
       >
         <!-- test to open url in new page svg-->
-        <a target="_blank" :href="`https://www.npmjs.com/package/${package.name}`">{{ package.name }}</a>
+        <a target="_blank" :href="`https://www.npmjs.com/package/${packageInfo?.name}`">{{ packageInfo?.name }}</a>
 
         <!-- test to load svg-->
-        <component :is="`${package.type}_logo`"></component>
+        <component :is="`${packageInfo?.type}_logo`"></component>
 
         <!-- just show all package json at the moment-->
-        <div>{{ package }}</div>
+        <div>{{ packageInfo }}</div>
       </div>
     </teleport>
   </div>
 </template>
 
 <script>
+import { getPackageInfo } from '../content/bridge';
 import npm_logo from './assets/npm_logo.svg?component';
+
+const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
 const TOOLTIP_POSITION = {
   TOP_START: 'top_start',
@@ -74,17 +77,15 @@ export default {
       tooltipOpen: false,
       overTooltip: false,
       overIndicator: false,
+      packageInfo: null,
     };
   },
   computed: {
-    store() {
-      return window.__overlay_global_store || {};
-    },
-    packageId() {
-      return `${this.overlayIndicatorPackageType}/${this.overlayIndicatorPackageName}`;
-    },
-    package() {
-      return this.store.packages[this.packageId] || {};
+    issues() {
+      if (!this.packageInfo?.sources) return 0;
+
+      const sources = Object.values(this.packageInfo.sources).filter((s) => s);
+      return sum(sources.map(({ issues }) => issues));
     },
   },
   methods: {
@@ -262,6 +263,12 @@ export default {
         }
       }, 300);
     },
+  },
+  created() {
+    getPackageInfo({ type: this.overlayIndicatorPackageType, name: this.overlayIndicatorPackageName }).then((res) => {
+      console.log('res', res);
+      this.packageInfo = res;
+    });
   },
   mounted() {
     this.initTooltipPosition();

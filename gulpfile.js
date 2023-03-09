@@ -41,7 +41,10 @@ async function buildCustomElements(outputDirPath) {
       },
     },
     define: {
-      'process.env': {},
+      'process.env': {
+        // TODO: Need to run this for each extension (chrome/firefox)
+        EXTENSION_ID: process.env.EXTENSION_ID,
+      },
     },
     plugins: [vue({ customElement: true }), svgLoader()],
   });
