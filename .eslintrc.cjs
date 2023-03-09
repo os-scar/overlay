@@ -4,6 +4,9 @@ module.exports = {
     es2021: true,
     webextensions: true,
   },
+  globals: {
+    process: 'readonly',
+  },
   extends: ['eslint:recommended', 'prettier'],
   overrides: [
     {
