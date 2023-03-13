@@ -1,4 +1,4 @@
-import { listen } from './content/content-events';
+import * as events from './content/content-events';
 
 const injectScriptTag = () => {
   const script = document.createElement('script');
@@ -12,7 +12,7 @@ export const mountContentScript = (contentScript) => {
   window.addEventListener('load', async () => {
     console.log('Overlay is running');
 
-    listen();
+    events.listen();
     injectScriptTag();
 
     await contentScript();

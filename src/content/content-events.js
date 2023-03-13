@@ -1,16 +1,12 @@
-import { FROM_CONTENT_SCRIPT, FROM_WEBPAGE, PACKAGE_INFO_EVENT } from '../consts';
+import { dispatchEvent, FROM_CONTENT_SCRIPT, FROM_WEBPAGE, PACKAGE_INFO_EVENT } from '../events-shared';
 import { getPackageInfo } from './bridge';
 
 export const listen = () => {
-  window.addEventListener('message', (event) => {
-    if (event.data.from === FROM_WEBPAGE && event.data.type === PACKAGE_INFO_EVENT) {
-      const { type, name } = event.data.payload;
+  window.addEventListener(PACKAGE_INFO_EVENT, (event) => {
+    if (event.detail.from === FROM_WEBPAGE) {
+      const { type, name } = event.detail;
       getPackageInfo({ type, name }).then((info) => {
-        window.postMessage({
-          type: PACKAGE_INFO_EVENT,
-          from: FROM_CONTENT_SCRIPT,
-          payload: info,
-        });
+        dispatchEvent(PACKAGE_INFO_EVENT, { from: FROM_CONTENT_SCRIPT, payload: info });
       });
     }
   });

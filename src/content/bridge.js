@@ -1,4 +1,4 @@
-import { PACKAGE_INFO_ACTION } from '../consts';
+import { PACKAGE_INFO_ACTION } from '../events-shared';
 
 export const getPackageInfo = async (packageID) => {
   return new Promise((resolve) =>
