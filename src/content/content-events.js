@@ -1,5 +1,5 @@
-import { FROM_CONTENT_SCRIPT, FROM_WEBPAGE, PACKAGE_INFO_EVENT } from './consts';
-import { getPackageInfo } from './content/bridge';
+import { FROM_CONTENT_SCRIPT, FROM_WEBPAGE, PACKAGE_INFO_EVENT } from '../consts';
+import { getPackageInfo } from './bridge';
 
 export const listen = () => {
   window.addEventListener('message', (event) => {

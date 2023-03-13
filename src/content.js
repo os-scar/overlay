@@ -1,4 +1,4 @@
-import { listen } from './content-to-webapp';
+import { listen } from './content/content-events';
 
 const injectScriptTag = () => {
   const script = document.createElement('script');
