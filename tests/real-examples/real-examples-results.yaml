@@ -765,6 +765,11 @@ https://stackoverflow.com/questions/6237400:
       type: npm
       name: 'n'
     - range: |-
+        <code>npm install -g npm@latest
+        </code>
+      type: npm
+      name: npm
+    - range: |-
         <code>npm i npm
         </code>
       type: npm
@@ -821,11 +826,6 @@ https://stackoverflow.com/questions/6237400:
         </code>
       type: npm
       name: stable
-    - range: |-
-        <code>npm install -g npm@latest
-        </code>
-      type: npm
-      name: npm
     - range: |-
         <code>sudo npm cache clean -f
         sudo npm install -g n
