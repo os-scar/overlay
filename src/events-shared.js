@@ -1,9 +1,10 @@
 export const PACKAGE_INFO_ACTION = 'PACKAGE_INFO_ACTION';
-export const PACKAGE_INFO_EVENT = 'get-package-info';
-export const FROM_CONTENT_SCRIPT = 'content-script';
-export const FROM_WEBPAGE = 'webpage';
 
-export const dispatchEvent = (type, payload) => {
-  const event = new CustomEvent(type, { detail: payload });
+const overlayPrefix = 'overlay-';
+export const REQUEST_PACKAGE_INFO_EVENT = overlayPrefix + 'REQUEST_PACKAGE_INFO_EVENT';
+export const RESPONSE_PACKAGE_INFO_EVENT = overlayPrefix + 'RESPONSE_PACKAGE_INFO_EVENT';
+
+export const dispatchEvent = (type, detail) => {
+  const event = new CustomEvent(type, { detail });
   window.dispatchEvent(event);
 };

@@ -1,13 +1,11 @@
-import { dispatchEvent, FROM_CONTENT_SCRIPT, FROM_WEBPAGE, PACKAGE_INFO_EVENT } from '../events-shared';
+import { dispatchEvent, REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
 import { getPackageInfo } from './bridge';
 
 export const listen = () => {
-  window.addEventListener(PACKAGE_INFO_EVENT, (event) => {
-    if (event.detail.from === FROM_WEBPAGE) {
-      const { type, name } = event.detail;
-      getPackageInfo({ type, name }).then((info) => {
-        dispatchEvent(PACKAGE_INFO_EVENT, { from: FROM_CONTENT_SCRIPT, payload: info });
-      });
-    }
+  window.addEventListener(REQUEST_PACKAGE_INFO_EVENT, (event) => {
+    const { type, name } = event.detail;
+    getPackageInfo({ type, name }).then((info) => {
+      dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
+    });
   });
 };
