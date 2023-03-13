@@ -44,6 +44,7 @@
 <script>
 import { getPackageInfo } from './webapp-to-content';
 import npm_logo from './assets/npm_logo.svg?component';
+import store from './store';
 
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
@@ -67,9 +68,11 @@ export default {
   props: {
     overlayIndicatorPackageType: {
       type: String,
+      required: true,
     },
     overlayIndicatorPackageName: {
       type: String,
+      required: true,
     },
   },
   data() {
@@ -77,10 +80,12 @@ export default {
       tooltipOpen: false,
       overTooltip: false,
       overIndicator: false,
-      packageInfo: null,
     };
   },
   computed: {
+    packageInfo() {
+      return store.packages[this.overlayIndicatorPackageType]?.[this.overlayIndicatorPackageName];
+    },
     issues() {
       if (!this.packageInfo?.sources) return 0;
 
