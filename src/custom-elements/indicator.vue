@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { getPackageInfo } from '../content/bridge';
+import { getPackageInfo } from './webapp-to-content';
 import npm_logo from './assets/npm_logo.svg?component';
 
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
@@ -265,10 +265,7 @@ export default {
     },
   },
   created() {
-    getPackageInfo({ type: this.overlayIndicatorPackageType, name: this.overlayIndicatorPackageName }).then((res) => {
-      console.log('res', res);
-      this.packageInfo = res;
-    });
+    getPackageInfo({ type: this.overlayIndicatorPackageType, name: this.overlayIndicatorPackageName });
   },
   mounted() {
     this.initTooltipPosition();

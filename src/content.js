@@ -1,3 +1,5 @@
+import { listen } from './content-to-webapp';
+
 const injectScriptTag = () => {
   const script = document.createElement('script');
   script.src = chrome.runtime.getURL('custom-elements.js');
@@ -10,6 +12,7 @@ export const mountContentScript = (contentScript) => {
   window.addEventListener('load', async () => {
     console.log('Overlay is running');
 
+    listen();
     injectScriptTag();
 
     await contentScript();
