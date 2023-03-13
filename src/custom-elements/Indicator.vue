@@ -17,33 +17,23 @@
     <div class="overlay-indicator__text">
       <slot></slot>
     </div>
-    <teleport to="body" append-to="self">
-      <div
-        class="overlay-indicator__tooltip"
-        v-show="tooltipOpen"
-        @mouseenter="overTooltip = true"
-        @mouseleave="
-          overTooltip = false;
-          shouldCloseTooltip();
-        "
-        ref="overlayTooltip"
-      >
-        <!-- test to open url in new page svg-->
-        <a target="_blank" :href="`https://www.npmjs.com/package/${packageInfo?.name}`">{{ packageInfo?.name }}</a>
+    <Tooltip :isOpen="tooltipOpen">
+      <!-- test to open url in new page svg-->
+      <a target="_blank" :href="`https://www.npmjs.com/package/${packageInfo?.name}`">{{ packageInfo?.name }}</a>
 
-        <!-- test to load svg-->
-        <component :is="`${packageInfo?.type}_logo`"></component>
+      <!-- test to load svg-->
+      <component :is="`${packageInfo?.type}_logo`"></component>
 
-        <!-- just show all package json at the moment-->
-        <div>{{ packageInfo }}</div>
-      </div>
-    </teleport>
+      <!-- just show all package json at the moment-->
+      <div>{{ packageInfo }}</div>
+    </Tooltip>
   </div>
 </template>
 
 <script>
 import npm_logo from './assets/npm_logo.svg?component';
 import store from './store';
+import Tooltip from './Tooltip.vue';
 
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
@@ -94,9 +84,9 @@ export default {
   },
   methods: {
     initTooltipPosition() {
-      let baseElement = this.$refs.overlay,
-        tooltipElement = this.$refs.overlayTooltip,
-        tooltipPosition = TOOLTIP_POSITION.BOTTOM;
+      const baseElement = this.$refs.overlay;
+      const tooltipElement = this.$refs.overlayTooltip;
+      const tooltipPosition = TOOLTIP_POSITION.BOTTOM;
       this.placeTooltip(baseElement, tooltipElement, tooltipPosition);
     },
     placeTooltip(baseElement, tooltipElement, tooltipPosition) {
@@ -259,13 +249,6 @@ export default {
         default:
           return false;
       }
-    },
-    shouldCloseTooltip() {
-      setTimeout(() => {
-        if (!this.overTooltip && !this.overIndicator) {
-          this.tooltipOpen = false;
-        }
-      }, 300);
     },
   },
   mounted() {
