@@ -4,6 +4,7 @@ on:
   # Schedule integration tests to see the real examples are not broken
   schedule:
     - cron: '0 2 * * *'
+  workflow_dispatch:
 
 jobs:
   test:
@@ -18,3 +19,11 @@ jobs:
           cache: yarn
       - run: yarn
       - run: yarn test:integration
+      - name: open issue
+        if: failure()
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          update_existing: false
+          filename: .github/ISSUE_TEMPLATE/real-integration-failure.md
