@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import { getPackageInfo } from './webapp-events';
 import npm_logo from './assets/npm_logo.svg?component';
 import store from './store';
 
@@ -268,9 +267,6 @@ export default {
         }
       }, 300);
     },
-  },
-  created() {
-    getPackageInfo({ type: this.overlayIndicatorPackageType, name: this.overlayIndicatorPackageName });
   },
   mounted() {
     this.initTooltipPosition();

@@ -1,10 +1,12 @@
-import { dispatchEvent, HEARTBEAT_EVENT, REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared.js';
+import { dispatchEvent, HEARTBEAT_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared.js';
 import * as store from './store.js';
 
-window.addEventListener(RESPONSE_PACKAGE_INFO_EVENT, (event) => {
-  store.updatePackageInfo(event.detail);
-});
+export const initEventListenersAndStore = () => {
+  console.debug('Store initialized by referencing to the store', store);
 
-dispatchEvent(HEARTBEAT_EVENT);
+  window.addEventListener(RESPONSE_PACKAGE_INFO_EVENT, (event) => {
+    store.updatePackageInfo(event.detail);
+  });
 
-export const getPackageInfo = ({ type, name }) => dispatchEvent(REQUEST_PACKAGE_INFO_EVENT, { type, name });
+  dispatchEvent(HEARTBEAT_EVENT);
+};

@@ -1,5 +1,4 @@
-import { dispatchEvent, HEARTBEAT_EVENT, REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
-import { getPackageInfo } from './bridge';
+import { dispatchEvent, HEARTBEAT_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
 
 let isWebappReady = false;
 export const waitForWebappReady = () => {
@@ -19,15 +18,10 @@ export const waitForWebappReady = () => {
 };
 
 export const listen = () => {
-  window.addEventListener(REQUEST_PACKAGE_INFO_EVENT, (event) => {
-    const { type, name } = event.detail;
-    getPackageInfo({ type, name }).then((info) => {
-      dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
-    });
-  });
-
   window.addEventListener(HEARTBEAT_EVENT, () => {
     console.log('Heartbeat received from injected script');
     isWebappReady = true;
   });
 };
+
+export const sendPackageInfoToWebapp = (info) => dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
