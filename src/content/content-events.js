@@ -1,4 +1,4 @@
-import { dispatchEvent, HEARTBEAT_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
+import { dispatchEvent, READY_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
 
 let isWebappReady = false;
 export const waitForWebappReady = () => {
@@ -18,8 +18,8 @@ export const waitForWebappReady = () => {
 };
 
 export const listen = () => {
-  window.addEventListener(HEARTBEAT_EVENT, () => {
-    console.log('Heartbeat received from injected script');
+  window.addEventListener(READY_EVENT, () => {
+    console.log('Ready event received from injected script');
     isWebappReady = true;
   });
 };

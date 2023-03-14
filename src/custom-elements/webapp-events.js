@@ -1,4 +1,4 @@
-import { dispatchEvent, HEARTBEAT_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared.js';
+import { dispatchEvent, READY_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared.js';
 import * as store from './store.js';
 
 export const initEventListenersAndStore = () => {
@@ -8,5 +8,5 @@ export const initEventListenersAndStore = () => {
     store.updatePackageInfo(event.detail);
   });
 
-  dispatchEvent(HEARTBEAT_EVENT);
+  dispatchEvent(READY_EVENT);
 };
