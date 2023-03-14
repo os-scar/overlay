@@ -1,19 +1,20 @@
 import { dispatchEvent, READY_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
 
 let isWebappReady = false;
-export const waitForWebappReady = () => {
-  return new Promise((resolve) => {
-    const interval = setInterval(() => {
-      if (isWebappReady) {
-        clearInterval(interval);
-        resolve(true);
-      }
-    }, 100);
+export const onScriptLoaded = (timeout = 5000, interval = 100) => {
+  return new Promise((resolve, reject) => {
+    const started = Date.now();
 
-    setTimeout(() => {
-      clearInterval(interval);
-      resolve(false);
-    }, 5000);
+    const checkIsWebappReady = () => {
+      if (isWebappReady) return resolve();
+
+      const duration = Date.now() - started;
+      if (duration > timeout) return reject();
+
+      setTimeout(checkIsWebappReady, interval);
+    };
+
+    checkIsWebappReady();
   });
 };
 

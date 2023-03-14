@@ -14,9 +14,11 @@ export const mountContentScript = (contentScript) => {
 
     events.listen();
     injectScriptTag();
-    const isReady = await events.waitForWebappReady();
-    if (!isReady) {
-      console.log('Webapp is not ready, aborting');
+
+    try {
+      await events.onScriptLoaded();
+    } catch (e) {
+      console.error('Injected script is not ready, aborting', e);
       return;
     }
 
