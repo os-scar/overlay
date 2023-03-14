@@ -1,6 +1,6 @@
 import '@webcomponents/custom-elements';
 import { defineCustomElement, reactive } from 'vue';
-import indicator from './indicator.vue';
+import indicator from './Indicator.vue';
 
 let indicatorCustomElement = defineCustomElement(indicator);
 customElements.define('overlay-indicator', indicatorCustomElement);

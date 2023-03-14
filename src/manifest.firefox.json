@@ -19,6 +19,6 @@
   "background": {
     "scripts": ["background.js"]
   },
-  "web_accessible_resources": ["custom-elements.js"],
+  "web_accessible_resources": ["custom-elements.js", "custom-elements.css"],
   "manifest_version": 2
 }
