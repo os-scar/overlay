@@ -1,4 +1,4 @@
-import { PACKAGE_INFO_ACTION } from '../bridge-sync';
+import { PACKAGE_INFO_ACTION } from '../events-shared';
 import advisory from './advisory/index';
 
 const getPackageInfo = async (packageID) => {
