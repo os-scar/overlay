@@ -23,6 +23,7 @@
       }
     </style>
   </head>
+
   <body>
     <div class="question">
       npm install react -> npm install
@@ -55,7 +56,9 @@
       const store = window.__overlay_global_store;
 
       function loadNodeIpc() {
-        store.packages['npm/node-ipc'] = {
+        if (!store.packages.npm) store.packages.npm = {};
+
+        store.packages.npm['node-ipc'] = {
           name: 'node-ipc',
           issues: 4,
           type: 'npm',
@@ -118,7 +121,9 @@
         };
       }
       function loadReact() {
-        store.packages['npm/react'] = {
+        if (!store.packages.npm) store.packages.npm = {};
+
+        store.packages.npm['react'] = {
           name: 'react',
           issues: 8,
           type: 'npm',
