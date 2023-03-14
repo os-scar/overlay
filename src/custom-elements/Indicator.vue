@@ -26,7 +26,7 @@
 import { defineComponent } from 'vue';
 import npm_logo from './assets/npm_logo.svg?component';
 import store from './store';
-import Tooltip from './Tooltip.vue';
+import Tooltip from './Tooltip/Tooltip.vue';
 
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
