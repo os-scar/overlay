@@ -27,7 +27,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["custom-elements.js"],
+      "resources": ["custom-elements.js", "custom-elements.css"],
       "matches": ["<all_urls>"]
     }
   ],
