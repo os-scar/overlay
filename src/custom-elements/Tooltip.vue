@@ -1,21 +1,19 @@
 <template>
-  <div>
+  <div class="overlay-tooltip">
     <div
-      class="baruch"
-      ref="activator"
       @mouseenter="
-        initTooltipPosition();
         overActivator = true;
         changeIsOpen(true);
       "
       @mouseleave="overActivator = false"
+      ref="activator"
     >
       <slot name="activator"></slot>
     </div>
     <div class="tooltip">
       <Teleport to="body" append-to="self">
         <div
-          class="overlay-tooltip"
+          class="overlay-tooltip__tooltip"
           v-show="modelValue"
           @mouseenter="overTooltip = true"
           @mouseleave="overTooltip = false"
@@ -253,12 +251,17 @@ export default {
 
 <style lang="scss">
 .overlay-tooltip {
-  position: absolute;
-  padding: 20px;
-  z-index: 1000;
-  background: #e12d33;
-  width: 260px;
-  height: 200px;
-  overflow: scroll;
+  position: relative;
+  display: inline-block;
+
+  &__tooltip {
+    position: absolute;
+    padding: 20px;
+    z-index: 1000;
+    background: #e12d33;
+    width: 260px;
+    height: 200px;
+    overflow: scroll;
+  }
 }
 </style>
