@@ -10,13 +10,13 @@ const handleAsyncError = (func, ...args) =>
     return null;
   });
 
-export default async (packageID) => {
+export default (packageID) => {
   const depsDev = handleAsyncError(fetchDepsDev, packageID);
   const info = depsDev.then((depsDevInfo) => {
-    const { latestVersion, license, stars } = depsDevInfo.data;
+    const { latestVersion, licenses, stars } = depsDevInfo.data;
     return {
       latest: latestVersion,
-      license,
+      licenses,
       stars,
     };
   });
