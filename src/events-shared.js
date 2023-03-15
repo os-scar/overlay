@@ -5,10 +5,13 @@ export const RESPONSE_PACKAGE_INFO_EVENT = overlayPrefix + 'RESPONSE_PACKAGE_INF
 export const READY_EVENT = overlayPrefix + 'READY_EVENT';
 
 export const dispatchEvent = (type, detail) => {
-  const event = new CustomEvent(type, { detail });
-  window.dispatchEvent(event);
+  window.postMessage({ type, detail }, '*');
 };
 
 export const addMessagingEventListener = (type, callback) => {
-  window.addEventListener(type, (event) => callback(event.detail));
+  window.addEventListener('message', (event) => {
+    if (event?.data?.type === type) {
+      callback(event.data.detail);
+    }
+  });
 };
