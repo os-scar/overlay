@@ -1,6 +1,5 @@
 import { mountContentScript } from './content';
-import { getPackageInfo } from './content/bridge';
-import { sendPackageInfoToWebapp } from './content/content-events';
+import { fetchPackageInfo } from './content/content-events';
 import { findRanges } from './content/stackoverflow/finder';
 import { addIndicator } from './content/stackoverflow/indicator';
 
@@ -9,7 +8,7 @@ mountContentScript(async () => {
   console.debug({ findings });
 
   findings.forEach((find) => {
-    getPackageInfo(find).then(sendPackageInfoToWebapp);
+    fetchPackageInfo(find);
     addIndicator(find);
   });
 });
