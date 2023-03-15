@@ -1,4 +1,4 @@
-import { dispatchEvent, READY_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
+import { addMessagingEventListener, dispatchEvent, READY_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
 
 let isWebappReady = false;
 export const onScriptLoaded = (timeout = 5000, interval = 100) => {
@@ -19,7 +19,7 @@ export const onScriptLoaded = (timeout = 5000, interval = 100) => {
 };
 
 export const listen = () => {
-  window.addEventListener(READY_EVENT, () => {
+  addMessagingEventListener(READY_EVENT, () => {
     console.log('Ready event received from injected script');
     isWebappReady = true;
   });

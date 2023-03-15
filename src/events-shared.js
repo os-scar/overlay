@@ -8,3 +8,7 @@ export const dispatchEvent = (type, detail) => {
   const event = new CustomEvent(type, { detail });
   window.dispatchEvent(event);
 };
+
+export const addMessagingEventListener = (type, callback) => {
+  window.addEventListener(type, (event) => callback(event.detail));
+};
