@@ -7,8 +7,8 @@ mountContentScript(async () => {
   const findings = findRanges(document.body);
   console.debug({ findings });
 
-  findings.forEach((find) => {
-    fetchPackageInfo(find);
-    addIndicator(find);
+  findings.forEach(({ range, ...packageId }) => {
+    fetchPackageInfo(packageId);
+    addIndicator(range, packageId);
   });
 });
