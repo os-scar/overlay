@@ -1,24 +1,21 @@
 import { REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
-import advisory from './advisory/index';
-
-const getPackageInfo = async (packageID) => {
-  const packageInfo = await advisory(packageID);
-
-  const { latestVersion, license, stars } = packageInfo.depsDev.data;
-
-  return {
-    ...packageID,
-    latest: latestVersion,
-    license,
-    stars,
-    sources: packageInfo,
-  };
-};
+import advisories from './advisory/index';
 
 const listener = async ({ type, detail }, port) => {
   if (type === REQUEST_PACKAGE_INFO_EVENT) {
-    const info = await getPackageInfo(detail);
-    port.postMessage({ type: RESPONSE_PACKAGE_INFO_EVENT, detail: info });
+    const promises = await advisories(detail);
+    Object.entries(promises).forEach(([part, promise]) => {
+      promise.then((info) => {
+        port.postMessage({
+          type: RESPONSE_PACKAGE_INFO_EVENT,
+          detail: {
+            packageId: detail,
+            part,
+            info,
+          },
+        });
+      });
+    });
   }
 
   return true;

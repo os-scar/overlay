@@ -4,8 +4,9 @@ import * as store from './store.js';
 export const initEventListenersAndStore = () => {
   console.debug('Store initialized by referencing to the store', store);
 
-  window.addEventListener(RESPONSE_PACKAGE_INFO_EVENT, (event) => {
-    store.updatePackageInfo(event.detail);
+  window.addEventListener(RESPONSE_PACKAGE_INFO_EVENT, ({ detail }) => {
+    const { packageId, part, info } = detail;
+    store.updatePackageInfo(packageId, part, info);
   });
 
   dispatchEvent(READY_EVENT);
