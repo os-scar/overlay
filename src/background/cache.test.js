@@ -3,13 +3,12 @@
  */
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import cache, { forTests } from './cache';
-const { cleanBySize, cleanByTTL } = forTests;
 
 const createPromise = (value) => new Promise((resolve) => setImmediate(() => resolve(value)));
 
 describe('cache', () => {
   beforeEach(() => {
-    cleanBySize(0);
+    forTests.clean();
   });
 
   it('should support one key without array', () => {
@@ -39,9 +38,24 @@ describe('cache', () => {
   it('should run cached function only once', async () => {
     const fn = jest.fn().mockReturnValue(22);
 
-    await Promise.all([cache('my-key', fn), cache('my-key', fn), cache('my-key', fn)]);
+    cache('my-key', fn);
+    cache('my-key', fn);
+    cache('my-key', fn);
 
     expect(fn).toBeCalledTimes(1);
+  });
+
+  it('should run the function again when TTL is expired', async () => {
+    const ttl = 1;
+    const fn = jest.fn().mockImplementation(() => console.log('fn called') || 22);
+
+    cache('my-key', fn, ttl);
+    expect(fn).toBeCalledTimes(1);
+
+    await new Promise((resolve) => setTimeout(resolve, ttl * 10));
+
+    cache('my-key', fn);
+    expect(fn).toBeCalledTimes(2);
   });
 
   it('should save the value for multiple keys', async () => {
@@ -64,33 +78,16 @@ describe('cache', () => {
     expect(cache(['e', 'f'], () => {})).toBeUndefined();
   });
 
-  describe('cleaning', () => {
-    it('should remove expired keys by TTL', () => {
-      const expired = -1;
-      const notExpired = 1000 * 60 * 5;
+  it('should remove the oldest TTLs', () => {
+    const fn = jest.fn().mockReturnValue('value');
 
-      cache(['expired'], () => 1, expired);
-      cache(['not-expired'], () => 2, notExpired);
+    cache('first', fn);
 
-      cleanByTTL();
+    for (let i = 0; i < 9999; i++) {
+      cache(`key-${i}`, () => i);
+    }
 
-      expect(cache(['expired'], () => {})).toBeUndefined();
-      expect(cache(['not-expired'], () => {})).toBe(2);
-    });
-
-    it('should remove the oldest TTLs', () => {
-      cache(['a'], () => 1, 1200);
-      cache(['b'], () => 2, 1100);
-      cache(['c'], () => 3, 1000);
-      cache(['d'], () => 4, 900);
-
-      cleanBySize(2);
-
-      expect(cache(['a'], () => {})).toBe(1);
-      expect(cache(['b'], () => {})).toBe(2);
-
-      expect(cache(['c'], () => {})).toBeUndefined();
-      expect(cache(['d'], () => {})).toBeUndefined();
-    });
+    cache('first', fn);
+    expect(fn).toBeCalledTimes(2);
   });
 });
