@@ -109,16 +109,6 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
   });
 
   // --------------
-  // content.npm.js
-  bundle = await rollup({
-    input: path.join(srcDirPath, 'content.npm.js'),
-  });
-  await bundle.write({
-    file: path.join(outputDirPath, 'content.npm.js'),
-    format: 'iife',
-  });
-
-  // --------------
   // background.js
   bundle = await rollup({
     input: path.join(srcDirPath, 'background.js'),
