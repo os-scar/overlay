@@ -3,15 +3,17 @@ import advisory from '.';
 
 describe('advisory', () => {
   it(`should contain shared properties in each advisory`, async () => {
-    const results = await advisory({ type: 'npm', name: 'react' });
+    const { info, ...advisories } = advisory({ type: 'npm', name: 'react' });
 
-    Object.entries(results).forEach(([_name, advisor]) => {
-      expect(advisor).toEqual(
-        expect.objectContaining({
-          issues: expect.any(Number),
-          data: expect.any(Object),
-        })
-      );
-    });
+    const { latest, licenses, stars } = await info;
+    expect(latest).toEqual(expect.any(String));
+    expect(licenses).toEqual(expect.any(Array));
+    expect(stars).toEqual(expect.any(Number));
+
+    for (const name in advisories) {
+      const { issues, data } = await advisories[name];
+      expect(issues).toEqual(expect.any(Number));
+      expect(data).toEqual(expect.any(Object));
+    }
   });
 });

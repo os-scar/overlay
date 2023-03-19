@@ -10,14 +10,23 @@ const handleAsyncError = (func, ...args) =>
     return null;
   });
 
-export default async (packageID) => {
-  const [debricked, depsDev, openbase, snyk, socket] = await Promise.all([
-    handleAsyncError(fetchDebricked, packageID),
-    handleAsyncError(fetchDepsDev, packageID),
-    handleAsyncError(fetchOpenbase, packageID),
-    handleAsyncError(fetchSnyk, packageID),
-    handleAsyncError(fetchSocket, packageID),
-  ]);
+export default (packageID) => {
+  const depsDev = handleAsyncError(fetchDepsDev, packageID);
+  const info = depsDev.then((depsDevInfo) => {
+    const { latestVersion, licenses, stars } = depsDevInfo.data;
+    return {
+      latest: latestVersion,
+      licenses,
+      stars,
+    };
+  });
 
-  return { debricked, depsDev, openbase, snyk, socket };
+  return {
+    debricked: handleAsyncError(fetchDebricked, packageID),
+    depsDev,
+    info,
+    openbase: handleAsyncError(fetchOpenbase, packageID),
+    snyk: handleAsyncError(fetchSnyk, packageID),
+    socket: handleAsyncError(fetchSocket, packageID),
+  };
 };
