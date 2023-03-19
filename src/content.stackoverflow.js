@@ -8,8 +8,14 @@ mountContentScript(async () => {
   const findings = findRanges(document.body);
   console.debug({ findings });
 
-  findings.forEach((find) => {
+  findings.reduce((acc, current) => {
+    const { type, name } = current;
+    if (acc[type + '_' + name]) return acc;
+
     getPackageInfo(find).then(sendPackageInfoToWebapp);
-    addIndicator(find);
-  });
+    acc[type + '_' + name] = true;
+    return acc;
+  }, {});
+
+  findings.forEach(addIndicator);
 });
