@@ -7,8 +7,15 @@ mountContentScript(async () => {
   const findings = findRanges(document.body);
   console.debug({ findings });
 
+  let processed = {};
   findings.forEach(({ range, ...packageId }) => {
-    fetchPackageInfo(packageId);
     addIndicator(range, packageId);
+    let packageKey = `${packageId.type}/${packageId.name}`;
+    if (processed[packageKey]) {
+      return;
+    }
+
+    processed[packageKey] = true;
+    fetchPackageInfo(packageId);
   });
 });
