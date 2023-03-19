@@ -302,6 +302,7 @@ describe(findRanges.name, () => {
       expect(foundElements.length).toBe(0);
     });
 
+    // issue #37, #38
     it.skip.each(['npm install git://github.com/user-c/dep-2#node0.8.0', 'npx create-react-app my-app'])(
       `Future support '%s`,
       (command) => {
