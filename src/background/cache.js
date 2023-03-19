@@ -10,10 +10,7 @@ const _cache = new LRUCache({
 
 export default (keys, action, ttl) => {
   const key = typeof keys === 'string' ? keys : keys.join('.');
-  if (!_cache.get(key)) {
-    const value = action();
-    _cache.set(key, value, { ttl });
-  }
+  if (!_cache.get(key)) _cache.set(key, action(), { ttl });
   return _cache.get(key);
 };
 

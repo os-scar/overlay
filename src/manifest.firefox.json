@@ -10,10 +10,6 @@
     {
       "matches": ["*://stackoverflow.com/*"],
       "js": ["content.stackoverflow.js"]
-    },
-    {
-      "matches": ["*://www.npmjs.com/package/*"],
-      "js": ["content.npm.js"]
     }
   ],
   "background": {
