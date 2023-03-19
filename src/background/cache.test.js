@@ -47,7 +47,7 @@ describe('cache', () => {
 
   it('should run the function again when TTL is expired', async () => {
     const ttl = 1;
-    const fn = jest.fn().mockImplementation(() => console.log('fn called') || 22);
+    const fn = jest.fn().mockReturnValue(102);
 
     cache('my-key', fn, ttl);
     expect(fn).toBeCalledTimes(1);
