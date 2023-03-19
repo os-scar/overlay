@@ -5,6 +5,13 @@ export const READY_EVENT = overlayPrefix + 'READY_EVENT';
 export const CONTENT_PORT_CONNECTION = overlayPrefix + 'content-script';
 
 export const dispatchEvent = (type, detail) => {
-  const event = new CustomEvent(type, { detail });
-  window.dispatchEvent(event);
+  window.postMessage({ type, detail });
+};
+
+export const addMessagingEventListener = (type, callback) => {
+  window.addEventListener('message', (event) => {
+    if (event?.data?.type === type) {
+      callback(event.data.detail);
+    }
+  });
 };

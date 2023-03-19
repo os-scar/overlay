@@ -1,4 +1,5 @@
 import {
+  addMessagingEventListener,
   CONTENT_PORT_CONNECTION,
   dispatchEvent,
   READY_EVENT,
@@ -38,7 +39,7 @@ export const onScriptLoaded = (timeout = 5000, interval = 100) => {
 };
 
 export const listen = () => {
-  window.addEventListener(READY_EVENT, () => {
+  addMessagingEventListener(READY_EVENT, () => {
     console.log('Ready event received from injected script');
     isWebappReady = true;
   });
