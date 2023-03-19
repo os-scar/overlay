@@ -1,16 +1,19 @@
-const _cache = {};
+import LRUCache from 'lru-cache';
 
-const buildNewKeys = (keys) =>
-  keys.reduce((acc, currentKey) => {
-    if (!acc[currentKey]) {
-      acc[currentKey] = {};
-    }
-    return acc[currentKey];
-  }, _cache);
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
 
-export default (keys, action) => {
-  const lastKey = typeof keys === 'string' ? keys : keys.pop();
-  const objectForKey = typeof keys === 'string' ? _cache : buildNewKeys(keys);
-  if (!objectForKey[lastKey]) objectForKey[lastKey] = action();
-  return objectForKey[lastKey];
+const _cache = new LRUCache({
+  max: 500,
+  ttl: 15 * MINUTE,
+});
+
+export default (keys, action, ttl) => {
+  const key = typeof keys === 'string' ? keys : keys.join('.');
+  if (!_cache.get(key)) _cache.set(key, action(), { ttl });
+  return _cache.get(key);
+};
+
+export const forTests = {
+  clean: () => _cache.clear(),
 };
