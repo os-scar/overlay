@@ -92,7 +92,7 @@ describe(findRanges.name, () => {
     it.each([
       ...npmVariants.map((cmd) => [cmd, 'npm']),
       ...yarnVariants.map((cmd) => [cmd, 'npm']),
-      ...pipVariants.map((cmd) => [cmd, 'pip']),
+      ...pipVariants.map((cmd) => [cmd, 'pypi']),
     ])(`'%s' inside <pre><code>`, (installCommand, type) => {
       const commandPackageName = 'my-package-name';
 
@@ -113,7 +113,7 @@ describe(findRanges.name, () => {
     it.each([
       ...npmVariants.map((cmd) => [cmd, 'npm']),
       ...yarnVariants.map((cmd) => [cmd, 'npm']),
-      ...pipVariants.map((cmd) => [cmd, 'pip']),
+      ...pipVariants.map((cmd) => [cmd, 'pypi']),
     ])(`'%s' inside <code>`, (installCommand, type) => {
       const commandPackageName = 'my-package-name';
 

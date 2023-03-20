@@ -23,6 +23,8 @@ const urlParsers = {
   'pythonhosted.org': python.urlParser,
 };
 
+const codeBlockParsers = [npm.parseCommand, python.parseCommand];
+
 export const findRanges = (body) => {
   const links = Array.from(body.querySelectorAll(`${POST_SELECTOR} a`))
     .map((element) => {
@@ -43,14 +45,16 @@ export const findRanges = (body) => {
     .filter((p) => p);
 
   const npmCommands = Array.from(body.querySelectorAll(`${POST_SELECTOR} code`)).flatMap((element) => {
-    const packages = npm.parseCommand(element.textContent);
+    return codeBlockParsers.flatMap((parser) => {
+      const packages = parser(element.textContent);
 
-    const withRanges = packages.map(({ startIndex, endIndex, ...packageID }) => {
-      const range = getRangeOfPositions(element, startIndex, endIndex);
-      return { ...packageID, range };
+      const withRanges = packages.map(({ startIndex, endIndex, ...packageID }) => {
+        const range = getRangeOfPositions(element, startIndex, endIndex);
+        return { ...packageID, range };
+      });
+
+      return withRanges;
     });
-
-    return withRanges;
   });
 
   return [...links, ...npmCommands];
