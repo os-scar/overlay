@@ -18,6 +18,15 @@ describe(findRanges.name, () => {
 
       ['pypi', 'pypi registry', 'https://pypi.org/project/numpy/', 'numpy', undefined],
       ['pypi', 'pypi registry with version', 'https://pypi.org/project/dulwich/0.20.49/#installation', 'dulwich', '0.20.49'],
+
+      [
+        'pypi',
+        'pythonhosted',
+        'https://pythonhosted.org/an_example_pypi_project/sphinx.html#full-code-example',
+        'an_example_pypi_project',
+        undefined,
+      ],
+      ['pypi', ' packages.python.org', 'http://packages.python.org/watchdog/', 'watchdog', undefined],
     ])('Should find "%s" link %s', (type, _, url, name, version) => {
       const { body } = createRealAnswer(`<a id="test" href="${url}">${name}</a>`);
 
@@ -39,16 +48,19 @@ describe(findRanges.name, () => {
       expect(range.startContainer.childNodes[range.startOffset].nodeType).not.toBe(Node.TEXT_NODE);
     });
 
-    it.each(['http://npmjs.org/'])(`Should not find any package in '%s'`, (url) => {
-      const body = document.createElement('body');
-      const a1 = document.createElement('a');
-      a1.href = url;
-      body.appendChild(a1);
+    it.each(['http://npmjs.org/', 'https://pypi.python.org/packages/source/v/virtualenv/virtualenv-12.0.7.tar.gz'])(
+      `Should not find any package in '%s'`,
+      (url) => {
+        const body = document.createElement('body');
+        const a1 = document.createElement('a');
+        a1.href = url;
+        body.appendChild(a1);
 
-      const foundElements = findRanges(body);
+        const foundElements = findRanges(body);
 
-      expect(foundElements.length).toBe(0);
-    });
+        expect(foundElements.length).toBe(0);
+      }
+    );
   });
 
   describe('Commands', () => {

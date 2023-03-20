@@ -19,6 +19,8 @@ const urlParsers = {
   'npmjs.org': npm.urlParser,
   'pypi.org': python.urlParser,
   'pypi.python.org': python.urlParser,
+  'packages.python.org': python.urlParser,
+  'pythonhosted.org': python.urlParser,
 };
 
 export const findRanges = (body) => {

@@ -1117,6 +1117,11 @@ https://stackoverflow.com/questions/36932:
       type: pypi
       name: aenum
     - range: >-
+        <a href="http://packages.python.org/flufl.enum/docs/using.html"
+        rel="noreferrer">flufl.enum</a>
+      type: pypi
+      name: flufl.enum
+    - range: >-
         <a href="http://pypi.python.org/pypi/lazr.enum"
         rel="noreferrer">lazr.enum</a>
       type: pypi
@@ -1132,6 +1137,11 @@ https://stackoverflow.com/questions/36932:
         rel="noreferrer">http://pypi.python.org/pypi/enum</a>
       type: pypi
       name: enum
+    - range: >-
+        <a href="http://pythonhosted.org/flufl.enum/docs/using.html"
+        rel="nofollow"><code>flufl.enum</code></a>
+      type: pypi
+      name: flufl.enum
 https://stackoverflow.com/questions/5226504:
   comment: flags, quotes and version variants
   post: answer
