@@ -1,4 +1,5 @@
 import * as npm from '../registry/npm';
+import * as python from '../registry/python';
 import { getRangeOfPositions } from './range';
 
 const POST_SELECTOR = 'div.js-post-body';
@@ -16,8 +17,8 @@ const validURL = (href) => {
 const urlParsers = {
   'npmjs.com': npm.urlParser,
   'npmjs.org': npm.urlParser,
-  // 'pypi.org': python.urlParser,
-  // 'pypi.python.org': python.urlParser,
+  'pypi.org': python.urlParser,
+  'pypi.python.org': python.urlParser,
 };
 
 export const findRanges = (body) => {

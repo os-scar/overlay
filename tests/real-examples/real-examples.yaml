@@ -74,7 +74,7 @@ links:
     post: question
     registry: pypi
   https://stackoverflow.com/questions/36932:
-    comment: most viewed, link and command
+    comment: most viewed, link and command, package with dot, packages.python.org
     post: answer
     registry: pypi
   https://stackoverflow.com/questions/5226504:

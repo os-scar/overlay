@@ -1,8 +1,8 @@
 export const urlParser = ({ pathname }) => {
-  const [_empty, _part, packageName, packageVersion] = pathname.split('/');
+  const [_empty, _part, name, version] = pathname.split('/');
   return {
-    registry: 'pypi',
-    packageName,
-    packageVersion: packageVersion || undefined,
+    type: 'pypi',
+    name: name,
+    version: version || undefined,
   };
 };

@@ -1084,9 +1084,68 @@ https://stackoverflow.com/questions/2817869:
   comment: high scored
   post: question
   registry: pypi
-  results: []
+  results:
+    - range: >-
+        <a href="https://pypi.python.org/pypi/dulwich"
+        rel="noreferrer">dulwich</a>
+      type: pypi
+      name: dulwich
+    - range: >-
+        <a
+        href="https://pypi.python.org/pypi/setuptools"><code>setuptools</code>
+        6.0 or newer</a>
+      type: pypi
+      name: setuptools
+    - range: >-
+        <a href="https://pypi.org/project/Send2Trash/" rel="nofollow
+        noreferrer">send2trash</a>
+      type: pypi
+      name: Send2Trash
 https://stackoverflow.com/questions/36932:
-  comment: most viewed
+  comment: most viewed, link and command, package with dot, packages.python.org
   post: answer
   registry: pypi
-  results: []
+  results:
+    - range: >-
+        <a href="https://pypi.python.org/pypi/enum34"
+        rel="noreferrer">backported to 3.3, 3.2, 3.1, 2.7, 2.6, 2.5, and 2.4</a>
+      type: pypi
+      name: enum34
+    - range: >-
+        <a href="https://pypi.python.org/pypi/aenum" rel="noreferrer">aenum
+        library</a>
+      type: pypi
+      name: aenum
+    - range: >-
+        <a href="http://pypi.python.org/pypi/lazr.enum"
+        rel="noreferrer">lazr.enum</a>
+      type: pypi
+      name: lazr.enum
+    - range: <a href="http://pypi.python.org/pypi/enum/" rel="noreferrer">enum</a>
+      type: pypi
+      name: enum
+    - range: <a href="https://pypi.python.org/pypi/enum34">enum34</a>
+      type: pypi
+      name: enum34
+    - range: >-
+        <a href="http://pypi.python.org/pypi/enum"
+        rel="noreferrer">http://pypi.python.org/pypi/enum</a>
+      type: pypi
+      name: enum
+https://stackoverflow.com/questions/5226504:
+  comment: flags, quotes and version variants
+  post: answer
+  registry: pypi
+  results:
+    - range: >-
+        <a href="http://pypi.python.org/pypi/MySQL-python/1.2.3"
+        rel="noreferrer">1.2.3</a>
+      type: pypi
+      name: MySQL-python
+      version: 1.2.3
+    - range: >-
+        <a href="http://pypi.python.org/pypi/MySQL-python/1.2.2"
+        rel="noreferrer">http://pypi.python.org/pypi/MySQL-python/1.2.2</a>
+      type: pypi
+      name: MySQL-python
+      version: 1.2.2
