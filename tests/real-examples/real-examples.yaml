@@ -74,6 +74,10 @@ links:
     post: question
     registry: pypi
   https://stackoverflow.com/questions/36932:
-    comment: most viewed
+    comment: most viewed, link and command
+    post: answer
+    registry: pypi
+  https://stackoverflow.com/questions/5226504:
+    comment: flags, quotes and version variants
     post: answer
     registry: pypi
