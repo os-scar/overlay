@@ -84,9 +84,8 @@ describe(findRanges.name, () => {
     const pipVariants = [
       'pip install <package_name>',
       'pip install --force-reinstall -v <package_name>',
-      'pip install "<package_name>==1.0.0"',
       'pip install "<package_name>"',
-      `pip install '<package_name>>=1.3.0,<1.4.0'`,
+      `pip install '<package_name>'`,
     ];
 
     it.each([

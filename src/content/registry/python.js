@@ -60,7 +60,7 @@ const pipOptionsWithArg = [
 ];
 const optionWithArgRegex = `( (${pipOptionsWithArg.join('|')})(=| )\\S+)*`;
 const options = /( -[-\w=]+)*/;
-const packageArea = /["']?(?<package_part>(?<package_name>\w[\w.-]*)([=<>]=[\w.,<>]+)?)["']?(?=\s|$)/;
+const packageArea = /["']?(?<package_part>(?<package_name>\w[\w.-]*)([=<>~!]=[\w.,<>]+)?)["']?(?=\s|$)/;
 const whiteSpace = / +/;
 const PIP_COMMAND_REGEX = new RegExp(
   `(?<command>pip install${optionWithArgRegex}${options.source}) ${packageArea.source}`.replaceAll(' ', whiteSpace.source),
@@ -75,7 +75,7 @@ export const parseCommand = (command) => {
       const currentIndex = match.index + match.groups.command.length;
       const packageStr = match?.groups.package_name;
       const startIndex = command.indexOf(packageStr, currentIndex);
-      const endIndex = startIndex + packageStr.length;
+      const endIndex = startIndex + match.groups.package_part.length;
 
       return {
         type: 'pypi',
