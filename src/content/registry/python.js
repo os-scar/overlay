@@ -21,7 +21,7 @@ export const urlParser = ({ hostname, pathname }) => {
   return docsParser(pathname);
 };
 
-const PIP_COMMAND_REGEX = /pip install( -[-\w]+)* ["']?(?<package_name>\w[\w-]*)([=<>]=[\w.,<>]+)?["']?/g;
+const PIP_COMMAND_REGEX = /pip install( -[-\w=]+)* ["']?(?<package_part>(?<package_name>\w[\w-]*)([=<>]=[\w.,<>]+)?)["']?(?=\s|$)/g;
 
 export const parseCommand = (command) => {
   const matches = Array.from(command.matchAll(PIP_COMMAND_REGEX));
