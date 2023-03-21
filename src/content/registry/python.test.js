@@ -53,9 +53,12 @@ describe(parseCommand.name, () => {
   });
 
   it.each([
-    ['multiple args with values', `pip install --global-option build_ext pandas`, 38],
+    ['multiple args with values', `pip install --global-option build_ext -t ../ pandas`, 45],
+    ['special args with values', `pip install --global-option='-I/usr/local/include' pandas`, 51],
     ['argument with =', 'pip install --compiler=mingw32 pandas', 31],
     ['combined args with values and =', 'pip install --global-option build_ext --global-option --compiler=mingw32 pandas', 73],
+    ['multiple spaces', 'pip  install  --no-clean   pandas', 27],
+    ['option after package name', 'pip install pandas --no-clean', 12],
   ])('should find package after %s', (_, command, startIndex) => {
     const expectedPackages = [packageResult({ name: 'pandas', startIndex, endIndex: startIndex + 'pandas'.length })];
 

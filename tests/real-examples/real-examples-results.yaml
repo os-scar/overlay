@@ -1121,7 +1121,7 @@ https://stackoverflow.com/questions/2817869:
 
         </code>
       type: pypi
-      name: build_ext
+      name: packagename
 https://stackoverflow.com/questions/36932:
   comment: most viewed, link and command, package with dot, packages.python.org
   post: answer
