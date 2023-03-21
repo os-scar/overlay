@@ -34,7 +34,7 @@ describe(parseCommand.name, () => {
     expect(parseCommand(command)).toStrictEqual([]);
   });
 
-  it.each(['p', 'package-with-dashes', 'underscore_', 'with.dot', 'WiTh_Upper-cas5'])(`Should find special package name '%s'`, (name) => {
+  it.each(['p', 'package-with-dashes', 'underscore_', 'lazr.enum', 'WiTh_Upper-cas5'])(`Should find special package name '%s'`, (name) => {
     const command = `pip install ${name}`;
     const expectedPackages = [packageResult({ name, startIndex: 12, endIndex: 12 + name.length })];
 
