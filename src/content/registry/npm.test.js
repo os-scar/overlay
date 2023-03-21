@@ -47,6 +47,22 @@ describe('npm', () => {
       expect(packagePosition).toStrictEqual(expectedPackages);
     });
 
+    it('should range the package with the version part', () => {
+      const command = 'yarn add -D react@^12.5.0';
+      const expectedPackages = [
+        packageResult({
+          name: 'react',
+          version: '^12.5.0',
+          startIndex: 12,
+          endIndex: 12 + 'react@^12.5.0'.length,
+        }),
+      ];
+
+      const packagePosition = parseCommand(command);
+
+      expect(packagePosition).toStrictEqual(expectedPackages);
+    });
+
     it('should find in multiple lines', () => {
       const { command, positions } = cli`
       npm install ${'react'}

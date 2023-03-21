@@ -20,59 +20,89 @@ const cli = (strings, ...values) => {
   return { command, positions };
 };
 
-describe('python', () => {
-  describe(parseCommand.name, () => {
-    it.each([
-      '',
-      'bla bla',
-      'pip install',
-      'pip install -U',
-      'pip install -Iv http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.2/MySQL-python-1.2.2.tar.gz/download',
-      'pip install numpy‑1.9.2+mkl‑cp34‑none‑win_amd64.whl',
-    ])('should return empty array if no packages found', (command) => {
-      expect(parseCommand(command)).toStrictEqual([]);
-    });
+describe(parseCommand.name, () => {
+  it.each([
+    '',
+    'bla bla',
+    'pip install',
+    'pip install -U',
+    'pip install -Iv http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.2/MySQL-python-1.2.2.tar.gz/download',
+    'pip install numpy‑1.9.2+mkl‑cp34‑none‑win_amd64.whl',
+    'pip install MySQL_python==', // Although this is a valid package name, it's not a valid command
+    'pip install -r requirements.txt',
+  ])(`should not find in '%s'`, (command) => {
+    expect(parseCommand(command)).toStrictEqual([]);
+  });
 
-    it('should return the right position for recurrent package name', () => {
-      const { command, positions } = cli`pip install ${'pandas'}`;
-      const expectedPackages = positions.map(({ index, value }) => packageResult({ name: value, startIndex: index }));
+  it.each(['p', 'package-with-dashes', 'underscore_', 'with.dot', 'WiTh_Upper-cas5'])(`Should find special package name '%s'`, (name) => {
+    const command = `pip install ${name}`;
+    const expectedPackages = [packageResult({ name, startIndex: 12, endIndex: 12 + name.length })];
 
-      const packagePosition = parseCommand(command);
+    const packagePosition = parseCommand(command);
 
-      expect(packagePosition).toStrictEqual(expectedPackages);
-    });
+    expect(packagePosition).toStrictEqual(expectedPackages);
+  });
 
-    it('should find package after args with values', () => {
-      const { command, positions } = cli`pip install --global-option build_ext --global-option --compiler=mingw32 ${'packagename'}`;
-      const expectedPackages = positions.map(({ index, value }) => packageResult({ name: value, startIndex: index }));
+  it('should return the right position for recurrent package name', () => {
+    const { command, positions } = cli`pip install ${'pi'}`;
+    const expectedPackages = positions.map(({ index, value }) => packageResult({ name: value, startIndex: index }));
 
-      const packagePosition = parseCommand(command);
+    const packagePosition = parseCommand(command);
 
-      expect(packagePosition).toStrictEqual(expectedPackages);
-    });
+    expect(packagePosition).toStrictEqual(expectedPackages);
+  });
 
-    it('should find multiple packages', () => {
-      const { command, positions } = cli`pip install ${'requests'} ${'numpy'} ${'pandas'} @scoped/package@1.2.3`;
+  it.each([
+    ['multiple args with values', `pip install --global-option build_ext pandas`, 38],
+    ['argument with =', 'pip install --compiler=mingw32 pandas', 31],
+    ['combined args with values and =', 'pip install --global-option build_ext --global-option --compiler=mingw32 pandas', 73],
+  ])('should find package after %s', (_, command, startIndex) => {
+    const expectedPackages = [packageResult({ name: 'pandas', startIndex, endIndex: startIndex + 'pandas'.length })];
+
+    const packagePosition = parseCommand(command);
+
+    expect(packagePosition).toStrictEqual(expectedPackages);
+  });
+
+  it('should find multiple packages', () => {
+    const { command, positions } = cli`pip install ${'requests'} ${'numpy'} ${'pandas'} MySQL_python==1.2.2`;
+    const expectedPackages = [
+      ...positions.map(({ index, value }) => packageResult({ name: value, startIndex: index })),
+      packageResult({ name: '@scoped/package', version: '1.2.3', startIndex: 22 }),
+    ];
+
+    const packagePosition = parseCommand(command);
+
+    expect(packagePosition).toStrictEqual(expectedPackages);
+  });
+
+  it.each(['==10.9.2', '>=1.25', '<=1', '~=1.1.13', '>=1.2,<20', '!=2.1.5'])(
+    'should range the package with the version part: %s',
+    (version) => {
+      const command = `pip install -U numpy${version}`;
       const expectedPackages = [
-        ...positions.map(({ index, value }) => packageResult({ name: value, startIndex: index })),
-        packageResult({ name: '@scoped/package', version: '1.2.3', startIndex: 22 }),
+        packageResult({
+          name: 'numpy',
+          startIndex: 15,
+          endIndex: 15 + 'numpy'.length + version.length,
+        }),
       ];
 
       const packagePosition = parseCommand(command);
 
       expect(packagePosition).toStrictEqual(expectedPackages);
-    });
+    }
+  );
 
-    it('should find in multiple lines', () => {
-      const { command, positions } = cli`
+  it('should find in multiple lines', () => {
+    const { command, positions } = cli`
       pip install ${'requests'}
       pip install -U ${'numpy'}
       `;
-      const expectedPackages = positions.map(({ index, value }) => packageResult({ name: value, startIndex: index }));
+    const expectedPackages = positions.map(({ index, value }) => packageResult({ name: value, startIndex: index }));
 
-      const packagePosition = parseCommand(command);
+    const packagePosition = parseCommand(command);
 
-      expect(packagePosition).toStrictEqual(expectedPackages);
-    });
+    expect(packagePosition).toStrictEqual(expectedPackages);
   });
 });
