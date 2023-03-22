@@ -1,3 +1,4 @@
+import { getNormalizedPackageID } from '../registries';
 import fetchDebricked from './debricked';
 import fetchDepsDev from './deps-dev';
 import fetchOpenbase from './openbase';
@@ -10,8 +11,10 @@ const handleAsyncError = (func, ...args) =>
     return null;
   });
 
-export default (packageID) => {
-  const depsDev = handleAsyncError(fetchDepsDev, packageID);
+export default async (packageID) => {
+  const normalizedPackageID = await getNormalizedPackageID(packageID);
+
+  const depsDev = handleAsyncError(fetchDepsDev, normalizedPackageID);
   const info = depsDev.then((depsDevInfo) => {
     const { latestVersion, licenses, stars } = depsDevInfo.data;
     return {
@@ -22,11 +25,11 @@ export default (packageID) => {
   });
 
   return {
-    debricked: handleAsyncError(fetchDebricked, packageID),
+    debricked: handleAsyncError(fetchDebricked, normalizedPackageID),
     depsDev,
     info,
-    openbase: handleAsyncError(fetchOpenbase, packageID),
-    snyk: handleAsyncError(fetchSnyk, packageID),
-    socket: handleAsyncError(fetchSocket, packageID),
+    openbase: handleAsyncError(fetchOpenbase, normalizedPackageID),
+    snyk: handleAsyncError(fetchSnyk, normalizedPackageID),
+    socket: handleAsyncError(fetchSocket, normalizedPackageID),
   };
 };
