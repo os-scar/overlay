@@ -64,6 +64,7 @@ const scrapeScoreFromSnyk = (registry, packageName) =>
 
 const typesMap = {
   npm: 'npm-package',
+  pypi: 'python',
 };
 
 export default async ({ type, name }) => {

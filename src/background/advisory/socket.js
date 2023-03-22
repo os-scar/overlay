@@ -27,8 +27,14 @@ const getLevel = (score) => {
 const getPackageDetails = (type, name) =>
   cache(['socket', type, name], () => fetch(`https://socket.dev/api/${type}/package-info/score?name=${name}`).then((r) => r.json()));
 
+const typesMap = {
+  npm: 'npm',
+  // pypi: 'pypi', // score is not available for pypi
+};
+
 export default async ({ type, name }) => {
-  const { score: scoresList } = await getPackageDetails(type, name);
+  if (!typesMap[type]) return null;
+  const { score: scoresList } = await getPackageDetails(typesMap[type], name);
 
   let issues = 0;
   const scores = Object.entries(scoresList)
