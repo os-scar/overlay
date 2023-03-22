@@ -1233,6 +1233,11 @@ https://stackoverflow.com/questions/5226504:
         </code>
       type: pypi
       name: pillow
+    - range: |-
+        <code>pip install 'pip&lt;10' 
+        </code>
+      type: pypi
+      name: pip
     - range: <code>$ pip install 'python-jenkins&gt;=1.1.1'</code>
       type: pypi
       name: python-jenkins

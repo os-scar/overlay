@@ -60,7 +60,7 @@ const pipOptionsWithArg = [
 ];
 const optionWithArgRegex = `( (${pipOptionsWithArg.join('|')})(=| )\\S+)*`;
 const options = /( -[-\w=]+)*/;
-const packageArea = /["']?(?<package_part>(?<package_name>\w[\w.-]*)([=<>~!]=[\w.,<>]+)?)["']?(?=\s|$)/g;
+const packageArea = /["']?(?<package_part>(?<package_name>\w[\w.-]*)([=<>~!]=?[\w.,<>]+)?)["']?(?=\s|$)/g;
 const repeatedPackages = `(?<packages>( ${packageArea.source})+)`;
 const whiteSpace = / +/;
 const PIP_COMMAND_REGEX = new RegExp(

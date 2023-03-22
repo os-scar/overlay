@@ -79,7 +79,7 @@ describe(parseCommand.name, () => {
     expect(packagePosition).toStrictEqual(expectedPackages);
   });
 
-  it.each(['==10.9.2', '>=1.25', '<=1', '~=1.1.13', '>=1.2,<20', '!=2.1.5'])(
+  it.each(['==10.9.2', '>=1.25', '<=1', '~=1.1.13', '>=1.2,<20', '!=2.1.5', '<10'])(
     'should range the package with the version part: %s',
     (version) => {
       const command = `pip install -U numpy${version}`;
