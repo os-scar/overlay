@@ -71,7 +71,7 @@ describe(parseCommand.name, () => {
     const { command, positions } = cli`pip install ${'requests'} ${'numpy'} ${'pandas'} MySQL_python==1.2.2`;
     const expectedPackages = [
       ...positions.map(({ index, value }) => packageResult({ name: value, startIndex: index })),
-      packageResult({ name: '@scoped/package', version: '1.2.3', startIndex: 22 }),
+      packageResult({ name: 'MySQL_python', startIndex: 34, endIndex: 34 + 'MySQL_python==1.2.2'.length }),
     ];
 
     const packagePosition = parseCommand(command);
