@@ -58,42 +58,79 @@ const pipOptionsWithArg = [
   '--client-cert',
   '--cache-dir',
 ];
-const optionWithArgRegex = `( (${pipOptionsWithArg.join('|')})(=| )\\S+)*`;
-const options = /( -[-\w=]+)*/;
-const packageArea = /["']?(?<package_part>(?<package_name>\w[\w.-]*)([=<>~!]=?[\w.,<>]+)?)["']?(?=\s|$)/g;
-const repeatedPackages = `(?<packages>( ${packageArea.source})+)`;
-const whiteSpace = / +/;
-const PIP_COMMAND_REGEX = new RegExp(
-  `(?<command>pip install${optionWithArgRegex}${options.source})${repeatedPackages}`.replaceAll(' ', whiteSpace.source),
-  'g'
-);
+
+const packageArea = /(?<=\s|^)["']?(?<package_part>(?<package_name>\w[\w.-]*)([=<>~!]=?[\w.,<>]+)?)["']?(?=\s|$)/;
+
+const handleArgument = (argument, restCommandWords) => {
+  let index = 0;
+  index += argument.length + 1; // +1 for the space removed by split
+
+  if (argument === '-r' || argument === '--requirement') {
+    while (restCommandWords.length > 0) {
+      index += restCommandWords.shift().length + 1;
+    }
+    return index;
+  }
+
+  if (!pipOptionsWithArg.includes(argument)) {
+    return index;
+  }
+
+  if (argument.includes('=')) return index;
+
+  index += restCommandWords.shift().length + 1;
+  return index;
+};
+
 export const parseCommand = (command) => {
-  const matches = Array.from(command.matchAll(PIP_COMMAND_REGEX));
+  const packages = [];
+  let counterIndex = 0;
 
-  const results = matches.flatMap((match) => {
-    const packagesStr = match?.groups.packages;
-    if (!packagesStr) return [];
+  const lines = command.split('\n');
+  while (lines.length > 0) {
+    const line = lines.shift();
 
-    const packagesIndex = command.indexOf(packagesStr, match.index + match.groups.command.length);
+    const pipInstallMatch = line.match(/pip +install/);
+    if (!pipInstallMatch) {
+      counterIndex += line.length + 1; // +1 for the newline
+      continue;
+    }
 
-    return Array.from(packagesStr.matchAll(packageArea))
-      .map((packageMatch) => {
-        const packagePart = packageMatch.groups.package_part;
-        const name = packageMatch.groups.package_name;
+    const pipInstallLength = pipInstallMatch.index + pipInstallMatch[0].length;
+    const argsAndPackagesWords = line.slice(pipInstallLength).split(' ');
+    counterIndex += pipInstallLength;
 
-        const startIndex = packagesIndex + packagesStr.indexOf(packagePart, packageMatch.index);
-        const endIndex = startIndex + packagePart.length;
+    while (argsAndPackagesWords.length > 0) {
+      const word = argsAndPackagesWords.shift();
 
-        return {
-          type: 'pypi',
-          name,
-          version: undefined,
-          startIndex,
-          endIndex,
-        };
-      })
-      .filter((result) => result.name !== 'requirements.txt');
-  });
+      if (!word) {
+        counterIndex++;
+        continue;
+      }
 
-  return results;
+      if (word.startsWith('-')) {
+        counterIndex += handleArgument(word, argsAndPackagesWords);
+        continue;
+      }
+
+      const packageMatch = word.match(packageArea);
+      if (!packageMatch) {
+        counterIndex += word.length + 1;
+        continue;
+      }
+
+      const startIndex = command.indexOf(packageMatch.groups.package_part, counterIndex);
+      packages.push({
+        type: 'pypi',
+        name: packageMatch.groups.package_name,
+        version: undefined,
+        startIndex,
+        endIndex: startIndex + packageMatch.groups.package_part.length,
+      });
+
+      counterIndex += word.length + 1;
+    }
+  }
+
+  return packages;
 };
