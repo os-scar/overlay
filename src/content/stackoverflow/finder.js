@@ -1,4 +1,5 @@
 import * as npm from '../registry/npm';
+import * as python from '../registry/python';
 import { getRangeOfPositions } from './range';
 
 const POST_SELECTOR = 'div.js-post-body';
@@ -14,11 +15,11 @@ const validURL = (href) => {
 };
 
 const urlParsers = {
-  'npmjs.com': npm.urlParser,
-  'npmjs.org': npm.urlParser,
-  // 'pypi.org': python.urlParser,
-  // 'pypi.python.org': python.urlParser,
+  ...npm.urlParsers,
+  ...python.urlParsers,
 };
+
+const codeBlockParsers = [npm.parseCommand, python.parseCommand];
 
 export const findRanges = (body) => {
   const links = Array.from(body.querySelectorAll(`${POST_SELECTOR} a`))
@@ -39,16 +40,18 @@ export const findRanges = (body) => {
     })
     .filter((p) => p);
 
-  const npmCommands = Array.from(body.querySelectorAll(`${POST_SELECTOR} code`)).flatMap((element) => {
-    const packages = npm.parseCommand(element.textContent);
+  const installCommands = Array.from(body.querySelectorAll(`${POST_SELECTOR} code`)).flatMap((element) => {
+    return codeBlockParsers.flatMap((parser) => {
+      const packages = parser(element.textContent);
 
-    const withRanges = packages.map(({ startIndex, endIndex, ...packageID }) => {
-      const range = getRangeOfPositions(element, startIndex, endIndex);
-      return { ...packageID, range };
+      const withRanges = packages.map(({ startIndex, endIndex, ...packageID }) => {
+        const range = getRangeOfPositions(element, startIndex, endIndex);
+        return { ...packageID, range };
+      });
+
+      return withRanges;
     });
-
-    return withRanges;
   });
 
-  return [...links, ...npmCommands];
+  return [...links, ...installCommands];
 };

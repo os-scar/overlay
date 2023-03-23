@@ -3,7 +3,7 @@ import advisory from '.';
 
 describe('advisory', () => {
   it(`should contain shared properties in each advisory`, async () => {
-    const { info, ...advisories } = advisory({ type: 'npm', name: 'react' });
+    const { info, ...advisories } = await advisory({ type: 'npm', name: 'react' });
 
     const { latest, licenses, stars } = await info;
     expect(latest).toEqual(expect.any(String));

@@ -48,7 +48,7 @@ export const parseCommand = (command = '') => {
   return results;
 };
 
-export const urlParser = ({ pathname }) => {
+const urlParser = ({ pathname }) => {
   if (!pathname.startsWith('/package/')) return;
   const [name, version] = pathname.replace('/package/', '').split('/v/');
 
@@ -57,4 +57,9 @@ export const urlParser = ({ pathname }) => {
     name,
     version: version || undefined,
   };
+};
+
+export const urlParsers = {
+  'npmjs.com': urlParser,
+  'npmjs.org': urlParser,
 };
