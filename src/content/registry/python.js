@@ -1,4 +1,4 @@
-const registryParser = (pathname) => {
+const registryParser = ({ pathname }) => {
   const [_empty, _part, name, version] = pathname.split('/');
   return {
     type: 'pypi',
@@ -7,7 +7,7 @@ const registryParser = (pathname) => {
   };
 };
 
-const docsParser = (pathname) => {
+const docsParser = ({ pathname }) => {
   const [_empty, name] = pathname.split('/');
   return {
     type: 'pypi',
@@ -16,9 +16,11 @@ const docsParser = (pathname) => {
   };
 };
 
-export const urlParser = ({ hostname, pathname }) => {
-  if (hostname.includes('pypi')) return registryParser(pathname);
-  return docsParser(pathname);
+export const urlParsers = {
+  'pypi.org': registryParser,
+  'pypi.python.org': registryParser,
+  'packages.python.org': docsParser,
+  'pythonhosted.org': docsParser,
 };
 
 const pipOptionsWithArgToIgnore = [

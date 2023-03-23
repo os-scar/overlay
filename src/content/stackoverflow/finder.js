@@ -15,12 +15,8 @@ const validURL = (href) => {
 };
 
 const urlParsers = {
-  'npmjs.com': npm.urlParser,
-  'npmjs.org': npm.urlParser,
-  'pypi.org': python.urlParser,
-  'pypi.python.org': python.urlParser,
-  'packages.python.org': python.urlParser,
-  'pythonhosted.org': python.urlParser,
+  ...npm.urlParsers,
+  ...python.urlParsers,
 };
 
 const codeBlockParsers = [npm.parseCommand, python.parseCommand];
