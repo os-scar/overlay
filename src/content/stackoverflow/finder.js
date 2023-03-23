@@ -40,7 +40,7 @@ export const findRanges = (body) => {
     })
     .filter((p) => p);
 
-  const npmCommands = Array.from(body.querySelectorAll(`${POST_SELECTOR} code`)).flatMap((element) => {
+  const installCommands = Array.from(body.querySelectorAll(`${POST_SELECTOR} code`)).flatMap((element) => {
     return codeBlockParsers.flatMap((parser) => {
       const packages = parser(element.textContent);
 
@@ -53,5 +53,5 @@ export const findRanges = (body) => {
     });
   });
 
-  return [...links, ...npmCommands];
+  return [...links, ...installCommands];
 };
