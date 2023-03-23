@@ -21,7 +21,7 @@ export const urlParser = ({ hostname, pathname }) => {
   return docsParser(pathname);
 };
 
-const pipOptionsWithArg = [
+const pipOptionsWithArgToIgnore = [
   '-c',
   '--constraint',
   '-e',
@@ -72,7 +72,7 @@ const handleArgument = (argument, restCommandWords) => {
     return index;
   }
 
-  if (!pipOptionsWithArg.includes(argument)) {
+  if (!pipOptionsWithArgToIgnore.includes(argument)) {
     return index;
   }
 
