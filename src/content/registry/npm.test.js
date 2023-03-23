@@ -1,5 +1,6 @@
-import { describe, it, expect } from '@jest/globals';
+import { describe, expect, it } from '@jest/globals';
 import { parseCommand } from './npm';
+import { cli } from './tests-utils';
 
 const packageResult = (p) => ({
   type: 'npm',
@@ -7,18 +8,6 @@ const packageResult = (p) => ({
   endIndex: p.startIndex + p.name.length + (p.version ? p.version.length + 1 : 0),
   ...p,
 });
-
-const cli = (strings, ...values) => {
-  let command = strings[0];
-  const positions = [];
-
-  for (let i = 0; i < values.length; i++) {
-    positions.push({ index: command.length, value: values[i] });
-    command += values[i] + strings[i + 1];
-  }
-
-  return { command, positions };
-};
 
 describe('npm', () => {
   describe(parseCommand.name, () => {
