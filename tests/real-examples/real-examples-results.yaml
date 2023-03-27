@@ -1247,3 +1247,39 @@ https://stackoverflow.com/questions/5226504:
     - range: <code>pip install -I package==2.0.0</code>
       type: pypi
       name: package
+https://stackoverflow.com/a/27709931:
+  comment: go get standard library
+  post: answer
+  registry: go
+  results: []
+https://stackoverflow.com/a/47433983:
+  comment: link to github and command
+  post: answer
+  registry: go
+  results: []
+https://stackoverflow.com/a/29242504:
+  comment: go install
+  post: answer
+  registry: go
+  results: []
+https://stackoverflow.com/a/16901657:
+  comment: not existing package
+  post: answer
+  registry: go
+  results: []
+https://stackoverflow.com/a/15374626:
+  comment: package from code.google.com
+  post: answer
+  registry: go
+  results: []
+https://stackoverflow.com/a/57694628:
+  comment: go get with version
+  post: answer
+  registry: go
+  results:
+    - range: |-
+        <code>$ npm install express@4.0.0
+        </code>
+      type: npm
+      name: express
+      version: 4.0.0
