@@ -1,6 +1,7 @@
 <template>
   <div class="overlay-tooltip">
     <div
+      class="overlay-tooltip__activator"
       @mouseenter="
         initTooltipPosition();
         overActivator = true;
@@ -11,19 +12,17 @@
     >
       <slot name="activator"></slot>
     </div>
-    <div class="tooltip">
-      <Teleport to="body" append-to="self">
-        <div
-          class="overlay-tooltip__tooltip"
-          v-show="modelValue"
-          @mouseenter="overTooltip = true"
-          @mouseleave="overTooltip = false"
-          ref="overlayTooltip"
-        >
-          <slot />
-        </div>
-      </Teleport>
-    </div>
+    <Teleport to="body" append-to="self">
+      <div
+        class="overlay-tooltip__tooltip"
+        v-show="modelValue"
+        @mouseenter="overTooltip = true"
+        @mouseleave="overTooltip = false"
+        ref="overlayTooltip"
+      >
+        <slot />
+      </div>
+    </Teleport>
   </div>
 </template>
 
@@ -251,6 +250,10 @@ export default {
 .overlay-tooltip {
   position: relative;
   display: inline-block;
+
+  &__activator {
+    display: inline-block;
+  }
 
   &__tooltip {
     position: absolute;
