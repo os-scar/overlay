@@ -1,24 +1,18 @@
 import { describe, expect, it } from '@jest/globals';
 import { parseCommand } from './go';
 
-const positionInCommand = (command, packageName) => {
+const positionInCommand = (command, packageName, endIndex) => {
   const startIndex = command.indexOf(packageName);
-  return { name: packageName, startIndex, endIndex: startIndex + packageName.length };
+  return { name: packageName, startIndex, endIndex: endIndex || startIndex + packageName.length };
 };
 
 describe(parseCommand.name, () => {
-  it.each([
-    undefined,
-    '',
-    'just a text',
-    'go get',
-    'go get -u',
-    'go get -u -v',
-    'go get https://github.com/user/package',
-    'go get code.google.com/p/goauth2/oauth',
-  ])(`should not find a package in '%s'`, (text) => {
-    expect(parseCommand(text)).toStrictEqual([]);
-  });
+  it.each([undefined, '', 'just a text', 'go get', 'go get -u', 'go get -u -v', 'go get https://github.com/user/package'])(
+    `should not find a package in '%s'`,
+    (text) => {
+      expect(parseCommand(text)).toStrictEqual([]);
+    }
+  );
 
   it.each(['github.com/user/package'])(`should find the package %s`, (packageName) => {
     const command = `go get ${packageName}`;
@@ -37,7 +31,16 @@ describe(parseCommand.name, () => {
     ['with version', 'go get github.com/user/package@v1.12.0'],
     ['with commit hash', 'go get github.com/user/package@b2bd9c3'],
   ])(`should find the package in command with '%s'`, (_, command) => {
-    const expectedPackages = [positionInCommand(command, 'github.com/user/package')];
+    const expectedPackages = [positionInCommand(command, 'github.com/user/package', command.length)];
+
+    const packagePosition = parseCommand(command);
+
+    expect(packagePosition).toStrictEqual(expectedPackages);
+  });
+
+  it('should find package from code.google.com', () => {
+    const command = 'go get code.google.com/p/goauth2/oauth';
+    const expectedPackages = [positionInCommand(command, 'code.google.com/p/goauth2/oauth')];
 
     const packagePosition = parseCommand(command);
 
