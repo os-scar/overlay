@@ -3,7 +3,7 @@ import { parseCommand } from './go';
 
 const positionInCommand = (command, packageName, endIndex) => {
   const startIndex = command.indexOf(packageName);
-  return { name: packageName, startIndex, endIndex: endIndex || startIndex + packageName.length };
+  return { type: 'go', name: packageName, startIndex, endIndex: endIndex || startIndex + packageName.length };
 };
 
 describe(parseCommand.name, () => {
@@ -30,8 +30,18 @@ describe(parseCommand.name, () => {
     ['with branch', 'go get github.com/user/package@master'],
     ['with version', 'go get github.com/user/package@v1.12.0'],
     ['with commit hash', 'go get github.com/user/package@b2bd9c3'],
+    ['with patch', 'go get -u=patch github.com/user/package'],
   ])(`should find the package in command with '%s'`, (_, command) => {
     const expectedPackages = [positionInCommand(command, 'github.com/user/package', command.length)];
+
+    const packagePosition = parseCommand(command);
+
+    expect(packagePosition).toStrictEqual(expectedPackages);
+  });
+
+  it('should find package with github subfolder', () => {
+    const command = 'go get -u github.com/golang/lint/golint';
+    const expectedPackages = [positionInCommand(command, 'github.com/golang/lint/golint')];
 
     const packagePosition = parseCommand(command);
 

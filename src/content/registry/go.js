@@ -36,6 +36,7 @@ export const parseCommand = (command = '') => {
       }
 
       packages.push({
+        type: 'go',
         name: packageMatch.groups.name,
         startIndex: counterIndex,
         endIndex: counterIndex + packageMatch[0].length,

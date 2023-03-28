@@ -106,3 +106,7 @@ links:
     comment: go get with version
     post: answer
     registry: go
+  https://stackoverflow.com/a/28857808:
+    comment: github subfolder
+    post: answer
+    registry: go
