@@ -61,7 +61,7 @@ const pipOptionsWithArgToIgnore = [
   '--cache-dir',
 ];
 
-const packageArea = /(?<=\s|^)["']?(?<package_part>(?<package_name>\w[\w.-]*)([=<>~!]=?[\w.,<>]+)?)["']?(?=\s|$)/;
+const packageArea = /^["']?(?<package_part>(?<package_name>\w[\w.-]*)([=<>~!]=?[\w.,<>]+)?)["']?$/;
 
 const handleArgument = (argument, restCommandWords) => {
   let index = 0;

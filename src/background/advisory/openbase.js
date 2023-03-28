@@ -69,6 +69,7 @@ const getOpenbasePackage = (packageName, packageLang) =>
 const typeMap = {
   npm: 'JS',
   pypi: 'PYTHON',
+  go: 'GO',
 };
 
 export default async ({ type, name }) => {
