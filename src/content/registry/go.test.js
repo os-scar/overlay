@@ -7,12 +7,19 @@ const positionInCommand = (command, packageName, endIndex) => {
 };
 
 describe(parseCommand.name, () => {
-  it.each([undefined, '', 'just a text', 'go get', 'go get -u', 'go get -u -v', 'go get https://github.com/user/package'])(
-    `should not find a package in '%s'`,
-    (text) => {
-      expect(parseCommand(text)).toStrictEqual([]);
-    }
-  );
+  it.each([
+    undefined,
+    '',
+    'just a text',
+    'go get',
+    'go get -u',
+    'go get -u -v',
+    'go get https://github.com/user/package',
+    'go get code.google.com/p/goauth2/oauth',
+    'go get golang.org/x/tools/cmd/godoc',
+  ])(`should not find a package in '%s'`, (text) => {
+    expect(parseCommand(text)).toStrictEqual([]);
+  });
 
   it.each(['github.com/user/package'])(`should find the package %s`, (packageName) => {
     const command = `go get ${packageName}`;
@@ -41,16 +48,14 @@ describe(parseCommand.name, () => {
 
   it('should find package with github subfolder', () => {
     const command = 'go get -u github.com/golang/lint/golint';
-    const expectedPackages = [positionInCommand(command, 'github.com/golang/lint/golint')];
-
-    const packagePosition = parseCommand(command);
-
-    expect(packagePosition).toStrictEqual(expectedPackages);
-  });
-
-  it('should find package from code.google.com', () => {
-    const command = 'go get code.google.com/p/goauth2/oauth';
-    const expectedPackages = [positionInCommand(command, 'code.google.com/p/goauth2/oauth')];
+    const expectedPackages = [
+      {
+        type: 'go',
+        name: 'github.com/golang/lint',
+        startIndex: 10,
+        endIndex: 10 + 'github.com/golang/lint/golint'.length,
+      },
+    ];
 
     const packagePosition = parseCommand(command);
 

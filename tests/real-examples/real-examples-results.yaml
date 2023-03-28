@@ -1252,11 +1252,6 @@ https://stackoverflow.com/a/27709931:
   post: answer
   registry: go
   results:
-    - range: |-
-        <code>go get golang.org/x/tools/cmd/godoc
-        </code>
-      type: go
-      name: golang.org/x/tools/cmd/godoc
     - range: >-
         <code>$ brew install go
 
@@ -1301,97 +1296,7 @@ https://stackoverflow.com/a/27709931:
 
         </code>
       type: go
-      name: golang.org/x/tools/cmd/godoc
-    - range: >-
-        <code>$ brew install go
-
-        ==&gt; Downloading
-        https://homebrew.bintray.com/bottles/go-1.7.1.sierra.bottle.tar.gz
-
-        Already downloaded:
-        /Users/nigel/Library/Caches/Homebrew/go-1.7.1.sierra.bottle.tar.gz
-
-        ==&gt; Pouring go-1.7.1.sierra.bottle.tar.gz
-
-        ==&gt; Caveats
-
-        As of go 1.2, a valid GOPATH is required to use the `go get` command:
-          https://golang.org/doc/code.html#GOPATH
-
-        You may wish to add the GOROOT-based install location to your PATH:
-          export PATH=$PATH:/usr/local/opt/go/libexec/bin
-        ==&gt; Summary
-
-        🍺  /usr/local/Cellar/go/1.7.1: 6,436 files, 250.6M
-
-
-        $ go get golang.org/x/tools/cmd/godoc
-
-
-        $ go get github.com/golang/lint/golint
-
-
-        $ go get golang.org/x/tour/gotour
-
-
-        $ gotour
-
-        2016/10/19 12:06:54 Serving content from
-        /Users/nigel/.go/src/golang.org/x/tour
-
-        2016/10/19 12:06:54 A browser window should open. If not, please visit
-        http://127.0.0.1:3999
-
-        2016/10/19 12:06:55 accepting connection from: 127.0.0.1:52958
-
-        </code>
-      type: go
-      name: github.com/golang/lint/golint
-    - range: >-
-        <code>$ brew install go
-
-        ==&gt; Downloading
-        https://homebrew.bintray.com/bottles/go-1.7.1.sierra.bottle.tar.gz
-
-        Already downloaded:
-        /Users/nigel/Library/Caches/Homebrew/go-1.7.1.sierra.bottle.tar.gz
-
-        ==&gt; Pouring go-1.7.1.sierra.bottle.tar.gz
-
-        ==&gt; Caveats
-
-        As of go 1.2, a valid GOPATH is required to use the `go get` command:
-          https://golang.org/doc/code.html#GOPATH
-
-        You may wish to add the GOROOT-based install location to your PATH:
-          export PATH=$PATH:/usr/local/opt/go/libexec/bin
-        ==&gt; Summary
-
-        🍺  /usr/local/Cellar/go/1.7.1: 6,436 files, 250.6M
-
-
-        $ go get golang.org/x/tools/cmd/godoc
-
-
-        $ go get github.com/golang/lint/golint
-
-
-        $ go get golang.org/x/tour/gotour
-
-
-        $ gotour
-
-        2016/10/19 12:06:54 Serving content from
-        /Users/nigel/.go/src/golang.org/x/tour
-
-        2016/10/19 12:06:54 A browser window should open. If not, please visit
-        http://127.0.0.1:3999
-
-        2016/10/19 12:06:55 accepting connection from: 127.0.0.1:52958
-
-        </code>
-      type: go
-      name: golang.org/x/tour/gotour
+      name: github.com/golang/lint
 https://stackoverflow.com/a/47433983:
   comment: link to github and command
   post: answer
@@ -1445,10 +1350,7 @@ https://stackoverflow.com/a/15374626:
   comment: package from code.google.com
   post: answer
   registry: go
-  results:
-    - range: <code>go get code.google.com/p/goauth2/oauth</code>
-      type: go
-      name: code.google.com/p/goauth2/oauth
+  results: []
 https://stackoverflow.com/a/57694628:
   comment: go get with version
   post: answer
@@ -1535,9 +1437,9 @@ https://stackoverflow.com/a/28857808:
 
         </code>
       type: go
-      name: github.com/golang/lint/golint
+      name: github.com/golang/lint
     - range: |-
         <code>go get -u github.com/golang/lint/golint
         </code>
       type: go
-      name: github.com/golang/lint/golint
+      name: github.com/golang/lint
