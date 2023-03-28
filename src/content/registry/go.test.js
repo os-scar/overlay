@@ -62,6 +62,15 @@ describe(parseCommand.name, () => {
     expect(packagePosition).toStrictEqual(expectedPackages);
   });
 
+  it('should support special characters', () => {
+    const command = 'go get github.com/U-ser1/p.A-ck_age2';
+    const expectedPackages = [positionInCommand(command, 'github.com/U-ser1/p.A-ck_age2')];
+
+    const packagePosition = parseCommand(command);
+
+    expect(packagePosition).toStrictEqual(expectedPackages);
+  });
+
   it('should find multiple packages', () => {
     const command = 'go get github.com/google/uuid github.com/nu7hatch/gouuid';
     const expectedPackages = [

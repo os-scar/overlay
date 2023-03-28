@@ -29,7 +29,7 @@ export const parseCommand = (command = '') => {
         continue;
       }
 
-      const packageMatch = word.match(/^(?<name>github\.com(\/\w[\w.]+){2})(\/[\w.]+)*(@[\w.]+)?$/);
+      const packageMatch = word.match(/^(?<name>github\.com(\/\w[\w.-]+){2})(\/[\w.-]+)*(@[\w.-]+)?$/);
       if (!packageMatch) {
         counterIndex += word.length + 1;
         continue;
