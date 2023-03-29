@@ -11,7 +11,14 @@ const packageResult = (p) => ({
 
 describe('npm', () => {
   describe(parseCommand.name, () => {
-    it.each(['', 'bla bla', 'npm install', 'npm install -g'])('should return empty array if no packages found', (command) => {
+    it.each([
+      '',
+      'bla bla',
+      'npm install',
+      'npm install -g',
+      '`npm install node-sass`', // this is not a valid command because of the `
+      'npm init react-app my-app', // not yet supported. #37
+    ])('should return empty array if no packages found', (command) => {
       expect(parseCommand(command)).toStrictEqual([]);
     });
 
