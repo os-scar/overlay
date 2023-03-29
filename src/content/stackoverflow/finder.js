@@ -1,3 +1,4 @@
+import * as go from '../registry/go';
 import * as npm from '../registry/npm';
 import * as python from '../registry/python';
 import { getRangeOfPositions } from './range';
@@ -19,7 +20,7 @@ const urlParsers = {
   ...python.urlParsers,
 };
 
-const codeBlockParsers = [npm.parseCommand, python.parseCommand];
+const codeBlockParsers = [npm.parseCommand, python.parseCommand, go.parseCommand];
 
 export const findRanges = (body) => {
   const links = Array.from(body.querySelectorAll(`${POST_SELECTOR} a`))

@@ -83,13 +83,14 @@ $color-red: #ff0000;
 $color-green: #14ce00;
 $color-white: #fff;
 
-$indicator-height: 24px;
+$indicator-height: 18px;
 
 .overlay-indicator {
-  display: inline-flex;
-  flex-direction: row;
+  display: inline-block;
+  user-select: none;
   position: relative;
   height: $indicator-height;
+  top: $padding-l1;
   overflow: hidden;
   border-radius: 4px;
   align-items: center;
@@ -106,7 +107,7 @@ $indicator-height: 24px;
     }
   }
 
-  $icon-size: 24px;
+  $icon-size: $indicator-height;
 
   &__icon {
     width: $icon-size;
@@ -115,10 +116,14 @@ $indicator-height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
   }
 
   &__text {
-    padding: $padding-l1;
+    padding: 0 $padding-l1;
+    margin-left: $icon-size;
+    display: inline-block;
+    user-select: text;
   }
 
   div {
