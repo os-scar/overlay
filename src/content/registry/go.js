@@ -1,50 +1,19 @@
-export const parseCommand = (command = '') => {
-  const packages = [];
-  let counterIndex = 0;
+import { createParseCommand } from './shared';
 
-  const lines = command.split('\n');
-  while (lines.length > 0) {
-    const line = lines.shift();
+const parsePackageWord = (word) => {
+  const packageMatch = word.match(/^(?<name>github\.com(\/\w[\w.-]+){2})(\/[\w.-]+)*(@[\w.-]+)?$/);
+  if (!packageMatch) return null;
 
-    const goGetMatch = line.match(/go +(get|install)/);
-    if (!goGetMatch) {
-      counterIndex += line.length + 1; // +1 for the newline
-      continue;
-    }
-
-    const goGetLength = goGetMatch.index + goGetMatch[0].length;
-    counterIndex += goGetLength;
-    const argsAndPackagesWords = line.slice(goGetLength).split(' ');
-
-    while (argsAndPackagesWords.length > 0) {
-      const word = argsAndPackagesWords.shift();
-
-      if (!word) {
-        counterIndex++;
-        continue;
-      }
-
-      if (word.startsWith('-')) {
-        counterIndex += word.length + 1;
-        continue;
-      }
-
-      const packageMatch = word.match(/^(?<name>github\.com(\/\w[\w.-]+){2})(\/[\w.-]+)*(@[\w.-]+)?$/);
-      if (!packageMatch) {
-        counterIndex += word.length + 1;
-        continue;
-      }
-
-      packages.push({
-        type: 'go',
-        name: packageMatch.groups.name,
-        startIndex: counterIndex,
-        endIndex: counterIndex + packageMatch[0].length,
-      });
-
-      counterIndex += word.length + 1;
-    }
-  }
-
-  return packages;
+  const { name } = packageMatch.groups;
+  return {
+    packageName: name,
+    packagePart: packageMatch[0],
+  };
 };
+
+export const parseCommand = createParseCommand(
+  'go',
+  (line) => line.match(/go +(get|install)/),
+  (word) => word.length + 1,
+  parsePackageWord
+);
