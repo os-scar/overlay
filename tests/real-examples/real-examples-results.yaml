@@ -116,11 +116,6 @@ https://stackoverflow.com/questions/29461831:
       type: npm
       name: gulp-sass
       version: '2'
-    - range: |-
-        <code> `npm install node-sass`
-        </code>
-      type: npm
-      name: node-sass
 https://stackoverflow.com/questions/9629682:
   comment: many links, npm.org without www
   post: answer
@@ -680,9 +675,6 @@ https://stackoverflow.com/questions/6237400:
         </code>
       type: npm
       name: npm
-    - range: <code>npm -g install npm@&lt;version&gt;</code>
-      type: npm
-      name: npm
     - range: |-
         <code>$ npm install -g npm stable
         </code>
@@ -723,11 +715,6 @@ https://stackoverflow.com/questions/6237400:
         <code>npm i -g n
         n stable
         npm update -g npm
-        </code>
-      type: npm
-      name: npm
-    - range: |-
-        <code>npm install npm@{version} -g
         </code>
       type: npm
       name: npm
@@ -891,13 +878,13 @@ https://stackoverflow.com/questions/15892076:
         </code>
       type: npm
       name: express
-      version: '3'
+      version: 3.X
     - range: |-
         <code>npm install express@4.X
         </code>
       type: npm
       name: express
-      version: '4'
+      version: 4.X
     - range: |-
         <code>npm install -g npm@latest    // For the last stable version
         npm install -g npm@next      // For the most recent release
@@ -1000,11 +987,6 @@ https://stackoverflow.com/questions/11233365:
   post: answer
   registry: npm
   results:
-    - range: |-
-        <code>npm install git://github.com/user-c/dep-2#node0.8.0
-        </code>
-      type: npm
-      name: git
     - range: |-
         <code>npm install lib-a
         </code>

@@ -3,7 +3,13 @@ import { parseCommand } from './go';
 
 const positionInCommand = (command, packageName, endIndex) => {
   const startIndex = command.indexOf(packageName);
-  return { type: 'go', name: packageName, startIndex, endIndex: endIndex || startIndex + packageName.length };
+  return {
+    type: 'go',
+    name: packageName,
+    version: undefined,
+    startIndex,
+    endIndex: endIndex || startIndex + packageName.length,
+  };
 };
 
 describe(parseCommand.name, () => {
@@ -52,6 +58,7 @@ describe(parseCommand.name, () => {
       {
         type: 'go',
         name: 'github.com/golang/lint',
+        version: undefined,
         startIndex: 10,
         endIndex: 10 + 'github.com/golang/lint/golint'.length,
       },

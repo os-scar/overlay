@@ -1,3 +1,5 @@
+import { createParseCommand } from './shared';
+
 const registryParser = ({ pathname }) => {
   const [_empty, _part, name, version] = pathname.split('/');
   return {
@@ -84,55 +86,16 @@ const handleArgument = (argument, restCommandWords) => {
   return index;
 };
 
-export const parseCommand = (command) => {
-  const packages = [];
-  let counterIndex = 0;
+const baseCommandMatch = (line) => line.match(/pip +install/);
+const packageWordParse = (word) => {
+  const match = word.match(packageArea);
+  if (!match) return null;
 
-  const lines = command.split('\n');
-  while (lines.length > 0) {
-    const line = lines.shift();
-
-    const pipInstallMatch = line.match(/pip +install/);
-    if (!pipInstallMatch) {
-      counterIndex += line.length + 1; // +1 for the newline
-      continue;
-    }
-
-    const pipInstallLength = pipInstallMatch.index + pipInstallMatch[0].length;
-    const argsAndPackagesWords = line.slice(pipInstallLength).split(' ');
-    counterIndex += pipInstallLength;
-
-    while (argsAndPackagesWords.length > 0) {
-      const word = argsAndPackagesWords.shift();
-
-      if (!word) {
-        counterIndex++;
-        continue;
-      }
-
-      if (word.startsWith('-')) {
-        counterIndex += handleArgument(word, argsAndPackagesWords);
-        continue;
-      }
-
-      const packageMatch = word.match(packageArea);
-      if (!packageMatch) {
-        counterIndex += word.length + 1;
-        continue;
-      }
-
-      const startIndex = command.indexOf(packageMatch.groups.package_part, counterIndex);
-      packages.push({
-        type: 'pypi',
-        name: packageMatch.groups.package_name,
-        version: undefined,
-        startIndex,
-        endIndex: startIndex + packageMatch.groups.package_part.length,
-      });
-
-      counterIndex += word.length + 1;
-    }
-  }
-
-  return packages;
+  const { package_part, package_name } = match.groups;
+  return {
+    packagePart: package_part,
+    packageName: package_name,
+  };
 };
+
+export const parseCommand = createParseCommand('pypi', baseCommandMatch, handleArgument, packageWordParse);

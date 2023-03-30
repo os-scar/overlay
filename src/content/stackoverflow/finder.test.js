@@ -140,6 +140,7 @@ describe(findRanges.name, () => {
         ['@^123.456.789', '^123.456.789'],
         ['@~5.5.5', '~5.5.5'],
         ['@latest', undefined],
+        ['@4.X', '4.X'],
       ])(`Should find the version in format '%s'`, (installVersion, expectedVersion) => {
         const commandPackageName = 'my-package-name';
 
