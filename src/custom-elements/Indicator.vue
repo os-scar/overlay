@@ -10,13 +10,7 @@
     </template>
 
     <div>
-      <!-- test to open url in new page svg-->
       <a target="_blank" :href="`https://www.npmjs.com/package/${packageInfo?.name}`">{{ packageInfo?.name }}</a>
-
-      <!-- test to load svg-->
-      <component :is="`${packageInfo?.type}_logo`"></component>
-
-      <!-- just show all package json at the moment-->
       <div>{{ packageInfo }}</div>
     </div>
   </Tooltip>
@@ -40,6 +34,11 @@ export default defineComponent({
     overlayIndicatorPackageName: {
       type: String,
       required: true,
+    },
+    overlayIndicatorTooltipOpen: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   data() {

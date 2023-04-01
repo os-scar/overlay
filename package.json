@@ -14,6 +14,7 @@
     "postinstall": "husky install",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
+    "test:components": "cd tests/components && vite",
     "build": "gulp build",
     "build:watch": "gulp --series build watch",
     "lint": "eslint src tests",
