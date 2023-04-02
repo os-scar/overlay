@@ -8,7 +8,7 @@
   </header>
 
   <main>
-    <TheWelcome />
+    <div>Show Snyk <input type="checkbox" v-model="showSnyk" /></div>
   </main>
 </template>
 
@@ -17,6 +17,22 @@ import { defineComponent } from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
 export default defineComponent({
   components: { HelloWorld },
+  data() {
+    return {
+      showSnyk: true,
+    };
+  },
+  mounted() {
+    chrome.storage.local.get('showSnyk').then(({ showSnyk }) => (this.showSnyk = showSnyk));
+  },
+  watch: {
+    showSnyk: {
+      handler(showSnyk) {
+        chrome.storage.local.set({ showSnyk });
+      },
+      immediate: false,
+    },
+  },
 });
 </script>
 
