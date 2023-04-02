@@ -27,6 +27,7 @@ const scriptFilePath = url.fileURLToPath(import.meta.url);
 const scriptDirPath = path.dirname(scriptFilePath);
 const srcDirPath = path.resolve(scriptDirPath, 'src');
 const distDirPath = path.resolve(scriptDirPath, 'dist');
+const popupDistDirPath = path.resolve(distDirPath, 'popup');
 
 async function buildCustomElements(outputDirPath) {
   await vite.build({
@@ -73,6 +74,19 @@ async function buildCustomElements(outputDirPath) {
   }
 }
 
+async function buildPopup() {
+  const popupRoot = path.join(srcDirPath, 'popup');
+  await vite.build({
+    root: popupRoot,
+    base: '',
+    build: {
+      emptyOutDir: true,
+      outDir: popupDistDirPath,
+    },
+    plugins: [vue()],
+  });
+}
+
 async function buildBrowserExtension(browserType, version, fileExtension) {
   let outputDirPath = path.join(distDirPath, browserType);
 
@@ -84,6 +98,10 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
   // custom-elements.js + css
   await gulp.src(path.join(distDirPath, 'custom-elements.js')).pipe(gulp.dest(path.join(outputDirPath)));
   await gulp.src(path.join(distDirPath, 'custom-elements.css')).pipe(gulp.dest(path.join(outputDirPath)));
+
+  // --------------
+  // popup
+  await gulp.src(path.join(popupDistDirPath, '**', '*')).pipe(gulp.dest(path.join(outputDirPath, 'popup')));
 
   // --------------
   // manifest.json
@@ -129,6 +147,7 @@ gulp.task('compile', async () => {
   console.log(`compiling version ${version}`);
 
   await buildCustomElements(distDirPath);
+  await buildPopup(distDirPath);
   await buildBrowserExtension(BROWSER_TYPE_CHROME, version, FILE_EXTENSION_ZIP);
   await buildBrowserExtension(BROWSER_TYPE_FIREFOX, version, FILE_EXTENSION_XPI);
 });

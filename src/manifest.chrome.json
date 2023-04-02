@@ -21,6 +21,11 @@
   "background": {
     "service_worker": "background.js"
   },
+  "action": {
+    "default_icon": "icons/icon_48.png",
+    "default_title": "Overlay",
+    "default_popup": "popup/index.html"
+  },
   "web_accessible_resources": [
     {
       "resources": ["custom-elements.js", "custom-elements.css"],

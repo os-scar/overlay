@@ -15,6 +15,11 @@
   "background": {
     "scripts": ["background.js"]
   },
+  "browser_action": {
+    "default_icon": "icons/icon_48.png",
+    "default_title": "Overlay",
+    "default_popup": "popup/index.html"
+  },
   "web_accessible_resources": ["custom-elements.js", "custom-elements.css"],
   "manifest_version": 2
 }
