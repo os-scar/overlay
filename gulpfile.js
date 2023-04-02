@@ -23,10 +23,10 @@ const FILE_EXTENSION_XPI = 'xpi';
 const BROWSER_TYPE_CHROME = 'chrome';
 const BROWSER_TYPE_FIREFOX = 'firefox';
 
-let scriptFilePath = url.fileURLToPath(import.meta.url);
-let scriptDirPath = path.dirname(scriptFilePath);
-let srcDirPath = path.resolve(scriptDirPath, 'src');
-let distDirPath = path.resolve(scriptDirPath, 'dist');
+const scriptFilePath = url.fileURLToPath(import.meta.url);
+const scriptDirPath = path.dirname(scriptFilePath);
+const srcDirPath = path.resolve(scriptDirPath, 'src');
+const distDirPath = path.resolve(scriptDirPath, 'dist');
 
 async function buildCustomElements(outputDirPath) {
   await vite.build({
@@ -41,10 +41,7 @@ async function buildCustomElements(outputDirPath) {
       },
     },
     define: {
-      'process.env': {
-        // TODO: Need to run this for each extension (chrome/firefox)
-        EXTENSION_ID: process.env.EXTENSION_ID,
-      },
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     },
     plugins: [vue({ customElement: true }), svgLoader()],
   });
