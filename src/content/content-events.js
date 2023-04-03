@@ -7,6 +7,7 @@ import {
   REQUEST_PACKAGE_INFO_EVENT,
   RESPONSE_PACKAGE_INFO_EVENT,
 } from '../events-shared';
+import * as storage from '../storage';
 
 const sendPackageInfoToWebapp = (info) => dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
 
@@ -17,7 +18,10 @@ backgroundConnection.onMessage.addListener((message) => {
   }
 });
 
-const sendEventSettingsChangedToWebapp = (settings) => dispatchEvent(EVENT_SETTINGS_CHANGED, settings);
+export const sendEventSettingsChangedToWebapp = async () => {
+  const settings = await storage.getAllAdvisoriesSettings();
+  dispatchEvent(EVENT_SETTINGS_CHANGED, settings);
+};
 
 export const fetchPackageInfo = (packageId) => {
   backgroundConnection.postMessage({ type: REQUEST_PACKAGE_INFO_EVENT, detail: packageId });
@@ -49,7 +53,7 @@ export const listen = () => {
 
   chrome.runtime.onMessage.addListener((message) => {
     if (message.type === EVENT_SETTINGS_CHANGED) {
-      sendEventSettingsChangedToWebapp(message.detail);
+      sendEventSettingsChangedToWebapp();
     }
   });
 };

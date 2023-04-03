@@ -8,13 +8,14 @@
   </header>
 
   <main>
-    <div>Show Snyk <input type="checkbox" v-model="snyk" /></div>
-    <div>Show Socket <input type="checkbox" v-model="socket" /></div>
+    <div v-for="(_, key) in advisories">Show {{ key }} <input type="checkbox" v-model="advisories[key]" /></div>
   </main>
 </template>
 
 <script>
+// TODO: rename to Popup.vue
 import { defineComponent } from 'vue';
+import * as storage from '../../storage';
 import HelloWorld from './components/HelloWorld.vue';
 import { sendEventSettingsChanged } from './popup-events';
 
@@ -22,32 +23,18 @@ export default defineComponent({
   components: { HelloWorld },
   data() {
     return {
-      snyk: true,
-      socket: true,
+      advisories: {},
     };
   },
   mounted() {
-    // TODO: manage the storage in one place (like the store)
-    chrome.storage.local.get('snyk').then(({ snyk }) => (this.snyk = snyk));
-    chrome.storage.local.get('socket').then(({ socket }) => (this.socket = socket));
+    storage.getAllAdvisoriesSettings().then((settings) => (this.advisories = settings));
   },
   watch: {
-    snyk: {
-      handler(snyk) {
-        chrome.storage.local
-          .set({ snyk })
-          .then(() => chrome.storage.local.get())
-          .then(sendEventSettingsChanged);
+    advisories: {
+      handler(advisories) {
+        storage.setAllAdvisoriesSettings(advisories).then(sendEventSettingsChanged);
       },
-      immediate: false,
-    },
-    socket: {
-      handler(socket) {
-        chrome.storage.local
-          .set({ socket })
-          .then(() => chrome.storage.local.get())
-          .then(sendEventSettingsChanged);
-      },
+      deep: true,
       immediate: false,
     },
   },
