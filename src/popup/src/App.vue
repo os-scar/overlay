@@ -8,7 +8,8 @@
   </header>
 
   <main>
-    <div>Show Snyk <input type="checkbox" v-model="showSnyk" /></div>
+    <div>Show Snyk <input type="checkbox" v-model="snyk" /></div>
+    <div>Show Socket <input type="checkbox" v-model="socket" /></div>
   </main>
 </template>
 
@@ -21,17 +22,29 @@ export default defineComponent({
   components: { HelloWorld },
   data() {
     return {
-      showSnyk: true,
+      snyk: true,
+      socket: true,
     };
   },
   mounted() {
-    chrome.storage.local.get('showSnyk').then(({ showSnyk }) => (this.showSnyk = showSnyk));
+    // TODO: manage the storage in one place (like the store)
+    chrome.storage.local.get('snyk').then(({ snyk }) => (this.snyk = snyk));
+    chrome.storage.local.get('socket').then(({ socket }) => (this.socket = socket));
   },
   watch: {
-    showSnyk: {
-      handler(showSnyk) {
+    snyk: {
+      handler(snyk) {
         chrome.storage.local
-          .set({ showSnyk })
+          .set({ snyk })
+          .then(() => chrome.storage.local.get())
+          .then(sendEventSettingsChanged);
+      },
+      immediate: false,
+    },
+    socket: {
+      handler(socket) {
+        chrome.storage.local
+          .set({ socket })
           .then(() => chrome.storage.local.get())
           .then(sendEventSettingsChanged);
       },

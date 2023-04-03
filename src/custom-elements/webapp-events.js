@@ -16,7 +16,9 @@ export const initEventListenersAndStore = () => {
   });
 
   addMessagingEventListener(EVENT_SETTINGS_CHANGED, (settings) => {
-    console.log('Settings changed', settings);
+    // TODO: update settings on extension load.
+    // Maybe the settings should be loaded from storage and not injected all the way from popup.
+    store.updateSettings(settings);
   });
 
   dispatchEvent(READY_EVENT);
