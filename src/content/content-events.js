@@ -2,6 +2,7 @@ import {
   addMessagingEventListener,
   CONTENT_PORT_CONNECTION,
   dispatchEvent,
+  EVENT_SETTINGS_CHANGED,
   READY_EVENT,
   REQUEST_PACKAGE_INFO_EVENT,
   RESPONSE_PACKAGE_INFO_EVENT,
@@ -15,6 +16,8 @@ backgroundConnection.onMessage.addListener((message) => {
     sendPackageInfoToWebapp(message.detail);
   }
 });
+
+const sendEventSettingsChangedToWebapp = (settings) => dispatchEvent(EVENT_SETTINGS_CHANGED, settings);
 
 export const fetchPackageInfo = (packageId) => {
   backgroundConnection.postMessage({ type: REQUEST_PACKAGE_INFO_EVENT, detail: packageId });
@@ -42,5 +45,11 @@ export const listen = () => {
   addMessagingEventListener(READY_EVENT, () => {
     console.log('Ready event received from injected script');
     isWebappReady = true;
+  });
+
+  chrome.runtime.onMessage.addListener((message) => {
+    if (message.type === EVENT_SETTINGS_CHANGED) {
+      sendEventSettingsChangedToWebapp(message.detail);
+    }
   });
 };

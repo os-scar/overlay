@@ -3,6 +3,7 @@ export const REQUEST_PACKAGE_INFO_EVENT = overlayPrefix + 'REQUEST_PACKAGE_INFO_
 export const RESPONSE_PACKAGE_INFO_EVENT = overlayPrefix + 'RESPONSE_PACKAGE_INFO_EVENT';
 export const READY_EVENT = overlayPrefix + 'READY_EVENT';
 export const CONTENT_PORT_CONNECTION = overlayPrefix + 'content-script';
+export const EVENT_SETTINGS_CHANGED = overlayPrefix + 'EVENT_SETTINGS_CHANGED';
 
 export const dispatchEvent = (type, detail) => {
   window.postMessage({ type, detail });
@@ -13,5 +14,13 @@ export const addMessagingEventListener = (type, callback) => {
     if (event?.data?.type === type) {
       callback(event.data.detail);
     }
+  });
+};
+
+export const sendMessageToAllTabs = (type, detail) => {
+  chrome.tabs.query({}, (tabs) => {
+    tabs.forEach((tab) => {
+      chrome.tabs.sendMessage(tab.id, { type, detail });
+    });
   });
 };

@@ -15,6 +15,8 @@
 <script>
 import { defineComponent } from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
+import { sendEventSettingsChanged } from './popup-events';
+
 export default defineComponent({
   components: { HelloWorld },
   data() {
@@ -28,7 +30,10 @@ export default defineComponent({
   watch: {
     showSnyk: {
       handler(showSnyk) {
-        chrome.storage.local.set({ showSnyk });
+        chrome.storage.local
+          .set({ showSnyk })
+          .then(() => chrome.storage.local.get())
+          .then(sendEventSettingsChanged);
       },
       immediate: false,
     },
