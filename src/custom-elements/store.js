@@ -4,22 +4,22 @@ const settings = reactive({});
 const store = reactive({ packages: {} });
 window.__overlay_global_store = store;
 
-// TODO: the key of a package should be a string instead of nested object.
-export const updatePackageInfo = ({ type, name }, part, data) => {
-  if (!store.packages[type]) {
-    store.packages[type] = {};
-  }
-  if (!store.packages[type][name]) {
-    store.packages[type][name] = {
+const packageStoreID = ({ type, name }) => `${type}$${name}`;
+
+export const updatePackageInfo = (packageID, part, data) => {
+  const packagePointer = packageStoreID(packageID);
+
+  if (!store.packages[packagePointer]) {
+    store.packages[packagePointer] = {
       sources: {},
     };
   }
 
   if (part === 'info') {
-    store.packages[type][name] = { ...store.packages[type][name], ...data };
+    store.packages[packagePointer] = { ...store.packages[packagePointer], ...data };
     return;
   }
-  store.packages[type][name].sources[part] = data;
+  store.packages[packagePointer].sources[part] = data;
 };
 
 export const updateSettings = (newSettings) => {
@@ -28,7 +28,7 @@ export const updateSettings = (newSettings) => {
 
 export const usePackageInfo = (type, name) =>
   computed(() => {
-    const packageInfo = store.packages[type]?.[name];
+    const packageInfo = store.packages[packageStoreID({ type, name })];
     if (!packageInfo) return null;
 
     const filteredSources = Object.entries(packageInfo.sources).reduce((acc, [key, value]) => {
