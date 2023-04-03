@@ -13,7 +13,6 @@
 </template>
 
 <script>
-// TODO: rename to Popup.vue
 import { defineComponent } from 'vue';
 import * as storage from '../../storage';
 import HelloWorld from './components/HelloWorld.vue';
