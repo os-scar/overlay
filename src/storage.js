@@ -1,6 +1,9 @@
 const defaultAdvisoriesSettings = {
   snyk: true,
   socket: true,
+  debricked: true,
+  depsDev: true,
+  openbase: true,
 };
 
 export const getAllAdvisoriesSettings = () =>
