@@ -1,4 +1,4 @@
-import * as events from './content/content-events';
+import * as events from './content-events';
 
 const injectScriptTag = () => {
   const script = document.createElement('script');
