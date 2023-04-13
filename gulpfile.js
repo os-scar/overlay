@@ -116,7 +116,7 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
   // --------------
   // content.stackoverflow.js
   let bundle = await rollup({
-    input: path.join(srcDirPath, 'content.stackoverflow.js'),
+    input: path.join(srcDirPath, 'content', 'content.stackoverflow.js'),
   });
   await bundle.write({
     file: path.join(outputDirPath, 'content.stackoverflow.js'),
@@ -126,7 +126,7 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
   // --------------
   // background.js
   bundle = await rollup({
-    input: path.join(srcDirPath, 'background.js'),
+    input: path.join(srcDirPath, 'background', 'background.js'),
     plugins: [commonjs(), nodeResolve()],
   });
   await bundle.write({

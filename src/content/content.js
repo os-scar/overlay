@@ -1,4 +1,3 @@
-// TODO: move content files to content folder
 import * as events from './content/content-events';
 
 const injectScriptTag = () => {
@@ -27,8 +26,6 @@ export const mountContentScript = (contentScript) => {
       console.error('Injected script is not ready, aborting', e);
       return;
     }
-
-    events.sendEventSettingsChangedToWebapp();
 
     await contentScript();
 
