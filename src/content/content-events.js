@@ -1,3 +1,4 @@
+import browser from '../browser';
 import {
   addMessagingEventListener,
   CONTENT_PORT_CONNECTION,
@@ -11,7 +12,7 @@ import * as storage from '../storage';
 
 const sendPackageInfoToWebapp = (info) => dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
 
-const backgroundConnection = chrome.runtime.connect({ name: CONTENT_PORT_CONNECTION });
+const backgroundConnection = browser.runtime.connect({ name: CONTENT_PORT_CONNECTION });
 backgroundConnection.onMessage.addListener((message) => {
   if (message.type === RESPONSE_PACKAGE_INFO_EVENT) {
     sendPackageInfoToWebapp(message.detail);
@@ -51,7 +52,7 @@ export const listen = () => {
     isWebappReady = true;
   });
 
-  chrome.runtime.onMessage.addListener((message) => {
+  browser.runtime.onMessage.addListener((message) => {
     if (message.type === EVENT_SETTINGS_CHANGED) {
       sendEventSettingsChangedToWebapp();
     }

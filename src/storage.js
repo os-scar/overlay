@@ -1,3 +1,5 @@
+import browser from './browser';
+
 const defaultAdvisoriesSettings = {
   snyk: true,
   socket: true,
@@ -7,6 +9,6 @@ const defaultAdvisoriesSettings = {
 };
 
 export const getAllAdvisoriesSettings = () =>
-  chrome.storage.local.get({ advisories: defaultAdvisoriesSettings }).then(({ advisories }) => advisories);
+  browser.storage.local.get({ advisories: defaultAdvisoriesSettings }).then(({ advisories }) => advisories);
 
-export const setAllAdvisoriesSettings = (advisories) => chrome.storage.local.set({ advisories });
+export const setAllAdvisoriesSettings = (advisories) => browser.storage.local.set({ advisories });

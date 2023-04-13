@@ -1,3 +1,5 @@
+import browser from './browser';
+
 const overlayPrefix = 'overlay-';
 export const REQUEST_PACKAGE_INFO_EVENT = overlayPrefix + 'REQUEST_PACKAGE_INFO_EVENT';
 export const RESPONSE_PACKAGE_INFO_EVENT = overlayPrefix + 'RESPONSE_PACKAGE_INFO_EVENT';
@@ -18,9 +20,9 @@ export const addMessagingEventListener = (type, callback) => {
 };
 
 export const sendMessageToAllTabs = (type, detail) => {
-  chrome.tabs.query({}, (tabs) => {
+  browser.tabs.query({}, (tabs) => {
     tabs.forEach((tab) => {
-      chrome.tabs.sendMessage(tab.id, { type, detail });
+      browser.tabs.sendMessage(tab.id, { type, detail });
     });
   });
 };
