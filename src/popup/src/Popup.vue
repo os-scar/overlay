@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, toRaw } from 'vue';
 import * as storage from '../../storage';
 import HelloWorld from './components/HelloWorld.vue';
 import { sendEventSettingsChanged } from './popup-events';
@@ -31,7 +31,7 @@ export default defineComponent({
   watch: {
     advisories: {
       handler(advisories) {
-        storage.setAllAdvisoriesSettings(advisories).then(sendEventSettingsChanged);
+        storage.setAllAdvisoriesSettings(toRaw(advisories)).then(sendEventSettingsChanged);
       },
       deep: true,
       immediate: false,
