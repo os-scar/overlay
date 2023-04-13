@@ -28,6 +28,8 @@ export const mountContentScript = (contentScript) => {
       return;
     }
 
+    events.sendEventSettingsChangedToWebapp();
+
     await contentScript();
 
     console.log('Overlay is finished');
