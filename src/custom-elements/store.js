@@ -4,7 +4,7 @@ const settings = reactive({});
 const store = reactive({ packages: {} });
 window.__overlay_global_store = store;
 
-const packageStoreID = ({ type, name }) => `${type}$${name}`;
+const packageStoreID = ({ type, name }) => `${type}:${name}`;
 
 export const updatePackageInfo = (packageID, part, data) => {
   const packagePointer = packageStoreID(packageID);
