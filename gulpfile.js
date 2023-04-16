@@ -74,14 +74,14 @@ async function buildCustomElements(outputDirPath) {
   }
 }
 
-async function buildPopup() {
+async function buildPopup(outputDirPath) {
   const popupRoot = path.join(srcDirPath, 'popup');
   await vite.build({
     root: popupRoot,
     base: '',
     build: {
-      emptyOutDir: true,
-      outDir: popupDistDirPath,
+      emptyOutDir: false,
+      outDir: outputDirPath,
     },
     plugins: [vue()],
   });
@@ -147,7 +147,7 @@ gulp.task('compile', async () => {
   console.log(`compiling version ${version}`);
 
   await buildCustomElements(distDirPath);
-  await buildPopup(distDirPath);
+  await buildPopup(popupDistDirPath);
   await buildBrowserExtension(BROWSER_TYPE_CHROME, version, FILE_EXTENSION_ZIP);
   await buildBrowserExtension(BROWSER_TYPE_FIREFOX, version, FILE_EXTENSION_XPI);
 });
