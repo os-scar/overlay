@@ -28,6 +28,7 @@
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/chrome": "^0.0.206",
+    "@types/firefox-webext-browser": "^111.0.1",
     "@vitejs/plugin-vue": "^3.2.0",
     "@webcomponents/custom-elements": "^1.5.1",
     "del": "^7.0.0",
