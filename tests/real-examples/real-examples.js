@@ -32,6 +32,8 @@ export const readRealExamples = async () => {
 
 const fetchWebpage = async (example) => {
   const response = await fetch(example.link);
+  if (!response.ok) throw new Error(`failed to fetch ${example.link} (${response.statusText})`);
+
   await fs.writeFile(webpageSnapshotFile(example), await response.text(), 'utf-8');
   console.log(`saved snapshot for ${example.link}`);
 };
