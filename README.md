@@ -1,6 +1,27 @@
-# Overlay
+[![Badge Commits]][Commit Rate]
+[![Badge Issues]](https://github.com/os-scar/overlay/issues)
+[![Badge License]](https://github.com/os-scar/overlay/blob/master/LICENSE.txt)
+[![Badge Version]](https://github.com/os-scar/overlay/releases)
+[![Badge Mozilla]](https://addons.mozilla.org/addon/overlay/)
+[![Badge Chrome]](https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho)
 
-![Overlay logo](icons/icon_96.png)
+---
+
+<h1 align="center">
+<sub>
+<img src="icons/icon_48.png" height="38" width="38">
+</sub>
+Overlay
+</h1>
+
+<p align="center">
+<a href="https://addons.mozilla.org/addon/overlay/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get Overlay for Firefox"></a>
+<a href="https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho"><img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get Overlay for Chromium"></a>
+<!-- <a href="https://microsoftedge.microsoft.com/addons/detail/overlay/xxxxxxxxxxxxxxxxxx"><img src="https://user-images.githubusercontent.com/585534/107280673-a5ece780-6a26-11eb-9cc7-9fa9f9f81180.png" alt="Get Overlay for Microsoft Edge"></a>
+<a href="https://addons.opera.com/extensions/details/overlay/"><img src="https://user-images.githubusercontent.com/585534/107280692-ac7b5f00-6a26-11eb-85c7-088926504452.png" alt="Get Overlay for Opera"></a> -->
+</p>
+
+---
 
 Overlay is a browser extension that helps developers evaluate open source packages before picking them. It gathers data from various sources, such as [Snyk Advisor](https://snyk.io/advisor/), [Debricked](http://debricked.com/select/), [Openbase](https://openbase.com/), [Socket.dev](http://socket.dev/), and [Deps.dev](https://deps.dev/), and displays them on the package pages of popular registries like [npm](https://www.npmjs.com/), [PyPI](http://pypi.org/), and [Go](https://pkg.go.dev/).
 
@@ -49,3 +70,12 @@ If you have any questions or suggestions about contributing, please feel free to
 ## License
 
 Overlay is licensed under the MIT license. See the [LICENSE](https://github.com/os-scar/overlay/blob/master/LICENSE.txt) file for more details.
+
+<!----------------------------------[ Badges ]--------------------------------->
+
+[Badge Commits]: https://img.shields.io/github/commit-activity/m/os-scar/overlay?label=Commits
+[Badge Mozilla]: https://img.shields.io/amo/rating/overlay?label=Firefox
+[Badge License]: https://img.shields.io/badge/License-MIT-blue.svg
+[Badge Chrome]: https://img.shields.io/chrome-web-store/rating/fahpefingaaldhifdbnlipfjniabkiho?label=Chrome
+[Badge Issues]: https://img.shields.io/github/issues/os-scar/overlay
+[Badge Version]: https://img.shields.io/github/v/release/os-scar/overlay
