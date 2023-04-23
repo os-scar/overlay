@@ -1,9 +1,10 @@
 [![Badge Commits]][Commit Rate]
-[![Badge Issues]](https://github.com/os-scar/overlay/issues)
-[![Badge License]](https://github.com/os-scar/overlay/blob/master/LICENSE.txt)
-[![Badge Version]](https://github.com/os-scar/overlay/releases)
-[![Badge Mozilla]](https://addons.mozilla.org/addon/overlay/)
-[![Badge Chrome]](https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho)
+[![Badge Issues]][Issues]
+[![Badge License]][License]
+[![Badge Version]][Releases]
+[![Badge Mozilla]][Mozilla]
+[![Badge Chrome]][Chrome]
+[![Badge Discord]][Discord]
 
 ---
 
@@ -35,8 +36,8 @@ Overlay aims to help developers make informed decisions when choosing open sourc
 
 Overlay is available for Chrome and Firefox. You can install it from the following links:
 
-- [Chrome Web Store](https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho)
-- [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/overlay/)
+- [Chrome Web Store][Chrome]
+- [Firefox Add-ons][Mozilla]
 
 ## Usage
 
@@ -55,9 +56,9 @@ It injects the **indicator** as a _WebComponent_ into the current web pages and 
 
 We would love to hear your feedback and suggestions on how to improve Overlay. You can contact us by:
 
-- Creating an issue on our [GitHub repository](https://github.com/os-scar/overlay/issues) for bugs and features
-- Joining our [GitHub discussion](https://github.com/os-scar/overlay/discussions) for questions and ideas
-- Participating in our [Discord channel](https://discord.com/channels/xxxx/xxxx)
+- Creating an issue on our [GitHub repository][Issues] for bugs and features
+- Joining our [GitHub discussion][Discussions] for questions and ideas
+- Participating in our [Discord channel][Discord]
 
 ## Contribution
 
@@ -69,7 +70,18 @@ If you have any questions or suggestions about contributing, please feel free to
 
 ## License
 
-Overlay is licensed under the MIT license. See the [LICENSE](https://github.com/os-scar/overlay/blob/master/LICENSE.txt) file for more details.
+Overlay is licensed under the MIT license. See the [LICENSE][License] file for more details.
+
+<!---------------------------------[ Links ]-------------------------------->
+
+[Commit Rate]: https://github.com/os-scar/overlay/commits/master
+[Issues]: https://github.com/os-scar/overlay/issues
+[Discussions]: https://github.com/os-scar/overlay/discussions
+[License]: https://github.com/os-scar/overlay/blob/master/LICENSE.txt
+[Releases]: https://github.com/os-scar/overlay/releases
+[Mozilla]: https://addons.mozilla.org/addon/overlay/
+[Chrome]: https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho
+[Discord]: https://discord.com/channels/xxxx/xxxx
 
 <!----------------------------------[ Badges ]--------------------------------->
 
@@ -79,3 +91,4 @@ Overlay is licensed under the MIT license. See the [LICENSE](https://github.com/
 [Badge Chrome]: https://img.shields.io/chrome-web-store/rating/fahpefingaaldhifdbnlipfjniabkiho?label=Chrome
 [Badge Issues]: https://img.shields.io/github/issues/os-scar/overlay
 [Badge Version]: https://img.shields.io/github/v/release/os-scar/overlay
+[Badge Discord]: https://img.shields.io/discord/xxxxxxxxxxxxxxx
