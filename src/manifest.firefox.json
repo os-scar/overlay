@@ -2,7 +2,14 @@
   "name": "Overlay",
   "version": "{{EXTENSION_VERSION}}",
   "description": "{{EXTENSION_DESCRIPTION}}",
-  "permissions": ["https://deps.dev/*", "https://debricked.com/*", "https://socket.dev/*", "https://snyk.io/*", "https://openbase.com/*"],
+  "permissions": [
+    "storage",
+    "https://deps.dev/*",
+    "https://debricked.com/*",
+    "https://socket.dev/*",
+    "https://snyk.io/*",
+    "https://openbase.com/*"
+  ],
   "icons": {
     "48": "icons/icon_48.png"
   },
@@ -14,6 +21,11 @@
   ],
   "background": {
     "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_icon": "icons/icon_48.png",
+    "default_title": "Overlay",
+    "default_popup": "popup/index.html"
   },
   "web_accessible_resources": ["custom-elements.js", "custom-elements.css"],
   "manifest_version": 2

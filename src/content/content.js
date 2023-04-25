@@ -1,14 +1,15 @@
-import * as events from './content/content-events';
+import browser from '../browser';
+import * as events from './content-events';
 
 const injectScriptTag = () => {
   const script = document.createElement('script');
-  script.src = chrome.runtime.getURL('custom-elements.js');
+  script.src = browser.runtime.getURL('custom-elements.js');
   (document.head || document.documentElement).appendChild(script);
   console.log('Injected script tag', script);
 
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = chrome.runtime.getURL('custom-elements.css');
+  link.href = browser.runtime.getURL('custom-elements.css');
   (document.head || document.documentElement).appendChild(link);
   console.log('Injected link tag', link);
 };
@@ -26,6 +27,8 @@ export const mountContentScript = (contentScript) => {
       console.error('Injected script is not ready, aborting', e);
       return;
     }
+
+    events.sendEventSettingsChangedToWebapp();
 
     await contentScript();
 

@@ -1,3 +1,4 @@
+import browser from '../browser';
 import { REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
 import advisories from './advisory/index';
 
@@ -22,7 +23,7 @@ const listener = async ({ type, detail }, port) => {
 };
 
 export const listen = () => {
-  chrome.runtime.onConnect.addListener((port) => {
+  browser.runtime.onConnect.addListener((port) => {
     port.onMessage.addListener(listener);
   });
 };

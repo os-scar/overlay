@@ -1,20 +1,28 @@
+import browser from '../browser';
 import {
   addMessagingEventListener,
   CONTENT_PORT_CONNECTION,
   dispatchEvent,
+  EVENT_SETTINGS_CHANGED,
   READY_EVENT,
   REQUEST_PACKAGE_INFO_EVENT,
   RESPONSE_PACKAGE_INFO_EVENT,
 } from '../events-shared';
+import * as storage from '../storage';
 
 const sendPackageInfoToWebapp = (info) => dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
 
-const backgroundConnection = chrome.runtime.connect({ name: CONTENT_PORT_CONNECTION });
+const backgroundConnection = browser.runtime.connect({ name: CONTENT_PORT_CONNECTION });
 backgroundConnection.onMessage.addListener((message) => {
   if (message.type === RESPONSE_PACKAGE_INFO_EVENT) {
     sendPackageInfoToWebapp(message.detail);
   }
 });
+
+export const sendEventSettingsChangedToWebapp = async () => {
+  const settings = await storage.getAllAdvisoriesSettings();
+  dispatchEvent(EVENT_SETTINGS_CHANGED, settings);
+};
 
 export const fetchPackageInfo = (packageId) => {
   backgroundConnection.postMessage({ type: REQUEST_PACKAGE_INFO_EVENT, detail: packageId });
@@ -42,5 +50,11 @@ export const listen = () => {
   addMessagingEventListener(READY_EVENT, () => {
     console.log('Ready event received from injected script');
     isWebappReady = true;
+  });
+
+  browser.runtime.onMessage.addListener((message) => {
+    if (message.type === EVENT_SETTINGS_CHANGED) {
+      sendEventSettingsChangedToWebapp();
+    }
   });
 };

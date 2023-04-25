@@ -18,9 +18,9 @@
 
 <script>
 import { defineComponent } from 'vue';
-import npm_logo from './assets/npm_logo.svg?component';
-import store from './store';
 import Tooltip from './Tooltip.vue';
+import npm_logo from './assets/npm_logo.svg?component';
+import { usePackageInfo } from './store';
 
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
@@ -41,6 +41,10 @@ export default defineComponent({
       default: false,
     },
   },
+  setup(props) {
+    const packageInfo = usePackageInfo(props.overlayIndicatorPackageType, props.overlayIndicatorPackageName);
+    return { packageInfo };
+  },
   data() {
     return {
       tooltipOpen: false,
@@ -49,9 +53,6 @@ export default defineComponent({
     };
   },
   computed: {
-    packageInfo() {
-      return store.packages[this.overlayIndicatorPackageType]?.[this.overlayIndicatorPackageName];
-    },
     issues() {
       if (!this.packageInfo?.sources) return 0;
 
