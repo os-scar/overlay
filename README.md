@@ -69,6 +69,14 @@ Please make sure to follow our code style and conventions.
 
 If you have any questions or suggestions about contributing, please feel free to contact us.
 
+### Contributors
+- https://www.linkedin.com/in/baruchiro/
+- https://www.linkedin.com/in/jossef/
+- https://www.linkedin.com/in/guy-nachshon-17ba80198/
+- https://www.linkedin.com/in/bar-lanyado-bb50b3110/
+- https://www.linkedin.com/in/bogdan-kortnov-58996b213/
+- You?
+
 ## License
 
 Overlay is licensed under the MIT license. See the [LICENSE][License] file for more details.
