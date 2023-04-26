@@ -42,6 +42,8 @@ const TOOLTIP_POSITION = {
   RIGHT: 'right',
 };
 
+const TOOLTIP_WIDTH = 300;
+const TOOLTIP_HEIGHT = 250;
 export default {
   props: {
     modelValue: {
@@ -107,8 +109,8 @@ export default {
     },
     getPosition(activatorRect, tooltipRect, tooltipPosition) {
       const basePadding = 4;
-      tooltipRect.width = tooltipRect.width || 260;
-      tooltipRect.height = tooltipRect.height || 200;
+      tooltipRect.width = tooltipRect.width || TOOLTIP_WIDTH;
+      tooltipRect.height = tooltipRect.height || TOOLTIP_HEIGHT;
       let pageOffset = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
       switch (tooltipPosition) {
         case TOOLTIP_POSITION.TOP_START:
@@ -247,6 +249,10 @@ export default {
 </script>
 
 <style lang="scss">
+// TODO place in global variables
+$tooltip-width: 300px;
+$tooltip-height: 250px;
+
 .overlay-tooltip {
   position: relative;
   display: inline-block;
@@ -257,12 +263,15 @@ export default {
 
   &__tooltip {
     position: absolute;
-    padding: 20px;
     z-index: 1000;
-    background: #e12d33;
-    width: 260px;
-    height: 200px;
-    overflow: scroll;
+    width: $tooltip-width;
+    max-height: $tooltip-height;
+
+    overflow-y: auto;
+    // TODO customize scrollbars
+    box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.3);
+    overflow-x: hidden;
+    border-radius: 4px;
   }
 }
 </style>

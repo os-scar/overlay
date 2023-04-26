@@ -11,94 +11,92 @@ import * as store from '../../../src/custom-elements/store.js';
 export default {
   components: { Indicator },
   data() {
-    let packageName = 'my-long-package-name';
-    let packageType = 'npm';
+    let packageName = 'vmwc-vmwc-vmwc-vmwc-vmwc-vmwc-vmwc-vmwc-vmwc-vmwc';
+    let packageType = 'pypi';
     return {
       packageType: packageType,
       packageName: packageName,
       packageData: {
-        name: packageName,
-        loading: true, // indicating the package info is loading
-        type: packageType,
-        license: 'MIT',
-        latest: '1.2.3',
-        created: 1677996776, // epoch utc
-        stars: 50000,
         sources: {
-          checkmarx: {
-            error: true, // indicating error occured
+          depsDev: {
+            issues: 0,
+            data: {
+              latestVersion: '8.0.0',
+              repo: 'https://github.com/sass/node-sass',
+              licenses: ['MIT'],
+              scorecard: {
+                score: 4.3,
+                metrics: {
+                  'Maintained': 2,
+                  'CII-Best-Practices': 0,
+                  'License': 10,
+                  'Branch-Protection': -1,
+                  'Dangerous-Workflow': 10,
+                  'Packaging': -1,
+                  'Token-Permissions': 0,
+                  'Binary-Artifacts': 10,
+                  'Pinned-Dependencies': 7,
+                  'Fuzzing': 0,
+                  'Vulnerabilities': 10,
+                  'Security-Policy': 0,
+                  'Signed-Releases': 0,
+                },
+              },
+              stars: 8364,
+            },
+          },
+          openbase: null,
+          socket: {
+            issues: 0,
+            data: {
+              supplyChainRisk: { score: 61, level: 'WARNING' },
+              quality: { score: 63, level: 'WARNING' },
+              maintenance: { score: 77, level: 'WARNING' },
+              vulnerability: { score: 100, level: 'GOOD' },
+              license: { score: 79, level: 'WARNING' },
+            },
           },
           snyk: {
-            loading: true, // indicating data is still loading
-          },
-          socket: {
-            issues: 3,
+            issues: 1,
             data: {
-              supplyChainScore: 100,
-              qualityScore: 74,
-              maintenanceScore: 78,
-              vulnerabilitiesScore: 100,
-              licenseScore: 88,
-            },
-          },
-          openbase: {
-            issues: 3,
-            data: {
-              userRatingScore: 4.8,
-              userFeedback: [
-                {
-                  name: 'Easy to use',
-                  positive: true,
-                },
-                {
-                  name: 'Great Documentation',
-                  positive: true,
-                },
-                {
-                  name: 'Performant',
-                  positive: true,
-                },
-                {
-                  name: 'Bleeding Edge',
-                  positive: false, // will be displayed as bad
-                },
-                {
-                  name: 'Highly Customizable',
-                  positive: false, // will be displayed as bad
-                },
-                {
-                  name: 'Responsive Maintainers',
-                  positive: false, // will be displayed as bad
-                },
-              ],
-            },
-          },
-          depsDev: {
-            issues: 3,
-            data: {
-              score: 7.5,
-              checks: [
-                {
-                  description: 'Using protected branches',
-                  score: 3.2,
-                },
-                {
-                  description: 'signed commits',
-                  score: 5.2,
-                },
-                // more scorecards items...
-              ],
+              score: 79,
+              maxScore: 100,
+              level: 'WARNING',
+              badges: {
+                security: { level: 'BAD', description: 'Security issues found' },
+                popularity: { level: 'GOOD', description: 'Key ecosystem project' },
+                maintenance: { level: 'GOOD', description: 'Healthy' },
+                community: { level: 'GOOD', description: 'Active' },
+              },
             },
           },
           debricked: {
-            issues: 3,
+            issues: 0,
             data: {
-              contributorsScore: 77,
-              popularityScore: 82,
-              securityScore: 59,
+              Contributors: {
+                description:
+                  'Open Source projects consists of contributors. When deciding what open source to bring in to your software, it is important to inspect and analyse the contributors of a project.',
+                score: 49,
+                level: 'WARNING',
+              },
+              Popularity: {
+                description:
+                  'The popularity of a repository is a rather crucial indicator of the health of a project. It signifies interest from both developers and users alike, pointing towards viability and continued development.',
+                score: 57,
+                level: 'WARNING',
+              },
+              Security: {
+                description:
+                  'The security of a repository is important in many aspects of open source. This metric is impactful to the risk associated with an open source project, as it measures both indicators of vulnerability entry risk, and past vulnerability response performance. ',
+                score: 69,
+                level: 'WARNING',
+              },
             },
           },
         },
+        latest: '8.0.0',
+        licenses: ['MIT'],
+        stars: 8364,
       },
     };
   },
