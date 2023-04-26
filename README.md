@@ -43,7 +43,8 @@ Overlay is available for Chrome and Firefox. You can install it from the followi
 
 After installing Overlay, you can use it on any supported page (such as StackOverflow). You will notice indicators on package names and links, showing the number of issues. When you hover over an indicator, you will see more details about the package. You can also click on the indicator to open a modal with even more details.
 
-https://raw.githubusercontent.com/os-scar/overlay/master/docs/demo.mp4
+https://user-images.githubusercontent.com/1287098/234654340-8300c983-1a01-41fd-84f5-4a6a37cf98a8.mp4
+
 
 You can customize the sources that Overlay uses by clicking on the Overlay logo in the extensions bar.
 
