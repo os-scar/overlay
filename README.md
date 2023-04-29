@@ -45,7 +45,6 @@ After installing Overlay, you can use it on any supported page (such as StackOve
 
 https://user-images.githubusercontent.com/1287098/234654340-8300c983-1a01-41fd-84f5-4a6a37cf98a8.mp4
 
-
 You can customize the sources that Overlay uses by clicking on the Overlay logo in the extensions bar.
 
 ## Technical details
@@ -69,12 +68,39 @@ Please make sure to follow our code style and conventions.
 
 If you have any questions or suggestions about contributing, please feel free to contact us.
 
+## Local Development
+
+Follow these steps to set up a local development environment for Overlay using Google Chrome:
+
+1. **Clone the repository:**
+   ```
+   git clone https://github.com/os-scar/overlay.git
+   ```
+2. **Install dependencies:**
+   ```
+   cd overlay
+   yarn install
+   ```
+3. **Build and watch for changes:**
+   ```
+   yarn build:watch
+   ```
+4. **Load the unpacked extension in Chrome:**
+   - Open Google Chrome and navigate to `chrome://extensions/`
+   - Enable the "Developer mode" toggle in the top right corner
+   - Click on the "Load unpacked" button
+   - Select the `dist/chrome` folder inside the overlay directory
+
+Now you should see the Overlay extension loaded in your Chrome browser, and any changes you make to the source code will be automatically reflected in the extension.
+
 ### Contributors
+
 - https://www.linkedin.com/in/baruchiro/
 - https://www.linkedin.com/in/jossef/
 - https://www.linkedin.com/in/guy-nachshon-17ba80198/
 - https://www.linkedin.com/in/bar-lanyado-bb50b3110/
 - https://www.linkedin.com/in/bogdan-kortnov-58996b213/
+- https://www.linkedin.com/in/uriklar/
 - You?
 
 ## License
