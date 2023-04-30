@@ -1,7 +1,7 @@
 <template>
   <Tooltip v-model="tooltipOpen">
     <template #activator>
-      <div class="overlay-indicator__wrapper" :class="{ 'overlay-indicator--issues': issues }">
+      <div class="overlay-indicator__wrapper" :class="{ 'overlay-indicator__wrapper--issues': issues }">
         <div class="overlay-indicator__wrapper__icon">{{ issues }}</div>
         <div class="overlay-indicator__wrapper__text">
           <slot></slot>
@@ -168,7 +168,7 @@ export default defineComponent({
       return sources;
     },
     packageLicense() {
-      return this.packageInfo?.licenses[0] || '';
+      return this.packageInfo?.licenses?.[0] || '';
     },
     packageName() {
       return this.overlayIndicatorPackageName;
