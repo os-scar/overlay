@@ -37,10 +37,14 @@ export default async ({ type, name }) => {
   const { score: scoresList } = await getPackageDetails(typesMap[type], name);
 
   let issues = 0;
+  const summaries = [];
+
   const scores = Object.entries(scoresList)
     .filter(([scoreName, { score }]) => scoreName !== 'miscellaneous' && typeof score === 'number')
     .reduce((acc, [scoreName, { score }]) => {
       const roundedScore = Math.ceil(score * 100);
+      summaries.push(`${scoreName}: ${roundedScore}/100`);
+
       const level = getLevel(roundedScore);
       if (level === 'BAD') issues++;
 
@@ -50,6 +54,8 @@ export default async ({ type, name }) => {
 
   return {
     issues,
+    summary: summaries.join(', '),
+    reportUrl: `https://socket.dev/${type}/package/${name}`,
     data: scores,
   };
 };

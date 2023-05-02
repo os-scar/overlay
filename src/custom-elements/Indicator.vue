@@ -128,44 +128,9 @@ export default defineComponent({
   },
   computed: {
     sources() {
-      let sources = [];
+      if (!this.packageInfo?.sources) return [];
 
-      // TODO filter displayed sources based on the user settings
-      for (const [sourceId, source] of Object.entries(this.packageInfo?.sources || {})) {
-        let summary = 'No information';
-        let reportUrl = '';
-
-        console.log(sourceId, source);
-        if (sourceId === 'depsDev') {
-          summary = `Score: ${source.data.scorecard.score}/10`;
-          reportUrl = `https://deps.dev/${this.packageType}/${this.packageName}`;
-        } else if (sourceId === 'socket') {
-          summary = `Supply Chain Risk: ${source.data.supplyChainRisk.score}/100, Vulnerability: ${source.data.vulnerability.score}/100, Quality: ${source.data.quality.score}/100, Maintenance: ${source.data.maintenance.score}/100`;
-          reportUrl = `https://socket.dev/${this.packageType}/package/${this.packageName}`;
-        } else if (sourceId === 'snyk') {
-          summary = `Score: ${source.data.score}/100, ${source.data.badges.security.description}, ${source.data.badges.community.description}, ${source.data.badges.maintenance.description}, ${source.data.badges.popularity.description}`;
-
-          let snykAdvisorPackageType = '';
-          if (this.packageType === 'npm') {
-            snykAdvisorPackageType = 'npm-package';
-          } else if (this.packageType === 'pypi') {
-            snykAdvisorPackageType = 'python';
-          }
-          reportUrl = `https://snyk.io/advisor/${snykAdvisorPackageType}/${this.packageName}`;
-        } else if (sourceId === 'debricked') {
-          summary = `Security: ${source.data.Security.score}/100, Contributors: ${source.data.Contributors.score}/100, Popularity:${source.data.Popularity.score}/100`;
-          reportUrl = `https://debricked.com/select/package/${this.packageType}-${this.packageName}`;
-        }
-
-        sources.push({
-          id: sourceId,
-          summary: summary,
-          reportUrl: reportUrl,
-          ...source,
-        });
-      }
-
-      return sources;
+      return Object.entries(this.packageInfo.sources).map(([sourceId, source]) => ({ ...source, id: sourceId }));
     },
     packageLicense() {
       return this.packageInfo?.licenses[0] || '';

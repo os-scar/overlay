@@ -57,6 +57,8 @@ export default async ({ type, name }) => {
 
   return {
     issues: 0,
+    summary: `Score: ${project?.scorecardV2.score}/10`,
+    reportUrl: `https://deps.dev/${type}/${name}`,
     data: {
       latestVersion: version,
       repo: links.repo,

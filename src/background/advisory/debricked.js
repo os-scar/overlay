@@ -61,12 +61,16 @@ export default async ({ type, name }) => {
   const { metrics: packageMetrics } = await getOshData(dependencyId);
 
   let issues = 0;
+  let summaries = [];
 
   const badges = Object.values(packageMetrics).reduce((acc, { score, metric_type_id }) => {
     const { name, description } = model[metric_type_id];
     const roundedScore = Math.round(score / 10);
+    summaries.push(`${name}: ${roundedScore}/100`);
+
     const level = getLevel(roundedScore);
     if (level === 'BAD') issues++;
+
     acc[name] = {
       description,
       score: roundedScore,
@@ -77,6 +81,8 @@ export default async ({ type, name }) => {
 
   return {
     issues,
+    summary: summaries.join(', '),
+    reportUrl: `https://debricked.com/select/package/${type}-${name}`,
     data: badges,
   };
 };
