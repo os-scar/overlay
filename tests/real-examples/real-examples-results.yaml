@@ -1049,6 +1049,9 @@ https://stackoverflow.com/questions/59188624:
     - range: <code>npm install create-react-app</code>
       type: npm
       name: create-react-app
+    - range: <code>npm i -g create-react-app</code>
+      type: npm
+      name: create-react-app
 https://stackoverflow.com/questions/22563281:
   comment: with semver ~
   post: answer
