@@ -45,7 +45,6 @@ After installing Overlay, you can use it on any supported page (such as StackOve
 
 https://user-images.githubusercontent.com/1287098/234654340-8300c983-1a01-41fd-84f5-4a6a37cf98a8.mp4
 
-
 You can customize the sources that Overlay uses by clicking on the Overlay logo in the extensions bar.
 
 ## Technical details
@@ -69,12 +68,25 @@ Please make sure to follow our code style and conventions.
 
 If you have any questions or suggestions about contributing, please feel free to contact us.
 
+### Local Development
+
+To start developing the extension locally, follow these steps:
+
+1. Clone the project from the repository.
+1. Install the dependencies with `yarn install`.
+1. In one terminal, run `yarn build:watch`. This will rebuild the extension every time you change a file.
+1. In another terminal, run `yarn start:chrome` (or `yarn start:firefox`). This will reload the extension on the development browser every time the extension is built.
+
+You can now test and debug the extension on *Chrome* or *Firefox*.
+
 ### Contributors
+
 - https://www.linkedin.com/in/baruchiro/
 - https://www.linkedin.com/in/jossef/
 - https://www.linkedin.com/in/guy-nachshon-17ba80198/
 - https://www.linkedin.com/in/bar-lanyado-bb50b3110/
 - https://www.linkedin.com/in/bogdan-kortnov-58996b213/
+- https://www.linkedin.com/in/uriklar/
 - You?
 
 ## License
