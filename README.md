@@ -68,30 +68,16 @@ Please make sure to follow our code style and conventions.
 
 If you have any questions or suggestions about contributing, please feel free to contact us.
 
-## Local Development
+### Local Development
 
-Follow these steps to set up a local development environment for Overlay using Google Chrome:
+To start developing the extension locally, follow these steps:
 
-1. **Clone the repository:**
-   ```
-   git clone https://github.com/os-scar/overlay.git
-   ```
-2. **Install dependencies:**
-   ```
-   cd overlay
-   yarn install
-   ```
-3. **Build and watch for changes:**
-   ```
-   yarn build:watch
-   ```
-4. **Load the unpacked extension in Chrome:**
-   - Open Google Chrome and navigate to `chrome://extensions/`
-   - Enable the "Developer mode" toggle in the top right corner
-   - Click on the "Load unpacked" button
-   - Select the `dist/chrome` folder inside the overlay directory
+1. Clone the project from the repository.
+1. Install the dependencies with `yarn install`.
+1. In one terminal, run `yarn build:watch`. This will rebuild the extension every time you change a file.
+1. In another terminal, run `yarn start:chrome` (or `yarn start:firefox`). This will reload the extension on the development browser every time the extension is built.
 
-Now you should see the Overlay extension loaded in your Chrome browser, and any changes you make to the source code will be automatically reflected in the extension.
+You can now test and debug the extension on *Chrome* or *Firefox*.
 
 ### Contributors
 
