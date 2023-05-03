@@ -28,5 +28,12 @@ module.exports = {
         patterns: [{ group: ['**/tests/*'], message: 'Do not import from the tests folder' }],
       },
     ],
+    'prefer-const': [
+      'error',
+      {
+        destructuring: 'any',
+        ignoreReadBeforeAssign: false,
+      },
+    ],
   },
 };
