@@ -7,6 +7,8 @@ describe('deps-dev', () => {
 
     expect(res).toStrictEqual({
       issues: expect.any(Number),
+      reportUrl: expect.any(String),
+      summary: expect.any(String),
       data: {
         latestVersion: '18.2.0',
         repo: 'https://github.com/facebook/react',

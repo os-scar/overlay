@@ -7,6 +7,8 @@ describe('snyk', () => {
 
     expect(res).toStrictEqual({
       issues: expect.any(Number),
+      reportUrl: expect.any(String),
+      summary: expect.any(String),
       data: {
         score: expect.any(Number),
         maxScore: 100,
