@@ -107,9 +107,9 @@ Overlay is licensed under the MIT license. See the [LICENSE][License] file for m
 <!----------------------------------[ Badges ]--------------------------------->
 
 [Badge Commits]: https://img.shields.io/github/commit-activity/m/os-scar/overlay?label=Commits
-[Badge Mozilla]: https://img.shields.io/amo/rating/overlay?label=Firefox
+[Badge Mozilla]: https://img.shields.io/amo/users/overlay?label=Firefox
 [Badge License]: https://img.shields.io/badge/License-MIT-blue.svg
-[Badge Chrome]: https://img.shields.io/chrome-web-store/rating/fahpefingaaldhifdbnlipfjniabkiho?label=Chrome
+[Badge Chrome]: https://img.shields.io/chrome-web-store/users/fahpefingaaldhifdbnlipfjniabkiho?label=Chrome
 [Badge Issues]: https://img.shields.io/github/issues/os-scar/overlay
 [Badge Version]: https://img.shields.io/github/v/release/os-scar/overlay
 [Badge Discord]: https://img.shields.io/discord/1072162311369936946
