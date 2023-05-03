@@ -5,6 +5,7 @@ import fetchOpenbase from './openbase';
 import fetchSnyk from './snyk';
 import fetchSocket from './socket';
 
+const thirdPartyPackages = ['debricked', 'snyk', 'socket', 'openbase'];
 const handleAsyncError = (func, ...args) =>
   Promise.resolve(func(...args)).catch((err) => {
     console.error(err, func.name, args);
@@ -23,13 +24,24 @@ export default async (packageID) => {
       stars,
     };
   });
+  const results = await Promise.allSettled([
+    fetchDebricked(normalizedPackageID),
+    fetchSnyk(normalizedPackageID),
+    fetchSocket(normalizedPackageID),
+    fetchOpenbase(normalizedPackageID),
+  ]);
+  const fulfilledResultsNormalized = results.reduce((acc, currentRes, index) => {
+    if (currentRes.status === 'fulfilled') {
+      acc[thirdPartyPackages[index]] = Promise.resolve(currentRes.value);
+    } else {
+      console.log({ failedPackage: [thirdPartyPackages[index]], reason: currentRes.reason });
+    }
+    return acc;
+  }, {});
 
   return {
-    debricked: handleAsyncError(fetchDebricked, normalizedPackageID),
+    ...fulfilledResultsNormalized,
     depsDev,
     info,
-    openbase: handleAsyncError(fetchOpenbase, normalizedPackageID),
-    snyk: handleAsyncError(fetchSnyk, normalizedPackageID),
-    socket: handleAsyncError(fetchSocket, normalizedPackageID),
   };
 };
