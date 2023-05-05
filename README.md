@@ -32,6 +32,12 @@ With Overlay, you can quickly consider packages based on metrics like popularity
 
 Overlay aims to help developers make informed decisions when choosing open source packages for their projects.
 
+### Currently supported
+
+- **Websites:** StackOverflow (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
+- **Registries:** NPM, PYPI and Go (only on `pkg.go.dev`)
+- **Advisories:** [Debricked](https://debricked.com/select/), [Snyk](https://snyk.io/advisor/), [Socket](http://socket.dev/) and [DepsDev](https://deps.dev/)
+
 ## Installation
 
 Overlay is available for Chrome and Firefox. You can install it from the following links:
