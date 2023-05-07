@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Indicator :overlay-indicator-package-name="packageName" :overlay-indicator-package-type="packageType"> test </Indicator>
+    <Indicator :package-name="packageName" :package-type="packageType"> test </Indicator>
   </div>
 </template>
 

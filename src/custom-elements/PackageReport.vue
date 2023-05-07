@@ -1,31 +1,91 @@
 <template>
-  <Tooltip v-model="tooltipOpen">
-    <template #activator>
-      <div class="overlay-indicator__wrapper" :class="{ 'overlay-indicator__wrapper--issues': issues }">
-        <div class="overlay-indicator__wrapper__icon">{{ issues }}</div>
-        <div class="overlay-indicator__wrapper__text">
-          <slot></slot>
+  <div class="overlay-indicator__tooltip">
+    <div class="overlay-indicator__tooltip__header">
+      <div class="overlay-indicator__tooltip__header__logo">
+        <npm-logo v-if="packageType === 'npm'" />
+        <python-logo v-if="packageType === 'pypi'" />
+      </div>
+
+      <div class="overlay-indicator__tooltip__header__info">
+        <div class="overlay-indicator__tooltip__header__info__package-name">
+          <a :title="packageName" :href="packageUrl" target="_blank">
+            {{ packageName }}
+          </a>
+        </div>
+        <div class="overlay-indicator__tooltip__header__info__package-info">
+          // TODO: if license
+          <div>{{ packageLicense }} license</div>
+          <InlineSeparator></InlineSeparator>
+          <div>{{ packageInfo?.stars }} stars</div>
         </div>
       </div>
-    </template>
+    </div>
 
-    <PackageReport :package-name="packageName" :package-type="packageType" />
-  </Tooltip>
+    <div class="overlay-indicator__tooltip__sources">
+      <div class="overlay-indicator__tooltip__source" v-for="source in sources">
+        <div class="overlay-indicator__tooltip__source__logo">
+          <snyk-logo v-if="source.id === 'snyk'"></snyk-logo>
+          <scorecards-logo v-if="source.id === 'depsDev'"></scorecards-logo>
+          <socket-logo v-if="source.id === 'socket'"></socket-logo>
+          <debricked-logo v-if="source.id === 'debricked'"></debricked-logo>
+        </div>
+        <div class="overlay-indicator__tooltip__source__info">
+          <div class="overlay-indicator__tooltip__source__info__name">
+            <a :href="source.reportUrl" target="_blank">
+              <!-- TODO: Refactor -->
+              <span v-if="source.id === 'snyk'">Snyk Advisor</span>
+              <span v-if="source.id === 'depsDev'">OpenSSF Scorecard</span>
+              <span v-if="source.id === 'socket'">Socket</span>
+              <span v-if="source.id === 'debricked'">Debricked</span>
+            </a>
+          </div>
+
+          <div class="overlay-indicator__tooltip__source__info__summary" :title="source.summary">
+            {{ source.summary }}
+          </div>
+        </div>
+
+        <div class="overlay-indicator__tooltip__source__issues" v-if="source.issues">
+          <div class="overlay-indicator__tooltip__source__issues__wrapper">{{ source.issues }} issue</div>
+        </div>
+
+        <div class="overlay-indicator__tooltip__source__actions">
+          <a :href="source.reportUrl" v-if="source.reportUrl" target="_blank">
+            <open-external-link></open-external-link>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay-indicator__tooltip__footer">
+      Found an error? <a href="https://github.com/os-scar/overlay" target="_blank">please report an issue</a>
+    </div>
+  </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import Tooltip from './Tooltip.vue';
-import PackageReport from './PackageReport.vue';
+import DebrickedLogo from '../assets/debricked-logo.svg?component';
+import InlineSeparator from '../assets/inline-separator.svg?component';
+import NpmLogo from '../assets/npm-logo.svg?component';
+import OpenExternalLink from '../assets/open-extenal-link.svg?component';
+import PythonLogo from '../assets/python-logo.svg?component';
+import ScorecardsLogo from '../assets/scorecards-logo.svg?component';
+import SnykLogo from '../assets/snyk-logo.svg?component';
+import SocketLogo from '../assets/socket-logo.svg?component';
 import { usePackageInfo } from './store';
 
-const sum = (arr) => arr.reduce((a, b) => a + b, 0);
-
 export default defineComponent({
-  name: 'overlay-indicator',
+  name: 'package-report',
   components: {
-    Tooltip,
-    PackageReport,
+    OpenExternalLink,
+    NpmLogo,
+    PythonLogo,
+    SnykLogo,
+    ScorecardsLogo,
+    SocketLogo,
+    DebrickedLogo,
+    InlineSeparator,
   },
   props: {
     packageType: {
@@ -37,43 +97,39 @@ export default defineComponent({
       required: true,
     },
   },
+
   setup(props) {
     const packageInfo = usePackageInfo(props.packageType, props.packageName);
     return { packageInfo };
   },
-  data() {
-    return {
-      tooltipOpen: false,
-      overTooltip: false,
-      overIndicator: false,
-    };
-  },
+
   computed: {
+    packageLicense() {
+      return this.packageInfo?.licenses?.[0] || '';
+    },
+    packageUrl() {
+      if (!this.packageInfo) {
+        return;
+      }
+
+      if (this.packageType === 'npm') {
+        return `https://www.npmjs.com/package/${this.packageName}`;
+      }
+      if (this.packageType === 'pypi') {
+        return `https://pypi.org/project/${this.packageName}`;
+      }
+    },
     sources() {
       if (!this.packageInfo?.sources) return [];
 
       return Object.entries(this.packageInfo.sources).map(([sourceId, source]) => ({ ...source, id: sourceId }));
-    },
-    issues() {
-      if (!this.sources) {
-        return 0;
-      }
-
-      const sources = Object.values(this.sources)
-        .filter((s) => s)
-        .map(({ issues }) => issues);
-
-      return sum(sources) || 0;
     },
   },
 });
 </script>
 
 <style lang="scss">
-// todo move font loading to somewhere global
-// TODO: cleanup moved to PackageReport.vue
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
+// TODO: cleanup what related to Indicator.vue
 $font-family: 'Roboto', sans-serif;
 $font-size-title: 12px;
 $font-size-score-value: 10px;
