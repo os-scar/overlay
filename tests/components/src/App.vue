@@ -45,7 +45,6 @@ export default {
               stars: 8364,
             },
           },
-          openbase: null,
           socket: {
             issues: 0,
             data: {
