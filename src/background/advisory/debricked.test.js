@@ -7,6 +7,8 @@ describe('debricked', () => {
 
     expect(res).toStrictEqual({
       issues: expect.any(Number),
+      reportUrl: expect.any(String),
+      summary: expect.any(String),
       data: {
         Contributors: {
           description: expect.any(String),

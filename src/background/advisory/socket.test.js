@@ -11,6 +11,8 @@ describe('socket', () => {
     });
     expect(res).toStrictEqual({
       issues: expect.any(Number),
+      reportUrl: expect.any(String),
+      summary: expect.any(String),
       data: {
         license: expectScore,
         maintenance: expectScore,

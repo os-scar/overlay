@@ -37,6 +37,7 @@ const scrapeScoreFromSnyk = (registry, packageName) =>
     const level = barLevelToLevel[$(SNYK_SCORE_BAR_SELECTOR).attr()['data-level']];
 
     let issues = 0;
+
     const badges = $(SNYK_SECURITY_SCORE_SELECTOR)
       .toArray()
       .reduce((acc, li) => {
@@ -51,8 +52,12 @@ const scrapeScoreFromSnyk = (registry, packageName) =>
         return acc;
       }, {});
 
+    const descriptions = Object.values(badges).map(({ description }) => description);
+
     return {
       issues,
+      summary: `Score: ${score}/${maxScore}, ${descriptions.join(', ')}`,
+      reportUrl: `https://snyk.io/advisor/${registry}/${packageName}`,
       data: {
         score,
         maxScore,
