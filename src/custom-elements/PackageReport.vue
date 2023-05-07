@@ -2,8 +2,7 @@
   <div class="overlay-indicator__tooltip">
     <div class="overlay-indicator__tooltip__header">
       <div class="overlay-indicator__tooltip__header__logo">
-        <npm-logo v-if="packageType === 'npm'" />
-        <python-logo v-if="packageType === 'pypi'" />
+        <component :is="registryLogo" />
       </div>
 
       <div class="overlay-indicator__tooltip__header__info">
@@ -23,10 +22,7 @@
     <div class="overlay-indicator__tooltip__sources">
       <div class="overlay-indicator__tooltip__source" v-for="source in sources">
         <div class="overlay-indicator__tooltip__source__logo">
-          <snyk-logo v-if="source.id === 'snyk'"></snyk-logo>
-          <scorecards-logo v-if="source.id === 'depsDev'"></scorecards-logo>
-          <socket-logo v-if="source.id === 'socket'"></socket-logo>
-          <debricked-logo v-if="source.id === 'debricked'"></debricked-logo>
+          <component :is="advisoryLogo(source.id)" />
         </div>
         <div class="overlay-indicator__tooltip__source__info">
           <div class="overlay-indicator__tooltip__source__info__name">
@@ -71,16 +67,22 @@ import SnykLogo from '../assets/snyk-logo.svg?component';
 import SocketLogo from '../assets/socket-logo.svg?component';
 import { usePackageInfo } from './store';
 
+const registries = {
+  npm: NpmLogo,
+  pypi: PythonLogo,
+};
+
+const logos = {
+  snyk: SnykLogo,
+  depsDev: ScorecardsLogo,
+  socket: SocketLogo,
+  debricked: DebrickedLogo,
+};
+
 export default defineComponent({
   name: 'package-report',
   components: {
     OpenExternalLink,
-    NpmLogo,
-    PythonLogo,
-    SnykLogo,
-    ScorecardsLogo,
-    SocketLogo,
-    DebrickedLogo,
     InlineSeparator,
   },
   props: {
@@ -120,11 +122,17 @@ export default defineComponent({
 
       return Object.entries(this.packageInfo.sources).map(([sourceId, source]) => ({ ...source, id: sourceId }));
     },
+    registryLogo() {
+      return registries[this.packageType];
+    },
   },
 
   methods: {
     advisoryDisplayName(advisoryName) {
       return advisories[advisoryName];
+    },
+    advisoryLogo(advisoryName) {
+      return logos[advisoryName];
     },
   },
 });
