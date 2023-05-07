@@ -13,9 +13,8 @@
           </a>
         </div>
         <div class="overlay-indicator__tooltip__header__info__package-info">
-          // TODO: if license
-          <div>{{ packageLicense }} license</div>
-          <InlineSeparator></InlineSeparator>
+          <div v-show="packageLicense">{{ packageLicense }} license</div>
+          <InlineSeparator v-show="packageLicense"></InlineSeparator>
           <div>{{ packageInfo?.stars }} stars</div>
         </div>
       </div>
