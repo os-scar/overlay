@@ -94,11 +94,28 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    stylesheetUrl: {
+      type: String,
+      required: false,
+    },
   },
 
   setup(props) {
     const packageInfo = usePackageInfo(props.packageType, props.packageName);
     return { packageInfo };
+  },
+
+  mounted() {
+    if (!this.stylesheetUrl) return;
+
+    // Pypi: CSP: The page’s settings blocked the loading of a resource at inline (“style-src”)
+    // We need to load the stylesheet as a file, inside the custom-element.
+    // https://github.com/os-scar/overlay/issues/75#issuecomment-1538224560
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = this.stylesheetUrl;
+    this.$el.parentNode.appendChild(link);
   },
 
   computed: {
