@@ -17,6 +17,10 @@
     {
       "matches": ["*://stackoverflow.com/*"],
       "js": ["content.stackoverflow.js"]
+    },
+    {
+      "matches": ["*://www.npmjs.com/package/*"],
+      "js": ["content.npmjs.js"]
     }
   ],
   "background": {
