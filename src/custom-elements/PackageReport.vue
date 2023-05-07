@@ -31,11 +31,7 @@
         <div class="overlay-indicator__tooltip__source__info">
           <div class="overlay-indicator__tooltip__source__info__name">
             <a :href="source.reportUrl" target="_blank">
-              <!-- TODO: Refactor -->
-              <span v-if="source.id === 'snyk'">Snyk Advisor</span>
-              <span v-if="source.id === 'depsDev'">OpenSSF Scorecard</span>
-              <span v-if="source.id === 'socket'">Socket</span>
-              <span v-if="source.id === 'debricked'">Debricked</span>
+              <span>{{ advisoryDisplayName(source.id) }}</span>
             </a>
           </div>
 
@@ -64,6 +60,7 @@
 
 <script>
 import { defineComponent } from 'vue';
+import advisories from '../advisories';
 import DebrickedLogo from '../assets/debricked-logo.svg?component';
 import InlineSeparator from '../assets/inline-separator.svg?component';
 import NpmLogo from '../assets/npm-logo.svg?component';
@@ -122,6 +119,12 @@ export default defineComponent({
       if (!this.packageInfo?.sources) return [];
 
       return Object.entries(this.packageInfo.sources).map(([sourceId, source]) => ({ ...source, id: sourceId }));
+    },
+  },
+
+  methods: {
+    advisoryDisplayName(advisoryName) {
+      return advisories[advisoryName];
     },
   },
 });
