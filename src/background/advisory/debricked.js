@@ -61,7 +61,7 @@ export default async ({ type, name }) => {
   const { metrics: packageMetrics } = await getOshData(dependencyId);
 
   let issues = 0;
-  let summaries = [];
+  const summaries = [];
 
   const badges = Object.values(packageMetrics).reduce((acc, { score, metric_type_id }) => {
     const { name, description } = model[metric_type_id];
