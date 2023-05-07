@@ -19,7 +19,7 @@ const classToLevel = {
 };
 
 const getLevelFromClassList = (element) => {
-  for (let cls in classToLevel) {
+  for (const cls in classToLevel) {
     if (element.hasClass(cls)) return classToLevel[cls];
   }
 };

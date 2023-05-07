@@ -29,6 +29,17 @@ jobs:
         env:
           BUILD_VERSION: ${{ steps.semantic_release_info.outputs.version }}
 
+      - name: Chrome Extension upload & publish.
+        if: ${{ steps.semantic_release_info.outputs.git_tag }}
+        uses: MobileFirstLLC/cws-publish@2.1.1
+        with:
+          refresh_token: ${{ secrets.CHROME_MARKETPLACE_REFRESH_TOKEN }}
+          client_id: ${{ secrets.CHROME_MARKETPLACE_CLIENT_ID }}
+          client_secret: ${{ secrets.CHROME_MARKETPLACE_CLIENT_SECRET }}
+          zip_file: './dist/chrome_${{ steps.semantic_release_info.outputs.version }}.zip'
+          extension_id: 'fahpefingaaldhifdbnlipfjniabkiho'
+          action: 'publish'
+      
       - name: Upload Release Artifacts
         if: ${{ steps.semantic_release_info.outputs.git_tag }}
         uses: softprops/action-gh-release@v0.1.15

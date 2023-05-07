@@ -2,7 +2,7 @@ const findPositionInsideTree = (node, position) => {
   if (node.nodeType === Node.TEXT_NODE) {
     return { node, position };
   }
-  for (let child of node.childNodes) {
+  for (const child of node.childNodes) {
     if (position <= child.textContent.length) return findPositionInsideTree(child, position);
     position -= child.textContent.length;
   }

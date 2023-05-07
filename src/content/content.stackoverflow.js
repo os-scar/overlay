@@ -7,10 +7,10 @@ mountContentScript(async () => {
   const findings = findRanges(document.body);
   console.debug({ findings });
 
-  let processed = {};
+  const processed = {};
   findings.forEach(({ range, ...packageId }) => {
     addIndicator(range, packageId);
-    let packageKey = `${packageId.type}/${packageId.name}`;
+    const packageKey = `${packageId.type}/${packageId.name}`;
     if (processed[packageKey]) {
       return;
     }

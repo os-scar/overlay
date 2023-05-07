@@ -32,6 +32,12 @@ With Overlay, you can quickly consider packages based on metrics like popularity
 
 Overlay aims to help developers make informed decisions when choosing open source packages for their projects.
 
+### Currently supported
+
+- **Websites:** StackOverflow (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
+- **Registries:** NPM, PYPI and Go (only on `pkg.go.dev`)
+- **Advisories:** [Debricked](https://debricked.com/select/), [Snyk](https://snyk.io/advisor/), [Socket](http://socket.dev/) and [DepsDev](https://deps.dev/)
+
 ## Installation
 
 Overlay is available for Chrome and Firefox. You can install it from the following links:
@@ -107,9 +113,9 @@ Overlay is licensed under the MIT license. See the [LICENSE][License] file for m
 <!----------------------------------[ Badges ]--------------------------------->
 
 [Badge Commits]: https://img.shields.io/github/commit-activity/m/os-scar/overlay?label=Commits
-[Badge Mozilla]: https://img.shields.io/amo/rating/overlay?label=Firefox
+[Badge Mozilla]: https://img.shields.io/amo/users/overlay?label=Firefox
 [Badge License]: https://img.shields.io/badge/License-MIT-blue.svg
-[Badge Chrome]: https://img.shields.io/chrome-web-store/rating/fahpefingaaldhifdbnlipfjniabkiho?label=Chrome
+[Badge Chrome]: https://img.shields.io/chrome-web-store/users/fahpefingaaldhifdbnlipfjniabkiho?label=Chrome
 [Badge Issues]: https://img.shields.io/github/issues/os-scar/overlay
 [Badge Version]: https://img.shields.io/github/v/release/os-scar/overlay
 [Badge Discord]: https://img.shields.io/discord/1072162311369936946
