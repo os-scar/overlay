@@ -167,48 +167,6 @@ $tooltip-width: 300px;
     box-sizing: border-box;
   }
 
-  &__wrapper {
-    display: inline-block;
-    user-select: none;
-    position: relative;
-    height: $indicator-height;
-    top: $padding-l1;
-    overflow: hidden;
-    border-radius: 4px;
-    align-items: center;
-    z-index: 10;
-    box-shadow: 0 0 0 1px $color-black;
-    $class-name: &;
-
-    &#{$class-name}--issues {
-      box-shadow: 0 0 0 1px $color-red;
-
-      #{$class-name}__icon {
-        background: $color-red;
-        color: $color-white;
-      }
-    }
-
-    $icon-size: $indicator-height;
-
-    &__icon {
-      width: $icon-size;
-      height: $icon-size;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-    }
-
-    &__text {
-      padding: 0 $padding-l1;
-      margin-left: $icon-size;
-      display: inline-block;
-      user-select: text;
-    }
-  }
-
   &__tooltip {
     font-family: 'Roboto', sans-serif;
     background-color: $color-light-gray;
