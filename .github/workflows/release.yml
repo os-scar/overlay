@@ -36,7 +36,7 @@ jobs:
           refresh_token: ${{ secrets.CHROME_MARKETPLACE_REFRESH_TOKEN }}
           client_id: ${{ secrets.CHROME_MARKETPLACE_CLIENT_ID }}
           client_secret: ${{ secrets.CHROME_MARKETPLACE_CLIENT_SECRET }}
-          zip_file: './dist/chrome*.zip'
+          zip_file: './dist/chrome_${{ steps.semantic_release_info.outputs.version }}.zip'
           extension_id: 'fahpefingaaldhifdbnlipfjniabkiho'
           action: 'publish'
       
