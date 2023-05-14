@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: 'Deps: show dependencies metadata'
-        uses: lirantal/github-action-new-dependencies-advisor@v1.1.1
+        uses: lirantal/github-action-new-dependencies-advisor@06912df98836c8698a9e7525795612b439ff7612
         if: github.event_name == 'pull_request'
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

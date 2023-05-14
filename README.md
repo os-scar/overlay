@@ -24,7 +24,7 @@ Overlay
 
 ---
 
-Overlay is a browser extension that helps developers evaluate open source packages before picking them. It gathers data from various sources, such as [Snyk Advisor](https://snyk.io/advisor/), [Debricked](http://debricked.com/select/), [Openbase](https://openbase.com/), [Socket.dev](http://socket.dev/), and [Deps.dev](https://deps.dev/), and displays them on the package pages of popular registries like [npm](https://www.npmjs.com/), [PyPI](http://pypi.org/), and [Go](https://pkg.go.dev/).
+Overlay is a browser extension that helps developers evaluate open source packages before picking them. It gathers data from various sources, such as [Snyk Advisor](https://snyk.io/advisor/), [Debricked](http://debricked.com/select/), [Socket.dev](http://socket.dev/), and [Deps.dev](https://deps.dev/), and displays them on the package pages of popular registries like [npm](https://www.npmjs.com/), [PyPI](http://pypi.org/), and [Go](https://pkg.go.dev/).
 
 ![Overlay Screenshot](https://user-images.githubusercontent.com/17686879/233840234-17550261-20c2-42f7-a096-c1ae106275c5.png)
 
@@ -83,7 +83,7 @@ To start developing the extension locally, follow these steps:
 1. In one terminal, run `yarn build:watch`. This will rebuild the extension every time you change a file.
 1. In another terminal, run `yarn start:chrome` (or `yarn start:firefox`). This will reload the extension on the development browser every time the extension is built.
 
-You can now test and debug the extension on *Chrome* or *Firefox*.
+You can now test and debug the extension on _Chrome_ or _Firefox_.
 
 ### Contributors
 
