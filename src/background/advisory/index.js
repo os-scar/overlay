@@ -1,7 +1,6 @@
 import { getNormalizedPackageID } from '../registries';
 import fetchDebricked from './debricked';
 import fetchDepsDev from './deps-dev';
-import fetchOpenbase from './openbase';
 import fetchSnyk from './snyk';
 import fetchSocket from './socket';
 
@@ -28,7 +27,6 @@ export default async (packageID) => {
     debricked: handleAsyncError(fetchDebricked, normalizedPackageID),
     depsDev,
     info,
-    openbase: handleAsyncError(fetchOpenbase, normalizedPackageID),
     snyk: handleAsyncError(fetchSnyk, normalizedPackageID),
     socket: handleAsyncError(fetchSocket, normalizedPackageID),
   };
