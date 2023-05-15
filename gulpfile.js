@@ -49,7 +49,7 @@ async function buildCustomElements(outputDirPath) {
 
   // --------------
   // Recompile without customElement: true to extract css
-  let results = await vite.build({
+  const results = await vite.build({
     build: {
       emptyOutDir: false,
       write: false,
@@ -62,14 +62,14 @@ async function buildCustomElements(outputDirPath) {
     plugins: [vue(), svgLoader()],
   });
 
-  let customElementsCssOutputFilePath = path.join(distDirPath, 'custom-elements.css');
+  const customElementsCssOutputFilePath = path.join(distDirPath, 'custom-elements.css');
 
-  let files = results[0].output;
+  const files = results[0].output;
   for (const file of files) {
     if (file.name !== 'style.css') {
       continue;
     }
-    let cssFileContent = file.source;
+    const cssFileContent = file.source;
     await fs.writeFile(customElementsCssOutputFilePath, cssFileContent, 'utf8');
   }
 }
@@ -127,6 +127,7 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
   // content script
   buildContentScript(path.join(srcDirPath, 'content', 'content.stackoverflow.js'), outputDirPath);
   buildContentScript(path.join(srcDirPath, 'content', 'content.npmjs.js'), outputDirPath);
+  buildContentScript(path.join(srcDirPath, 'content', 'content.pypi.js'), outputDirPath);
 
   // --------------
   // background.js
@@ -148,7 +149,7 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
 }
 
 gulp.task('compile', async () => {
-  let version = process.env['BUILD_VERSION'] || DEV_VERSION;
+  const version = process.env['BUILD_VERSION'] || DEV_VERSION;
   console.log(`compiling version ${version}`);
 
   await buildCustomElements(distDirPath);
