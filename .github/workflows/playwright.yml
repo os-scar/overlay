@@ -10,12 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install dependencies
+      - name: Install Playwright CLI
         run: yarn
-      - name: Install Playwright Browsers
+      - uses: actions/cache@v2
+        with:
+          path: playwright-bin
+          key: ${{ runner.os }}-${{ hashFiles('node_modules/playwright/package.json') }}
+      - name: Install browsers
         run: yarn playwright install --with-deps
       - name: Run Playwright tests
         run: yarn playwright test
