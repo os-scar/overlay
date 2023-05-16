@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay-tooltip">
+  <div class="overlay-tooltip" :id="packageName">
     <div
       class="overlay-tooltip__activator"
       @mouseenter="
@@ -15,6 +15,7 @@
     <Teleport to="body" append-to="self">
       <div
         class="overlay-tooltip__tooltip"
+        :id="packageName"
         v-show="modelValue"
         @mouseenter="overTooltip = true"
         @mouseleave="overTooltip = false"
@@ -48,6 +49,10 @@ export default {
   props: {
     modelValue: {
       type: Boolean,
+      required: true,
+    },
+    packageName: {
+      type: String,
       required: true,
     },
   },

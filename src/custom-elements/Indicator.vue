@@ -1,5 +1,5 @@
 <template>
-  <Tooltip v-model="tooltipOpen">
+  <Tooltip v-model="tooltipOpen" :packageName="packageName">
     <template #activator>
       <div class="overlay-indicator__wrapper" :class="{ 'overlay-indicator__wrapper--issues': issues }">
         <div class="overlay-indicator__wrapper__icon">{{ issues }}</div>
