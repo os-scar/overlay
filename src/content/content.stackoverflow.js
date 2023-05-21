@@ -1,6 +1,6 @@
 import { mountContentScript } from './content';
 import { fetchPackageInfo } from './content-events';
-import { addIndicator } from './create-element';
+import { addIndicatorToRange } from './create-element';
 import { findRanges } from './finder';
 
 mountContentScript(async () => {
@@ -9,7 +9,7 @@ mountContentScript(async () => {
 
   const processed = {};
   findings.forEach(({ range, ...packageId }) => {
-    addIndicator(range, packageId);
+    addIndicatorToRange(range, packageId);
     const packageKey = `${packageId.type}/${packageId.name}`;
     if (processed[packageKey]) {
       return;
