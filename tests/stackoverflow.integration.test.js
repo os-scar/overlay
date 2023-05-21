@@ -1,5 +1,5 @@
 import { describe, expect, jest, test } from '@jest/globals';
-import { findRanges } from '../src/content/stackoverflow/finder';
+import { findRanges } from '../src/content/finder';
 import { readRealExamples, writeResultsSnapshot } from './real-examples/real-examples';
 
 const JEST_DEFAULT_TIMEOUT = 5000;

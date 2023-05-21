@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { createCodeBlock, createPreCodeBlock, createRealAnswer, createRealComment } from '../../test-utils/html-builder';
+import { createCodeBlock, createPreCodeBlock, createRealAnswer, createRealComment } from '../test-utils/html-builder';
 import { findRanges } from './finder';
 
 describe(findRanges.name, () => {

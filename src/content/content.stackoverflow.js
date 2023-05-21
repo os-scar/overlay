@@ -1,7 +1,7 @@
 import { mountContentScript } from './content';
 import { fetchPackageInfo } from './content-events';
-import { findRanges } from './stackoverflow/finder';
-import { addIndicator } from './stackoverflow/indicator';
+import { findRanges } from './finder';
+import { addIndicator } from './indicator';
 
 mountContentScript(async () => {
   const findings = findRanges(document.body);

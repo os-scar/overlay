@@ -1,6 +1,6 @@
-import * as go from '../registry/go';
-import * as npm from '../registry/npm';
-import * as python from '../registry/python';
+import * as go from './registry/go';
+import * as npm from './registry/npm';
+import * as python from './registry/python';
 import { getRangeOfPositions } from './range';
 
 const POST_SELECTOR = 'div.js-post-body';
