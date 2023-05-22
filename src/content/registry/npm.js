@@ -8,7 +8,6 @@ const packageLabel = /@[a-z0-9_-]+/;
 const fullPackage = new RegExp(String.raw`^${packageName.source}(${packageVersion.source}|${packageLabel.source})?$`);
 
 const parsePackageString = (str) => {
-  console.log('hi');
   const match = str.match(fullPackage);
   if (!match) return null;
   return {
