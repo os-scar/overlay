@@ -7,7 +7,10 @@ const packageVersion = /@(?<package_version>[~^]?\d+(\.(\d|X|x)+){0,2}(-[a-z0-9_
 const packageLabel = /@[a-z0-9_-]+/;
 const fullPackage = new RegExp(String.raw`^${packageName.source}(${packageVersion.source}|${packageLabel.source})?$`);
 
-const parsePackageString = (str) => {
+const parsePackageString = (str, baseCommand, packagesLength) => {
+  if ((baseCommand === 'npx' || baseCommand === 'npm init') && packagesLength > 0) {
+    return null;
+  }
   const match = str.match(fullPackage);
   if (!match) return null;
   return {
