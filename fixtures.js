@@ -12,6 +12,7 @@ export const test = base.extend({
     const pathToExtension = path.join(__dirname, 'dist/chrome');
     const context = await chromium.launchPersistentContext('', {
       headless: false,
+      // To run and debug the extension in head mode remove `--headless=new` from args
       args: [`--headless=new`, `--disable-extensions-except=${pathToExtension}`, `--load-extension=${pathToExtension}`],
     });
     await use(context);

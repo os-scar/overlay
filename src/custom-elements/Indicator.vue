@@ -1,5 +1,5 @@
 <template>
-  <Tooltip v-model="tooltipOpen" :packageName="packageName">
+  <Tooltip v-model="tooltipOpen">
     <template #activator>
       <div class="overlay-indicator__wrapper" :class="{ 'overlay-indicator__wrapper--issues': issues }">
         <div class="overlay-indicator__wrapper__icon">{{ issues }}</div>
@@ -9,7 +9,7 @@
       </div>
     </template>
 
-    <div class="overlay-indicator__tooltip">
+    <div class="overlay-indicator__tooltip" :data-testId="packageName">
       <div class="overlay-indicator__tooltip__header">
         <div class="overlay-indicator__tooltip__header__logo">
           <npm-logo v-if="packageType === 'npm'"></npm-logo>
