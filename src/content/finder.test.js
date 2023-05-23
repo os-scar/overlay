@@ -311,19 +311,6 @@ describe(findRanges.name, () => {
       });
     });
 
-    it.each([
-      [
-        'comment',
-        'My entry into this arena is trepanjs (<a href="https://www.npmjs.com/package/trepanjs" rel="nofollow noreferrer">npmjs.com/package/trepanjs</a>). It has all of the goodness of the node debugger, but conforms better to gdb. It also has more features and commands like syntax highlighting, more extensive online help, and smarter evaluation. See <a href="https://github.com/rocky/trepanjs/wiki/Cool-things" rel="nofollow noreferrer">github.com/rocky/trepanjs/wiki/Cool-things</a> for some of its cool features.',
-      ],
-    ])('Should ignore packages in %s', (_reason, comment) => {
-      const { body } = createRealComment(comment);
-
-      const foundElements = findRanges(body);
-
-      expect(foundElements.length).toBe(0);
-    });
-
     it.each(['npm install -g', 'npm install PACKAGE-NAME', 'npm install packageName'])(`Should not find any package in '%s'`, (command) => {
       const { body } = createCodeBlock(command);
 
@@ -343,5 +330,22 @@ describe(findRanges.name, () => {
         expect(foundElements.length).toBe(1);
       }
     );
+  });
+
+  describe('StackOverflow', () => {
+    const STACKOVERFLOW_POST_SELECTOR = 'div.js-post-body';
+
+    it.each([
+      [
+        'comment',
+        'My entry into this arena is trepanjs (<a href="https://www.npmjs.com/package/trepanjs" rel="nofollow noreferrer">npmjs.com/package/trepanjs</a>). It has all of the goodness of the node debugger, but conforms better to gdb. It also has more features and commands like syntax highlighting, more extensive online help, and smarter evaluation. See <a href="https://github.com/rocky/trepanjs/wiki/Cool-things" rel="nofollow noreferrer">github.com/rocky/trepanjs/wiki/Cool-things</a> for some of its cool features.',
+      ],
+    ])('Should ignore packages in %s', (_reason, comment) => {
+      const { body } = createRealComment(comment);
+
+      const foundElements = findRanges(body, STACKOVERFLOW_POST_SELECTOR);
+
+      expect(foundElements.length).toBe(0);
+    });
   });
 });
