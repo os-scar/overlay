@@ -1,11 +1,7 @@
+import { advisoriesNames } from './advisories';
 import browser from './browser';
 
-const defaultAdvisoriesSettings = {
-  snyk: true,
-  socket: true,
-  debricked: true,
-  depsDev: true,
-};
+const defaultAdvisoriesSettings = advisoriesNames.reduce((acc, name) => ({ ...acc, [name]: true }), {});
 
 export const getAllAdvisoriesSettings = () =>
   browser.storage.local.get({ advisories: defaultAdvisoriesSettings }).then(({ advisories }) => advisories);
