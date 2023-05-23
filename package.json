@@ -11,11 +11,12 @@
     "email": "contact@os-scar.com"
   },
   "scripts": {
-    "postinstall": "husky install && yarn playwright install",
+    "postinstall": "husky install && yarn playwright install --with-deps chromium",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
     "test:components": "cd tests/components && vite",
     "e2e": "playwright test",
+    "e2e:debug": "playwright test --debug",
     "build": "gulp build",
     "build:watch": "gulp --series build watch",
     "lint": "eslint src tests",
