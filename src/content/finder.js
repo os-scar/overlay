@@ -20,8 +20,16 @@ const urlParsers = {
 
 const codeBlockParsers = [npm.parseCommand, python.parseCommand, go.parseCommand];
 
-export const findRanges = (body, contentElementSelector = '') => {
-  const links = Array.from(body.querySelectorAll(`${contentElementSelector} a`))
+const querySelectorAllIncludeSelf = (element, selector) => {
+  const matches = Array.from(element.querySelectorAll(selector));
+  if (element.matches(selector)) {
+    matches.push(element);
+  }
+  return matches;
+};
+
+export const findRanges = (element, contentElementSelector = '') => {
+  const links = querySelectorAllIncludeSelf(element, `${contentElementSelector} a`)
     .map((element) => {
       const url = validURL(element.getAttribute('href'));
       if (!url) return;
@@ -39,7 +47,7 @@ export const findRanges = (body, contentElementSelector = '') => {
     })
     .filter((p) => p);
 
-  const installCommands = Array.from(body.querySelectorAll(`${contentElementSelector} code`)).flatMap((element) => {
+  const installCommands = querySelectorAllIncludeSelf(element, `${contentElementSelector} code`).flatMap((element) => {
     return codeBlockParsers.flatMap((parser) => {
       const packages = parser(element.textContent);
 

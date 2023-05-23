@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { createCodeBlock, createPreCodeBlock, createRealAnswer, createRealComment } from '../test-utils/html-builder';
+import { createCodeBlock, createElement, createPreCodeBlock, createRealAnswer, createRealComment } from '../test-utils/html-builder';
 import { findRanges } from './finder';
 
 describe(findRanges.name, () => {
@@ -46,6 +46,14 @@ describe(findRanges.name, () => {
       // Test that the range includes the a element.
       // If the range includes only the text inside the a, it will be TextNode
       expect(range.startContainer.childNodes[range.startOffset].nodeType).not.toBe(Node.TEXT_NODE);
+    });
+
+    it('should find the whole element as it is a link', () => {
+      const { element } = createElement(`<a id="test" href="https://www.npmjs.com/package/minimist">minimist</a>`);
+
+      const foundElements = findRanges(element);
+
+      expect(foundElements.length).toBe(1);
     });
 
     it.each(['http://npmjs.org/', 'https://pypi.python.org/packages/source/v/virtualenv/virtualenv-12.0.7.tar.gz'])(
