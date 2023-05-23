@@ -11,7 +11,7 @@
     "email": "contact@os-scar.com"
   },
   "scripts": {
-    "postinstall": "husky install",
+    "postinstall": "husky install && yarn playwright install",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
     "test:components": "cd tests/components && vite",
