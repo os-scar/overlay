@@ -13,7 +13,9 @@ export const test = base.extend({
     const context = await chromium.launchPersistentContext('', {
       headless: false,
       // To run and debug the extension in head mode remove `--headless=new` from args
-      args: [`--headless=new`, `--disable-extensions-except=${pathToExtension}`, `--load-extension=${pathToExtension}`],
+      args: [`--disable-extensions-except=${pathToExtension}`, `--load-extension=${pathToExtension}`],
+      // remove the comment below to slow down the tests
+      // slowMo: 500
     });
     await use(context);
     await context.close();

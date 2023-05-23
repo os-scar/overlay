@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay-indicator__tooltip">
+  <div class="overlay-indicator__tooltip" :data-testId="packageName">
     <div class="overlay-indicator__tooltip__header">
       <div class="overlay-indicator__tooltip__header__logo">
         <component :is="registryLogo" />
