@@ -1,0 +1,32 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [temp-actions]
+  pull_request:
+    branches: [main, master]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: actions/cache@v2
+        with:
+          path: playwright-bin
+          key: ${{ runner.os }}-${{ hashFiles('node_modules/playwright/package.json') }}
+      - run: yarn
+      - name: Run Playwright tests
+        run: yarn e2e
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
