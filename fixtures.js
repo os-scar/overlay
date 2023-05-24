@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 export const test = base.extend({
   // eslint-disable-next-line no-empty-pattern
   context: async ({}, use) => {
-    const pathToExtension = path.join(__dirname, 'dist/chrome');
+    const pathToExtension = path.join(__dirname, 'dist', 'chrome');
     const context = await chromium.launchPersistentContext('', {
       headless: false,
       // To run and debug the extension in head mode remove `--headless=new` from args
