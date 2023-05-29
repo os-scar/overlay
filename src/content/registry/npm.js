@@ -1,7 +1,7 @@
 import { createParseCommand } from './shared';
 
 const npmInstall = /((npm|yarn)( -g)?( global)? (install|i|add|update)) /;
-const npmInit = /(npx|npm init)\b/;
+const npmInit = /(npx)\b/;
 const packageName = /(?<package_name>[a-z0-9_@][a-z0-9_./-]*)/;
 const packageVersion = /@(?<package_version>[~^]?\d+(\.(\d|X|x)+){0,2}(-[a-z0-9_-]+)?)/;
 const packageLabel = /@[a-z0-9_-]+/;

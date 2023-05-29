@@ -1013,7 +1013,20 @@ https://stackoverflow.com/questions/59188624:
     - range: <code>npm install -g create-react-app</code>
       type: npm
       name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app
+        npm init react-app my-app
+        yarn create react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
     - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
       type: npm
       name: create-react-app
     - range: |-
@@ -1021,21 +1034,107 @@ https://stackoverflow.com/questions/59188624:
         </code>
       type: npm
       name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app [--template typescript]
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app@latest</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app@latest</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app@latest ./client</code>
+      type: npm
+      name: create-react-app
     - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx --ignore-existing create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app@latest your-project-name</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app project-name
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>sudo npm uninstall -g create-react-app
+        npx create-react-app my-test-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app app</code>
       type: npm
       name: create-react-app
     - range: <code>npm update -g create-react-app</code>
       type: npm
       name: create-react-app
+    - range: <code>npx create-react-app</code>
+      type: npm
+      name: create-react-app
     - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app app_name</code>
       type: npm
       name: create-react-app
     - range: <code>npm install -g create-react-app</code>
       type: npm
       name: create-react-app
     - range: |-
+        <code>npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
         <code>npm install create-react-app@latest
         </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app --template typescript
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app-name
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app --template typescript</code>
       type: npm
       name: create-react-app
     - range: <code>npm i -g create-react-app</code>
@@ -1046,9 +1145,33 @@ https://stackoverflow.com/questions/59188624:
         </code>
       type: npm
       name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
     - range: <code>npm install create-react-app</code>
       type: npm
       name: create-react-app
+    - range: <code>npx create-react-app name-of-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx --ignore-existing create-react-app [project name]
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app [project name]</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app@latest {project name}
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx clear-npx-cache</code>
+      type: npm
+      name: clear-npx-cache
     - range: <code>npm i -g create-react-app</code>
       type: npm
       name: create-react-app
