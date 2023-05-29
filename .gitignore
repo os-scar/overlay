@@ -48,3 +48,7 @@ dist
 
 # Snapshots cache
 tests/real-examples/snapshots/
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
