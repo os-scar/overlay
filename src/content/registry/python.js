@@ -1,6 +1,8 @@
 import { createParseCommand } from './shared';
 
 const registryParser = ({ pathname }) => {
+  if (pathname.includes('/packages/source/v/')) return;
+
   const [_empty, _part, name, version] = pathname.split('/');
   return {
     type: 'pypi',
