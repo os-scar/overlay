@@ -18,6 +18,10 @@
     {
       "matches": ["*://pypi.org/project/*"],
       "js": ["content.pypi.js"]
+    },
+    {
+      "matches": ["*://chat.openai.com/*"],
+      "js": ["content.chatgpt.js"]
     }
   ],
   "background": {

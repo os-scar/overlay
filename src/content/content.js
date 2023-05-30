@@ -33,6 +33,6 @@ export const mountContentScript = (contentScript) => {
 
     await contentScript();
 
-    console.log('Overlay is finished');
+    console.log('Overlay loading is finished');
   });
 };
