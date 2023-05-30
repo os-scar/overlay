@@ -21,7 +21,7 @@
     "lint:fix": "yarn lint --fix",
     "lint:lockfile": "lockfile-lint --path yarn.lock --allowed-hosts npm yarn --validate-https --validate-package-names --validate-integrity --empty-hostname false",
     "lint:firefox": "yarn build && web-ext lint --source-dir ./dist/firefox",
-    "__start": "web-ext run --start-url https://pypi.org/project/pandas/ --start-url https://www.npmjs.com/package/node-sass",
+    "__start": "web-ext run --start-url https://chat.openai.com/",
     "start:chrome": "yarn __start --source-dir ./dist/chrome --target chromium",
     "start:firefox": "yarn __start --source-dir ./dist/firefox"
   },

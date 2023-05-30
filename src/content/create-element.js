@@ -1,5 +1,5 @@
 export const addIndicatorToRange = async (range, packageID) => {
-  console.debug('Adding indicator for', packageID);
+  console.debug('Adding indicator for', packageID, range);
 
   const indicator = document.createElement('overlay-indicator');
   indicator.setAttribute('package-type', packageID.type);
