@@ -22,7 +22,7 @@ export const addIndicatorToFindingsInElement = (element, contentElementSelector)
     });
 };
 
-export const addIndicatorToRange = async (range, packageID) => {
+const addIndicatorToRange = async (range, packageID) => {
   console.debug('Adding indicator for', packageID, range);
 
   const indicator = document.createElement(OVERLAY_INDICATOR);
