@@ -15,26 +15,22 @@ const injectScriptTag = () => {
   console.log('Injected link tag', link);
 };
 
-export const mountContentScript = (contentScript) => {
-  console.log('Overlay is mounting');
-  // TODO: window.load event is happend before the script loaded, on ChatGPT new Chat.
-  window.addEventListener('load', async () => {
-    console.log('Overlay is running');
+export const mountContentScript = async (contentScript) => {
+  console.log('Overlay is running');
 
-    events.listen();
-    injectScriptTag();
+  events.listen();
+  injectScriptTag();
 
-    try {
-      await events.onScriptLoaded();
-    } catch (e) {
-      console.error('Injected script is not ready, aborting', e);
-      return;
-    }
+  try {
+    await events.onScriptLoaded();
+  } catch (e) {
+    console.error('Injected script is not ready, aborting', e);
+    return;
+  }
 
-    events.sendEventSettingsChangedToWebapp();
+  events.sendEventSettingsChangedToWebapp();
 
-    await contentScript();
+  await contentScript();
 
-    console.log('Overlay loading is finished');
-  });
+  console.log('Overlay loading is finished');
 };
