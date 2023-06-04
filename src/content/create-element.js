@@ -1,4 +1,26 @@
 import { OVERLAY_INDICATOR, OVERLAY_PACKAGE_REPORT } from '../global';
+import { fetchPackageInfo } from './content-events';
+import { findRanges } from './finder';
+
+export const addIndicatorToFindingsInElement = (element, contentElementSelector) => {
+  const findings = findRanges(element, contentElementSelector);
+  console.debug({ findings });
+
+  const processed = {};
+  findings
+    .filter(({ range }) => range.endContainer.parentElement.nodeName.toLowerCase() !== OVERLAY_INDICATOR) // For install command
+    .filter(({ range }) => range.commonAncestorContainer.nodeName.toLowerCase() !== OVERLAY_INDICATOR) // For links
+    .forEach(({ range, ...packageId }) => {
+      addIndicatorToRange(range, packageId);
+      const packageKey = `${packageId.type}/${packageId.name}`;
+      if (processed[packageKey]) {
+        return;
+      }
+
+      processed[packageKey] = true;
+      fetchPackageInfo(packageId);
+    });
+};
 
 export const addIndicatorToRange = async (range, packageID) => {
   console.debug('Adding indicator for', packageID, range);
