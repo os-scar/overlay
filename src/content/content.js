@@ -16,6 +16,8 @@ const injectScriptTag = () => {
 };
 
 export const mountContentScript = (contentScript) => {
+  console.log('Overlay is mounting');
+  // TODO: window.load event is happend before the script loaded, on ChatGPT new Chat.
   window.addEventListener('load', async () => {
     console.log('Overlay is running');
 
