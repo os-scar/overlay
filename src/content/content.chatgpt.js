@@ -20,25 +20,21 @@ const addIndicator = (element, contentElementSelector) => {
   console.debug({ findings });
 
   const processed = {};
-  const rightF = findings
-    // TODO: use 'overlay-indicator' from global.js
+  findings
     .filter(({ range }) => range.endContainer.parentElement.nodeName.toLowerCase() !== OVERLAY_INDICATOR) // For install command
-    .filter(({ range }) => range.commonAncestorContainer.nodeName.toLowerCase() !== OVERLAY_INDICATOR); // For links
+    .filter(({ range }) => range.commonAncestorContainer.nodeName.toLowerCase() !== OVERLAY_INDICATOR) // For links
+    .forEach(({ range, ...packageId }) => {
+      addIndicatorToRange(range, packageId);
+      const packageKey = `${packageId.type}/${packageId.name}`;
+      if (processed[packageKey]) {
+        return;
+      }
 
-  rightF.forEach(({ range, ...packageId }) => {
-    addIndicatorToRange(range, packageId);
-    const packageKey = `${packageId.type}/${packageId.name}`;
-    if (processed[packageKey]) {
-      return;
-    }
-
-    processed[packageKey] = true;
-    fetchPackageInfo(packageId);
-  });
+      processed[packageKey] = true;
+      fetchPackageInfo(packageId);
+    });
 };
 
 mountContentScript(async () => {
-  // TODO: Chat with
-  // TODO: Open existing chat
   setInterval(() => addIndicator(document.querySelector('main')), 5 * SECOND);
 });

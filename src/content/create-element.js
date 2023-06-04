@@ -1,4 +1,4 @@
-import { OVERLAY_INDICATOR } from '../global';
+import { OVERLAY_INDICATOR, OVERLAY_PACKAGE_REPORT } from '../global';
 
 export const addIndicatorToRange = async (range, packageID) => {
   console.debug('Adding indicator for', packageID, range);
@@ -11,7 +11,7 @@ export const addIndicatorToRange = async (range, packageID) => {
 };
 
 export const createPackageReportElement = (packageID, stylesheetUrl) => {
-  const packageReport = document.createElement('overlay-package-report');
+  const packageReport = document.createElement(OVERLAY_PACKAGE_REPORT);
   packageReport.setAttribute('package-type', packageID.type);
   packageReport.setAttribute('package-name', packageID.name);
   if (stylesheetUrl) {
