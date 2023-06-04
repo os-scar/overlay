@@ -18,11 +18,12 @@ import { defineComponent } from 'vue';
 import Tooltip from './Tooltip.vue';
 import PackageReport from './PackageReport.vue';
 import { usePackageInfo } from './store';
+import { OVERLAY_INDICATOR } from '../global';
 
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
 export default defineComponent({
-  name: 'overlay-indicator',
+  name: OVERLAY_INDICATOR,
   components: {
     Tooltip,
     PackageReport,

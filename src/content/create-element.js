@@ -1,7 +1,9 @@
+import { OVERLAY_INDICATOR } from '../global';
+
 export const addIndicatorToRange = async (range, packageID) => {
   console.debug('Adding indicator for', packageID, range);
 
-  const indicator = document.createElement('overlay-indicator');
+  const indicator = document.createElement(OVERLAY_INDICATOR);
   indicator.setAttribute('package-type', packageID.type);
   indicator.setAttribute('package-name', packageID.name);
   indicator.appendChild(range.extractContents());

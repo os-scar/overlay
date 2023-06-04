@@ -1,4 +1,4 @@
-import { SECOND } from '../global';
+import { OVERLAY_INDICATOR, SECOND } from '../global';
 import { mountContentScript } from './content';
 import { fetchPackageInfo } from './content-events';
 import { addIndicatorToRange } from './create-element';
@@ -22,8 +22,8 @@ const addIndicator = (element, contentElementSelector) => {
   const processed = {};
   const rightF = findings
     // TODO: use 'overlay-indicator' from global.js
-    .filter(({ range }) => range.endContainer.parentElement.nodeName.toLowerCase() !== 'overlay-indicator') // For install command
-    .filter(({ range }) => range.commonAncestorContainer.nodeName.toLowerCase() !== 'overlay-indicator'); // For links
+    .filter(({ range }) => range.endContainer.parentElement.nodeName.toLowerCase() !== OVERLAY_INDICATOR) // For install command
+    .filter(({ range }) => range.commonAncestorContainer.nodeName.toLowerCase() !== OVERLAY_INDICATOR); // For links
 
   rightF.forEach(({ range, ...packageId }) => {
     addIndicatorToRange(range, packageId);
