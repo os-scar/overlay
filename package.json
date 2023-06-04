@@ -11,10 +11,12 @@
     "email": "contact@os-scar.com"
   },
   "scripts": {
-    "postinstall": "husky install",
+    "postinstall": "husky install && playwright install --with-deps chromium",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
     "test:components": "cd tests/components && vite",
+    "e2e": "yarn build && playwright test",
+    "e2e:debug": "yarn e2e --debug",
     "build": "gulp build",
     "build:watch": "gulp --series build watch",
     "lint": "eslint src tests",
@@ -26,6 +28,7 @@
     "start:firefox": "yarn __start --source-dir ./dist/firefox"
   },
   "devDependencies": {
+    "@playwright/test": "^1.33.0",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/chrome": "^0.0.206",
