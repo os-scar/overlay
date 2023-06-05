@@ -34,7 +34,7 @@ Overlay aims to help developers make informed decisions when choosing open sourc
 
 ### Currently supported
 
-- **Websites:** StackOverflow (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
+- **Websites:** [StackOverflow](https://stackoverflow.com/questions/29461831), [npmjs.com](https://www.npmjs.com/package/node-sass) and [pypi.org](https://pypi.org/project/requests/) (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
 - **Registries:** NPM, PYPI and Go (only on `pkg.go.dev`)
 - **Advisories:** [Debricked](https://debricked.com/select/), [Snyk](https://snyk.io/advisor/), [Socket](http://socket.dev/) and [DepsDev](https://deps.dev/)
 
@@ -53,11 +53,6 @@ https://user-images.githubusercontent.com/1287098/234654340-8300c983-1a01-41fd-8
 
 You can customize the sources that Overlay uses by clicking on the Overlay logo in the extensions bar.
 
-## Technical details
-
-Overlay is written in Vue.js and uses a **background script** to fetch package data from various external sources.  
-It injects the **indicator** as a _WebComponent_ into the current web pages and uses a **popup menu** to control the displayed sources.
-
 ## Feedback
 
 We would love to hear your feedback and suggestions on how to improve Overlay. You can contact us by:
@@ -74,6 +69,11 @@ Please make sure to follow our code style and conventions.
 
 If you have any questions or suggestions about contributing, please feel free to contact us.
 
+### Technical details
+
+Overlay is written in Vue.js and uses a **background script** to fetch package data from various external sources.  
+It injects the **indicator** as a _WebComponent_ into the current web pages and uses a **popup menu** to control the displayed sources.
+
 ### Local Development
 
 To start developing the extension locally, follow these steps:
@@ -84,6 +84,10 @@ To start developing the extension locally, follow these steps:
 1. In another terminal, run `yarn start:chrome` (or `yarn start:firefox`). This will reload the extension on the development browser every time the extension is built.
 
 You can now test and debug the extension on _Chrome_ or _Firefox_.
+
+### Resources
+
+- A YouTube video for the [Ma'akaf community](https://discord.gg/fyZ8A5nb) about [how to start to contribute to this project](https://youtu.be/OnxaCXPAWAs) (in Hebrew).
 
 ### Contributors
 
