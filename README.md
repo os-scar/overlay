@@ -34,7 +34,7 @@ Overlay aims to help developers make informed decisions when choosing open sourc
 
 ### Currently supported
 
-- **Websites:** StackOverflow (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
+- **Websites:** [StackOverflow](https://stackoverflow.com/questions/29461831), [npmjs.com](https://www.npmjs.com/package/node-sass) and [pypi.org](https://pypi.org/project/requests/) (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
 - **Registries:** NPM, PYPI and Go (only on `pkg.go.dev`)
 - **Advisories:** [Debricked](https://debricked.com/select/), [Snyk](https://snyk.io/advisor/), [Socket](http://socket.dev/) and [DepsDev](https://deps.dev/)
 
