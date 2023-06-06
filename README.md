@@ -8,36 +8,56 @@
 
 ---
 
-
 <h1 align="center">
 Overlay
 </h1>
 
-
 Overlay is a browser extension that helps developers evaluate open source packages before picking them. It gathers data from various sources, such as [Snyk Advisor](https://snyk.io/advisor/), [Debricked](http://debricked.com/select/), [Socket.dev](http://socket.dev/), and [Deps.dev](https://deps.dev/), and displays them on the package pages of popular registries like [npm](https://www.npmjs.com/), [PyPI](http://pypi.org/), and [Go](https://pkg.go.dev/).
 
-#### Platinum Sponsors
-<table style="text-align:center;"><tr>
-  <td><a href="https://checkmarx.com" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/a537bc58-1376-4eef-9aef-67b9aaf9ac72" width="200" valign="middle" /></a></td>
-  <td><a href="https://illustria.io" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/18fbe418-5d22-4e09-88fa-e214aca2e387" width="200" valign="middle" /></a></td>
-</tr></table>
-
-#### Gold Sponsors
-
-<table style="text-align:center;"><tr>
-    <td><a href="https://www.citi.com" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/4ce21a87-5156-4f83-824c-bc9ab693aedd" valign="middle" /></a></td>
-    <td><a href="https://www.facebook.com/profile.php?id=100091498724349" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/0de7b53f-f192-489a-82da-b6c0745cde5e" valign="middle" /></a></td>
-</tr></table>
-
-
-
-
 <p align="center">
-<a href="https://addons.mozilla.org/addon/overlay/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get Overlay for Firefox"></a>
-<a href="https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho"><img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get Overlay for Chromium"></a>
+<a href="https://addons.mozilla.org/addon/overlay/">
+  <img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get Overlay for Firefox">
+</a>
+<a href="https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho">
+  <img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get Overlay for Chromium">
+</a>
 <!-- <a href="https://microsoftedge.microsoft.com/addons/detail/overlay/xxxxxxxxxxxxxxxxxx"><img src="https://user-images.githubusercontent.com/585534/107280673-a5ece780-6a26-11eb-9cc7-9fa9f9f81180.png" alt="Get Overlay for Microsoft Edge"></a>
 <a href="https://addons.opera.com/extensions/details/overlay/"><img src="https://user-images.githubusercontent.com/585534/107280692-ac7b5f00-6a26-11eb-85c7-088926504452.png" alt="Get Overlay for Opera"></a> -->
 </p>
+
+#### Platinum Sponsors
+
+<table align="center" style="text-align:center;">
+<tr>
+  <td>
+    <a href="https://checkmarx.com" target="_blank">
+      <img src="https://github.com/os-scar/overlay/assets/1287098/a537bc58-1376-4eef-9aef-67b9aaf9ac72" width="200" valign="middle" />
+    </a>
+  </td>
+  <td>
+    <a href="https://illustria.io" target="_blank">
+      <img src="https://github.com/os-scar/overlay/assets/1287098/18fbe418-5d22-4e09-88fa-e214aca2e387" width="200" valign="middle" />
+    </a>
+  </td>
+</tr>
+</table>
+
+#### Gold Sponsors
+
+<table align="center" style="text-align:center;">
+<tr>
+  <td>
+    <a href="https://www.citi.com" target="_blank">
+      <img src="https://github.com/os-scar/overlay/assets/1287098/4ce21a87-5156-4f83-824c-bc9ab693aedd" valign="middle" />
+    </a>
+  </td>
+  <td>
+    <a href="https://www.facebook.com/profile.php?id=100091498724349" target="_blank">
+      <img src="https://github.com/os-scar/overlay/assets/1287098/0de7b53f-f192-489a-82da-b6c0745cde5e" valign="middle" />
+    </a>
+  </td>
+</tr>
+</table>
 
 ---
 
@@ -46,7 +66,6 @@ Overlay is a browser extension that helps developers evaluate open source packag
 With Overlay, you can quickly consider packages based on metrics like popularity, quality, security, maintenance, and compatibility. You can also see detailed information about each package, such as its license, dependencies, vulnerabilities, issues, releases, and more.
 
 Overlay aims to help developers make informed decisions when choosing open source packages for their projects.
-
 
 ### Currently supported
 
