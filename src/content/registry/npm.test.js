@@ -5,7 +5,7 @@ import { cli } from './tests-utils';
 const packageResult = (p) => ({
   type: 'npm',
   version: undefined,
-  endIndex: p.startIndex + p.name.length + (p.version ? p.version.length + 1 : 0),
+  length: p.name.length + (p.version ? p.version.length + 1 : 0),
   ...p,
 });
 
@@ -50,7 +50,7 @@ describe('npm', () => {
           name: 'react',
           version: '^12.5.0',
           startIndex: 12,
-          endIndex: 12 + 'react@^12.5.0'.length,
+          lenght: 'react@^12.5.0'.length,
         }),
       ];
 

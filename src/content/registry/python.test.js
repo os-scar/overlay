@@ -5,7 +5,7 @@ import { cli } from './tests-utils';
 const packageResult = (p) => ({
   type: 'pypi',
   version: undefined,
-  endIndex: p.startIndex + p.name.length + (p.version ? p.version.length + 1 : 0),
+  length: p.name.length + (p.version ? p.version.length + 1 : 0),
   ...p,
 });
 
@@ -25,7 +25,7 @@ describe(parseCommand.name, () => {
 
   it.each(['p', 'package-with-dashes', 'underscore_', 'lazr.enum', 'WiTh_Upper-cas5'])(`Should find special package name '%s'`, (name) => {
     const command = `pip install ${name}`;
-    const expectedPackages = [packageResult({ name, startIndex: 12, endIndex: 12 + name.length })];
+    const expectedPackages = [packageResult({ name, startIndex: 12, length: name.length })];
 
     const packagePosition = parseCommand(command);
 
@@ -49,7 +49,7 @@ describe(parseCommand.name, () => {
     ['multiple spaces', 'pip  install  --no-clean   pandas', 27],
     ['option after package name', 'pip install pandas --no-clean', 12],
   ])('should find package after %s', (_, command, startIndex) => {
-    const expectedPackages = [packageResult({ name: 'pandas', startIndex, endIndex: startIndex + 'pandas'.length })];
+    const expectedPackages = [packageResult({ name: 'pandas', startIndex, length: 'pandas'.length })];
 
     const packagePosition = parseCommand(command);
 
@@ -60,7 +60,7 @@ describe(parseCommand.name, () => {
     const { command, positions } = cli`pip install ${'requests'} ${'numpy'} ${'pandas'} MySQL_python==1.2.2`;
     const expectedPackages = [
       ...positions.map(({ index, value }) => packageResult({ name: value, startIndex: index })),
-      packageResult({ name: 'MySQL_python', startIndex: 34, endIndex: 34 + 'MySQL_python==1.2.2'.length }),
+      packageResult({ name: 'MySQL_python', startIndex: 34, length: 'MySQL_python==1.2.2'.length }),
     ];
 
     const packagePosition = parseCommand(command);
@@ -76,7 +76,7 @@ describe(parseCommand.name, () => {
         packageResult({
           name: 'numpy',
           startIndex: 15,
-          endIndex: 15 + 'numpy'.length + version.length,
+          length: 'numpy'.length + version.length,
         }),
       ];
 
