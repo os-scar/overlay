@@ -9,11 +9,24 @@
 ---
 
 <h1 align="center">
-<sub>
-<img src="icons/icon_48.png" height="38" width="38">
-</sub>
 Overlay
 </h1>
+
+Overlay is a browser extension that helps developers evaluate open source packages before picking them. It gathers data from various sources, such as [Snyk Advisor](https://snyk.io/advisor/), [Debricked](http://debricked.com/select/), [Socket.dev](http://socket.dev/), and [Deps.dev](https://deps.dev/), and displays them on the package pages of popular registries like [npm](https://www.npmjs.com/), [PyPI](http://pypi.org/), and [Go](https://pkg.go.dev/).
+
+#### Platinum Sponsors
+
+<table style="text-align:center;"><tr>
+  <td><a href="https://checkmarx.com" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/a537bc58-1376-4eef-9aef-67b9aaf9ac72" width="200" valign="middle" /></a></td>
+  <td><a href="https://illustria.io" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/18fbe418-5d22-4e09-88fa-e214aca2e387" width="200" valign="middle" /></a></td>
+</tr></table>
+
+#### Gold Sponsors
+
+<table style="text-align:center;"><tr>
+    <td><a href="https://www.citi.com" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/4ce21a87-5156-4f83-824c-bc9ab693aedd" valign="middle" /></a></td>
+    <td><a href="https://www.facebook.com/profile.php?id=100091498724349" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/0de7b53f-f192-489a-82da-b6c0745cde5e" valign="middle" /></a></td>
+</tr></table>
 
 <p align="center">
 <a href="https://addons.mozilla.org/addon/overlay/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get Overlay for Firefox"></a>
@@ -24,8 +37,6 @@ Overlay
 
 ---
 
-Overlay is a browser extension that helps developers evaluate open source packages before picking them. It gathers data from various sources, such as [Snyk Advisor](https://snyk.io/advisor/), [Debricked](http://debricked.com/select/), [Socket.dev](http://socket.dev/), and [Deps.dev](https://deps.dev/), and displays them on the package pages of popular registries like [npm](https://www.npmjs.com/), [PyPI](http://pypi.org/), and [Go](https://pkg.go.dev/).
-
 ![Overlay Screenshot](https://user-images.githubusercontent.com/17686879/233840234-17550261-20c2-42f7-a096-c1ae106275c5.png)
 
 With Overlay, you can quickly consider packages based on metrics like popularity, quality, security, maintenance, and compatibility. You can also see detailed information about each package, such as its license, dependencies, vulnerabilities, issues, releases, and more.
@@ -34,7 +45,7 @@ Overlay aims to help developers make informed decisions when choosing open sourc
 
 ### Currently supported
 
-- **Websites:** StackOverflow (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
+- **Websites:** [StackOverflow](https://stackoverflow.com/questions/29461831), [npmjs.com](https://www.npmjs.com/package/node-sass) and [pypi.org](https://pypi.org/project/requests/) (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
 - **Registries:** NPM, PYPI and Go (only on `pkg.go.dev`)
 - **Advisories:** [Debricked](https://debricked.com/select/), [Snyk](https://snyk.io/advisor/), [Socket](http://socket.dev/) and [DepsDev](https://deps.dev/)
 
@@ -53,11 +64,6 @@ https://user-images.githubusercontent.com/1287098/234654340-8300c983-1a01-41fd-8
 
 You can customize the sources that Overlay uses by clicking on the Overlay logo in the extensions bar.
 
-## Technical details
-
-Overlay is written in Vue.js and uses a **background script** to fetch package data from various external sources.  
-It injects the **indicator** as a _WebComponent_ into the current web pages and uses a **popup menu** to control the displayed sources.
-
 ## Feedback
 
 We would love to hear your feedback and suggestions on how to improve Overlay. You can contact us by:
@@ -73,6 +79,11 @@ We welcome contributions from anyone who wants to help us improve Overlay. If yo
 Please make sure to follow our code style and conventions.
 
 If you have any questions or suggestions about contributing, please feel free to contact us.
+
+### Technical details
+
+Overlay is written in Vue.js and uses a **background script** to fetch package data from various external sources.  
+It injects the **indicator** as a _WebComponent_ into the current web pages and uses a **popup menu** to control the displayed sources.
 
 ### Local Development
 
@@ -90,6 +101,10 @@ You can now test and debug the extension on _Chrome_ or _Firefox_.
 To run unit tests, use `yarn test`. We use [Jest](https://jestjs.io/) for testing.
 
 For end-to-end tests, see the [e2e/README.md](e2e/README.md) file.
+
+### Resources
+
+- A YouTube video for the [Ma'akaf community](https://discord.gg/fyZ8A5nb) about [how to start to contribute to this project](https://youtu.be/OnxaCXPAWAs) (in Hebrew).
 
 ### Contributors
 
