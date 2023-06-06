@@ -29,10 +29,10 @@ Overlay is a browser extension that helps developers evaluate open source packag
 
 <p align="center">
   <a href="https://checkmarx.com" target="_blank">
-    <img src="https://github.com/os-scar/overlay/assets/1287098/a537bc58-1376-4eef-9aef-67b9aaf9ac72" width="200" valign="middle" />
+    <img src="https://user-images.githubusercontent.com/17686879/243669103-bc424872-a5d0-4a43-ae3c-dc7610b39449.png" width="200" valign="middle" />
   </a>
   <a href="https://illustria.io" target="_blank">
-    <img src="https://github.com/os-scar/overlay/assets/1287098/18fbe418-5d22-4e09-88fa-e214aca2e387" width="200" valign="middle" />
+    <img src="https://user-images.githubusercontent.com/17686879/243671181-6f392213-9a5f-456e-bf1e-d5b408376c69.png" width="200" valign="middle" />
   </a>
 </p>
 
@@ -40,10 +40,10 @@ Overlay is a browser extension that helps developers evaluate open source packag
 
 <p align="center">
   <a href="https://www.citi.com" target="_blank">
-    <img src="https://github.com/os-scar/overlay/assets/1287098/4ce21a87-5156-4f83-824c-bc9ab693aedd" valign="middle" />
+    <img src="https://user-images.githubusercontent.com/17686879/243669917-022de069-ecbb-434e-927d-7add28d3096b.png" valign="middle" />
   </a>
   <a href="https://www.facebook.com/profile.php?id=100091498724349" target="_blank">
-    <img src="https://github.com/os-scar/overlay/assets/1287098/0de7b53f-f192-489a-82da-b6c0745cde5e" valign="middle" />
+    <img src="https://user-images.githubusercontent.com/17686879/243670051-73f4c257-5fe5-4278-9db2-94db39bd9bda.png" valign="middle" />
   </a>
 </p>
 
