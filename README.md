@@ -85,6 +85,12 @@ To start developing the extension locally, follow these steps:
 
 You can now test and debug the extension on _Chrome_ or _Firefox_.
 
+#### Testing
+
+To run unit tests, use `yarn test`. We use [Jest](https://jestjs.io/) for testing.
+
+For end-to-end tests, see the [e2e/README.md](e2e/README.md) file.
+
 ### Contributors
 
 - https://www.linkedin.com/in/baruchiro/
@@ -93,6 +99,7 @@ You can now test and debug the extension on _Chrome_ or _Firefox_.
 - https://www.linkedin.com/in/bar-lanyado-bb50b3110/
 - https://www.linkedin.com/in/bogdan-kortnov-58996b213/
 - https://www.linkedin.com/in/uriklar/
+- https://www.linkedin.com/in/elad-tal-0355531b7/
 - You?
 
 ## License
