@@ -26,7 +26,9 @@ Overlay is a browser extension that helps developers evaluate open source packag
 
 <table style="text-align:center;"><tr>
     <td><a href="https://www.citi.com" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/4ce21a87-5156-4f83-824c-bc9ab693aedd" valign="middle" /></a></td>
+    <td><a href="https://www.facebook.com/profile.php?id=100091498724349" target="_blank"><img src="https://github.com/os-scar/overlay/assets/1287098/0de7b53f-f192-489a-82da-b6c0745cde5e" valign="middle" /></a></td>
 </tr></table>
+
 
 
 
