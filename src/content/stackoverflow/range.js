@@ -8,9 +8,9 @@ const findPositionInsideTree = (node, position) => {
   }
 };
 
-export const getRangeOfPositions = (element, textStart, textEnd) => {
+export const getRangeOfPositions = (element, textStart, length) => {
   const start = findPositionInsideTree(element, textStart);
-  const end = findPositionInsideTree(element, textEnd);
+  const end = findPositionInsideTree(element, textStart + length);
 
   const range = new Range();
   range.setStart(start.node, start.position);
