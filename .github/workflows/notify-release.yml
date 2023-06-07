@@ -1,0 +1,22 @@
+name: Send notifications
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo something
+        run: echo "hello world"
+    outputs:
+      versionNum: '3'
+  notify:
+    name: Notify Discord
+    needs: [build]
+    runs-on: ubuntu-latest
+    env:
+      msg: 'Yay! 🎉 \n Version ${{ needs.build.outputs.versionNum }} was released! \n Check it out in: https://github.com/os-scar/overlay.'
+
+    steps:
+      - name: Run curl
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d "{\"content\": \"$msg\"}" ${{ secrets.DISCORD_WEB_HOOK }}
