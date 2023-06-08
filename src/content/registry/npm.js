@@ -2,6 +2,7 @@ import { createParseCommand } from './shared';
 
 const npmInstall = /((npm|yarn)( -g)?( global)? (install|i|add|update)) /;
 const npxInstall = /(npx)\b/;
+const npmExec = /npm exec/;
 const packageName = /(?<package_name>[a-z0-9_@][a-z0-9_./-]*)/;
 const packageVersion = /@(?<package_version>[~^]?\d+(\.(\d|X|x)+){0,2}(-[a-z0-9_-]+)?)/;
 const packageLabel = /@[a-z0-9_-]+/;
@@ -43,7 +44,12 @@ const handleNpxArgumentForPackage = (arg, argsAndPackagesWords) => {
   return arg.length + 1;
 };
 
-const parseNpxCommand = createParseCommand('npm', (line) => line.match(npxInstall), handleNpxArgumentForPackage, parseOnlyFirstPackage);
+const parseNpxCommand = createParseCommand(
+  'npm',
+  (line) => line.match(npxInstall) || line.match(npmExec),
+  handleNpxArgumentForPackage,
+  parseOnlyFirstPackage
+);
 
 export const parseCommands = [parseNpmCommand, parseNpxCommand];
 
