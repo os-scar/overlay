@@ -19,9 +19,29 @@ describe('npm', () => {
       'npm install',
       'npm install -g',
       '`npm install node-sass`', // this is not a valid command because of the `
-      'npm init react-app my-app', // not yet supported. #37
     ])('should return empty array if no packages found', (command) => {
       expect(parseCommand(command)).toStrictEqual([]);
+    });
+
+    it.each(['npm init <package_name> argument', 'npm create <package_name> argument', 'yarn create <package_name> argument'])(
+      `'%s' find create-* package`,
+      (template) => {
+        const startIndex = template.indexOf('<package_name>');
+        const endIndex = startIndex + 'react-app'.length;
+        const command = template.replace('<package_name>', 'react-app');
+
+        const packagePosition = parseCommand(command);
+
+        expect(packagePosition).toStrictEqual([packageResult({ name: 'create-react-app', startIndex, endIndex })]);
+      }
+    );
+
+    it.each(['npm init @scope', 'npm create @scope'])(`'%s' find @scope/create package`, (command) => {
+      const startIndex = command.indexOf('@scope');
+      const endIndex = startIndex + '@scope'.length;
+      const packagePosition = parseCommand(command);
+
+      expect(packagePosition).toStrictEqual([packageResult({ name: '@scope/create', startIndex, endIndex })]);
     });
 
     it('should return the right position for recurrent package name', () => {
@@ -70,6 +90,26 @@ describe('npm', () => {
       yarn add -D ${'jest'}
       `;
       const expectedPackages = positions.map(({ index, value }) => packageResult({ name: value, startIndex: index }));
+
+      const packagePosition = parseCommand(command);
+
+      expect(packagePosition).toStrictEqual(expectedPackages);
+    });
+
+    it('should find create-* in multiple lines', () => {
+      const { command, positions } = cli`
+      npx ${'create-react-app'} my-app
+      npm init ${'react-app'} my-app
+      yarn create ${'react-app'} my-app
+      `;
+
+      const expectedPackages = positions.map(({ index, value }) =>
+        packageResult({
+          name: 'create-react-app',
+          startIndex: index,
+          endIndex: index + value.length,
+        })
+      );
 
       const packagePosition = parseCommand(command);
 

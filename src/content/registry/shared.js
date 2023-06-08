@@ -50,6 +50,7 @@ export const createParseCommand =
           continue;
         }
 
+        // TODO: pass argsAndPackagesWords instead of packages.length, and empty the array inside the function if needed
         const packageMatch = parsePackageWord(word, packages.length);
         if (!packageMatch) {
           counterIndex += word.length + 1;

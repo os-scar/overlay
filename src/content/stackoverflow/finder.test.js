@@ -80,12 +80,7 @@ describe(findRanges.name, () => {
 
     const npxVariants = ['npx <package_name>', 'npx -p <package_name> command', 'npx --package=<package_name> command'];
 
-    const yarnVariants = [
-      'yarn add <package_name>',
-      'yarn add -D <package_name>',
-      'yarn global add <package_name>',
-      'yarn create <package_name> argument',
-    ];
+    const yarnVariants = ['yarn add <package_name>', 'yarn add -D <package_name>', 'yarn global add <package_name>'];
 
     const pipVariants = [
       'pip install <package_name>',
@@ -343,7 +338,6 @@ describe(findRanges.name, () => {
     it.each([
       'npm install git://github.com/user-c/dep-2#node0.8.0',
       'npm init react-app my-app', // create-react-app
-      'npm exec create-react-app',
     ])(`Future support '%s`, (command) => {
       const { body } = createCodeBlock(command);
 
