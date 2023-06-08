@@ -51,10 +51,7 @@ describe(findRanges.name, () => {
     it.each(['http://npmjs.org/', 'https://pypi.python.org/packages/source/v/virtualenv/virtualenv-12.0.7.tar.gz'])(
       `Should not find any package in '%s'`,
       (url) => {
-        const body = document.createElement('body');
-        const a1 = document.createElement('a');
-        a1.href = url;
-        body.appendChild(a1);
+        const { body } = createRealAnswer(`<a id="test" href="${url}">test</a>`);
 
         const foundElements = findRanges(body);
 

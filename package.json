@@ -11,21 +11,24 @@
     "email": "contact@os-scar.com"
   },
   "scripts": {
-    "postinstall": "husky install",
+    "postinstall": "husky install && playwright install --with-deps chromium",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
     "test:components": "cd tests/components && vite",
+    "e2e": "yarn build && playwright test",
+    "e2e:debug": "yarn e2e --debug",
     "build": "gulp build",
     "build:watch": "gulp --series build watch",
     "lint": "eslint src tests",
     "lint:fix": "yarn lint --fix",
     "lint:lockfile": "lockfile-lint --path yarn.lock --allowed-hosts npm yarn --validate-https --validate-package-names --validate-integrity --empty-hostname false",
     "lint:firefox": "yarn build && web-ext lint --source-dir ./dist/firefox",
-    "__start": "web-ext run --devtools --start-url https://stackoverflow.com/questions/33527653",
+    "__start": "web-ext run --start-url https://pypi.org/project/pandas/ --start-url https://www.npmjs.com/package/node-sass",
     "start:chrome": "yarn __start --source-dir ./dist/chrome --target chromium",
     "start:firefox": "yarn __start --source-dir ./dist/firefox"
   },
   "devDependencies": {
+    "@playwright/test": "^1.33.0",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/chrome": "^0.0.206",

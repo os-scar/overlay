@@ -249,9 +249,7 @@ export default {
 </script>
 
 <style lang="scss">
-// TODO place in global variables
-$tooltip-width: 300px;
-$tooltip-height: 250px;
+@use './variables' as *;
 
 .overlay-tooltip {
   position: relative;

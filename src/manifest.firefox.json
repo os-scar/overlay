@@ -10,6 +10,14 @@
     {
       "matches": ["*://stackoverflow.com/*"],
       "js": ["content.stackoverflow.js"]
+    },
+    {
+      "matches": ["*://www.npmjs.com/package/*"],
+      "js": ["content.npmjs.js"]
+    },
+    {
+      "matches": ["*://pypi.org/project/*"],
+      "js": ["content.pypi.js"]
     }
   ],
   "background": {

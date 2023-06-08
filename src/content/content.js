@@ -7,6 +7,7 @@ const injectScriptTag = () => {
   (document.head || document.documentElement).appendChild(script);
   console.log('Injected script tag', script);
 
+  // Inject the custom-element css to the head to affect the Teleport part.
   const link = document.createElement('link');
   link.rel = 'stylesheet';
   link.href = browser.runtime.getURL('custom-elements.css');

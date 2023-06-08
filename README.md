@@ -9,22 +9,45 @@
 ---
 
 <h1 align="center">
-<sub>
-<img src="icons/icon_48.png" height="38" width="38">
-</sub>
 Overlay
 </h1>
 
+Overlay is a browser extension that helps developers evaluate open source packages before picking them. It gathers data from various sources, such as [Snyk Advisor](https://snyk.io/advisor/), [Debricked](http://debricked.com/select/), [Socket.dev](http://socket.dev/), and [Deps.dev](https://deps.dev/), and displays them on the package pages of popular registries like [npm](https://www.npmjs.com/), [PyPI](http://pypi.org/), and [Go](https://pkg.go.dev/).
+
 <p align="center">
-<a href="https://addons.mozilla.org/addon/overlay/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get Overlay for Firefox"></a>
-<a href="https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho"><img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get Overlay for Chromium"></a>
+<a href="https://addons.mozilla.org/addon/overlay/">
+  <img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Get Overlay for Firefox">
+</a>
+<a href="https://chrome.google.com/webstore/detail/overlay/fahpefingaaldhifdbnlipfjniabkiho">
+  <img src="https://user-images.githubusercontent.com/585534/107280622-91a8ea80-6a26-11eb-8d07-77c548b28665.png" alt="Get Overlay for Chromium">
+</a>
 <!-- <a href="https://microsoftedge.microsoft.com/addons/detail/overlay/xxxxxxxxxxxxxxxxxx"><img src="https://user-images.githubusercontent.com/585534/107280673-a5ece780-6a26-11eb-9cc7-9fa9f9f81180.png" alt="Get Overlay for Microsoft Edge"></a>
 <a href="https://addons.opera.com/extensions/details/overlay/"><img src="https://user-images.githubusercontent.com/585534/107280692-ac7b5f00-6a26-11eb-85c7-088926504452.png" alt="Get Overlay for Opera"></a> -->
 </p>
 
----
+#### Platinum Sponsors
 
-Overlay is a browser extension that helps developers evaluate open source packages before picking them. It gathers data from various sources, such as [Snyk Advisor](https://snyk.io/advisor/), [Debricked](http://debricked.com/select/), [Socket.dev](http://socket.dev/), and [Deps.dev](https://deps.dev/), and displays them on the package pages of popular registries like [npm](https://www.npmjs.com/), [PyPI](http://pypi.org/), and [Go](https://pkg.go.dev/).
+<p align="center">
+  <a href="https://checkmarx.com" target="_blank">
+    <img src="https://user-images.githubusercontent.com/17686879/243669103-bc424872-a5d0-4a43-ae3c-dc7610b39449.png" width="200" valign="middle" />
+  </a>
+  <a href="https://illustria.io" target="_blank">
+    <img src="https://user-images.githubusercontent.com/17686879/243671181-6f392213-9a5f-456e-bf1e-d5b408376c69.png" width="200" valign="middle" />
+  </a>
+</p>
+
+#### Gold Sponsors
+
+<p align="center">
+  <a href="https://www.citi.com" target="_blank">
+    <img src="https://user-images.githubusercontent.com/17686879/243669917-022de069-ecbb-434e-927d-7add28d3096b.png" valign="middle" />
+  </a>
+  <a href="https://www.facebook.com/profile.php?id=100091498724349" target="_blank">
+    <img src="https://user-images.githubusercontent.com/17686879/243670051-73f4c257-5fe5-4278-9db2-94db39bd9bda.png" valign="middle" />
+  </a>
+</p>
+
+---
 
 ![Overlay Screenshot](https://user-images.githubusercontent.com/17686879/233840234-17550261-20c2-42f7-a096-c1ae106275c5.png)
 
@@ -34,7 +57,7 @@ Overlay aims to help developers make informed decisions when choosing open sourc
 
 ### Currently supported
 
-- **Websites:** StackOverflow (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
+- **Websites:** [StackOverflow](https://stackoverflow.com/questions/29461831), [npmjs.com](https://www.npmjs.com/package/node-sass) and [pypi.org](https://pypi.org/project/requests/) (see [Issue #14](https://github.com/os-scar/overlay/issues/14) for future plans)
 - **Registries:** NPM, PYPI and Go (only on `pkg.go.dev`)
 - **Advisories:** [Debricked](https://debricked.com/select/), [Snyk](https://snyk.io/advisor/), [Socket](http://socket.dev/) and [DepsDev](https://deps.dev/)
 
@@ -53,11 +76,6 @@ https://user-images.githubusercontent.com/1287098/234654340-8300c983-1a01-41fd-8
 
 You can customize the sources that Overlay uses by clicking on the Overlay logo in the extensions bar.
 
-## Technical details
-
-Overlay is written in Vue.js and uses a **background script** to fetch package data from various external sources.  
-It injects the **indicator** as a _WebComponent_ into the current web pages and uses a **popup menu** to control the displayed sources.
-
 ## Feedback
 
 We would love to hear your feedback and suggestions on how to improve Overlay. You can contact us by:
@@ -74,6 +92,11 @@ Please make sure to follow our code style and conventions.
 
 If you have any questions or suggestions about contributing, please feel free to contact us.
 
+### Technical details
+
+Overlay is written in Vue.js and uses a **background script** to fetch package data from various external sources.  
+It injects the **indicator** as a _WebComponent_ into the current web pages and uses a **popup menu** to control the displayed sources.
+
 ### Local Development
 
 To start developing the extension locally, follow these steps:
@@ -85,6 +108,16 @@ To start developing the extension locally, follow these steps:
 
 You can now test and debug the extension on _Chrome_ or _Firefox_.
 
+#### Testing
+
+To run unit tests, use `yarn test`. We use [Jest](https://jestjs.io/) for testing.
+
+For end-to-end tests, see the [e2e/README.md](e2e/README.md) file.
+
+### Resources
+
+- A YouTube video for the [Ma'akaf community](https://discord.gg/fyZ8A5nb) about [how to start to contribute to this project](https://youtu.be/OnxaCXPAWAs) (in Hebrew).
+
 ### Contributors
 
 - https://www.linkedin.com/in/baruchiro/
@@ -93,6 +126,7 @@ You can now test and debug the extension on _Chrome_ or _Firefox_.
 - https://www.linkedin.com/in/bar-lanyado-bb50b3110/
 - https://www.linkedin.com/in/bogdan-kortnov-58996b213/
 - https://www.linkedin.com/in/uriklar/
+- https://www.linkedin.com/in/elad-tal-0355531b7/
 - You?
 
 ## License

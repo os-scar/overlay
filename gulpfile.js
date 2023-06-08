@@ -49,7 +49,7 @@ async function buildCustomElements(outputDirPath) {
 
   // --------------
   // Recompile without customElement: true to extract css
-  let results = await vite.build({
+  const results = await vite.build({
     build: {
       emptyOutDir: false,
       write: false,
@@ -62,14 +62,14 @@ async function buildCustomElements(outputDirPath) {
     plugins: [vue(), svgLoader()],
   });
 
-  let customElementsCssOutputFilePath = path.join(distDirPath, 'custom-elements.css');
+  const customElementsCssOutputFilePath = path.join(distDirPath, 'custom-elements.css');
 
-  let files = results[0].output;
+  const files = results[0].output;
   for (const file of files) {
     if (file.name !== 'style.css') {
       continue;
     }
-    let cssFileContent = file.source;
+    const cssFileContent = file.source;
     await fs.writeFile(customElementsCssOutputFilePath, cssFileContent, 'utf8');
   }
 }
@@ -87,8 +87,18 @@ async function buildPopup(outputDirPath) {
   });
 }
 
+async function buildContentScript(contentFilePath, outputDirPath) {
+  const bundle = await rollup({
+    input: contentFilePath,
+  });
+  await bundle.write({
+    dir: outputDirPath,
+    format: 'iife',
+  });
+}
+
 async function buildBrowserExtension(browserType, version, fileExtension) {
-  let outputDirPath = path.join(distDirPath, browserType);
+  const outputDirPath = path.join(distDirPath, browserType);
 
   // --------------
   // icons dir
@@ -105,7 +115,7 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
 
   // --------------
   // manifest.json
-  let manifestFilename = `manifest.${browserType}.json`;
+  const manifestFilename = `manifest.${browserType}.json`;
   await gulp
     .src(path.join(srcDirPath, manifestFilename))
     .pipe(rename('manifest.json'))
@@ -114,18 +124,14 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
     .pipe(gulp.dest(outputDirPath));
 
   // --------------
-  // content.stackoverflow.js
-  let bundle = await rollup({
-    input: path.join(srcDirPath, 'content', 'content.stackoverflow.js'),
-  });
-  await bundle.write({
-    file: path.join(outputDirPath, 'content.stackoverflow.js'),
-    format: 'iife',
-  });
+  // content script
+  buildContentScript(path.join(srcDirPath, 'content', 'content.stackoverflow.js'), outputDirPath);
+  buildContentScript(path.join(srcDirPath, 'content', 'content.npmjs.js'), outputDirPath);
+  buildContentScript(path.join(srcDirPath, 'content', 'content.pypi.js'), outputDirPath);
 
   // --------------
   // background.js
-  bundle = await rollup({
+  const bundle = await rollup({
     input: path.join(srcDirPath, 'background', 'background.js'),
     plugins: [commonjs(), nodeResolve()],
   });
@@ -143,7 +149,7 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
 }
 
 gulp.task('compile', async () => {
-  let version = process.env['BUILD_VERSION'] || DEV_VERSION;
+  const version = process.env['BUILD_VERSION'] || DEV_VERSION;
   console.log(`compiling version ${version}`);
 
   await buildCustomElements(distDirPath);
