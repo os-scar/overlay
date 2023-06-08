@@ -1,16 +1,13 @@
 import { createParseCommand } from './shared';
 
 const npmInstall = /((npm|yarn)( -g)?( global)? (install|i|add|update)) /;
-const npmInit = /(npx)\b/;
+const npxInstall = /(npx)\b/;
 const packageName = /(?<package_name>[a-z0-9_@][a-z0-9_./-]*)/;
 const packageVersion = /@(?<package_version>[~^]?\d+(\.(\d|X|x)+){0,2}(-[a-z0-9_-]+)?)/;
 const packageLabel = /@[a-z0-9_-]+/;
 const fullPackage = new RegExp(String.raw`^${packageName.source}(${packageVersion.source}|${packageLabel.source})?$`);
 
-const parsePackageString = (str, baseCommand, foundPackages) => {
-  if ((baseCommand === 'npx' || baseCommand === 'npm init') && foundPackages > 0) {
-    return null;
-  }
+const parsePackageString = (str) => {
   const match = str.match(fullPackage);
   if (!match) return null;
   return {
@@ -20,12 +17,29 @@ const parsePackageString = (str, baseCommand, foundPackages) => {
   };
 };
 
-export const parseCommand = createParseCommand(
+const parseOnlyFirstPackage = (str, foundPackages) => {
+  if (foundPackages > 0) {
+    return null;
+  }
+
+  return parsePackageString(str);
+};
+
+const parseNpmCommand = createParseCommand(
   'npm',
-  (line) => line.match(npmInstall) || line.match(npmInit),
+  (line) => line.match(npmInstall),
   (word) => word.length + 1,
   parsePackageString
 );
+
+const parseNpxCommand = createParseCommand(
+  'npm',
+  (line) => line.match(npxInstall),
+  (word) => word.length + 1,
+  parseOnlyFirstPackage
+);
+
+export const parseCommands = [parseNpmCommand, parseNpxCommand];
 
 const urlParser = ({ pathname }) => {
   if (!pathname.startsWith('/package/')) return;

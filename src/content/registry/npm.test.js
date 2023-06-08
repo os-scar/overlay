@@ -1,6 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
-import { parseCommand } from './npm';
+import { parseCommands } from './npm';
 import { cli } from './tests-utils';
+
+const parseCommand = (command) => parseCommands.flatMap((parser) => parser(command));
 
 const packageResult = (p) => ({
   type: 'npm',
