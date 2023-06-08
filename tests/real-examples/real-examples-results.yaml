@@ -1175,6 +1175,111 @@ https://stackoverflow.com/questions/59188624:
     - range: <code>npm i -g create-react-app</code>
       type: npm
       name: create-react-app
+https://stackoverflow.com/questions/50605219:
+  comment: npx dummy package, npx -p
+  post: answer
+  registry: npm
+  results:
+    - range: >-
+        <a href="https://www.npmjs.com/package/npx"
+        rel="noreferrer">https://www.npmjs.com/package/npx</a>
+      type: npm
+      name: npx
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install some-package
+        </code>
+      type: npm
+      name: some-package
+    - range: |-
+        <code>npx some-package
+        </code>
+      type: npm
+      name: some-package
+    - range: |-
+        <code>$ npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: >-
+        <code>npx   -p uglify-js         uglifyjs --output app.min.js app.js
+        common.js
+              +----------------+   +--------------------------------------------+
+              package (optional)   command, followed by arguments
+        </code>
+      type: npm
+      name: uglify-js
+    - range: >-
+        <code>Start a HTTP Server      : npx http-server
+
+        Lint code                : npx eslint ./src
+                                 # Run uglifyjs command in the package uglify-js
+        Minify JS                : npx -p uglify-js uglifyjs -o app.min.js
+        app.js common.js
+
+        Minify CSS               : npx clean-css-cli -o style.min.css
+        css/bootstrap.css style.css
+
+        Minify HTML              : npx html-minifier index-2.html -o index.html
+        --remove-comments --collapse-whitespace
+
+        Scan for open ports      : npx evilscan 192.168.1.10 --port=10-9999
+
+        Cast video to Chromecast : npx castnow
+        http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4
+
+        </code>
+      type: npm
+      name: http-server
+    - range: |-
+        <code>npm install -g npx
+        </code>
+      type: npm
+      name: npx
+    - range: |-
+        <code>npx your-package-name
+        </code>
+      type: npm
+      name: your-package-name
+https://stackoverflow.com/questions/70358643:
+  comment: npx with version and argument
+  post: answer
+  registry: npm
+  results:
+    - range: |-
+        <code>npx clear-npx-cache
+        </code>
+      type: npm
+      name: clear-npx-cache
+    - range: <code>npx create-react-app@5.0.0 my-app</code>
+      type: npm
+      name: create-react-app
+      version: 5.0.0
+    - range: <code>npx clear-npx-cache</code>
+      type: npm
+      name: clear-npx-cache
+    - range: <code>npx clear-npx-cache</code>
+      type: npm
+      name: clear-npx-cache
+    - range: |-
+        <code>npx create-react-app@latest my-app --use-npm
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app@5.0.0 my-app
+        </code>
+      type: npm
+      name: create-react-app
+      version: 5.0.0
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
 https://stackoverflow.com/questions/22563281:
   comment: with semver ~
   post: answer

@@ -77,9 +77,18 @@ describe(findRanges.name, () => {
       'npm i --save-dev <package_name>',
       'npm i <package_name> --save-dev',
       'npm update <package_name>',
+      'npm exec <package_name>',
+      'npm exec --package=<package_name> command',
     ];
 
-    const yarnVariants = ['yarn add <package_name>', 'yarn add -D <package_name>', 'yarn global add <package_name>'];
+    const npxVariants = ['npx <package_name>', 'npx -p <package_name> command', 'npx --package=<package_name> command'];
+
+    const yarnVariants = [
+      'yarn add <package_name>',
+      'yarn add -D <package_name>',
+      'yarn global add <package_name>',
+      'yarn create <package_name> argument',
+    ];
 
     const pipVariants = [
       'pip install <package_name>',
@@ -91,6 +100,7 @@ describe(findRanges.name, () => {
     it.each([
       ...npmVariants.map((cmd) => [cmd, 'npm']),
       ...yarnVariants.map((cmd) => [cmd, 'npm']),
+      ...npxVariants.map((cmd) => [cmd, 'npm']),
       ...pipVariants.map((cmd) => [cmd, 'pypi']),
     ])(`'%s' inside <pre><code>`, (installCommand, type) => {
       const commandPackageName = 'my-package-name';

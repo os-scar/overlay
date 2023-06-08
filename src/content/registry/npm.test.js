@@ -43,18 +43,21 @@ describe('npm', () => {
       expect(packagePosition).toStrictEqual(expectedPackages);
     });
 
-    it('should range the package with the version part', () => {
-      const command = 'yarn add -D react@^12.5.0';
+    it.each(['yarn add -D <package>', 'npx <package> my-app'])('should range the package with the version part', (command) => {
+      const name = 'create-react-app';
+      const version = '^12.5.0';
+      const packagePart = `${name}@${version}`;
+      const startIndex = command.indexOf('<package>');
       const expectedPackages = [
         packageResult({
-          name: 'react',
-          version: '^12.5.0',
-          startIndex: 12,
-          endIndex: 12 + 'react@^12.5.0'.length,
+          name,
+          version,
+          startIndex,
+          endIndex: startIndex + packagePart.length,
         }),
       ];
 
-      const packagePosition = parseCommand(command);
+      const packagePosition = parseCommand(command.replace('<package>', packagePart));
 
       expect(packagePosition).toStrictEqual(expectedPackages);
     });
