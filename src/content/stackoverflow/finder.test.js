@@ -343,15 +343,16 @@ describe(findRanges.name, () => {
     });
 
     // issue #37, #38
-    it.skip.each(['npm install git://github.com/user-c/dep-2#node0.8.0', 'npx create-react-app my-app'])(
-      `Future support '%s`,
-      (command) => {
-        const { body } = createCodeBlock(command);
+    it.each([
+      'npm install git://github.com/user-c/dep-2#node0.8.0',
+      'npm init react-app my-app', // create-react-app
+      'npm exec create-react-app',
+    ])(`Future support '%s`, (command) => {
+      const { body } = createCodeBlock(command);
 
-        const foundElements = findRanges(body);
+      const foundElements = findRanges(body);
 
-        expect(foundElements.length).toBe(1);
-      }
-    );
+      expect(foundElements.length).toBe(0);
+    });
   });
 });
