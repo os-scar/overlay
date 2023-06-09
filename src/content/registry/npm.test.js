@@ -19,6 +19,7 @@ describe('npm', () => {
       'npm install',
       'npm install -g',
       '`npm install node-sass`', // this is not a valid command because of the `
+      'npm create-react-app my-app',
     ])('should return empty array if no packages found', (command) => {
       expect(parseCommand(command)).toStrictEqual([]);
     });

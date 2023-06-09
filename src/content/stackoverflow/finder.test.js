@@ -335,10 +335,7 @@ describe(findRanges.name, () => {
     });
 
     // issue #37, #38
-    it.each([
-      'npm install git://github.com/user-c/dep-2#node0.8.0',
-      'npm init react-app my-app', // create-react-app
-    ])(`Future support '%s`, (command) => {
+    it.each(['npm install git://github.com/user-c/dep-2#node0.8.0'])(`Future support '%s`, (command) => {
       const { body } = createCodeBlock(command);
 
       const foundElements = findRanges(body);

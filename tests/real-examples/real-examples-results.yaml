@@ -1016,6 +1016,26 @@ https://stackoverflow.com/questions/59188624:
     - range: <code>npx create-react-app my-app</code>
       type: npm
       name: create-react-app
+    - range: <code>npm init react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>yarn create react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app
+        npm init react-app my-app
+        yarn create react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app
+        npm init react-app my-app
+        yarn create react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
     - range: |-
         <code>npx create-react-app my-app
         npm init react-app my-app
@@ -1027,6 +1047,15 @@ https://stackoverflow.com/questions/59188624:
       type: npm
       name: create-react-app
     - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm init react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>yarn create react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>yarn create react-app my-app</code>
       type: npm
       name: create-react-app
     - range: |-
@@ -1044,6 +1073,9 @@ https://stackoverflow.com/questions/59188624:
         </code>
       type: npm
       name: create-react-app
+    - range: <code>yarn create react-app my-app</code>
+      type: npm
+      name: create-react-app
     - range: <code>npx create-react-app@latest</code>
       type: npm
       name: create-react-app
@@ -1051,6 +1083,12 @@ https://stackoverflow.com/questions/59188624:
       type: npm
       name: create-react-app
     - range: <code>npx create-react-app@latest ./client</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm init react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>yarn create react-app my-app</code>
       type: npm
       name: create-react-app
     - range: <code>npm install -g create-react-app</code>
@@ -1085,7 +1123,16 @@ https://stackoverflow.com/questions/59188624:
     - range: <code>npm update -g create-react-app</code>
       type: npm
       name: create-react-app
+    - range: <code>yarn create react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm init react-app</code>
+      type: npm
+      name: create-react-app
     - range: <code>npx create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>yarn create react-app</code>
       type: npm
       name: create-react-app
     - range: <code>npm install -g create-react-app</code>
@@ -1117,10 +1164,19 @@ https://stackoverflow.com/questions/59188624:
         </code>
       type: npm
       name: create-react-app
-    - range: <code>npx create-react-app my-app</code>
+    - range: <code>yarn create react-app my-app</code>
       type: npm
       name: create-react-app
     - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>yarn create react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>yarn create react-app my-app</code>
       type: npm
       name: create-react-app
     - range: <code>npx create-react-app my-app</code>
@@ -1236,6 +1292,138 @@ https://stackoverflow.com/questions/50605219:
         </code>
       type: npm
       name: http-server
+    - range: >-
+        <code>Start a HTTP Server      : npx http-server
+
+        Lint code                : npx eslint ./src
+                                 # Run uglifyjs command in the package uglify-js
+        Minify JS                : npx -p uglify-js uglifyjs -o app.min.js
+        app.js common.js
+
+        Minify CSS               : npx clean-css-cli -o style.min.css
+        css/bootstrap.css style.css
+
+        Minify HTML              : npx html-minifier index-2.html -o index.html
+        --remove-comments --collapse-whitespace
+
+        Scan for open ports      : npx evilscan 192.168.1.10 --port=10-9999
+
+        Cast video to Chromecast : npx castnow
+        http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4
+
+        </code>
+      type: npm
+      name: eslint
+    - range: >-
+        <code>Start a HTTP Server      : npx http-server
+
+        Lint code                : npx eslint ./src
+                                 # Run uglifyjs command in the package uglify-js
+        Minify JS                : npx -p uglify-js uglifyjs -o app.min.js
+        app.js common.js
+
+        Minify CSS               : npx clean-css-cli -o style.min.css
+        css/bootstrap.css style.css
+
+        Minify HTML              : npx html-minifier index-2.html -o index.html
+        --remove-comments --collapse-whitespace
+
+        Scan for open ports      : npx evilscan 192.168.1.10 --port=10-9999
+
+        Cast video to Chromecast : npx castnow
+        http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4
+
+        </code>
+      type: npm
+      name: uglify-js
+    - range: >-
+        <code>Start a HTTP Server      : npx http-server
+
+        Lint code                : npx eslint ./src
+                                 # Run uglifyjs command in the package uglify-js
+        Minify JS                : npx -p uglify-js uglifyjs -o app.min.js
+        app.js common.js
+
+        Minify CSS               : npx clean-css-cli -o style.min.css
+        css/bootstrap.css style.css
+
+        Minify HTML              : npx html-minifier index-2.html -o index.html
+        --remove-comments --collapse-whitespace
+
+        Scan for open ports      : npx evilscan 192.168.1.10 --port=10-9999
+
+        Cast video to Chromecast : npx castnow
+        http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4
+
+        </code>
+      type: npm
+      name: clean-css-cli
+    - range: >-
+        <code>Start a HTTP Server      : npx http-server
+
+        Lint code                : npx eslint ./src
+                                 # Run uglifyjs command in the package uglify-js
+        Minify JS                : npx -p uglify-js uglifyjs -o app.min.js
+        app.js common.js
+
+        Minify CSS               : npx clean-css-cli -o style.min.css
+        css/bootstrap.css style.css
+
+        Minify HTML              : npx html-minifier index-2.html -o index.html
+        --remove-comments --collapse-whitespace
+
+        Scan for open ports      : npx evilscan 192.168.1.10 --port=10-9999
+
+        Cast video to Chromecast : npx castnow
+        http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4
+
+        </code>
+      type: npm
+      name: html-minifier
+    - range: >-
+        <code>Start a HTTP Server      : npx http-server
+
+        Lint code                : npx eslint ./src
+                                 # Run uglifyjs command in the package uglify-js
+        Minify JS                : npx -p uglify-js uglifyjs -o app.min.js
+        app.js common.js
+
+        Minify CSS               : npx clean-css-cli -o style.min.css
+        css/bootstrap.css style.css
+
+        Minify HTML              : npx html-minifier index-2.html -o index.html
+        --remove-comments --collapse-whitespace
+
+        Scan for open ports      : npx evilscan 192.168.1.10 --port=10-9999
+
+        Cast video to Chromecast : npx castnow
+        http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4
+
+        </code>
+      type: npm
+      name: evilscan
+    - range: >-
+        <code>Start a HTTP Server      : npx http-server
+
+        Lint code                : npx eslint ./src
+                                 # Run uglifyjs command in the package uglify-js
+        Minify JS                : npx -p uglify-js uglifyjs -o app.min.js
+        app.js common.js
+
+        Minify CSS               : npx clean-css-cli -o style.min.css
+        css/bootstrap.css style.css
+
+        Minify HTML              : npx html-minifier index-2.html -o index.html
+        --remove-comments --collapse-whitespace
+
+        Scan for open ports      : npx evilscan 192.168.1.10 --port=10-9999
+
+        Cast video to Chromecast : npx castnow
+        http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4
+
+        </code>
+      type: npm
+      name: castnow
     - range: |-
         <code>npm install -g npx
         </code>

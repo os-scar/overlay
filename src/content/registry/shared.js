@@ -9,8 +9,8 @@ const finishAllWords = (argsAndPackagesWords) => {
 /**
  * @param {string} registryName `type` in result element
  * @param {(line: string) => RegExpMatchArray} getBaseCommandMatch get the base command match for a line (examples: `pip install`, `yarn add`)
- * @param {(word: string, argsAndPackagesWords: string[]) => number} handleArgument add a length to the counter to move it to the next argument
- * @param {(word: string, packagesLength?: number) => { packageName: string, packageVersion?: string, packagePart: string } | null } parsePackageWord parse a word to its package name and its whole part (includes the version)
+ * @param {(word: string, argsAndPackagesWords?: string[]) => number} handleArgument add a length to the counter to move it to the next argument
+ * @param {(word: string, argsAndPackagesWords?: string[]) => { packageName: string, packageVersion?: string, packagePart: string } | null } parsePackageWord parse a word to its package name and its whole part (includes the version)
  */
 export const createParseCommand =
   (registryName, getBaseCommandMatch, handleArgument, parsePackageWord) =>
@@ -50,8 +50,7 @@ export const createParseCommand =
           continue;
         }
 
-        // TODO: pass argsAndPackagesWords instead of packages.length, and empty the array inside the function if needed
-        const packageMatch = parsePackageWord(word, packages.length);
+        const packageMatch = parsePackageWord(word, argsAndPackagesWords);
         if (!packageMatch) {
           counterIndex += word.length + 1;
           continue;
