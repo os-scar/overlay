@@ -29,7 +29,7 @@ export const listen = () => {
 
   browser.tabs.onUpdated.addListener(function (tabId, changeInfo) {
     if (changeInfo.url) {
-      chrome.tabs.sendMessage(tabId, {
+      browser.tabs.sendMessage(tabId, {
         message: EVENT_URL_CHANGE,
         url: changeInfo.url,
       });
