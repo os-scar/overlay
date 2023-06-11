@@ -35,5 +35,12 @@ module.exports = {
         ignoreReadBeforeAssign: false,
       },
     ],
+    'no-restricted-globals': [
+      'error',
+      {
+        name: 'chrome',
+        message: 'Use browser from src/browser.js instead',
+      },
+    ],
   },
 };
