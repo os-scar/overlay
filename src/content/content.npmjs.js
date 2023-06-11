@@ -1,8 +1,8 @@
+import browser from '../browser';
+import { EVENT_URL_CHANGE } from '../events-shared';
 import { mountContentScript } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/npm';
-import browser from '../browser';
-import { EVENT_URL_CHANGE } from '../events-shared';
 
 const addPackageReport = (packageID) => {
   const packageReport = document.createElement('overlay-package-report');
