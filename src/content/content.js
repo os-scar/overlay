@@ -1,4 +1,5 @@
 import browser from '../browser';
+import { EVENT_URL_CHANGED, addMessagingEventListener } from '../events-shared';
 import * as events from './content-events';
 
 const injectScriptTag = () => {
@@ -35,4 +36,8 @@ export const mountContentScript = (contentScript) => {
 
     console.log('Overlay is finished');
   });
+};
+
+export const reloadWhenURLChanged = (callback) => {
+  addMessagingEventListener(EVENT_URL_CHANGED, callback);
 };
