@@ -5,16 +5,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: echo something
-        run: echo "hello world"
+      - name: Gets release info
+        id: semantic_release_info
+        uses: jossef/action-semantic-release-info@v2.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     outputs:
       versionNum: '3'
+      tag: ${{steps.semantic_release_info.outputs.tag}}
   notify:
     name: Notify Discord
     needs: [build]
     runs-on: ubuntu-latest
     env:
-      msg: 'Yay! 🎉 \n Version ${{ needs.build.outputs.versionNum }} was released! \n Check it out in: https://github.com/os-scar/overlay.'
+      msg: 'Yay! 🎉 \n Version ${{ needs.build.outputs.versionNum }} was released! \n Check it out in: ${{needs.build.outputs.tag}}.'
 
     steps:
       - name: Run curl
