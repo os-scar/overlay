@@ -64,6 +64,14 @@ links:
     comment: npx
     post: question
     registry: npm
+  https://stackoverflow.com/questions/50605219:
+    comment: npx dummy package, npx -p
+    post: answer
+    registry: npm
+  https://stackoverflow.com/questions/70358643:
+    comment: npx with version and argument
+    post: answer
+    registry: npm
   https://stackoverflow.com/questions/22563281:
     comment: with semver ~
     post: answer
