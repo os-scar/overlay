@@ -41,6 +41,7 @@ jobs:
           action: 'publish'
 
       - name: Upload Release Artifacts
+        id: upload_artifacts
         if: ${{ steps.semantic_release_info.outputs.git_tag }}
         uses: softprops/action-gh-release@v0.1.15
         with:
@@ -51,17 +52,10 @@ jobs:
           files: |
             ./dist/chrome*.zip
             ./dist/firefox*.xpi
-    outputs:
-      versionNum: ${{steps.semantic_release_info.outputs.version}}
 
-  notify:
-    name: Notify Discord
-    needs: [build]
-    runs-on: ubuntu-latest
-    env:
-      msg: 'Yay! 🎉 \n Version ${{ needs.build.outputs.versionNum }} was released! \n Check it out in: https://github.com/os-scar/overlay.'
-
-    steps:
-      - name: Run curl
+      - name: Notify Discord
+        if: ${{ steps.semantic_release_info.outputs.git_tag }}
         run: |
           curl -X POST -H "Content-Type: application/json" -d "{\"content\": \"$msg\"}" ${{ secrets.DISCORD_WEB_HOOK }}
+        env:
+          msg: 'Yay! 🎉 \n Version ${{ steps.semantic_release_info.outputs.version }} was released! \n Check it out in: ${{ steps.upload_artifacts.outputs.url }}'
