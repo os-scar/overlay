@@ -11,4 +11,31 @@ test.describe('npm', () => {
     const overlayModuleName = page.locator('.overlay-tooltip__tooltip .overlay-indicator__tooltip[data-testid="module_name"]');
     await Expect(overlayModuleName).toBeVisible();
   });
+
+  test('detect url change when using the searh bar in npmjs.com', async ({ page }) => {
+    let packageName = '@ngneat/spectator';
+    const url = `https://www.npmjs.com/package/${packageName}`;
+
+    await page.goto(url, {
+      waitUntil: 'domcontentloaded',
+    });
+
+    // get the package name from overlay popup
+    let overlayPackageInfoName = page.getByRole('link', { name: packageName });
+    await Expect(overlayPackageInfoName).toHaveAttribute('title', packageName);
+
+    // use the search bar to find the @angular/cli package
+    packageName = `@angular/cli`;
+    const searchBar = page.locator('[name=q]');
+    await searchBar.fill(packageName);
+
+    // find the list item that links to the desired package
+    const getSearchResultInDropDown = page.locator(`li[aria-label="${packageName}"]`);
+    // await getSearchResultInDropDown.hover()
+    await getSearchResultInDropDown.click();
+
+    // check that overlay's title has changed to @angular/cli
+    overlayPackageInfoName = page.getByRole('link', { name: packageName });
+    await Expect(overlayPackageInfoName).toHaveAttribute('title', packageName);
+  });
 });
