@@ -4,6 +4,7 @@ import {
   CONTENT_PORT_CONNECTION,
   dispatchEvent,
   EVENT_SETTINGS_CHANGED,
+  EVENT_URL_CHANGED,
   READY_EVENT,
   REQUEST_PACKAGE_INFO_EVENT,
   RESPONSE_PACKAGE_INFO_EVENT,
@@ -11,11 +12,20 @@ import {
 import * as storage from '../storage';
 
 const sendPackageInfoToWebapp = (info) => dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
+const reloadPackageInfo = () => dispatchEvent(EVENT_URL_CHANGED, {});
 
 const backgroundConnection = browser.runtime.connect({ name: CONTENT_PORT_CONNECTION });
+
 backgroundConnection.onMessage.addListener((message) => {
   if (message.type === RESPONSE_PACKAGE_INFO_EVENT) {
     sendPackageInfoToWebapp(message.detail);
+  }
+});
+
+browser.runtime.onMessage.addListener(({ message }) => {
+  if (message === EVENT_URL_CHANGED) {
+    console.log(`package changed, reloaing package info`);
+    reloadPackageInfo();
   }
 });
 

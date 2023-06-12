@@ -1,5 +1,5 @@
 import browser from '../browser';
-import { EVENT_URL_CHANGE, REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
+import { EVENT_URL_CHANGED, REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
 import advisories from './advisory/index';
 
 const listener = async ({ type, detail }, port) => {
@@ -30,8 +30,7 @@ export const listen = () => {
   browser.tabs.onUpdated.addListener(function (tabId, changeInfo) {
     if (changeInfo.url) {
       browser.tabs.sendMessage(tabId, {
-        message: EVENT_URL_CHANGE,
-        url: changeInfo.url,
+        message: EVENT_URL_CHANGED,
       });
     }
   });
