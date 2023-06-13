@@ -30,7 +30,7 @@ export const listen = () => {
   browser.tabs.onUpdated.addListener(function (tabId, changeInfo) {
     if (changeInfo.url) {
       browser.tabs.sendMessage(tabId, {
-        message: EVENT_URL_CHANGED,
+        type: EVENT_URL_CHANGED,
       });
     }
   });

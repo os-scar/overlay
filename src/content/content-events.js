@@ -12,20 +12,13 @@ import {
 import * as storage from '../storage';
 
 const sendPackageInfoToWebapp = (info) => dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
-const reloadPackageInfo = () => dispatchEvent(EVENT_URL_CHANGED, {});
+const sendRealodMessageToWebapp = () => dispatchEvent(EVENT_URL_CHANGED, {});
 
 const backgroundConnection = browser.runtime.connect({ name: CONTENT_PORT_CONNECTION });
 
 backgroundConnection.onMessage.addListener((message) => {
   if (message.type === RESPONSE_PACKAGE_INFO_EVENT) {
     sendPackageInfoToWebapp(message.detail);
-  }
-});
-
-browser.runtime.onMessage.addListener(({ message }) => {
-  if (message === EVENT_URL_CHANGED) {
-    console.log(`package changed, reloaing package info`);
-    reloadPackageInfo();
   }
 });
 
@@ -63,8 +56,17 @@ export const listen = () => {
   });
 
   browser.runtime.onMessage.addListener((message) => {
-    if (message.type === EVENT_SETTINGS_CHANGED) {
-      sendEventSettingsChangedToWebapp();
+    switch (message.type) {
+      case EVENT_SETTINGS_CHANGED:
+        sendEventSettingsChangedToWebapp();
+        break;
+      case EVENT_URL_CHANGED:
+        console.log(`package id changed, reloading package info`);
+        sendRealodMessageToWebapp();
+        break;
+      default:
+        console.log(`unknown message type: ${message.type}`);
+        break;
     }
   });
 };

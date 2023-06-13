@@ -8,16 +8,23 @@ const addPackageReport = (packageID) => {
   packageReport.setAttribute('package-name', packageID.name);
 
   const repository = document.querySelector('#repository');
-  if (repository) {
-    repository.parentElement.insertBefore(packageReport, repository);
-  }
+
+  const config = { attributes: false, childList: true, subtree: true };
+  const observer = new MutationObserver(() => {
+    if (document.contains(repository)) {
+      repository.parentElement.insertBefore(packageReport, repository);
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document, config);
 };
 
 const reloadPackageInfo = async () => {
   const currPackageReport = document.getElementsByTagName('overlay-package-report');
-  if (!currPackageReport || currPackageReport.length === 0) return;
-
-  currPackageReport?.item(0)?.remove();
+  if (currPackageReport && currPackageReport.length > 0) {
+    currPackageReport?.item(0)?.remove();
+  }
   await loadPackageInfo();
 };
 
