@@ -23,7 +23,8 @@ test.describe('npm', () => {
     // get the package name from overlay popup
     let overlayPackageInfoComponent = page.locator('overlay-package-report');
     let overlayPackageInfoLink = overlayPackageInfoComponent.getByRole('link', { name: packageName });
-    await Expect(overlayPackageInfoLink).toHaveAttribute('title', packageName);
+    await overlayPackageInfoLink.highlight();
+    await Expect(overlayPackageInfoLink).toHaveText(packageName);
 
     // use the search bar to find the @angular/cli package
     packageName = `@angular/cli`;
@@ -37,6 +38,6 @@ test.describe('npm', () => {
     // check that overlay's title has changed to @angular/cli
     overlayPackageInfoComponent = page.locator('overlay-package-report');
     overlayPackageInfoLink = overlayPackageInfoComponent.getByRole('link', { name: packageName });
-    await Expect(overlayPackageInfoLink).toHaveAttribute('title', packageName);
+    await Expect(overlayPackageInfoLink).toHaveText(packageName);
   });
 });
