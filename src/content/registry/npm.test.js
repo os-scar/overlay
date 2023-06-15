@@ -116,5 +116,20 @@ describe('npm', () => {
 
       expect(packagePosition).toStrictEqual(expectedPackages);
     });
+
+    it('should break into commands', () => {
+      // https://stackoverflow.com/a/65043610/839513
+      const {
+        command,
+        positions,
+      } = cli`npm uninstall -g create-react-app && npm i -g ${'npm@latest'} && npm cache clean -f && npx ${'create-react-app@latest'} my-app --use-npm`;
+      const expectedPackages = positions.map(({ index, value }) =>
+        packageResult({ name: value.split('@')[0], startIndex: index, endIndex: index + value.length })
+      );
+
+      const packagePosition = parseCommand(command);
+
+      expect(packagePosition).toStrictEqual(expectedPackages);
+    });
   });
 });

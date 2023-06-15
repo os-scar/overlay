@@ -18,7 +18,8 @@ export const createParseCommand =
     const packages = [];
     let counterIndex = 0;
 
-    const lines = command.split('\n');
+    const lines = command.split(/\n|\s*&&\s*/);
+
     while (lines.length > 0) {
       const line = lines.shift();
 

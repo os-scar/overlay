@@ -97,4 +97,16 @@ describe(parseCommand.name, () => {
 
     expect(packagePosition).toStrictEqual(expectedPackages);
   });
+
+  it('should break into commands', () => {
+    // https://stackoverflow.com/a/65043610/839513
+    const { command, positions } = cli`pip uninstall -y requests-temp && pip install ${'scipy'} && pip check --no-color && pip hash -V`;
+    const expectedPackages = positions.map(({ index, value }) =>
+      packageResult({ name: value.split('@')[0], startIndex: index, endIndex: index + value.length })
+    );
+
+    const packagePosition = parseCommand(command);
+
+    expect(packagePosition).toStrictEqual(expectedPackages);
+  });
 });
