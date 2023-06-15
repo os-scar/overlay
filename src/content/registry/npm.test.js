@@ -73,17 +73,10 @@ describe('npm', () => {
       const startIndex = command.indexOf('<package>');
       const expectedPackages = [
         packageResult({
-<<<<<<< HEAD
-          name: 'react',
-          version: '^12.5.0',
-          startIndex: 12,
-          lenght: 'react@^12.5.0'.length,
-=======
           name,
           version,
           startIndex,
           endIndex: startIndex + packagePart.length,
->>>>>>> 249c67238f17d653c4c458806346ed67b4988ad7
         }),
       ];
 

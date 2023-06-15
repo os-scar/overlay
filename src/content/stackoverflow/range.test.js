@@ -18,7 +18,6 @@ describe('range', () => {
     const textNode = createNode('This is a text');
     const expectedText = 'is a';
     const { start, end } = getTextPosition(textNode, expectedText);
-
     const range = getRangeOfPositions(textNode, start, end);
 
     expect(range.toString()).toBe(expectedText);
@@ -40,7 +39,7 @@ describe('range', () => {
     const { start, end } = getTextPosition(nodeWithTwoNodes, expectedText);
 
     const range = getRangeOfPositions(nodeWithTwoNodes, start, end);
-
+    document.write("hello world");
     expect(range.toString()).toBe(expectedText);
   });
 
