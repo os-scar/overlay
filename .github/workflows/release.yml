@@ -39,8 +39,9 @@ jobs:
           zip_file: './dist/chrome_${{ steps.semantic_release_info.outputs.version }}.zip'
           extension_id: 'fahpefingaaldhifdbnlipfjniabkiho'
           action: 'publish'
-      
+
       - name: Upload Release Artifacts
+        id: upload_artifacts
         if: ${{ steps.semantic_release_info.outputs.git_tag }}
         uses: softprops/action-gh-release@v0.1.15
         with:
@@ -51,3 +52,12 @@ jobs:
           files: |
             ./dist/chrome*.zip
             ./dist/firefox*.xpi
+
+      - name: Notify Discord
+        if: ${{ steps.semantic_release_info.outputs.git_tag }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d "{\"content\": \"$msg\"}" ${{ secrets.DISCORD_CHECKMARX_WEBHOOK }}
+          curl -X POST -H "Content-Type: application/json" -d "{\"content\": \"$msg\"}" ${{ secrets.DISCORD_MAAKAF_WEBHOOK }}
+          curl -X POST -H "Content-Type: application/json" -d "{\"content\": \"$msg\"}" ${{ secrets.DISCORD_SCAR_WEBHOOK }}
+        env:
+          msg: 'Yay! 🎉 \n Version ${{ steps.semantic_release_info.outputs.version }} was released! \n Check it out in: ${{ steps.upload_artifacts.outputs.url }}'
