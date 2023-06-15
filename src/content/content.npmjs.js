@@ -1,6 +1,7 @@
 import { mountContentScript, reloadWhenURLChanged } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/npm';
+
 import waitForElement from '../utils/utils';
 
 const addPackageReport = async (packageID) => {
