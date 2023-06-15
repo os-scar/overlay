@@ -1,5 +1,5 @@
 import browser from '../browser';
-import { EVENT_URL_CHANGED, REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
+import { REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT } from '../events-shared';
 import advisories from './advisory/index';
 
 const listener = async ({ type, detail }, port) => {
@@ -18,20 +18,11 @@ const listener = async ({ type, detail }, port) => {
       });
     });
   }
-
   return true;
 };
 
 export const listen = () => {
   browser.runtime.onConnect.addListener((port) => {
     port.onMessage.addListener(listener);
-  });
-
-  browser.tabs.onUpdated.addListener(function (tabId, changeInfo) {
-    if (changeInfo.url) {
-      browser.tabs.sendMessage(tabId, {
-        type: EVENT_URL_CHANGED,
-      });
-    }
   });
 };
