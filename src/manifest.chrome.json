@@ -12,7 +12,7 @@
       "js": ["content.stackoverflow.js"]
     },
     {
-      "matches": ["*://www.npmjs.com/package/*"],
+      "matches": ["*://www.npmjs.com/*"],
       "js": ["content.npmjs.js"]
     },
     {
@@ -37,6 +37,6 @@
   "externally_connectable": {
     "matches": ["*://stackoverflow.com/*"]
   },
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage"],
   "manifest_version": 3
 }
