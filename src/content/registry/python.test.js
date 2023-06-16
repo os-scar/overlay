@@ -52,7 +52,7 @@ describe(parseCommand.name, () => {
     ['multiple spaces', 'pip  install  --no-clean   pandas', 27],
     ['option after package name', 'pip install pandas --no-clean', 12],
 
-    ['multiple args with values', `pip3 install --global-option build_ext -t ../ pandas`, 47],
+    ['multiple args with values', `pip3 install --global-option build_ext -t ../ pandas`, 46],
     ['special args with values', `pip3 install --global-option='-I/usr/local/include' pandas`, 52],
     ['argument with =', 'pip3 install --compiler=mingw32 pandas', 32],
     ['combined args with values and =', 'pip3 install --global-option build_ext --global-option --compiler=mingw32 pandas', 74],
