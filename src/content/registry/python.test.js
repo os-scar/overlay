@@ -10,16 +10,19 @@ const packageResult = (p) => ({
 });
 
 describe(parseCommand.name, () => {
-  it.each([
-    '',
-    'bla bla',
-    'pip install',
-    'pip install -U',
-    'pip install -Iv http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.2/MySQL-python-1.2.2.tar.gz/download',
-    'pip install numpy‑1.9.2+mkl‑cp34‑none‑win_amd64.whl',
-    'pip install MySQL_python==', // Although this is a valid package name, it's not a valid command
-    'pip install -r requirements.txt',
-  ])(`should not find in '%s'`, (command) => {
+  const commands = [
+    'install',
+    'install -U',
+    'install -Iv http://sourceforge.net/projects/mysql-python/files/mysql-python/1.2.2/MySQL-python-1.2.2.tar.gz/download',
+    'install numpy‑1.9.2+mkl‑cp34‑none‑win_amd64.whl',
+    'install MySQL_python==', // Although this is a valid package name, it's not a valid command
+    'install -r requirements.txt',
+  ];
+  const createCommand = (packageManager) => commands.map((command) => `${packageManager} ${command}`);
+
+  const commandsWithPackageManager = [createCommand('pip'), createCommand('pip3')].flat();
+
+  it.each(['', 'bla bla', ...commandsWithPackageManager])(`should not find in '%s'`, (command) => {
     expect(parseCommand(command)).toStrictEqual([]);
   });
 
@@ -48,6 +51,13 @@ describe(parseCommand.name, () => {
     ['combined args with values and =', 'pip install --global-option build_ext --global-option --compiler=mingw32 pandas', 73],
     ['multiple spaces', 'pip  install  --no-clean   pandas', 27],
     ['option after package name', 'pip install pandas --no-clean', 12],
+
+    ['multiple args with values', `pip3 install --global-option build_ext -t ../ pandas`, 47],
+    ['special args with values', `pip3 install --global-option='-I/usr/local/include' pandas`, 52],
+    ['argument with =', 'pip3 install --compiler=mingw32 pandas', 32],
+    ['combined args with values and =', 'pip3 install --global-option build_ext --global-option --compiler=mingw32 pandas', 74],
+    ['multiple spaces', 'pip3  install  --no-clean   pandas', 28],
+    ['option after package name', 'pip3 install pandas --no-clean', 13],
   ])('should find package after %s', (_, command, startIndex) => {
     const expectedPackages = [packageResult({ name: 'pandas', startIndex, endIndex: startIndex + 'pandas'.length })];
 
