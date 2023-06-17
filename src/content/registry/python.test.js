@@ -100,7 +100,10 @@ describe(parseCommand.name, () => {
 
   it('should break into commands', () => {
     // https://stackoverflow.com/a/65043610/839513
-    const { command, positions } = cli`pip uninstall -y requests-temp && pip install ${'scipy'} && pip check --no-color && pip hash -V`;
+    const {
+      command,
+      positions,
+    } = cli`pip uninstall -y requests-temp && pip install ${'scipy'} && pip check --no-color && pip hash -V && pip install ${'numpy'}`;
     const expectedPackages = positions.map(({ index, value }) =>
       packageResult({ name: value.split('@')[0], startIndex: index, endIndex: index + value.length })
     );
