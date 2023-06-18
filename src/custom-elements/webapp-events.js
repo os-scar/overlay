@@ -9,13 +9,12 @@ import {
 import * as store from './store.js';
 
 const listenForUrlChange = () => {
-  console.debug('Listening for URL changes');
   const pushState = history.pushState;
   history.pushState = function (state) {
     if (typeof history.onpushstate == 'function') {
       history.onpushstate({ state: state });
     }
-    console.log('URL changed', location.href);
+
     dispatchEvent(EVENT_URL_CHANGED);
     return pushState.apply(history, arguments);
   };
