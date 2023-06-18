@@ -77,7 +77,7 @@ links:
     post: answer
     registry: npm
   https://stackoverflow.com/a/65043610/839513:
-    comment: multiple commands
+    comment: multiple commands in the same line
     post: answer
     registry: npm
 
