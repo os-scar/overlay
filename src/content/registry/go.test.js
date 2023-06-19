@@ -1,14 +1,14 @@
 import { describe, expect, it } from '@jest/globals';
 import { parseCommand } from './go';
 
-const positionInCommand = (command, packageName, length) => {
+const positionInCommand = (command, packageName) => {
   const startIndex = command.indexOf(packageName);
   return {
     type: 'go',
     name: packageName,
     version: undefined,
     startIndex,
-    lenght: packageName.length,
+    length: packageName.length,
   };
 };
 
@@ -60,7 +60,7 @@ describe(parseCommand.name, () => {
         name: 'github.com/golang/lint',
         version: undefined,
         startIndex: 10,
-        lenght: 'github.com/golang/lint/golint'.length,
+        length: 'github.com/golang/lint/golint'.length,
       },
     ];
 
