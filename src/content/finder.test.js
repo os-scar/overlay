@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { createCodeBlock, createPreCodeBlock, createRealAnswer, createRealComment } from '../../test-utils/html-builder';
+import { createCodeBlock, createElement, createPreCodeBlock, createRealAnswer, createRealComment } from '../test-utils/html-builder';
 import { findRanges } from './finder';
 
 describe(findRanges.name, () => {
@@ -46,6 +46,14 @@ describe(findRanges.name, () => {
       // Test that the range includes the a element.
       // If the range includes only the text inside the a, it will be TextNode
       expect(range.startContainer.childNodes[range.startOffset].nodeType).not.toBe(Node.TEXT_NODE);
+    });
+
+    it('should find the whole element as it is a link', () => {
+      const { element } = createElement(`<a id="test" href="https://www.npmjs.com/package/minimist">minimist</a>`);
+
+      const foundElements = findRanges(element);
+
+      expect(foundElements.length).toBe(1);
     });
 
     it.each(['http://npmjs.org/', 'https://pypi.python.org/packages/source/v/virtualenv/virtualenv-12.0.7.tar.gz'])(
@@ -313,19 +321,6 @@ describe(findRanges.name, () => {
       });
     });
 
-    it.each([
-      [
-        'comment',
-        'My entry into this arena is trepanjs (<a href="https://www.npmjs.com/package/trepanjs" rel="nofollow noreferrer">npmjs.com/package/trepanjs</a>). It has all of the goodness of the node debugger, but conforms better to gdb. It also has more features and commands like syntax highlighting, more extensive online help, and smarter evaluation. See <a href="https://github.com/rocky/trepanjs/wiki/Cool-things" rel="nofollow noreferrer">github.com/rocky/trepanjs/wiki/Cool-things</a> for some of its cool features.',
-      ],
-    ])('Should ignore packages in %s', (_reason, comment) => {
-      const { body } = createRealComment(comment);
-
-      const foundElements = findRanges(body);
-
-      expect(foundElements.length).toBe(0);
-    });
-
     it.each(['npm install -g', 'npm install PACKAGE-NAME', 'npm install packageName'])(`Should not find any package in '%s'`, (command) => {
       const { body } = createCodeBlock(command);
 
@@ -339,6 +334,23 @@ describe(findRanges.name, () => {
       const { body } = createCodeBlock(command);
 
       const foundElements = findRanges(body);
+
+      expect(foundElements.length).toBe(0);
+    });
+  });
+
+  describe('StackOverflow', () => {
+    const STACKOVERFLOW_POST_SELECTOR = 'div.js-post-body';
+
+    it.each([
+      [
+        'comment',
+        'My entry into this arena is trepanjs (<a href="https://www.npmjs.com/package/trepanjs" rel="nofollow noreferrer">npmjs.com/package/trepanjs</a>). It has all of the goodness of the node debugger, but conforms better to gdb. It also has more features and commands like syntax highlighting, more extensive online help, and smarter evaluation. See <a href="https://github.com/rocky/trepanjs/wiki/Cool-things" rel="nofollow noreferrer">github.com/rocky/trepanjs/wiki/Cool-things</a> for some of its cool features.',
+      ],
+    ])('Should ignore packages in %s', (_reason, comment) => {
+      const { body } = createRealComment(comment);
+
+      const foundElements = findRanges(body, STACKOVERFLOW_POST_SELECTOR);
 
       expect(foundElements.length).toBe(0);
     });

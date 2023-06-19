@@ -1,8 +1,9 @@
 import { describe, expect, jest, test } from '@jest/globals';
-import { findRanges } from '../src/content/stackoverflow/finder';
+import { findRanges } from '../src/content/finder';
 import { readRealExamples, writeResultsSnapshot } from './real-examples/real-examples';
 
 const JEST_DEFAULT_TIMEOUT = 5000;
+const STACKOVERFLOW_POST_SELECTOR = 'div.js-post-body';
 
 const htmlParser = new DOMParser();
 const getElementFromFragment = (fragment) => {
@@ -20,7 +21,7 @@ describe('Real Pages', () => {
     const results = realExamples.map(({ html, ...example }) => {
       const body = htmlParser.parseFromString(html, 'text/html').body;
 
-      const foundLinks = findRanges(body)
+      const foundLinks = findRanges(body, STACKOVERFLOW_POST_SELECTOR)
         .map(({ range, ...rest }) => {
           const element =
             range.cloneContents().firstChild.nodeType === Node.TEXT_NODE

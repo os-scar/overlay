@@ -128,6 +128,7 @@ async function buildBrowserExtension(browserType, version, fileExtension) {
   buildContentScript(path.join(srcDirPath, 'content', 'content.stackoverflow.js'), outputDirPath);
   buildContentScript(path.join(srcDirPath, 'content', 'content.npmjs.js'), outputDirPath);
   buildContentScript(path.join(srcDirPath, 'content', 'content.pypi.js'), outputDirPath);
+  buildContentScript(path.join(srcDirPath, 'content', 'content.chatgpt.js'), outputDirPath);
 
   // --------------
   // background.js

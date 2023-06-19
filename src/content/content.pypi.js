@@ -1,14 +1,10 @@
 import browser from '../browser';
 import { mountContentScript } from './content';
 import { fetchPackageInfo } from './content-events';
+import { createPackageReportElement } from './create-element';
 import { urlParsers } from './registry/python';
 
 const addPackageReport = (packageID) => {
-  const packageReport = document.createElement('overlay-package-report');
-  packageReport.setAttribute('package-type', packageID.type);
-  packageReport.setAttribute('package-name', packageID.name);
-  packageReport.setAttribute('stylesheet-url', browser.runtime.getURL('custom-elements.css'));
-
   const sidebar = document.querySelector('.vertical-tabs__tabs');
   const sidebarSection = sidebar?.querySelectorAll('.sidebar-section')[1];
   if (!sidebarSection) {
@@ -16,6 +12,7 @@ const addPackageReport = (packageID) => {
     return;
   }
 
+  const packageReport = createPackageReportElement(packageID, browser.runtime.getURL('custom-elements.css'));
   sidebar.insertBefore(packageReport, sidebarSection);
 };
 

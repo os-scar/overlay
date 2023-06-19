@@ -1,21 +1,6 @@
 import { mountContentScript } from './content';
-import { fetchPackageInfo } from './content-events';
-import { findRanges } from './stackoverflow/finder';
-import { addIndicator } from './stackoverflow/indicator';
+import { addIndicatorToFindingsInElement } from './create-element';
 
-mountContentScript(async () => {
-  const findings = findRanges(document.body);
-  console.debug({ findings });
+const POST_SELECTOR = 'div.js-post-body';
 
-  const processed = {};
-  findings.forEach(({ range, ...packageId }) => {
-    addIndicator(range, packageId);
-    const packageKey = `${packageId.type}/${packageId.name}`;
-    if (processed[packageKey]) {
-      return;
-    }
-
-    processed[packageKey] = true;
-    fetchPackageInfo(packageId);
-  });
-});
+mountContentScript(() => addIndicatorToFindingsInElement(document.body, POST_SELECTOR));

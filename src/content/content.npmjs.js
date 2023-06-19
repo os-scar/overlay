@@ -1,15 +1,12 @@
 import { mountContentScript } from './content';
 import { fetchPackageInfo } from './content-events';
+import { createPackageReportElement } from './create-element';
 import { urlParsers } from './registry/npm';
 
 const addPackageReport = (packageID) => {
-  const packageReport = document.createElement('overlay-package-report');
-  packageReport.setAttribute('package-type', packageID.type);
-  packageReport.setAttribute('package-name', packageID.name);
-
   const repository = document.querySelector('#repository');
   if (repository) {
-    repository.parentElement.insertBefore(packageReport, repository);
+    repository.parentElement.insertBefore(createPackageReportElement(packageID), repository);
   }
 };
 

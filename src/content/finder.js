@@ -1,9 +1,7 @@
-import * as go from '../registry/go';
-import * as npm from '../registry/npm';
-import * as python from '../registry/python';
+import * as go from './registry/go';
+import * as npm from './registry/npm';
+import * as python from './registry/python';
 import { getRangeOfPositions } from './range';
-
-const POST_SELECTOR = 'div.js-post-body';
 
 const validURL = (href) => {
   try {
@@ -22,8 +20,16 @@ const urlParsers = {
 
 const codeBlockParsers = [...npm.parseCommands, python.parseCommand, go.parseCommand];
 
-export const findRanges = (body) => {
-  const links = Array.from(body.querySelectorAll(`${POST_SELECTOR} a`))
+const querySelectorAllIncludeSelf = (element, selector) => {
+  const matches = Array.from(element.querySelectorAll(selector));
+  if (element.matches(selector)) {
+    matches.push(element);
+  }
+  return matches;
+};
+
+export const findRanges = (element, contentElementSelector = '') => {
+  const links = querySelectorAllIncludeSelf(element, `${contentElementSelector} a`)
     .map((element) => {
       const url = validURL(element.getAttribute('href'));
       if (!url) return;
@@ -41,7 +47,7 @@ export const findRanges = (body) => {
     })
     .filter((p) => p);
 
-  const installCommands = Array.from(body.querySelectorAll(`${POST_SELECTOR} code`)).flatMap((element) => {
+  const installCommands = querySelectorAllIncludeSelf(element, `${contentElementSelector} code`).flatMap((element) => {
     return codeBlockParsers.flatMap((parser) => {
       const packages = parser(element.textContent);
 

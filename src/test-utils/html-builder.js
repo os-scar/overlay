@@ -16,6 +16,7 @@ export const createElement = (html) => {
   return { body, element };
 };
 
+// TODO: rename to createRealStackOverflowAnswer
 export const createRealAnswer = (answer) => createElement(answerTemplate.replace('$$$ANSWER$$$', answer));
 export const createRealComment = (comment) => createElement(answerTemplate.replace('$$$COMMENT$$$', comment));
 

@@ -1,5 +1,6 @@
 import '@webcomponents/custom-elements';
 import { defineCustomElement } from 'vue';
+import { OVERLAY_INDICATOR, OVERLAY_PACKAGE_REPORT } from '../global';
 import Indicator from './Indicator.vue';
 import PackageReport from './PackageReport.vue';
 import { initEventListenersAndStore } from './webapp-events';
@@ -13,9 +14,9 @@ Promise.all(Object.values(modules).map((module) => module())).then((modules) => 
   Indicator.styles = [styles.flat().join('')];
 
   const indicatorCustomElement = defineCustomElement(Indicator);
-  customElements.define('overlay-indicator', indicatorCustomElement);
+  customElements.define(OVERLAY_INDICATOR, indicatorCustomElement);
   const packageReportCustomElement = defineCustomElement(PackageReport);
-  customElements.define('overlay-package-report', packageReportCustomElement);
+  customElements.define(OVERLAY_PACKAGE_REPORT, packageReportCustomElement);
 
   console.log('Custom element defined');
 });
