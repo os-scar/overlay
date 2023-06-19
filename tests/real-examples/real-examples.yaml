@@ -89,6 +89,10 @@ links:
     comment: flags, quotes and version variants
     post: answer
     registry: pypi
+  https://stackoverflow.com/questions/26575587:
+    comment: pip3 install command
+    post: answer
+    registry: pypi
 
   https://stackoverflow.com/a/27709931:
     comment: go get standard library

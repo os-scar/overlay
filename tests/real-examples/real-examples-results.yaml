@@ -1652,6 +1652,135 @@ https://stackoverflow.com/questions/5226504:
     - range: <code>pip install -I package==2.0.0</code>
       type: pypi
       name: package
+https://stackoverflow.com/questions/26575587:
+  comment: pip3 install command
+  post: answer
+  registry: pypi
+  results:
+    - range: >-
+        <a href="https://pypi.python.org/pypi/scipy" rel="nofollow
+        noreferrer">https://pypi.python.org/pypi/scipy</a>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>pip install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>pip install --upgrade pip
+        </code>
+      type: pypi
+      name: pip
+    - range: |-
+        <code>python3 -m pip install --upgrade pip
+        </code>
+      type: pypi
+      name: pip
+    - range: |-
+        <code>pip install scipy-0.16.1-cp27-none-win_amd64.whl
+        </code>
+      type: pypi
+      name: scipy-0.16.1-cp27-none-win_amd64.whl
+    - range: |-
+        <code>$ sudo apt-get install libatlas-base-dev gfortran
+        $ sudo pip3 install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: <code>pip install scipy</code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>brew install gcc 
+        pip install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>pip install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>pip install FileName.whl
+        </code>
+      type: pypi
+      name: FileName.whl
+    - range: <code>pip install scipy-0.15.1-cp33-none-win_amd64.whl.whl</code>
+      type: pypi
+      name: scipy-0.15.1-cp33-none-win_amd64.whl.whl
+    - range: |-
+        <code>$ sudo pip install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>
+            @echo off
+            C:\Python36\python.exe -m pip -V
+            C:\Python36\python.exe -m pip install scipy-0.19.1-cp36-cp36m-win32.whl
+            C:\Python36\python.exe -m pip list
+            pause
+        </code>
+      type: pypi
+      name: scipy-0.19.1-cp36-cp36m-win32.whl
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: numpy
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: scipy
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: matplotlib
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: ipython
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: jupyter
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: pandas
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: sympy
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: nose
 https://stackoverflow.com/a/27709931:
   comment: go get standard library
   post: answer
