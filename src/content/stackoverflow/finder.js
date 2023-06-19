@@ -45,8 +45,8 @@ export const findRanges = (body) => {
     return codeBlockParsers.flatMap((parser) => {
       const packages = parser(element.textContent);
 
-      const withRanges = packages.map(({ startIndex, endIndex, ...packageID }) => {
-        const range = getRangeOfPositions(element, startIndex, endIndex);
+      const withRanges = packages.map(({ startIndex, length, ...packageID }) => {
+        const range = getRangeOfPositions(element, startIndex, length);
         return { ...packageID, range };
       });
 

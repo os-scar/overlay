@@ -62,7 +62,7 @@ export const createParseCommand =
           name: packageMatch.packageName,
           version: packageMatch.packageVersion,
           startIndex,
-          endIndex: startIndex + packageMatch.packagePart.length,
+          length: packageMatch.packagePart.length,
         });
 
         counterIndex += word.length + 1;
