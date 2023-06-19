@@ -2,7 +2,6 @@ import { mountContentScript, reloadWhenURLChanged } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/npm';
 import waitForElement from '../utils/utils';
-import { NPM_DOMAIN_NAME } from '../utils/url_change_domains_to_track';
 
 const addPackageReport = async (packageID) => {
   // remove an old package report (if exists)
@@ -27,4 +26,4 @@ const loadPackageInfo = async () => {
 };
 
 mountContentScript(loadPackageInfo);
-reloadWhenURLChanged(loadPackageInfo, NPM_DOMAIN_NAME);
+reloadWhenURLChanged(loadPackageInfo);

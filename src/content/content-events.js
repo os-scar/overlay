@@ -12,7 +12,7 @@ import {
 import * as storage from '../storage';
 
 const sendPackageInfoToWebapp = (info) => dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
-const sendRealodMessageToWebapp = (domain) => dispatchEvent(EVENT_URL_CHANGED, domain);
+const sendRealodMessageToContentScript = () => dispatchEvent(EVENT_URL_CHANGED);
 
 const backgroundConnection = browser.runtime.connect({ name: CONTENT_PORT_CONNECTION });
 
@@ -55,13 +55,13 @@ export const listen = () => {
     isWebappReady = true;
   });
 
-  browser.runtime.onMessage.addListener(({ type, detail }) => {
+  browser.runtime.onMessage.addListener(({ type }) => {
     switch (type) {
       case EVENT_SETTINGS_CHANGED:
         sendEventSettingsChangedToWebapp();
         break;
       case EVENT_URL_CHANGED:
-        sendRealodMessageToWebapp(detail);
+        sendRealodMessageToContentScript();
         break;
       default:
         console.log(`unknown message type: ${type}`);

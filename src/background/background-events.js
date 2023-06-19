@@ -1,7 +1,6 @@
 import browser from '../browser';
 import { REQUEST_PACKAGE_INFO_EVENT, RESPONSE_PACKAGE_INFO_EVENT, EVENT_URL_CHANGED } from '../events-shared';
 import advisories from './advisory/index';
-import { domains } from '../utils/url_change_domains_to_track';
 
 const listener = async ({ type, detail }, port) => {
   if (type === REQUEST_PACKAGE_INFO_EVENT) {
@@ -29,14 +28,7 @@ export const listen = () => {
 
   browser.tabs.onUpdated.addListener(async (tabId, changeInfo) => {
     if (changeInfo.url) {
-      for (const [domainName, pattern] of domains) {
-        if (changeInfo.url.match(pattern)) {
-          browser.tabs.sendMessage(tabId, {
-            type: EVENT_URL_CHANGED,
-            detail: domainName,
-          });
-        }
-      }
+      browser.tabs.sendMessage(tabId, { type: EVENT_URL_CHANGED });
     }
   });
 };

@@ -38,10 +38,6 @@ export const mountContentScript = (contentScript) => {
   });
 };
 
-export const reloadWhenURLChanged = (callback, domain) => {
-  addMessagingEventListener(EVENT_URL_CHANGED, (detail) => {
-    if (detail === domain) {
-      callback();
-    }
-  });
+export const reloadWhenURLChanged = (callback) => {
+  addMessagingEventListener(EVENT_URL_CHANGED, callback);
 };
