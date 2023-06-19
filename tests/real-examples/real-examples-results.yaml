@@ -590,11 +590,6 @@ https://stackoverflow.com/questions/6237400:
         module</a>
       type: npm
       name: 'n'
-    - range: >-
-        <a href="https://www.npmjs.com/package/n?activeTab=readme"
-        rel="noreferrer">click here</a>
-      type: npm
-      name: 'n'
     - range: |-
         <code>npm update -g npm
         </code>
@@ -821,10 +816,19 @@ https://stackoverflow.com/questions/6237400:
       type: npm
       name: 'n'
     - range: |-
-        <code>npm install -g n
+        <code>sudo npm i -g n
+        sudo n stable
+        sudo npm update -g npm
         </code>
       type: npm
       name: 'n'
+    - range: |-
+        <code>sudo npm i -g n
+        sudo n stable
+        sudo npm update -g npm
+        </code>
+      type: npm
+      name: npm
 https://stackoverflow.com/questions/22004559:
   comment: ignore 'npm install "$package"' 'npm install --production'
   post: answer
