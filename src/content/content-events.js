@@ -4,10 +4,10 @@ import {
   CONTENT_PORT_CONNECTION,
   dispatchEvent,
   EVENT_SETTINGS_CHANGED,
-  EVENT_URL_CHANGED,
   READY_EVENT,
   REQUEST_PACKAGE_INFO_EVENT,
   RESPONSE_PACKAGE_INFO_EVENT,
+  EVENT_URL_CHANGED,
 } from '../events-shared';
 import * as storage from '../storage';
 
