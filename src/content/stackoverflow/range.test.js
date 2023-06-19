@@ -8,17 +8,18 @@ const createNode = (content) => {
 };
 
 const getTextPosition = (node, substring) => {
-  const start = node.textContent.indexOf(substring);
-  const end = start + substring.length;
-  return { start, end };
+  return {
+    start: node.textContent.indexOf(substring),
+    length: substring.length,
+  };
 };
 
 describe('range', () => {
   it('should find the range for text node', () => {
     const textNode = createNode('This is a text');
     const expectedText = 'is a';
-    const { start, end } = getTextPosition(textNode, expectedText);
-    const range = getRangeOfPositions(textNode, start, end);
+    const { start, length } = getTextPosition(textNode, expectedText);
+    const range = getRangeOfPositions(textNode, start, length);
 
     expect(range.toString()).toBe(expectedText);
   });
@@ -26,9 +27,9 @@ describe('range', () => {
   it('should find inside childNode', () => {
     const nodeWithChildTextNode = createNode('<p>This is a text</p>');
     const expectedText = 'is a';
-    const { start, end } = getTextPosition(nodeWithChildTextNode, expectedText);
+    const { start, length } = getTextPosition(nodeWithChildTextNode, expectedText);
 
-    const range = getRangeOfPositions(nodeWithChildTextNode, start, end);
+    const range = getRangeOfPositions(nodeWithChildTextNode, start, length);
 
     expect(range.toString()).toBe(expectedText);
   });
@@ -36,18 +37,18 @@ describe('range', () => {
   it('should find inside two different nodes', () => {
     const nodeWithTwoNodes = createNode('<p><span>This is</span><span> a</span> text</p>');
     const expectedText = 'is a';
-    const { start, end } = getTextPosition(nodeWithTwoNodes, expectedText);
+    const { start, length } = getTextPosition(nodeWithTwoNodes, expectedText);
 
-    const range = getRangeOfPositions(nodeWithTwoNodes, start, end);
+    const range = getRangeOfPositions(nodeWithTwoNodes, start, length);
     expect(range.toString()).toBe(expectedText);
   });
 
   it('should skip node between text', () => {
     const nodeWithChildNodeBetween = createNode('<p>This <span>is a</span> text</p>');
     const expectedText = 'This is a text';
-    const { start, end } = getTextPosition(nodeWithChildNodeBetween, expectedText);
+    const { start, length } = getTextPosition(nodeWithChildNodeBetween, expectedText);
 
-    const range = getRangeOfPositions(nodeWithChildNodeBetween, start, end);
+    const range = getRangeOfPositions(nodeWithChildNodeBetween, start, length);
 
     expect(range.toString()).toBe(expectedText);
   });
