@@ -82,7 +82,11 @@ describe(findRanges.name, () => {
       'npm i --save-dev <package_name>',
       'npm i <package_name> --save-dev',
       'npm update <package_name>',
+      'npm exec <package_name>',
+      'npm exec --package=<package_name> command',
     ];
+
+    const npxVariants = ['npx <package_name>', 'npx -p <package_name> command', 'npx --package=<package_name> command'];
 
     const yarnVariants = ['yarn add <package_name>', 'yarn add -D <package_name>', 'yarn global add <package_name>'];
 
@@ -96,6 +100,7 @@ describe(findRanges.name, () => {
     it.each([
       ...npmVariants.map((cmd) => [cmd, 'npm']),
       ...yarnVariants.map((cmd) => [cmd, 'npm']),
+      ...npxVariants.map((cmd) => [cmd, 'npm']),
       ...pipVariants.map((cmd) => [cmd, 'pypi']),
     ])(`'%s' inside <pre><code>`, (installCommand, type) => {
       const commandPackageName = 'my-package-name';
@@ -325,16 +330,13 @@ describe(findRanges.name, () => {
     });
 
     // issue #37, #38
-    it.skip.each(['npm install git://github.com/user-c/dep-2#node0.8.0', 'npx create-react-app my-app'])(
-      `Future support '%s`,
-      (command) => {
-        const { body } = createCodeBlock(command);
+    it.each(['npm install git://github.com/user-c/dep-2#node0.8.0'])(`Future support '%s`, (command) => {
+      const { body } = createCodeBlock(command);
 
-        const foundElements = findRanges(body);
+      const foundElements = findRanges(body);
 
-        expect(foundElements.length).toBe(1);
-      }
-    );
+      expect(foundElements.length).toBe(0);
+    });
   });
 
   describe('StackOverflow', () => {

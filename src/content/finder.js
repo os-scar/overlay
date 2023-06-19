@@ -18,7 +18,7 @@ const urlParsers = {
   ...python.urlParsers,
 };
 
-const codeBlockParsers = [npm.parseCommand, python.parseCommand, go.parseCommand];
+const codeBlockParsers = [...npm.parseCommands, python.parseCommand, go.parseCommand];
 
 const querySelectorAllIncludeSelf = (element, selector) => {
   const matches = Array.from(element.querySelectorAll(selector));
