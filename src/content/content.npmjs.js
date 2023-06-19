@@ -1,8 +1,8 @@
 import { mountContentScript, reloadWhenURLChanged } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/npm';
-
 import waitForElement from '../utils/utils';
+import { NPM_DOMAIN_NAME } from '../utils/url_change_domains';
 
 const addPackageReport = async (packageID) => {
   // remove an old package report (if exists)
@@ -11,12 +11,11 @@ const addPackageReport = async (packageID) => {
     currPackageReport.item(0).remove();
   }
 
-  waitForElement('#repository', document.querySelector('#main')).then((repository) => {
-    const packageReport = document.createElement('overlay-package-report');
-    packageReport.setAttribute('package-type', packageID.type);
-    packageReport.setAttribute('package-name', packageID.name);
-    repository.parentElement.insertBefore(packageReport, repository);
-  });
+  const repository = await waitForElement('#repository', document.querySelector('#main'));
+  const packageReport = document.createElement('overlay-package-report');
+  packageReport.setAttribute('package-type', packageID.type);
+  packageReport.setAttribute('package-name', packageID.name);
+  repository.parentElement.insertBefore(packageReport, repository);
 };
 
 const loadPackageInfo = async () => {
@@ -28,4 +27,4 @@ const loadPackageInfo = async () => {
 };
 
 mountContentScript(loadPackageInfo);
-reloadWhenURLChanged(loadPackageInfo);
+reloadWhenURLChanged(loadPackageInfo, NPM_DOMAIN_NAME);

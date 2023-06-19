@@ -2,7 +2,7 @@
   "name": "Overlay",
   "version": "{{EXTENSION_VERSION}}",
   "description": "{{EXTENSION_DESCRIPTION}}",
-  "permissions": ["storage", "https://deps.dev/*", "https://debricked.com/*", "https://socket.dev/*", "https://snyk.io/*"],
+  "permissions": ["storage", "tabs", "https://deps.dev/*", "https://debricked.com/*", "https://socket.dev/*", "https://snyk.io/*"],
   "icons": {
     "48": "icons/icon_48.png"
   },

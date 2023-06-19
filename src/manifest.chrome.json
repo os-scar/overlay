@@ -37,6 +37,6 @@
   "externally_connectable": {
     "matches": ["*://stackoverflow.com/*"]
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "manifest_version": 3
 }
