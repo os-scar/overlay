@@ -6,6 +6,7 @@ export const RESPONSE_PACKAGE_INFO_EVENT = overlayPrefix + 'RESPONSE_PACKAGE_INF
 export const READY_EVENT = overlayPrefix + 'READY_EVENT';
 export const CONTENT_PORT_CONNECTION = overlayPrefix + 'content-script';
 export const EVENT_SETTINGS_CHANGED = overlayPrefix + 'EVENT_SETTINGS_CHANGED';
+export const EVENT_URL_CHANGED = overlayPrefix + 'EVENT_URL_CHANGED';
 
 export const dispatchEvent = (type, detail) => {
   window.postMessage({ type, detail });

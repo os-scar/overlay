@@ -76,6 +76,10 @@ links:
     comment: with semver ~
     post: answer
     registry: npm
+  https://stackoverflow.com/a/65043610/839513:
+    comment: multiple commands in the same line
+    post: answer
+    registry: npm
 
   https://stackoverflow.com/questions/2817869:
     comment: high scored
@@ -87,6 +91,10 @@ links:
     registry: pypi
   https://stackoverflow.com/questions/5226504:
     comment: flags, quotes and version variants
+    post: answer
+    registry: pypi
+  https://stackoverflow.com/questions/26575587:
+    comment: pip3 install command
     post: answer
     registry: pypi
 

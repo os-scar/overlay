@@ -87,6 +87,10 @@ describe(findRanges.name, () => {
       'pip install --force-reinstall -v <package_name>',
       'pip install "<package_name>"',
       `pip install '<package_name>'`,
+      'pip3 install <package_name>',
+      'pip3 install --force-reinstall -v <package_name>',
+      'pip3 install "<package_name>"',
+      `pip3 install '<package_name>'`,
     ];
 
     it.each([

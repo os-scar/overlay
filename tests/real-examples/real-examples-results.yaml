@@ -1485,6 +1485,301 @@ https://stackoverflow.com/questions/22563281:
       type: npm
       name: ios-sim
       version: ~1.8
+https://stackoverflow.com/a/65043610/839513:
+  comment: multiple commands in the same line
+  post: answer
+  registry: npm
+  results:
+    - range: <code>npm i create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app new-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm init react-app new-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app@latest your-project-name --use-npm
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: >-
+        <code>npm uninstall -g create-react-app &amp;&amp; npm i -g npm@latest
+        &amp;&amp; npm cache clean -f &amp;&amp; npx create-react-app@latest
+        my-app --use-npm
+
+        </code>
+      type: npm
+      name: npm
+    - range: >-
+        <code>npm uninstall -g create-react-app &amp;&amp; npm i -g npm@latest
+        &amp;&amp; npm cache clean -f &amp;&amp; npx create-react-app@latest
+        my-app --use-npm
+
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app@5.0.0 app-name
+        </code>
+      type: npm
+      name: create-react-app
+      version: 5.0.0
+    - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code># for npm:
+        npm i create-react-app
+
+        # for yarn:
+        yarn add create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code># for npm:
+        npm i create-react-app
+
+        # for yarn:
+        yarn add create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code># for npx:
+        npx create-react-app my-app
+
+        # for npm:
+        npm init react-app my-app
+
+        # for yarn:
+        yarn create react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code># for npx:
+        npx create-react-app my-app
+
+        # for npm:
+        npm init react-app my-app
+
+        # for yarn:
+        yarn create react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code># for npx:
+        npx create-react-app my-app
+
+        # for npm:
+        npm init react-app my-app
+
+        # for yarn:
+        yarn create react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install -g create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm update npx
+        </code>
+      type: npm
+      name: npx
+    - range: <code>npx create-react-app@latest my-app --template typescript </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm i create-react-app # or yarn add create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm uninstall -g create-react-app
+        npm install create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install -g npm@latest</code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm init react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>yarn create react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app@4.0.2 my-app
+        </code>
+      type: npm
+      name: create-react-app
+      version: 4.0.2
+    - range: |-
+        <code>npm install npm@latest -g
+        </code>
+      type: npm
+      name: npm
+    - range: <code>npx create-react-app app_name</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx clear-npx-cache
+        </code>
+      type: npm
+      name: clear-npx-cache
+    - range: |-
+        <code> npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app appname 
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>sudo npm uninstall create-react-app -g
+
+        sudo npm install create-react-app@5.0.0 -g
+
+        npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+      version: 5.0.0
+    - range: |-
+        <code>sudo npm uninstall create-react-app -g
+
+        sudo npm install create-react-app@5.0.0 -g
+
+        npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app@latest app-name 
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install -g npm@latest
+        npx create-react-app my-app
+        </code>
+      type: npm
+      name: npm
+    - range: |-
+        <code>npm install -g npm@latest
+        npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm uninstall -g create-react-app
+        npm install -g create-react-app
+        //OR
+        npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm uninstall -g create-react-app
+        npm install -g create-react-app
+        //OR
+        npx create-react-app my-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>npx create-react-app my-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm install create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: <code>npm update npx</code>
+      type: npm
+      name: npx
+    - range: <code>npx create-react-app "your preferred project name"</code>
+      type: npm
+      name: create-react-app
+    - range: >-
+        <code>npm uninstall -g create-react-app &amp;&amp; npm i -g npm@latest
+        &amp;&amp; npm cache clean -f &amp;&amp; npx create-react-app my-app
+
+        </code>
+      type: npm
+      name: npm
+    - range: >-
+        <code>npm uninstall -g create-react-app &amp;&amp; npm i -g npm@latest
+        &amp;&amp; npm cache clean -f &amp;&amp; npx create-react-app my-app
+
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm i create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm i create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: <code>yarn add create-react-app</code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install -g create-react-app
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npx create-react-app &lt;project_name&gt;
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install -g create-react-app
+        </code>
+      type: npm
+      name: create-react-app
 https://stackoverflow.com/questions/2817869:
   comment: high scored
   post: question
@@ -1652,6 +1947,135 @@ https://stackoverflow.com/questions/5226504:
     - range: <code>pip install -I package==2.0.0</code>
       type: pypi
       name: package
+https://stackoverflow.com/questions/26575587:
+  comment: pip3 install command
+  post: answer
+  registry: pypi
+  results:
+    - range: >-
+        <a href="https://pypi.python.org/pypi/scipy" rel="nofollow
+        noreferrer">https://pypi.python.org/pypi/scipy</a>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>pip install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>pip install --upgrade pip
+        </code>
+      type: pypi
+      name: pip
+    - range: |-
+        <code>python3 -m pip install --upgrade pip
+        </code>
+      type: pypi
+      name: pip
+    - range: |-
+        <code>pip install scipy-0.16.1-cp27-none-win_amd64.whl
+        </code>
+      type: pypi
+      name: scipy-0.16.1-cp27-none-win_amd64.whl
+    - range: |-
+        <code>$ sudo apt-get install libatlas-base-dev gfortran
+        $ sudo pip3 install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: <code>pip install scipy</code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>brew install gcc 
+        pip install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>pip install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>pip install FileName.whl
+        </code>
+      type: pypi
+      name: FileName.whl
+    - range: <code>pip install scipy-0.15.1-cp33-none-win_amd64.whl.whl</code>
+      type: pypi
+      name: scipy-0.15.1-cp33-none-win_amd64.whl.whl
+    - range: |-
+        <code>$ sudo pip install scipy
+        </code>
+      type: pypi
+      name: scipy
+    - range: |-
+        <code>
+            @echo off
+            C:\Python36\python.exe -m pip -V
+            C:\Python36\python.exe -m pip install scipy-0.19.1-cp36-cp36m-win32.whl
+            C:\Python36\python.exe -m pip list
+            pause
+        </code>
+      type: pypi
+      name: scipy-0.19.1-cp36-cp36m-win32.whl
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: numpy
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: scipy
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: matplotlib
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: ipython
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: jupyter
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: pandas
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: sympy
+    - range: >-
+        <code>python -m pip install --user numpy scipy matplotlib ipython
+        jupyter pandas sympy nose
+
+        </code>
+      type: pypi
+      name: nose
 https://stackoverflow.com/a/27709931:
   comment: go get standard library
   post: answer

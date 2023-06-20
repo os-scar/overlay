@@ -7,7 +7,7 @@ const parseCommand = (command) => parseCommands.flatMap((parser) => parser(comma
 const packageResult = (p) => ({
   type: 'npm',
   version: undefined,
-  endIndex: p.startIndex + p.name.length + (p.version ? p.version.length + 1 : 0),
+  length: p.name.length + (p.version ? p.version.length + 1 : 0),
   ...p,
 });
 
@@ -28,21 +28,21 @@ describe('npm', () => {
       `'%s' find create-* package`,
       (template) => {
         const startIndex = template.indexOf('<package_name>');
-        const endIndex = startIndex + 'react-app'.length;
+        const length = 'react-app'.length;
         const command = template.replace('<package_name>', 'react-app');
 
         const packagePosition = parseCommand(command);
 
-        expect(packagePosition).toStrictEqual([packageResult({ name: 'create-react-app', startIndex, endIndex })]);
+        expect(packagePosition).toStrictEqual([packageResult({ name: 'create-react-app', startIndex, length })]);
       }
     );
 
     it.each(['npm init @scope', 'npm create @scope'])(`'%s' find @scope/create package`, (command) => {
       const startIndex = command.indexOf('@scope');
-      const endIndex = startIndex + '@scope'.length;
+      const length = '@scope'.length;
       const packagePosition = parseCommand(command);
 
-      expect(packagePosition).toStrictEqual([packageResult({ name: '@scope/create', startIndex, endIndex })]);
+      expect(packagePosition).toStrictEqual([packageResult({ name: '@scope/create', startIndex, length })]);
     });
 
     it('should return the right position for recurrent package name', () => {
@@ -76,7 +76,7 @@ describe('npm', () => {
           name,
           version,
           startIndex,
-          endIndex: startIndex + packagePart.length,
+          length: packagePart.length,
         }),
       ];
 
@@ -108,8 +108,23 @@ describe('npm', () => {
         packageResult({
           name: 'create-react-app',
           startIndex: index,
-          endIndex: index + value.length,
+          length:  value.length,
         })
+      );
+
+      const packagePosition = parseCommand(command);
+
+      expect(packagePosition).toStrictEqual(expectedPackages);
+    });
+
+    it('should break into commands', () => {
+      // https://stackoverflow.com/a/65043610/839513
+      const {
+        command,
+        positions,
+      } = cli`npm uninstall -g create-react-app && npm i -g ${'npm@latest'} && npm cache clean -f && npx ${'create-react-app@latest'} my-app --use-npm`;
+      const expectedPackages = positions.map(({ index, value }) =>
+        packageResult({ name: value.split('@')[0], startIndex: index, endIndex: index + value.length })
       );
 
       const packagePosition = parseCommand(command);

@@ -7,12 +7,15 @@ import {
   READY_EVENT,
   REQUEST_PACKAGE_INFO_EVENT,
   RESPONSE_PACKAGE_INFO_EVENT,
+  EVENT_URL_CHANGED,
 } from '../events-shared';
 import * as storage from '../storage';
 
 const sendPackageInfoToWebapp = (info) => dispatchEvent(RESPONSE_PACKAGE_INFO_EVENT, info);
+const sendRealodMessageToContentScript = () => dispatchEvent(EVENT_URL_CHANGED);
 
 const backgroundConnection = browser.runtime.connect({ name: CONTENT_PORT_CONNECTION });
+
 backgroundConnection.onMessage.addListener((message) => {
   if (message.type === RESPONSE_PACKAGE_INFO_EVENT) {
     sendPackageInfoToWebapp(message.detail);
@@ -52,9 +55,17 @@ export const listen = () => {
     isWebappReady = true;
   });
 
-  browser.runtime.onMessage.addListener((message) => {
-    if (message.type === EVENT_SETTINGS_CHANGED) {
-      sendEventSettingsChangedToWebapp();
+  browser.runtime.onMessage.addListener(({ type }) => {
+    switch (type) {
+      case EVENT_SETTINGS_CHANGED:
+        sendEventSettingsChangedToWebapp();
+        break;
+      case EVENT_URL_CHANGED:
+        sendRealodMessageToContentScript();
+        break;
+      default:
+        console.log(`unknown message type: ${type}`);
+        break;
     }
   });
 };
