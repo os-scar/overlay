@@ -1,40 +1,24 @@
-name: Notify Discord on New Issue
+name: Discord Notification - New Issue
 
 on:
   issues:
     types: [opened]
 
 jobs:
-  notify:
-    name: Notify Discord
+  send_notification:
+    name: Send Discord Notification
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm install discord.js
-
-      - name: Send Discord message
+      - name: Check Labels
+        id: check_labels
+        run: echo ::set-output name=has_good_first_issue::${{ contains(github.event.issue.labels.*.name, 'good first issue') }}
+      
+      - name: Notify Discord
+        if: ${{ steps.check_labels.outputs.has_good_first_issue == 'true' }}
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
-          npm install @slack/web-api
-          node -e '
-            const { WebClient } = require("discord.js");
-            const webhook = process.env.DISCORD_WEBHOOK;
-            const issue = require(process.env.GITHUB_EVENT_PATH);
-            const { title, html_url, labels } = issue.issue;
-
-            if (labels.some(label => label.name === "good-first-issue")) {
-              const message = `A new issue has been opened!\n\nTitle: ${title}\nURL: ${html_url}`;
-              const client = new WebClient();
-              client.chat.postMessage({ channel: webhook, text: message });
-            }
-          '
+          curl -X POST -H "Content-Type: application/json" -d "{\"embeds\": [{\"title\": \"🎉 New Issue Alert!\", \"description\": \"📢 Attention new contributors! This new issue might be just up your alley.\n\nIssue Name: **$ISSUE_TITLE**\nIssue Link: $ISSUE_URL\", \"color\": 16750848}]}" $DISCORD_WEBHOOK
+            
