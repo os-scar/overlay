@@ -2,7 +2,7 @@ name: Discord Notification - New Issue
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
   send_notification:
@@ -13,12 +13,20 @@ jobs:
         id: check_labels
         run: echo ::set-output name=has_good_first_issue::${{ contains(github.event.issue.labels.*.name, 'good first issue') }}
       
-      - name: Notify Discord
-        if: ${{ steps.check_labels.outputs.has_good_first_issue == 'true' }}
+      - name: Notify Discord on Open
+        if: ${{ github.event_name == 'issues' && github.event.action == 'opened' }}
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_MAAKAF_WEBHOOK}}
           ISSUE_URL: ${{ github.event.issue.html_url }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
-          curl -X POST -H "Content-Type: application/json" -d "{\"embeds\": [{\"title\": \"🎉 New Issue Alert!\", \"description\": \"📢 Attention new contributors! This new issue might be just up your alley.\n\nIssue Name: **$ISSUE_TITLE**\nIssue Link: $ISSUE_URL\", \"color\": 16750848}]}" $DISCORD_WEBHOOK
-            
+          curl -X POST -H "Content-Type: application/json" -d "{\"embeds\": [{\"title\": \"🎉 New Issue Alert!\", \"description\": \"📢 Attention! A new issue has been opened.\n\nIssue Name: **$ISSUE_TITLE**\nIssue Link: $ISSUE_URL\", \"color\": 16750848}]}" $DISCORD_WEBHOOK
+      
+      - name: Notify Discord on Label
+        if: ${{ steps.check_labels.outputs.has_good_first_issue == 'true' }}
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_MAAKAF_WEBHOOK}}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d "{\"embeds\": [{\"title\": \"🎉 New Issue Alert!\", \"description\": \"📢 Attention new contributors! This issue has been labeled as a 'good first issue'.\n\nIssue Name: **$ISSUE_TITLE**\nIssue Link: $ISSUE_URL\", \"color\": 16750848}]}" $DISCORD_WEBHOOK
