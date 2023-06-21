@@ -1,0 +1,40 @@
+name: Notify Discord on New Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify:
+    name: Notify Discord
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install discord.js
+
+      - name: Send Discord message
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          npm install @slack/web-api
+          node -e '
+            const { WebClient } = require("discord.js");
+            const webhook = process.env.DISCORD_WEBHOOK;
+            const issue = require(process.env.GITHUB_EVENT_PATH);
+            const { title, html_url, labels } = issue.issue;
+
+            if (labels.some(label => label.name === "good-first-issue")) {
+              const message = `A new issue has been opened!\n\nTitle: ${title}\nURL: ${html_url}`;
+              const client = new WebClient();
+              client.chat.postMessage({ channel: webhook, text: message });
+            }
+          '
