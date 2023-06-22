@@ -28,7 +28,7 @@
     "start:firefox": "yarn __start --source-dir ./dist/firefox"
   },
   "devDependencies": {
-    "@playwright/test": "^1.33.0",
+    "@playwright/test": "^1.35.0",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/chrome": "^0.0.206",
