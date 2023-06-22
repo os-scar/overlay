@@ -108,7 +108,7 @@ describe('npm', () => {
         packageResult({
           name: 'create-react-app',
           startIndex: index,
-          length:  value.length,
+          length: value.length,
         })
       );
 
@@ -124,7 +124,7 @@ describe('npm', () => {
         positions,
       } = cli`npm uninstall -g create-react-app && npm i -g ${'npm@latest'} && npm cache clean -f && npx ${'create-react-app@latest'} my-app --use-npm`;
       const expectedPackages = positions.map(({ index, value }) =>
-        packageResult({ name: value.split('@')[0], startIndex: index, endIndex: index + value.length })
+        packageResult({ name: value.split('@')[0], startIndex: index, length: value.length })
       );
 
       const packagePosition = parseCommand(command);
