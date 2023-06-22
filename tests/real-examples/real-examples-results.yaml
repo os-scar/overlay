@@ -1438,6 +1438,17 @@ https://stackoverflow.com/questions/50605219:
         </code>
       type: npm
       name: your-package-name
+    - range: |-
+        <code>npx create-react-app MyApp
+        </code>
+      type: npm
+      name: create-react-app
+    - range: |-
+        <code>npm install -g create-react-app
+        create-react-app MyApp
+        </code>
+      type: npm
+      name: create-react-app
 https://stackoverflow.com/questions/70358643:
   comment: npx with version and argument
   post: answer
