@@ -1,9 +1,9 @@
 import '@webcomponents/custom-elements';
 import { defineCustomElement } from 'vue';
+import { packageReportTagName } from '../globals';
 import Indicator from './Indicator.vue';
 import PackageReport from './PackageReport.vue';
 import { initEventListenersAndStore } from './webapp-events';
-import { packageReportTagName } from '../globals';
 
 initEventListenersAndStore();
 

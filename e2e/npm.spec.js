@@ -1,4 +1,4 @@
-import { test, Expect } from '../fixtures.js';
+import { Expect, test } from '../fixtures.js';
 import { packageReportTagName } from '../src/globals.js';
 
 test.describe('npm', () => {

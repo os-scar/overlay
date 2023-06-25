@@ -1,5 +1,6 @@
-import { test, Expect } from '../fixtures.js';
-import { advisoriesCount, tooltipSourceSelector } from '../src/globals.js';
+import { Expect, test } from '../fixtures.js';
+import { advisoriesNames } from '../src/globals.js';
+import { tooltipSourceSelector } from './selectors.js';
 
 const stackOverflowLink = 'https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js';
 
@@ -18,14 +19,14 @@ test.describe('stackoverflow', () => {
 
     // check that all advisories are shown in the tooltip's advisories list
     const advisories = overlayModuleName.locator(tooltipSourceSelector);
-    await Expect(advisories).toHaveCount(advisoriesCount);
+    await Expect(advisories).toHaveCount(advisoriesNames.length);
   });
 
   test('popup page', async ({ page, extensionId }) => {
     // find chrome extension popup
     await page.goto(`chrome-extension://${extensionId}/popup/index.html`);
     const advisoroes = page.locator('main > div');
-    await Expect(advisoroes).toHaveCount(advisoriesCount);
+    await Expect(advisoroes).toHaveCount(advisoriesNames.length);
 
     // find snyk's checkbox and uncheck it
     const snykCheckbox = advisoroes.getByText('Show snyk').locator('input');
@@ -43,6 +44,6 @@ test.describe('stackoverflow', () => {
     const advisories = overlayModuleName.locator(tooltipSourceSelector);
 
     // check that snyk is not shown in the advisories list
-    await Expect(advisories).toHaveCount(advisoriesCount - 1);
+    await Expect(advisories).toHaveCount(advisoriesNames.length - 1);
   });
 });

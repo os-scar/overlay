@@ -1,5 +1,5 @@
-import { advisoriesNames } from './globals';
 import browser from './browser';
+import { advisoriesNames } from './globals';
 
 const defaultAdvisoriesSettings = advisoriesNames.reduce((acc, name) => ({ ...acc, [name]: true }), {});
 

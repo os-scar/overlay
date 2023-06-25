@@ -1,8 +1,8 @@
+import { packageReportTagName } from '../globals';
+import waitForElement from '../utils/utils';
 import { mountContentScript, reloadWhenURLChanged } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/npm';
-import waitForElement from '../utils/utils';
-import { packageReportTagName } from '../globals';
 
 const addPackageReport = async (packageID) => {
   // remove an old package report (if exists)
