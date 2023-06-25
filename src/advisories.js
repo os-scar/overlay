@@ -7,3 +7,4 @@ const advisories = {
 export default advisories;
 
 export const advisoriesNames = Object.keys(advisories);
+export const advisoriesCount = advisoriesNames.length;
