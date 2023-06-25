@@ -52,3 +52,6 @@ tests/real-examples/snapshots/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/test-results/
+/playwright-report/
+/playwright/.cache/
