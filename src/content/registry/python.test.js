@@ -114,7 +114,7 @@ describe(parseCommand.name, () => {
       positions,
     } = cli`pip uninstall -y requests-temp && pip install ${'scipy'} && pip check --no-color && pip hash -V && pip install ${'numpy'}`;
     const expectedPackages = positions.map(({ index, value }) =>
-      packageResult({ name: value.split('@')[0], startIndex: index, endIndex: index + value.length })
+      packageResult({ name: value.split('@')[0], startIndex: index, length: value.length })
     );
 
     const packagePosition = parseCommand(command);
