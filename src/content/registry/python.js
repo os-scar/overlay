@@ -88,7 +88,7 @@ const handleArgument = (argument, restCommandWords) => {
   return index;
 };
 
-const baseCommandMatch = (line) => line.match(/pip +install/);
+const baseCommandMatch = (line) => line.match(/pip3? +install/);
 const packageWordParse = (word) => {
   const match = word.match(packageArea);
   if (!match) return null;

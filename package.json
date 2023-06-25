@@ -19,7 +19,7 @@
     "e2e:debug": "yarn e2e --debug",
     "build": "gulp build",
     "build:watch": "gulp --series build watch",
-    "lint": "eslint src tests",
+    "lint": "eslint src tests e2e",
     "lint:fix": "yarn lint --fix",
     "lint:lockfile": "lockfile-lint --path yarn.lock --allowed-hosts npm yarn --validate-https --validate-package-names --validate-integrity --empty-hostname false",
     "lint:firefox": "yarn build && web-ext lint --source-dir ./dist/firefox",
@@ -28,7 +28,7 @@
     "start:firefox": "yarn __start --source-dir ./dist/firefox"
   },
   "devDependencies": {
-    "@playwright/test": "^1.33.0",
+    "@playwright/test": "^1.35.0",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/chrome": "^0.0.206",

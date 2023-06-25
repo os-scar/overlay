@@ -1,17 +1,18 @@
 # copied from https://github.com/BoundfoxStudios/fairy-tale-defender/blob/develop/.github/workflows/project-management.yml
 name: Project Management
 
-concurrency:
-  group: ${{ github.event.issue.number || github.ref }}
-  cancel-in-progress: false
+# concurrency:
+#   group: ${{ github.event.issue.number || github.ref }}
+#   cancel-in-progress: false
 
 on:
   #   issue_comment:
   #     types:
   #       - created
   #       - edited
-  #   issues:
-  #     types:
+  issues:
+    types:
+      - labeled
   #       - opened
   #       - unlabeled
   #       - assigned
@@ -61,3 +62,16 @@ jobs:
           exempt-assignees: 'baruchiro'
           labels-to-remove: 'Waiting for contributor'
           message: 'Due to a long period of inactivity, this task was unassigned automatically.'
+
+  send_notification:
+    name: Send Discord Notification
+    if: github.event_name == 'issues' && github.event.label.name == 'good first issue'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Discord on Label
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_MAAKAF_WEBHOOK}}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d "{\"embeds\": [{\"title\": \"🎉 New Issue Alert!\", \"description\": \"📢 Attention new contributors! This issue has been labeled as a 'good first issue'.\n\nIssue Name: **$ISSUE_TITLE**\nIssue Link: $ISSUE_URL\", \"color\": 16750848}]}" $DISCORD_WEBHOOK

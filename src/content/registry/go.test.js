@@ -1,14 +1,14 @@
 import { describe, expect, it } from '@jest/globals';
 import { parseCommand } from './go';
 
-const positionInCommand = (command, packageName, endIndex) => {
+const positionInCommand = (command, packageName, length) => {
   const startIndex = command.indexOf(packageName);
   return {
     type: 'go',
     name: packageName,
     version: undefined,
     startIndex,
-    endIndex: endIndex || startIndex + packageName.length,
+    length: length || packageName.length,
   };
 };
 
@@ -45,7 +45,9 @@ describe(parseCommand.name, () => {
     ['with commit hash', 'go get github.com/user/package@b2bd9c3'],
     ['with patch', 'go get -u=patch github.com/user/package'],
   ])(`should find the package in command with '%s'`, (_, command) => {
-    const expectedPackages = [positionInCommand(command, 'github.com/user/package', command.length)];
+    const expectedPackage = 'github.com/user/package';
+    const packagePartLength = command.length - command.indexOf(expectedPackage);
+    const expectedPackages = [positionInCommand(command, expectedPackage, packagePartLength)];
 
     const packagePosition = parseCommand(command);
 
@@ -60,7 +62,7 @@ describe(parseCommand.name, () => {
         name: 'github.com/golang/lint',
         version: undefined,
         startIndex: 10,
-        endIndex: 10 + 'github.com/golang/lint/golint'.length,
+        length: 'github.com/golang/lint/golint'.length,
       },
     ];
 
