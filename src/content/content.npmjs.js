@@ -2,7 +2,7 @@ import { mountContentScript, reloadWhenURLChanged } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/npm';
 import waitForElement from '../utils/utils';
-import { packageReportTagName } from '../utils/tag-names';
+import { packageReportTagName } from '../globals';
 
 const addPackageReport = async (packageID) => {
   // remove an old package report (if exists)

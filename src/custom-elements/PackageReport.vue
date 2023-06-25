@@ -58,7 +58,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import advisories from '../advisories';
+import advisories from '../globals';
 import DebrickedLogo from '../assets/debricked-logo.svg?component';
 import InlineSeparator from '../assets/inline-separator.svg?component';
 import NpmLogo from '../assets/npm-logo.svg?component';

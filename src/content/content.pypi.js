@@ -1,5 +1,5 @@
 import browser from '../browser';
-import { packageReportTagName } from '../utils/tag-names';
+import { packageReportTagName } from '../globals';
 import { mountContentScript } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/python';

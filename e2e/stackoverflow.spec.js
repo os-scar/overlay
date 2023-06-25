@@ -1,6 +1,5 @@
 import { test, Expect } from '../fixtures.js';
-import { tooltipSourceSelector } from './e2e-tests-constants.js';
-import { advisoriesCount } from '../src/advisories.js';
+import { advisoriesCount, tooltipSourceSelector } from '../src/globals.js';
 
 const stackOverflowLink = 'https://stackoverflow.com/questions/9023672/how-do-i-resolve-cannot-find-module-error-using-node-js';
 

@@ -3,7 +3,7 @@ import { defineCustomElement } from 'vue';
 import Indicator from './Indicator.vue';
 import PackageReport from './PackageReport.vue';
 import { initEventListenersAndStore } from './webapp-events';
-import { packageReportTagName } from '../utils/tag-names';
+import { packageReportTagName } from '../globals';
 
 initEventListenersAndStore();
 
