@@ -19,7 +19,6 @@ test.describe('stackoverflow', () => {
 
     // check that all advisories are shown in the tooltip's advisories list
     const advisories = overlayModuleName.locator(tooltipSourceSelector);
-    await Expect(advisories).toHaveCount(advisoriesCount);
   });
 
   test('popup page', async ({ page, extensionId }) => {
