@@ -58,7 +58,7 @@ test.describe('npm', () => {
     const getSearchResultInDropDown = page.locator(`li[aria-label="${packageName}"]`);
     await getSearchResultInDropDown.click();
 
-    // check that overlay's title has changed to @angular/cli
+    // check that overlay's title is "@ngneat/spectator"
     const overlayPackageInfoComponent = page.locator(packageReportTagName);
     await Expect(overlayPackageInfoComponent).toHaveAttribute('package-name', packageName);
   });
