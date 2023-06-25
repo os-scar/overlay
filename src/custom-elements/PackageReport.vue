@@ -37,7 +37,9 @@
         </div>
 
         <div class="overlay-indicator__tooltip__source__issues" v-if="source.issues">
-          <div class="overlay-indicator__tooltip__source__issues__wrapper">{{ source.issues }} issue</div>
+          <div class="overlay-indicator__tooltip__source__issues__wrapper">
+            {{ source.issues }} issue{{ source.issues !== 1 ? 's' : '' }}
+          </div>
         </div>
 
         <div class="overlay-indicator__tooltip__source__actions">
