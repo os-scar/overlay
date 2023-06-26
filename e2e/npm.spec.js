@@ -3,7 +3,8 @@ import { PACKAGE_REPORT_SELECTOR } from './e2e-tests-constants.js';
 
 test.describe('npm', () => {
   test('Package Report is visible in npmjs.com', async ({ page }) => {
-    const packageName = '@ngneat/spectator';
+    //fixed changed from @ngneat/spectator to  @angular/cli
+    const packageName = '@angular/cli';
 
     const url = `https://www.npmjs.com/package/${packageName}`;
 
