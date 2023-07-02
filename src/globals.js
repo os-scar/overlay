@@ -7,3 +7,4 @@ export const advisories = {
 export const advisoriesNames = Object.keys(advisories);
 
 export const packageReportTagName = 'overlay-package-report';
+export const tooltipSourceSelector = '.overlay-indicator__tooltip__sources > .overlay-indicator__tooltip__source';

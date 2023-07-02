@@ -1,6 +1,5 @@
 import { Expect, test } from '../fixtures.js';
-import { packageReportTagName } from '../src/globals.js';
-import { tooltipSourceSelector } from './selectors.js';
+import { packageReportTagName, tooltipSourceSelector } from '../src/globals.js';
 
 test.describe('pypi', () => {
   test('Package Report is visible in PyPI.org', async ({ page }) => {
