@@ -77,6 +77,11 @@ const handleArgument = (argument, restCommandWords) => {
     }
     return index;
   }
+  
+  if (argument.includes('.whl')) {
+    console.log('Ignoring command with ".whl":', argument);
+    return -1; // Return a negative index to indicate the command should be ignored
+  }
 
   if (!pipOptionsWithArgToIgnore.includes(argument)) {
     return index;

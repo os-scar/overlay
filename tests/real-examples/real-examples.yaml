@@ -97,7 +97,6 @@ links:
     comment: pip3 install command
     post: answer
     registry: pypi
-
   https://stackoverflow.com/a/27709931:
     comment: go get standard library
     post: answer
@@ -124,5 +123,9 @@ links:
     registry: go
   https://stackoverflow.com/a/28857808:
     comment: github subfolder
+    post: answer
+    registry: go
+  https://stackoverflow.com/a/33984261:
+    comment: wsl should not running 
     post: answer
     registry: go
