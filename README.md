@@ -7,7 +7,6 @@
 [![Badge Discord]][Discord]
 
 ---
-
 <h1 align="center">
 Overlay
 </h1>
