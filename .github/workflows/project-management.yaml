@@ -42,7 +42,7 @@ jobs:
     # and comments on them to remind the assignee to take action.
     # If the assignee does not take action, the another action will unassign them.
     name: Comment on possible stable issues
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request_target'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@v8
