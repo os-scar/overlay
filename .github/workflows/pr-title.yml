@@ -14,5 +14,7 @@ jobs:
         run: |
           echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
       - name: validate PR title
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
         run: |
-          echo ${{ github.event.pull_request.title }} | commitlint
+          echo "$TITLE" | commitlint
