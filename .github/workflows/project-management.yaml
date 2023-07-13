@@ -24,6 +24,9 @@ on:
   push:
     branches:
       - project-manage
+  pull_request:
+    branches:
+      - project-manage
   workflow_dispatch:
 
 permissions:
