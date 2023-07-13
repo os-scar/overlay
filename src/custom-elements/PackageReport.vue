@@ -58,7 +58,6 @@
 
 <script>
 import { defineComponent } from 'vue';
-import advisories from '../advisories';
 import DebrickedLogo from '../assets/debricked-logo.svg?component';
 import InlineSeparator from '../assets/inline-separator.svg?component';
 import NpmLogo from '../assets/npm-logo.svg?component';
@@ -67,6 +66,7 @@ import PythonLogo from '../assets/python-logo.svg?component';
 import ScorecardsLogo from '../assets/scorecards-logo.svg?component';
 import SnykLogo from '../assets/snyk-logo.svg?component';
 import SocketLogo from '../assets/socket-logo.svg?component';
+import { advisories, packageReportTagName } from '../globals';
 import { usePackageInfo } from './store';
 
 const registries = {
@@ -82,7 +82,7 @@ const logos = {
 };
 
 export default defineComponent({
-  name: 'package-report',
+  name: packageReportTagName,
   components: {
     OpenExternalLink,
     InlineSeparator,

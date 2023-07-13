@@ -1,10 +1,11 @@
 import browser from '../browser';
+import { packageReportTagName } from '../globals';
 import { mountContentScript } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/python';
 
 const addPackageReport = (packageID) => {
-  const packageReport = document.createElement('overlay-package-report');
+  const packageReport = document.createElement(packageReportTagName);
   packageReport.setAttribute('package-type', packageID.type);
   packageReport.setAttribute('package-name', packageID.name);
   packageReport.setAttribute('stylesheet-url', browser.runtime.getURL('custom-elements.css'));
