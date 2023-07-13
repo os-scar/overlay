@@ -21,6 +21,9 @@ on:
     types: [opened, reopened]
   schedule:
     - cron: '0 0 * * *'
+  push:
+    branches:
+      - project-manage
   workflow_dispatch:
 
 permissions:
@@ -39,7 +42,7 @@ jobs:
     # and comments on them to remind the assignee to take action.
     # If the assignee does not take action, the another action will unassign them.
     name: Comment on possible stable issues
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/stale@v8
@@ -55,9 +58,9 @@ jobs:
           exempt-issue-labels: 'on hold'
           exempt-pr-labels: 'on hold'
           remove-stale-when-updated: true
-      - uses: boundfoxstudios/action-unassign-contributor-after-days-of-inactivity@0172fe659b291c051a1a3f818b421636ae5a0176
+      - uses: baruchiro/action-unassign-contributor-after-days-of-inactivity@b14a0edaa5a160a37fe646b2cfd7afa680595181
         with:
-          last-activity: 7
+          last-activity: 3
           labels: 'Waiting for contributor'
           exempt-assignees: 'baruchiro'
           labels-to-remove: 'Waiting for contributor'
