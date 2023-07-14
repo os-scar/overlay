@@ -78,11 +78,9 @@ export default defineComponent({
   }
 
   &__wrapper {
-    display: inline-block;
+    display: inline-flex;
     user-select: none;
-    position: relative;
     height: $indicator-height;
-    top: $padding-l1;
     overflow: hidden;
     border-radius: 4px;
     align-items: center;
