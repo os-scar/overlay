@@ -15,14 +15,15 @@
 
 <script>
 import { defineComponent } from 'vue';
-import Tooltip from './Tooltip.vue';
+import { indicatorTagName } from '../globals';
 import PackageReport from './PackageReport.vue';
+import Tooltip from './Tooltip.vue';
 import { usePackageInfo } from './store';
 
 const sum = (arr) => arr.reduce((a, b) => a + b, 0);
 
 export default defineComponent({
-  name: 'overlay-indicator',
+  name: indicatorTagName,
   components: {
     Tooltip,
     PackageReport,
