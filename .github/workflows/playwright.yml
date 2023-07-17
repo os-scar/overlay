@@ -4,6 +4,8 @@ on:
     branches: [temp-actions]
   pull_request:
     branches: [main, master]
+  merge_group:
+
 jobs:
   test:
     timeout-minutes: 60
