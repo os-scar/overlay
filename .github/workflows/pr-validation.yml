@@ -21,6 +21,21 @@ jobs:
       - run: yarn lint:lockfile
       - run: yarn lint:firefox
 
+  allero:
+    runs-on: ubuntu-latest
+    env:
+      ALLERO_TOKEN: ${{ secrets.ALLERO_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get allero cli
+        run: curl https://get.allero.io | bash
+      - name: Allero Config Token
+        if: ${{ env.ALLERO_TOKEN != '' }}
+        run: allero config set token ${{ env.ALLERO_TOKEN }}
+      - name: Run policies validation
+        run: allero validate .
+
   test:
     strategy:
       matrix:
