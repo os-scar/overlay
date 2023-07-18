@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: install commitlint
-        run: npm install -g @commitlint/cli @commitlint/config-conventional
+        run: npm install --ignore-scripts -g @commitlint/cli @commitlint/config-conventional
       - name: config commitlint
         run: |
           echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
