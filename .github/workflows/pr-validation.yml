@@ -24,7 +24,7 @@ jobs:
   allero:
     runs-on: ubuntu-latest
     env:
-      ALLERO_TOKEN: ${{ secrets.ALLERO_TOKEN }}
+      ALLERO_TOKEN: eyJydWxlcyI6W3RydWUsdHJ1ZSx0cnVlLGZhbHNlLGZhbHNlLHRydWUsdHJ1ZSx0cnVlLHRydWUsdHJ1ZSxmYWxzZSxmYWxzZSxmYWxzZSxmYWxzZSx0cnVlLHRydWUsdHJ1ZV0sInVuaXF1ZUlkIjoiZDY4OTViYzYtMDQ5NS00ZTEyLTgyNzMtNTYxMDRiNzkyNmFjIn0=
 
     steps:
       - uses: actions/checkout@v3
