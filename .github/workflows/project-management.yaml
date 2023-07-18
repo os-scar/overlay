@@ -55,7 +55,7 @@ jobs:
           exempt-issue-labels: 'on hold'
           exempt-pr-labels: 'on hold'
           remove-stale-when-updated: true
-      - uses: boundfoxstudios/action-unassign-contributor-after-days-of-inactivity@0172fe659b291c051a1a3f818b421636ae5a0176
+      - uses: boundfoxstudios/action-unassign-contributor-after-days-of-inactivity@eb02181edb32aa5eeff8e0979871d31399cf63a0
         with:
           last-activity: 7
           labels: 'Waiting for contributor'
