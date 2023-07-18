@@ -19,6 +19,12 @@ test.describe('stackoverflow', () => {
     // check that all advisories are shown in the tooltip's advisories list
     const advisories = overlayModuleName.locator(TOOLTIP_SOURCES_SELECTOR);
     await Expect(advisories).toHaveCount(NUM_OF_ADVISORIES);
+
+    // check that the issue counter not select with the original text
+    const codeElement = page.locator('code', { hasText: 'module_name' });
+    await codeElement.selectText();
+    const selectionText = await page.evaluate(() => window.getSelection().toString());
+    Expect(selectionText).toEqual('npm install --save module_name');
   });
 
   test('popup page', async ({ page, extensionId }) => {
