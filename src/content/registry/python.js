@@ -90,6 +90,11 @@ const handleArgument = (argument, restCommandWords) => {
 
 const baseCommandMatch = (line) => line.match(/pip3? +install/);
 const packageWordParse = (word) => {
+  if (word.endsWith('.whl')) {
+    console.debug('Ignoring package with ".whl":', word);
+    return null;
+  }
+
   const match = word.match(packageArea);
   if (!match) return null;
 

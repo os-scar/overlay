@@ -17,6 +17,7 @@ describe(parseCommand.name, () => {
     'install numpy‑1.9.2+mkl‑cp34‑none‑win_amd64.whl',
     'install MySQL_python==', // Although this is a valid package name, it's not a valid command
     'install -r requirements.txt',
+    'pip install scipy-0.16.1-cp27-none-win_amd64.whl',
   ];
   const createCommand = (packageManager) => commands.map((command) => `${packageManager} ${command}`);
 
