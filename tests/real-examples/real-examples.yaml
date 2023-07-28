@@ -97,6 +97,10 @@ links:
     comment: pip3 install command
     post: answer
     registry: pypi
+  https://stackoverflow.com/a/33984261:
+    comment: should Ignore this .whl as a package
+    post: answer
+    registry: pypi
 
   https://stackoverflow.com/a/27709931:
     comment: go get standard library
@@ -126,7 +130,3 @@ links:
     comment: github subfolder
     post: answer
     registry: go
-  https://stackoverflow.com/a/33984261:
-    comment: should Ignore this .whl as a package
-    post: answer
-    registry: pypi
