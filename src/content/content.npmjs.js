@@ -4,6 +4,8 @@ import { mountContentScript, reloadWhenURLChanged } from './content';
 import { fetchPackageInfo } from './content-events';
 import { urlParsers } from './registry/npm';
 
+const CSS_SELECTOR_INSTALL = '.c84e15be';
+
 const addPackageReport = async (packageID) => {
   // remove an old package report (if exists)
   const currPackageReport = document.getElementsByTagName(packageReportTagName);
@@ -11,11 +13,11 @@ const addPackageReport = async (packageID) => {
     currPackageReport.item(0).remove();
   }
 
-  const repository = await waitForElement('#repository', document.querySelector('#main'));
+  const install = await waitForElement(CSS_SELECTOR_INSTALL, document.querySelector('#main'));
   const packageReport = document.createElement(packageReportTagName);
   packageReport.setAttribute('package-type', packageID.type);
   packageReport.setAttribute('package-name', packageID.name);
-  repository.parentElement.insertBefore(packageReport, repository);
+  install.parentElement.insertBefore(packageReport, install);
 };
 
 const loadPackageInfo = async () => {

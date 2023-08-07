@@ -4,8 +4,11 @@
  * @param {Node} target A DOM Node (which may be an Element) within the DOM tree to watch for changes, or to be the root of a subtree of nodes to be watched.
  *
  */
+
+const TIME_OUT = 10000;
+
 const waitForElement = (selector, target) => {
-  return new Promise((resolve) => {
+  const waitForElement = new Promise((resolve) => {
     if (document.querySelector(selector)) {
       return resolve(document.querySelector(selector));
     }
@@ -22,6 +25,14 @@ const waitForElement = (selector, target) => {
       subtree: true,
     });
   });
+
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => {
+      reject(new Error('Time out to wait for the element'));
+    }, TIME_OUT);
+  });
+
+  return Promise.race([waitForElement, timeoutPromise]);
 };
 
 export default waitForElement;
