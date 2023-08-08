@@ -11,4 +11,3 @@ export const advisories = {
 export const advisoriesNames = Object.keys(advisories);
 export const indicatorTagName = 'overlay-indicator';
 export const packageReportTagName = 'overlay-package-report';
-export const waitElementTimeOot = 10 * SECOND;

@@ -4,8 +4,9 @@
  * @param {Node} target A DOM Node (which may be an Element) within the DOM tree to watch for changes, or to be the root of a subtree of nodes to be watched.
  *
  */
+import { SECOND } from '../globals';
 
-import { waitElementTimeOot } from '../globals';
+const waitElementTimeOot = 10 * SECOND;
 
 const waitForElement = (selector, target) => {
   return new Promise((resolve, reject) => {
