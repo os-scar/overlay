@@ -11,7 +11,7 @@ const waitElementTimeOot = 10 * SECOND;
 const waitForElement = (selector, target) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      reject(new Error('Time out to wait for the element'));
+      reject(new Error('Time out to wait for the element ' + selector));
     }, waitElementTimeOot);
 
     if (document.querySelector(selector)) {
