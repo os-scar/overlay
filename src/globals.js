@@ -1,5 +1,5 @@
-export const second = 1000;
-export const minute = 60 * second;
+export const SECOND = 1000;
+export const MINUTE = 60 * SECOND;
 
 export const advisories = {
   snyk: 'Snyk Advisor',
@@ -11,4 +11,4 @@ export const advisories = {
 export const advisoriesNames = Object.keys(advisories);
 export const indicatorTagName = 'overlay-indicator';
 export const packageReportTagName = 'overlay-package-report';
-export const waitElementTimeOot = 10 * second;
+export const waitElementTimeOot = 10 * SECOND;
