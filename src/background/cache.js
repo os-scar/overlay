@@ -1,11 +1,9 @@
 import LRUCache from 'lru-cache';
-
-const SECOND = 1000;
-const MINUTE = 60 * SECOND;
+import { minute } from '../globals';
 
 const _cache = new LRUCache({
   max: 500,
-  ttl: 15 * MINUTE,
+  ttl: 15 * minute,
 });
 
 export default (keys, action, ttl) => {

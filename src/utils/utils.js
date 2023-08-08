@@ -5,10 +5,14 @@
  *
  */
 
-const TIME_OUT = 10000;
+import { waitElementTimeOot } from '../globals';
 
 const waitForElement = (selector, target) => {
-  const waitForElement = new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('Time out to wait for the element'));
+    }, waitElementTimeOot);
+
     if (document.querySelector(selector)) {
       return resolve(document.querySelector(selector));
     }
@@ -25,14 +29,6 @@ const waitForElement = (selector, target) => {
       subtree: true,
     });
   });
-
-  const timeoutPromise = new Promise((_, reject) => {
-    setTimeout(() => {
-      reject(new Error('Time out to wait for the element'));
-    }, TIME_OUT);
-  });
-
-  return Promise.race([waitForElement, timeoutPromise]);
 };
 
 export default waitForElement;
