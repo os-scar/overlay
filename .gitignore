@@ -33,7 +33,6 @@ typings/
 .node_repl_history
 *.tgz
 .yarn-integrity
-.yarn/*
 .env
 .env.test
 .cache
