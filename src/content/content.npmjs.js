@@ -17,7 +17,10 @@ const addPackageReport = async (packageID) => {
   const packageReport = document.createElement(packageReportTagName);
   packageReport.setAttribute('package-type', packageID.type);
   packageReport.setAttribute('package-name', packageID.name);
-  collaborators.parentElement.parentElement.prepend(packageReport);
+
+  const properties = collaborators.parentElement.parentElement;
+  const install = properties.querySelector('p');
+  install.after(packageReport);
 };
 
 const loadPackageInfo = async () => {
