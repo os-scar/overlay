@@ -2255,11 +2255,6 @@ https://stackoverflow.com/a/57694628:
       type: go
       name: github.com/segmentio/aws-okta
     - range: |-
-        <code>go get github.com/go-gl/mathgl@v1.0.0
-        </code>
-      type: go
-      name: github.com/go-gl/mathgl
-    - range: |-
         <code>go install github.com/someone/some_module
         </code>
       type: go
@@ -2274,6 +2269,11 @@ https://stackoverflow.com/a/57694628:
         </code>
       type: go
       name: github.com/someone/some_module
+    - range: |-
+        <code>go get github.com/go-gl/mathgl@v1.0.0
+        </code>
+      type: go
+      name: github.com/go-gl/mathgl
 https://stackoverflow.com/a/28857808:
   comment: github subfolder
   post: answer
