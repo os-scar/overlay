@@ -40,6 +40,14 @@ jobs:
           extension_id: 'fahpefingaaldhifdbnlipfjniabkiho'
           action: 'publish'
 
+      - name: Firefox Addon upload & publish
+        uses: cardinalby/webext-buildtools-firefox-addons-action@v1
+        with:
+          zipFilePath: ./dist/firefox_${{ steps.semantic_release_info.outputs.version }}.xpi
+          extensionId: '{ce34d01b-8ca1-4b20-abf5-4cf0a329fd66}'
+          jwtIssuer: ${{ secrets.FF_JWT_ISSUER }}
+          jwtSecret: ${{ secrets.FF_JWT_SECRET }}
+
       - name: Upload Release Artifacts
         id: upload_artifacts
         if: ${{ steps.semantic_release_info.outputs.git_tag }}
