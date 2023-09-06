@@ -41,6 +41,7 @@ jobs:
           action: 'publish'
 
       - name: Firefox Addon upload & publish
+        if: ${{ steps.semantic_release_info.outputs.git_tag }}
         uses: cardinalby/webext-buildtools-firefox-addons-action@v1
         with:
           zipFilePath: ./dist/firefox_${{ steps.semantic_release_info.outputs.version }}.xpi
