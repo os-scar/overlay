@@ -11,6 +11,7 @@
     "email": "contact@os-scar.com"
   },
   "scripts": {
+    "setup": "yarn install --immutable && allow-scripts",
     "postinstall": "husky install && playwright install --with-deps chromium",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
@@ -28,6 +29,8 @@
     "start:firefox": "yarn __start --source-dir ./dist/firefox"
   },
   "devDependencies": {
+    "@lavamoat/allow-scripts": "^2.5.1",
+    "@lavamoat/preinstall-always-fail": "^1.0.3",
     "@playwright/test": "^1.35.0",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
@@ -65,5 +68,16 @@
     "**/*": "prettier --write --ignore-unknown",
     "{src,tests}/**/*.js": "eslint --fix"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.19",
+  "lavamoat": {
+    "allowScripts": {
+      "$root$": true,
+      "@lavamoat/preinstall-always-fail": false,
+      "gulp>undertaker>es6-weak-map>es5-ext": false,
+      "vite>esbuild": true,
+      "web-ext>bunyan>dtrace-provider": false,
+      "web-ext>fx-runner>spawn-sync": false,
+      "web-ext>sign-addon>core-js": false
+    }
+  }
 }

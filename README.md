@@ -102,7 +102,7 @@ It injects the **indicator** as a _WebComponent_ into the current web pages and 
 To start developing the extension locally, follow these steps:
 
 1. Clone the project from the repository.
-1. Install the dependencies with `yarn install`.
+1. Install the dependencies securely with `yarn setup`.
 1. In one terminal, run `yarn build:watch`. This will rebuild the extension every time you change a file.
 1. In another terminal, run `yarn start:chrome` (or `yarn start:firefox`). This will reload the extension on the development browser every time the extension is built.
 
