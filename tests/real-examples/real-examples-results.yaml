@@ -56,53 +56,67 @@ https://stackoverflow.com/questions/29461831:
       type: npm
       name: node-gyp
       version: '3'
-    - range: |-
+    - range: >-
         <code>npm install -g n
+
         rm -R node_modules/ 
-        npm install node-sass@3.3.3 
+
+        npm install <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+        data-cfemail="244a4b4041095745575764170a170a17">[email&nbsp;protected]</a> 
+
         npm -g install node-gyp@3
+
         npm uninstall gulp-sass
+
         npm install gulp-sass@2 
+
         npm rebuild node-sass 
+
         ionic setup sass 
+
         </code>
       type: npm
       name: 'n'
-    - range: |-
+    - range: >-
         <code>npm install -g n
+
         rm -R node_modules/ 
-        npm install node-sass@3.3.3 
+
+        npm install <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+        data-cfemail="244a4b4041095745575764170a170a17">[email&nbsp;protected]</a> 
+
         npm -g install node-gyp@3
+
         npm uninstall gulp-sass
+
         npm install gulp-sass@2 
+
         npm rebuild node-sass 
+
         ionic setup sass 
-        </code>
-      type: npm
-      name: node-sass
-      version: 3.3.3
-    - range: |-
-        <code>npm install -g n
-        rm -R node_modules/ 
-        npm install node-sass@3.3.3 
-        npm -g install node-gyp@3
-        npm uninstall gulp-sass
-        npm install gulp-sass@2 
-        npm rebuild node-sass 
-        ionic setup sass 
+
         </code>
       type: npm
       name: node-gyp
       version: '3'
-    - range: |-
+    - range: >-
         <code>npm install -g n
+
         rm -R node_modules/ 
-        npm install node-sass@3.3.3 
+
+        npm install <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+        data-cfemail="244a4b4041095745575764170a170a17">[email&nbsp;protected]</a> 
+
         npm -g install node-gyp@3
+
         npm uninstall gulp-sass
+
         npm install gulp-sass@2 
+
         npm rebuild node-sass 
+
         ionic setup sass 
+
         </code>
       type: npm
       name: gulp-sass
@@ -137,13 +151,8 @@ https://stackoverflow.com/questions/12147804:
   registry: npm
   results:
     - range: >-
-        <a href="https://www.npmjs.com/package/ttab" rel="noreferrer">npm
-        registry</a>
-      type: npm
-      name: ttab
-    - range: >-
-        <a href="https://www.npmjs.com/package/ttab#manual-installation"
-        rel="noreferrer">these instructions</a>
+        <a href="https://www.npmjs.com/package/ttab" rel="nofollow
+        noreferrer">npm registry</a>
       type: npm
       name: ttab
     - range: |-
@@ -179,10 +188,6 @@ https://stackoverflow.com/questions/9023672:
         </code>
       type: npm
       name: redux
-    - range: <code>npm i -g npm@7.3.0</code>
-      type: npm
-      name: npm
-      version: 7.3.0
     - range: |-
         <code>npm install -D tslib @types/node
         </code>
@@ -247,12 +252,6 @@ https://stackoverflow.com/questions/28989476:
         </code>
       type: npm
       name: jquery
-    - range: |-
-        <code>npm install --save jquery@3.2.1
-        </code>
-      type: npm
-      name: jquery
-      version: 3.2.1
     - range: |-
         <code>npm install expose-loader --save-dev
         </code>
@@ -586,7 +585,7 @@ https://stackoverflow.com/questions/6237400:
       type: npm
       name: 'n'
     - range: >-
-        <a href="https://www.npmjs.org/package/n" rel="noreferrer">npm
+        <a href="https://www.npmjs.org/package/n" rel="nofollow noreferrer">npm
         module</a>
       type: npm
       name: 'n'
@@ -616,7 +615,7 @@ https://stackoverflow.com/questions/6237400:
       type: npm
       name: npm
     - range: |-
-        <code>$ npm install -g n
+        <code>npm install -g n
         </code>
       type: npm
       name: 'n'
@@ -625,12 +624,6 @@ https://stackoverflow.com/questions/6237400:
         </code>
       type: npm
       name: npm
-    - range: |-
-        <code>npm i -g npm@5.0.3
-        </code>
-      type: npm
-      name: npm
-      version: 5.0.3
     - range: |-
         <code>npm install --global --production npm-windows-upgrade
         npm-windows-upgrade
@@ -714,6 +707,11 @@ https://stackoverflow.com/questions/6237400:
       type: npm
       name: npm
     - range: |-
+        <code>npm install -g npm@latest
+        </code>
+      type: npm
+      name: npm
+    - range: |-
         <code>npm install npm@latest -g
         </code>
       type: npm
@@ -725,11 +723,6 @@ https://stackoverflow.com/questions/6237400:
         </code>
       type: npm
       name: 'n'
-    - range: |-
-        <code>npm install -g npm@latest
-        </code>
-      type: npm
-      name: npm
     - range: |-
         <code>
         npm install npm -g
@@ -833,13 +826,7 @@ https://stackoverflow.com/questions/22004559:
   comment: ignore 'npm install "$package"' 'npm install --production'
   post: answer
   registry: npm
-  results:
-    - range: "<code>mod-a\n  dev-dependents:\n    - mod-b\n  dependents:\n    - mod-c\n\nmod-d\n\uFEFF  dev-dependents:\n    - mod-e\n  dependents:\n    - mod-a\n\n----\n\nnpm install mod-d\n\ninstalled modules:\n  - mod-d\n  - mod-a\n  - mod-c\n\n----\n\ncheckout the mod-d code repository\n\nnpm install\n\ninstalled modules:\n  - mod-a\n  - mod-c\n  - mod-e\n</code>"
-      type: npm
-      name: mod-d
-    - range: "<code># For dependent modules\n\uFEFFnpm install dependent-module --save\n\n\uFEFF# For dev-dependent modules\nnp\uFEFFm install development-module --save-dev\n</code>"
-      type: npm
-      name: dependent-module
+  results: []
 https://stackoverflow.com/questions/15892076:
   comment: npm install express@3.0.0, comments
   post: answer
@@ -855,16 +842,6 @@ https://stackoverflow.com/questions/15892076:
         </code>
       type: npm
       name: express
-    - range: <code>npm install express@3.0.0</code>
-      type: npm
-      name: express
-      version: 3.0.0
-    - range: |-
-        <code>npm install -g npm@4.6.1
-        </code>
-      type: npm
-      name: npm
-      version: 4.6.1
     - range: |-
         <code>npm install -g npm@latest    // For the last stable version
         npm install -g npm@next      // For the most recent release
@@ -877,18 +854,6 @@ https://stackoverflow.com/questions/15892076:
         </code>
       type: npm
       name: npm
-    - range: |-
-        <code>npm install express@3.X
-        </code>
-      type: npm
-      name: express
-      version: 3.X
-    - range: |-
-        <code>npm install express@4.X
-        </code>
-      type: npm
-      name: express
-      version: 4.X
     - range: |-
         <code>npm install -g npm@latest    // For the last stable version
         npm install -g npm@next      // For the most recent release
@@ -904,10 +869,6 @@ https://stackoverflow.com/questions/15892076:
     - range: <code>$ npm install -g npm@latest-3</code>
       type: npm
       name: npm
-    - range: <code>npm install yargs@12.0.2</code>
-      type: npm
-      name: yargs
-      version: 12.0.2
     - range: |-
         <code>npm install packagename@version
         </code>
@@ -1003,12 +964,6 @@ https://stackoverflow.com/questions/11233365:
         </code>
       type: npm
       name: lib-a
-    - range: |-
-        <code>npm install module@0.0.2
-        </code>
-      type: npm
-      name: module
-      version: 0.0.2
 https://stackoverflow.com/questions/59188624:
   comment: npx
   post: question
@@ -1245,6 +1200,11 @@ https://stackoverflow.com/questions/50605219:
         rel="noreferrer">https://www.npmjs.com/package/npx</a>
       type: npm
       name: npx
+    - range: >-
+        <a href="https://www.npmjs.com/package/npx" rel="nofollow
+        noreferrer">npx Docs</a>
+      type: npm
+      name: npx
     - range: <code>npx create-react-app my-app</code>
       type: npm
       name: create-react-app
@@ -1459,10 +1419,6 @@ https://stackoverflow.com/questions/70358643:
         </code>
       type: npm
       name: clear-npx-cache
-    - range: <code>npx create-react-app@5.0.0 my-app</code>
-      type: npm
-      name: create-react-app
-      version: 5.0.0
     - range: <code>npx clear-npx-cache</code>
       type: npm
       name: clear-npx-cache
@@ -1474,12 +1430,6 @@ https://stackoverflow.com/questions/70358643:
         </code>
       type: npm
       name: create-react-app
-    - range: |-
-        <code>npx create-react-app@5.0.0 my-app
-        </code>
-      type: npm
-      name: create-react-app
-      version: 5.0.0
     - range: <code>npx create-react-app my-app</code>
       type: npm
       name: create-react-app
@@ -1537,12 +1487,6 @@ https://stackoverflow.com/a/65043610/839513:
         </code>
       type: npm
       name: create-react-app
-    - range: |-
-        <code>npx create-react-app@5.0.0 app-name
-        </code>
-      type: npm
-      name: create-react-app
-      version: 5.0.0
     - range: <code>npm install -g create-react-app</code>
       type: npm
       name: create-react-app
@@ -1652,12 +1596,6 @@ https://stackoverflow.com/a/65043610/839513:
       type: npm
       name: create-react-app
     - range: |-
-        <code>npx create-react-app@4.0.2 my-app
-        </code>
-      type: npm
-      name: create-react-app
-      version: 4.0.2
-    - range: |-
         <code>npm install npm@latest -g
         </code>
       type: npm
@@ -1680,22 +1618,18 @@ https://stackoverflow.com/a/65043610/839513:
         </code>
       type: npm
       name: create-react-app
-    - range: |-
+    - range: >-
         <code>sudo npm uninstall create-react-app -g
 
-        sudo npm install create-react-app@5.0.0 -g
+
+        sudo npm install <a href="/cdn-cgi/l/email-protection"
+        class="__cf_email__"
+        data-cfemail="761504131702135b04131715025b170606364358465846">[email&nbsp;protected]</a>
+        -g
+
 
         npx create-react-app my-app
-        </code>
-      type: npm
-      name: create-react-app
-      version: 5.0.0
-    - range: |-
-        <code>sudo npm uninstall create-react-app -g
 
-        sudo npm install create-react-app@5.0.0 -g
-
-        npx create-react-app my-app
         </code>
       type: npm
       name: create-react-app
@@ -1949,15 +1883,15 @@ https://stackoverflow.com/questions/5226504:
         </code>
       type: pypi
       name: pip
-    - range: <code>$ pip install 'python-jenkins&gt;=1.1.1'</code>
-      type: pypi
-      name: python-jenkins
     - range: <code>pip install package==3.0.0</code>
       type: pypi
       name: package
     - range: <code>pip install -I package==2.0.0</code>
       type: pypi
       name: package
+    - range: <code>$ pip install 'python-jenkins&gt;=1.1.1'</code>
+      type: pypi
+      name: python-jenkins
 https://stackoverflow.com/questions/26575587:
   comment: pip3 install command
   post: answer
@@ -2280,27 +2214,6 @@ https://stackoverflow.com/a/57694628:
   registry: go
   results:
     - range: |-
-        <code>$ npm install express@4.0.0
-        </code>
-      type: npm
-      name: express
-      version: 4.0.0
-    - range: |-
-        <code>$ go get github.com/wilk/uuid@0.0.1
-        $ go get github.com/wilk/uuid@0.0.2
-        </code>
-      type: go
-      name: github.com/wilk/uuid
-    - range: |-
-        <code>$ go get github.com/wilk/uuid@0.0.1
-        $ go get github.com/wilk/uuid@0.0.2
-        </code>
-      type: go
-      name: github.com/wilk/uuid
-    - range: <code>go get github.com/gorilla/mux@v1.7.4</code>
-      type: go
-      name: github.com/gorilla/mux
-    - range: |-
         <code>export GOPATH=~/
         go get github.com/whateveruser/whateverrepo
         cd ~/src/github.com/whateveruser/whateverrepo
@@ -2311,39 +2224,32 @@ https://stackoverflow.com/a/57694628:
         </code>
       type: go
       name: github.com/whateveruser/whateverrepo
-    - range: |-
+    - range: >-
         <code>go get github.com/someone/some_module@master
-        go get github.com/someone/some_module@v1.1.0
+
+        go get github.com/someone/<a href="/cdn-cgi/l/email-protection"
+        class="__cf_email__"
+        data-cfemail="f4879b9991ab999b90819891b482c5dac5dac4">[email&nbsp;protected]</a>
+
         go get github.com/someone/some_module@commit_hash
-        </code>
-      type: go
-      name: github.com/someone/some_module
-    - range: |-
-        <code>go get github.com/someone/some_module@master
-        go get github.com/someone/some_module@v1.1.0
-        go get github.com/someone/some_module@commit_hash
-        </code>
-      type: go
-      name: github.com/someone/some_module
-    - range: |-
-        <code>go get github.com/someone/some_module@master
-        go get github.com/someone/some_module@v1.1.0
-        go get github.com/someone/some_module@commit_hash
+
         </code>
       type: go
       name: github.com/someone/some_module
     - range: >-
-        <code>GO111MODULE=on go get -u
-        github.com/segmentio/aws-okta@v0.22.1</code>
-      type: go
-      name: github.com/segmentio/aws-okta
-    - range: |-
-        <code>go install github.com/someone/some_module
+        <code>go get github.com/someone/some_module@master
+
+        go get github.com/someone/<a href="/cdn-cgi/l/email-protection"
+        class="__cf_email__"
+        data-cfemail="f4879b9991ab999b90819891b482c5dac5dac4">[email&nbsp;protected]</a>
+
+        go get github.com/someone/some_module@commit_hash
+
         </code>
       type: go
       name: github.com/someone/some_module
     - range: |-
-        <code>go install github.com/someone/some_module@v1.1.0
+        <code>go install github.com/someone/some_module
         </code>
       type: go
       name: github.com/someone/some_module
@@ -2352,11 +2258,6 @@ https://stackoverflow.com/a/57694628:
         </code>
       type: go
       name: github.com/someone/some_module
-    - range: |-
-        <code>go get github.com/go-gl/mathgl@v1.0.0
-        </code>
-      type: go
-      name: github.com/go-gl/mathgl
 https://stackoverflow.com/a/28857808:
   comment: github subfolder
   post: answer
