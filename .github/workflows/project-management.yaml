@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request_target'
     steps:
-      - uses: toshimaru/auto-author-assign@2daaeb2988aef24bf37e636fe733f365c046aba0
+      - uses: toshimaru/auto-author-assign@ebd30f10fb56e46eb0759a14951f36991426fed0
 
   comment-on-possible-stale-issues:
     # This job uses the stale action to find inactive assigned issues and pull requests,
