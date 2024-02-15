@@ -1,8 +1,4 @@
 links:
-  https://stackoverflow.com/questions/29461831:
-    comment: high scored
-    post: question
-    registry: npm
   https://stackoverflow.com/questions/9629682:
     comment: many links, npm.org without www
     post: answer
@@ -76,10 +72,6 @@ links:
     comment: with semver ~
     post: answer
     registry: npm
-  https://stackoverflow.com/a/65043610/839513:
-    comment: multiple commands in the same line
-    post: answer
-    registry: npm
 
   https://stackoverflow.com/questions/2817869:
     comment: high scored
@@ -120,10 +112,6 @@ links:
     registry: go
   https://stackoverflow.com/a/15374626:
     comment: package from code.google.com
-    post: answer
-    registry: go
-  https://stackoverflow.com/a/57694628:
-    comment: go get with version and special chars
     post: answer
     registry: go
   https://stackoverflow.com/a/28857808:
