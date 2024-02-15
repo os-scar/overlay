@@ -1,7 +1,8 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [temp-actions]
+  # Schedule integration tests to see the real examples are not broken
+  schedule:
+    - cron: '0 2 * * *'
   pull_request:
     branches: [main, master]
   merge_group:
@@ -32,3 +33,11 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+      - name: open issue
+        if: failure() && github.ref == 'refs/heads/master'
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          update_existing: false
+          filename: .github/ISSUE_TEMPLATE/playwright-nighly-failed.md
