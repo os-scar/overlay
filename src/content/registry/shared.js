@@ -6,6 +6,10 @@ const finishAllWords = (argsAndPackagesWords) => {
   return length;
 };
 
+const isNumber = (str) => {
+  return /^\d+(\.\d+)?$/.test(str);
+};
+
 /**
  * @param {string} registryName `type` in result element
  * @param {(line: string) => RegExpMatchArray} getBaseCommandMatch get the base command match for a line (examples: `pip install`, `yarn add`)
@@ -41,7 +45,7 @@ export const createParseCommand =
           continue;
         }
 
-        if (word.startsWith('-')) {
+        if (word.startsWith('-') || isNumber(word)) {
           counterIndex += handleArgument(word, argsAndPackagesWords);
           continue;
         }
