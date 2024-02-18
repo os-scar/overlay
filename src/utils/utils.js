@@ -1,26 +1,26 @@
 /**
  * Waits for element to be rendered in DOM.
  * @param {string} selector A valid css selector string
- * @param {Node} target A DOM Node (which may be an Element) within the DOM tree to watch for changes, or to be the root of a subtree of nodes to be watched.
+ * @param {Node} [target=document] A DOM Node (which may be an Element) within the DOM tree to watch for changes, or to be the root of a subtree of nodes to be watched.
  *
  */
 import { SECOND } from '../globals';
 
 const waitElementTimeOot = 10 * SECOND;
 
-const waitForElement = (selector, target) => {
+const waitForElement = (selector, target = document) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       reject(new Error('Time out to wait for the element ' + selector));
     }, waitElementTimeOot);
 
-    if (document.querySelector(selector)) {
-      return resolve(document.querySelector(selector));
+    if (target.querySelector(selector)) {
+      return resolve(target.querySelector(selector));
     }
 
     const observer = new MutationObserver(() => {
-      if (document.querySelector(selector)) {
-        resolve(document.querySelector(selector));
+      if (target.querySelector(selector)) {
+        resolve(target.querySelector(selector));
         observer.disconnect();
       }
     });
