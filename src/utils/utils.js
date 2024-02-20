@@ -14,13 +14,15 @@ const waitForElement = (selector, target = document) => {
       reject(new Error('Time out to wait for the element ' + selector));
     }, waitElementTimeOot);
 
-    if (target.querySelector(selector)) {
-      return resolve(target.querySelector(selector));
+    const wishedElement = target.querySelector(selector);
+    if (wishedElement) {
+      return resolve(wishedElement);
     }
 
     const observer = new MutationObserver(() => {
-      if (target.querySelector(selector)) {
-        resolve(target.querySelector(selector));
+      const wishedElement = target.querySelector(selector);
+      if (wishedElement) {
+        resolve(wishedElement);
         observer.disconnect();
       }
     });
