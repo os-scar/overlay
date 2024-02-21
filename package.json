@@ -13,6 +13,7 @@
   "scripts": {
     "postinstall": "husky install && playwright install --with-deps chromium",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:unit": "SKIP_SNAPSHOT=true node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
     "test:components": "cd tests/components && vite",
     "e2e": "yarn build && playwright test",
