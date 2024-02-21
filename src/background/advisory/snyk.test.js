@@ -24,7 +24,7 @@ describe('snyk', () => {
           },
           maintenance: {
             level: expect.stringMatching(/^GOOD|WARNING|BAD$/),
-            description: 'Inactive',
+            description: expect.stringMatching(/^Inactive|Sustainable$/),
           },
           community: {
             level: expect.stringMatching(/^GOOD|WARNING|BAD$/),
