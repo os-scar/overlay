@@ -2,7 +2,7 @@ import { describe, expect, jest, test } from '@jest/globals';
 import { findRanges } from '../src/content/stackoverflow/finder';
 import { readRealExamples, writeResultsSnapshot } from './real-examples/real-examples';
 
-const describeif = process.env.SKIP_SNAPSHOT ? describe.skip : describe;
+const describeif = process.env.SKIP_INTEGRATION ? describe.skip : describe;
 
 const JEST_DEFAULT_TIMEOUT = 5000;
 
