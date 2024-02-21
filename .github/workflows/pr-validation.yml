@@ -24,6 +24,7 @@ jobs:
 
   test:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
         node-version: [18.x]
@@ -38,4 +39,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: yarn
       - run: yarn
-      - run: yarn test
+      - run: yarn test:unit
+      - run: yarn test:integration
