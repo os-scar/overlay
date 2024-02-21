@@ -20,12 +20,24 @@ const parsePackageString = (str) => {
   };
 };
 
-const parseNpmCommand = createParseCommand(
-  'npm',
-  (line) => line.match(npmInstall),
-  (word) => word.length + 1,
-  parsePackageString
-);
+const npmOptionWithArgToIgnore = ['--network-timeout', '--network-concurrency'];
+
+//npm
+const handleArgument = (argument, restCommandWords) => {
+  let index = 0;
+  index += argument.length + 1; // +1 for the space removed by split
+
+  if (!npmOptionWithArgToIgnore.includes(argument)) {
+    return index;
+  }
+
+  if (argument.includes('=')) return index;
+
+  index += restCommandWords.shift().length + 1;
+  return index;
+};
+
+const parseNpmCommand = createParseCommand('npm', (line) => line.match(npmInstall), handleArgument, parsePackageString);
 
 // npx
 const parseOnlyFirstPackage = (str, argsAndPackagesWords) => {

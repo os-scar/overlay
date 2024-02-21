@@ -424,6 +424,16 @@ https://stackoverflow.com/questions/3608384:
         </code>
       type: npm
       name: jade
+https://stackoverflow.com/questions/51508364:
+  comment: ignore 'yarn add <yourPackage> --network-timeout 100000'
+  post: answer
+  registry: npm
+  results:
+    - range: |-
+        <code>npx create-react-app app --use-npm
+        </code>
+      type: npm
+      name: create-react-app
 https://stackoverflow.com/questions/12008719:
   comment: npm install --save
   post: answer

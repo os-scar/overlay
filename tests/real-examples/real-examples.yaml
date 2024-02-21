@@ -27,6 +27,10 @@ links:
     comment: ignore 'npm install -d' & find '/usr/local/bin/npm install jade'
     post: answer
     registry: npm
+  https://stackoverflow.com/questions/51508364:
+    comment: ignore 'yarn add <yourPackage> --network-timeout 100000'
+    post: answer
+    registry: npm
   https://stackoverflow.com/questions/12008719:
     comment: npm install --save
     post: answer
