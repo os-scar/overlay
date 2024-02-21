@@ -13,7 +13,7 @@
   "scripts": {
     "postinstall": "husky install && playwright install --with-deps chromium",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "test:unit": "SKIP_INTEGRATION=true node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:unit": "cross-env SKIP_INTEGRATION=true node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js tests",
     "test:components": "cd tests/components && vite",
     "e2e": "yarn build && playwright test",
@@ -36,6 +36,7 @@
     "@types/firefox-webext-browser": "^111.0.1",
     "@vitejs/plugin-vue": "^3.2.0",
     "@webcomponents/custom-elements": "^1.5.1",
+    "cross-env": "^7.0.3",
     "del": "^7.0.0",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
