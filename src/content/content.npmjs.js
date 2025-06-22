@@ -19,7 +19,7 @@ const addPackageReport = async (packageID) => {
   packageReport.setAttribute('package-name', packageID.name);
 
   const properties = collaborators.parentElement.parentElement;
-  const install = properties.querySelector('p');
+  const install = properties.querySelector('div.d767adf4.lh-copy');
   install.after(packageReport);
 };
 

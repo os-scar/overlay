@@ -20,6 +20,7 @@ describe('npm', () => {
       'npm install -g',
       '`npm install node-sass`', // this is not a valid command because of the `
       'npm create-react-app my-app',
+      'yarn add <yourPackage> --network-timeout 100000',
     ])('should return empty array if no packages found', (command) => {
       expect(parseCommand(command)).toStrictEqual([]);
     });

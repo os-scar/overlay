@@ -2,6 +2,8 @@ import { describe, expect, jest, test } from '@jest/globals';
 import { findRanges } from '../src/content/stackoverflow/finder';
 import { readRealExamples, writeResultsSnapshot } from './real-examples/real-examples';
 
+const describeif = process.env.SKIP_INTEGRATION ? describe.skip : describe;
+
 const JEST_DEFAULT_TIMEOUT = 5000;
 
 const htmlParser = new DOMParser();
@@ -11,7 +13,7 @@ const getElementFromFragment = (fragment) => {
   return div.innerHTML;
 };
 
-describe('Real Pages', () => {
+describeif('Real Pages', () => {
   jest.setTimeout(JEST_DEFAULT_TIMEOUT * 2 * 2);
 
   test('Snapshot real StackOverflow pages', async () => {

@@ -39,6 +39,7 @@ const fetchWebpage = async (example) => {
 };
 
 export const snapshotWebpages = async (force = false) => {
+  if (process.env.SKIP_INTEGRATION) return;
   const existingSnapshots = existsSync(webpageSnapshotsFolder) && readdirSync(webpageSnapshotsFolder).length;
   if (!force && existingSnapshots) {
     console.log(`snapshot dir '${webpageSnapshotsFolder} exists, not updating snapshots`);
